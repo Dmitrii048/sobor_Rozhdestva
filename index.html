@@ -85,13 +85,119 @@
         </div>
     </section>
 
-    <!-- Пример секции контента (для теста) -->
-    <section class="intro container">
-        <h2 class="section-title">Мир вам!</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto;">
-            Сайт находится в разработке. Мы создаем удобный ресурс для прихожан и гостей города.
-        </p>
+<!-- Раздел: О Соборе (История) -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">История и Архитектура</h2>
+            
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Кафедральный собор Рождества Христова по праву считается духовным центром Липецка и его архитектурной доминантой. Занимая вершину Соборной горы, он возвышается над городом, объединяя в молитве тысячи верующих, как и столетия назад.</p>
+                    <p>Строительство каменного храма началось в 1791 году по указу Императрицы Екатерины II. Храм возводился тщанием помещика Петра Вельяминова и жителей города. Это уникальный памятник классицизма, сохранивший в себе дух эпох и молитву поколений.</p>
+                    <div style="margin-top: 30px;">
+                        <a href="#" class="btn-gold">Полная летопись</a>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <!-- Сюда нужно вставить фото общего вида собора или старинную гравюру -->
+                    <img src="https://sobory.ru/pic/00950/00983_20220612_143302.jpg" alt="Вид на Собор">
+                    <!-- Я поставил временную ссылку, замени её на локальный файл history.jpg -->
+                </div>
+            </div>
+
+            <!-- Таймлайн (Основные вехи) -->
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="time-date">1791 год</span>
+                    <div class="time-content">
+                        Начало строительства каменного собора по проекту итальянского архитектора Томазо Адамини (по одной из версий).
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="time-date">1835 год</span>
+                    <div class="time-content">
+                        Завершено строительство величественной колокольни высотой более 60 метров, ставшей маяком для города.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="time-date">1931 год</span>
+                    <div class="time-content">
+                        Трагические страницы: собор закрыт советской властью. Здание использовалось как музей и склад, но чудом уцелело.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="time-date">1991 год</span>
+                    <div class="time-content">
+                        Возвращение святыни верующим. Начало масштабной реставрации и возобновление богослужений.
+                    </div>
+                </div>
+                 <div class="timeline-item">
+                    <span class="time-date">Сегодня</span>
+                    <div class="time-content">
+                        Собор полностью расписан, сияет золотыми куполами и является сердцем Липецкой митрополии.
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- Раздел: Святыни -->
+    <section class="shrines-section" id="shrines">
+        <div class="container">
+            <h2 class="section-title">Святыни Собора</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
+                В соборе пребывают особо чтимые иконы и мощи угодников Божиих, к которым ежедневно притекают верующие за утешением и помощью.
+            </p>
+
+            <div class="shrines-grid">
+                
+                <!-- Святыня 1: Страстная икона -->
+                <div class="shrine-card">
+                    <div class="shrine-img-box">
+                        <!-- Замени на фото иконы -->
+                        <img src="icon-strastnaya.jpg" alt="Липецкая Страстная икона">
+                    </div>
+                    <div class="shrine-info">
+                        <h3 class="shrine-title">Липецкая икона «Страстная»</h3>
+                        <p class="shrine-desc">
+                            Главная святыня города. В 1831 году, во время эпидемии холеры, по молитвам перед этим образом болезнь отступила.
+                        </p>
+                        <a href="#" class="btn-link">Подробнее <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Святыня 2: Ковчег с мощами -->
+                <div class="shrine-card">
+                    <div class="shrine-img-box">
+                        <!-- Замени на фото раки с мощами -->
+                        <img src="relics.jpg" alt="Рака с мощами">
+                    </div>
+                    <div class="shrine-info">
+                        <h3 class="shrine-title">Ковчег с мощами</h3>
+                        <p class="shrine-desc">
+                            Фарфоровая рака с 81 частицей мощей Киево-Печерских чудотворцев, а также свт. Тихона Задонского.
+                        </p>
+                        <a href="#" class="btn-link">Подробнее <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Святыня 3: Свщмч. Уар -->
+                <div class="shrine-card">
+                    <div class="shrine-img-box">
+                        <!-- Замени на фото иконы Уара -->
+                        <img src="icon-uar.jpg" alt="Священномученик Уар">
+                    </div>
+                    <div class="shrine-info">
+                        <h3 class="shrine-title">Сщмч. Уар, епископ Липецкий</h3>
+                        <p class="shrine-desc">
+                            Первый епископ Липецкий, пострадавший за веру. Его икона в фарфоровом киоте находится в храме.
+                        </p>
+                        <a href="#" class="btn-link">Подробнее <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 </body>
 </html>
