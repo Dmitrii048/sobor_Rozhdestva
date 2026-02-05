@@ -1,0 +1,248 @@
+:root {
+    /* ЗОЛОТАЯ ПАЛИТРА */
+    --gold-primary: #C5A059;   /* Спокойное золото */
+    --gold-light: #E5C585;     /* Светлое золото */
+    --gold-dark: #9A7B3E;      /* Темное золото */
+    --gold-gradient: linear-gradient(135deg, #C5A059 0%, #F3DFA2 50%, #C5A059 100%);
+    
+    /* БАЗОВЫЕ ЦВЕТА */
+    --text-dark: #2C2C2C;
+    --text-gray: #555555;
+    --white: #FFFFFF;
+    --bg-light: #F9F9F7;       /* Теплый белый оттенок */
+    
+    /* ШРИФТЫ */
+    --font-serif: 'PT Serif', serif;
+    --font-sans: 'Open Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; padding: 0; margin: 0; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* --- TOP BAR (Верхняя полоска) --- */
+.top-bar {
+    background-color: #1a1a1a;
+    color: var(--gold-light);
+    font-size: 14px;
+    padding: 8px 0;
+}
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.contact-info span { margin-right: 20px; }
+.contact-info i { margin-right: 5px; color: var(--gold-primary); }
+.social-links a:hover { color: var(--white); }
+
+/* --- HEADER --- */
+.main-header {
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid var(--gold-primary); /* Золотая линия снизу */
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+}
+
+/* Логотип */
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.logo-img {
+    height: 70px; /* Подстрой под свой логотип */
+    width: auto;
+}
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+.logo-title {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    letter-spacing: 0.5px;
+}
+.logo-subtitle {
+    font-size: 12px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Навигация */
+.main-nav > ul { display: flex; gap: 30px; }
+.main-nav > ul > li { position: relative; }
+.main-nav a {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    padding: 10px 0;
+    position: relative;
+}
+/* Эффект подчеркивания при наведении */
+.main-nav > ul > li > a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--gold-primary);
+    transition: width 0.3s;
+}
+.main-nav > ul > li > a:hover::after { width: 100%; }
+
+/* Выпадающее меню (простое) */
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: -15px;
+    background: var(--white);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: 0.3s;
+    border-top: 2px solid var(--gold-primary);
+}
+.main-nav li:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.dropdown li a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+}
+.dropdown li a:hover { background: var(--bg-light); color: var(--gold-dark); }
+
+/* Кнопки */
+.btn-gold {
+    background: var(--gold-gradient);
+    color: #fff; /* или темно-коричневый для контраста */
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+    padding: 10px 25px;
+    border-radius: 4px; /* Немного скругленные */
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    background-size: 200% auto;
+    transition: 0.5s;
+}
+.btn-gold:hover {
+    background-position: right center;
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+}
+.btn-outline {
+    border: 2px solid var(--white);
+    color: var(--white);
+    padding: 10px 25px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.btn-outline:hover {
+    background: var(--white);
+    color: var(--text-dark);
+}
+
+/* Мобильное меню */
+.mobile-toggle { display: none; font-size: 24px; cursor: pointer; }
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 80vh;
+    background: url('hero-bg.jpg') no-repeat center center/cover; /* Нужно вставить фото собора */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+}
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4); /* Затемнение фото для читаемости текста */
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+.hero h1 {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+.hero-buttons { display: flex; gap: 20px; justify-content: center; }
+
+/* Анимации появления */
+.fade-in { animation: fadeIn 1s ease-out; }
+.fade-in-delay { animation: fadeIn 1s ease-out 0.5s backwards; }
+.fade-in-delay-2 { animation: fadeIn 1s ease-out 1s backwards; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Адаптив (Mobile) */
+@media (max-width: 768px) {
+    .top-bar { display: none; } /* Скрываем верхнюю полоску на моб */
+    .main-nav, .header-action { display: none; } /* Скрываем меню и кнопку */
+    .mobile-toggle { display: block; }
+    .hero h1 { font-size: 2.5rem; }
+}
+
+/* Заголовки секций */
+.section-title {
+    text-align: center;
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin: 60px 0 30px;
+    position: relative;
+    padding-bottom: 20px;
+}
+.section-title::after {
+    content: "☦"; /* Крестик или просто линия */
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold-primary);
+    font-size: 20px;
+}

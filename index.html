@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кафедральный собор Рождества Христова | Липецк</title>
+    <!-- Подключаем красивые шрифты (PT Serif для заголовков и Open Sans для текста) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Иконки (для телефона и соцсетей) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Верхняя инфо-панель (Top Bar) -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span><i class="fas fa-map-marker-alt"></i> г. Липецк, Соборная площадь, 4</span>
+                <span><i class="fas fa-phone"></i> +7 (4742) 27-04-78</span>
+            </div>
+            <div class="social-links">
+                <a href="https://vk.com/sobor48" target="_blank" title="Мы ВКонтакте"><i class="fab fa-vk"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной Хедер и Меню -->
+    <header class="main-header">
+        <div class="container header-content">
+            <!-- Логотип -->
+            <div class="logo-container">
+                <a href="/" class="logo-link">
+                    <!-- Замени 'logo.png' на путь к твоему файлу логотипа -->
+                    <img src="logo.png" alt="Логотип Собора" class="logo-img">
+                    <div class="logo-text">
+                        <span class="logo-title">Христорождественский</span>
+                        <span class="logo-subtitle">Кафедральный собор г. Липецка</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Навигация -->
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">О Соборе</a>
+                        <!-- Выпадающее меню (структура на будущее) -->
+                        <ul class="dropdown">
+                            <li><a href="#">История</a></li>
+                            <li><a href="#">Святыни и Иконы</a></li>
+                            <li><a href="#">Архитектура</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Богослужения</a></li>
+                    <li><a href="#">Духовенство</a></li>
+                    <li><a href="#">Галерея</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <!-- Кнопка действия -->
+            <div class="header-action">
+                <a href="#" class="btn-gold">Пожертвовать</a>
+            </div>
+            
+            <!-- Мобильное меню (бургер) - реализуем JS позже -->
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Главный экран (Hero Section) -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="fade-in">Добро пожаловать в<br>Кафедральный собор</h1>
+            <p class="fade-in-delay">Духовный центр Липецкой земли</p>
+            <div class="hero-buttons fade-in-delay-2">
+                <a href="#" class="btn-gold btn-large">Расписание служб</a>
+                <a href="#" class="btn-outline">О соборе</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Пример секции контента (для теста) -->
+    <section class="intro container">
+        <h2 class="section-title">Мир вам!</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+            Сайт находится в разработке. Мы создаем удобный ресурс для прихожан и гостей города.
+        </p>
+    </section>
+
+</body>
+</html>
