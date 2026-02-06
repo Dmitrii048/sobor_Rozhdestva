@@ -1,14 +1,11 @@
-/* =========================================
-   ОБНОВЛЕННЫЙ СТИЛЬ: "СВЕТЛЫЙ СОБОР"
-   ========================================= */
 :root {
-    --gold-main: #D4AF37;       /* Классическое золото */
-    --gold-light: #F9F4E8;      /* Фон карточек */
-    --text-dark: #2C2621;       /* Глубокий коричнево-серый для текста */
-    --text-muted: #6B645E;      /* Вторичный текст */
-    --bg-white: #FFFFFF;        /* Основной фон */
-    --bg-accent: #FBFBFA;       /* Чередование секций */
-    --border-color: #EAE3D5;    /* Цвет тонких линий */
+    --gold-main: #C5A059;
+    --gold-light: #F4EFE3;
+    --text-dark: #3E2F26;
+    --text-muted: #6B645E;
+    --white: #FFFFFF;
+    --bg-light: #FDFCF8;
+    --border: #EAE3D5;
     
     --font-serif: 'PT Serif', serif;
     --font-sans: 'Open Sans', sans-serif;
@@ -18,61 +15,54 @@ body {
     margin: 0;
     font-family: var(--font-sans);
     color: var(--text-dark);
-    background-color: var(--bg-white);
-    line-height: 1.8;
+    background-color: var(--white);
+    line-height: 1.7;
 }
 
-/* Общие контейнеры */
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* =========================================
-   ШАПКА (В СТИЛЕ STPIMEN)
-   ========================================= */
+/* --- ШАПКА И ЛОГО --- */
 .main-header {
-    padding: 40px 0 20px;
-    text-align: center;
-    border-bottom: 1px solid var(--border-color);
+    padding: 20px 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
 }
 
-.logo-container {
-    margin-bottom: 30px;
+.header-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
 }
 
-.logo-img {
-    height: 120px; /* Увеличили логотип */
-    margin: 0 auto 15px;
-    filter: sepia(0.2); /* Придает благородный оттенок */
+.logo-img { height: 100px; width: auto; margin-bottom: 10px; }
+
+.logo-text-group { text-align: center; }
+.logo-title { 
+    font-family: var(--font-serif); 
+    font-size: 24px; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    margin: 0; 
+}
+.logo-subtitle { 
+    font-size: 12px; 
+    color: var(--gold-main); 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
 }
 
-.logo-title {
-    font-family: var(--font-serif);
-    font-size: 2.2rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin: 0;
-    color: var(--text-dark);
-}
-
-.logo-subtitle {
-    font-family: var(--font-serif);
-    font-size: 1rem;
-    font-style: italic;
-    color: var(--gold-main);
-}
-
-/* Навигация (Минимализм) */
+/* --- ВОЗДУШНОЕ МЕНЮ С ВЫПАДАШКАМИ --- */
 .main-nav ul {
     display: flex;
     justify-content: center;
-    gap: 40px;
     list-style: none;
-    padding: 20px 0;
-    border-top: 1px solid var(--border-color);
+    padding: 0;
+    margin: 0;
+    gap: 30px;
 }
+
+.main-nav li { position: relative; padding: 15px 0; }
 
 .main-nav a {
     text-decoration: none;
@@ -80,106 +70,88 @@ body {
     font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
     transition: 0.3s;
 }
 
-.main-nav a:hover, .main-nav a.active {
-    color: var(--gold-main);
+.main-nav a:hover { color: var(--gold-main); }
+
+/* Выпадающее меню */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    min-width: 220px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-top: 2px solid var(--gold-main);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+    z-index: 100;
+    padding: 10px 0;
 }
 
-/* Кнопка "Подать записку" (Акцентная, но деликатная) */
-.btn-note {
+.has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: 90%; /* Плавный выезд вверх */
+}
+
+.dropdown-menu li { padding: 0; margin: 0; }
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    text-transform: none;
+    font-size: 14px;
+    font-weight: 400;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+/* --- СЕКЦИЯ ИСТОРИИ (ИНФОГРАФИКА) --- */
+.history-preview { padding: 80px 0; background: var(--bg-light); text-align: center; }
+
+.timeline-mini {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0;
+    position: relative;
+}
+
+.timeline-mini::before {
+    content: '';
+    position: absolute;
+    top: 25px; left: 0; right: 0;
+    height: 1px; background: var(--border);
+    z-index: 1;
+}
+
+.tm-item { position: relative; z-index: 2; flex: 1; padding: 0 10px; }
+.tm-dot { 
+    width: 12px; height: 12px; background: var(--gold-main); 
+    border-radius: 50%; margin: 20px auto; 
+}
+.tm-year { font-family: var(--font-serif); font-weight: 700; color: var(--gold-main); font-size: 1.2rem; }
+.tm-desc { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+
+.btn-gold-outline {
+    display: inline-block;
+    padding: 12px 30px;
     border: 1px solid var(--gold-main);
-    padding: 8px 20px !important;
-    border-radius: 0;
+    color: var(--text-dark);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 600;
     transition: 0.3s;
 }
 
-.btn-note:hover {
+.btn-gold-outline:hover { background: var(--gold-main); color: #fff; }
+
+/* Кнопка в меню */
+.btn-note {
     background: var(--gold-main);
     color: white !important;
-}
-
-/* =========================================
-   ГЛАВНЫЙ ЭКРАН (HERO)
-   ========================================= */
-.hero {
-    position: relative;
-    height: 60vh;
-    background: var(--bg-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-/* Если есть карандашный рисунок собора — ставим его фоном */
-.hero-sketch {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    height: 90%;
-    opacity: 0.15;
-    pointer-events: none;
-}
-
-.hero-content h1 {
-    font-family: var(--font-serif);
-    font-size: 3rem;
-    margin: 0;
-}
-
-/* =========================================
-   СЕТКА КАРТОЧЕК (Architecture / Ministry)
-   ========================================= */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 60px 0;
-}
-
-.card {
-    background: var(--bg-white);
-    border: 1px solid var(--border-color);
-    padding: 30px;
-    transition: 0.3s ease;
-    text-align: center;
-}
-
-.card:hover {
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
-    border-color: var(--gold-main);
-    transform: translateY(-5px);
-}
-
-.card h3 {
-    font-family: var(--font-serif);
-    color: var(--text-dark);
-    margin-bottom: 15px;
-}
-
-/* =========================================
-   ФУТЕР
-   ========================================= */
-.main-footer {
-    background: var(--bg-accent);
-    padding: 80px 0 40px;
-    border-top: 1px solid var(--border-color);
-    font-size: 14px;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-}
-
-.footer-title {
-    font-family: var(--font-serif);
-    text-transform: uppercase;
-    color: var(--gold-main);
-    margin-bottom: 20px;
-    display: block;
+    padding: 10px 20px !important;
+    border-radius: 2px;
 }
