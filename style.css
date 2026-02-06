@@ -12,15 +12,20 @@
 .logo-full {
     /* Рассчитанный размер: 580px в ширину даст около 270px в высоту */
     max-width: 580px; 
-    width: 95%; /* Для гибкости на малых экранах */
+    width: 95%; 
     height: auto;
     display: inline-block;
     transition: transform 0.3s ease;
+
+    /* ДОБАВЬТЕ ЭТИ ДВЕ СТРОЧКИ НИЖЕ */
+    mix-blend-mode: multiply; /* Магия прозрачности фона */
+    filter: contrast(1.1);    /* Делает линии рисунка чуть четче */
 }
 
-/* Эффект при наведении на лого (как на дорогих сайтах) */
+/* Эффект при наведении на лого */
 .logo-full:hover {
     transform: scale(1.02);
+}
 }
 
 /* --- ВОЗДУШНОЕ МЕНЮ --- */
@@ -89,3 +94,4 @@
     padding: 10px 25px;
     border-bottom: none;
 }
+
