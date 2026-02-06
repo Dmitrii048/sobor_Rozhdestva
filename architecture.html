@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Архитектура | Христорождественский собор</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .arch-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0; /* Без отступов для эффекта шахматки */
+        }
+        .arch-item {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        .arch-content {
+            padding: 60px;
+            background: var(--white);
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .arch-img {
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            width: 100%;
+        }
+        .arch-title {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--deep-brown);
+            margin-bottom: 20px;
+        }
+        /* Шахматный порядок для десктопа */
+        @media (min-width: 768px) {
+            .arch-item:nth-child(4n+1) .arch-content { order: 1; } /* Текст слева */
+            .arch-item:nth-child(4n+2) .arch-img { order: 2; }     /* Фото справа */
+            
+            .arch-item:nth-child(4n+3) .arch-img { order: 1; }     /* Фото слева */
+            .arch-item:nth-child(4n+4) .arch-content { order: 2; } /* Текст справа */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Меню (копия) -->
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo-link">
+                <img src="logo.png" alt="Логотип" class="logo-img">
+                <div class="logo-text">
+                    <span class="logo-title">Христорождественский</span>
+                </div>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="about.html">История</a></li>
+                    <li><a href="architecture.html" style="color:var(--gold-dark);">Архитектура</a></li>
+                    <li><a href="index.html">Главная</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" style="height: 40vh; background-image: url('architecture-bg.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="fade-in">Архитектура</h1>
+            <p>Симфония камня и веры</p>
+        </div>
+    </section>
+
+    <div class="arch-grid">
+        <!-- Блок 1 -->
+        <div class="arch-item arch-content">
+            <h2 class="arch-title">Классицизм</h2>
+            <p>Собор выполнен в строгом классическом стиле. Его отличает благородная простота линий, гармония пропорций и монументальность. Храм представляет собой двухсветный четверик, увенчанный величественным куполом.</p>
+        </div>
+        <div class="arch-item arch-img" style="background-image: url('arch-1.jpg');"></div>
+
+        <!-- Блок 2 -->
+        <div class="arch-item arch-img" style="background-image: url('arch-2.jpg');"></div>
+        <div class="arch-item arch-content">
+            <h2 class="arch-title">Колокольня</h2>
+            <p>Многоярусная колокольня, соединенная с храмом трапезной, является высотной доминантой комплекса. Её шпиль устремлен в небо, а фасады украшены портиками с колоннами, что придает строению торжественный вид.</p>
+        </div>
+
+        <!-- Блок 3 -->
+        <div class="arch-item arch-content">
+            <h2 class="arch-title">Внутреннее убранство</h2>
+            <p>Интерьер собора поражает светом и простором. Уникальной чертой является использование колонн внутри храма, которые поддерживают своды и создают ощущение дворцового величия Дома Божьего.</p>
+        </div>
+        <div class="arch-item arch-img" style="background-image: url('arch-3.jpg');"></div>
+    </div>
+
+</body>
+</html>
