@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | Христорождественский собор</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Верхняя панель -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span><i class="fas fa-map-marker-alt"></i> г. Липецк, Соборная площадь, 4</span>
+                <span><i class="fas fa-phone"></i> +7 (4742) 27-04-78</span>
+            </div>
+            <div class="social-links">
+                <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шапка -->
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo-link">
+                <img src="images/logo.png" alt="Логотип собора" class="logo-img">
+                <div class="logo-text">
+                    <div class="logo-title">Христорождественский</div>
+                    <div class="logo-subtitle">Кафедральный собор</div>
+                </div>
+            </a>
+            
+            <button class="mobile-toggle" id="menuToggle">☰</button>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="about.html">О Соборе</a></li>
+                    <li class="has-dropdown">
+                        <a href="about.html">История</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="about.html">Летопись</a></li>
+                            <li><a href="architecture.html">Архитектура</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="ministry.html">Наше служение</a></li>
+                    <li><a href="school.html">Воскресная школа</a></li>
+                    <li><a href="schedule.html">Богослужения</a></li>
+                    <li><a href="contacts.html" class="active">Контакты</a></li>
+                    <li><a href="#" class="btn-note">Подать записку</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero секция -->
+    <section class="hero contacts-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Контакты</h1>
+            <p class="school-subtitle">Мы всегда рады видеть вас в Доме Божьем</p>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <main class="contacts-content">
+        <div class="container">
+            <h2 class="section-title">Свяжитесь с нами</h2>
+            
+            <div class="contacts-wrapper">
+                <!-- Информация о контактах -->
+                <div class="contacts-info">
+                    <h3>Контактная информация</h3>
+                    
+                    <div class="contact-row">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span class="contact-label">Адрес:</span>
+                            <p class="contact-value">
+                                398019, г. Липецк, Соборная площадь, дом 4
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-row">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <span class="contact-label">Телефон:</span>
+                            <p class="contact-value">
+                                <a href="tel:+74742270478">+7 (4742) 27-04-78</a> (Церковная лавка)
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-row">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <span class="contact-label">E-mail:</span>
+                            <p class="contact-value">
+                                <a href="mailto:sobor48@mail.ru">sobor48@mail.ru</a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-row">
+                        <i class="fas fa-bus"></i>
+                        <div>
+                            <span class="contact-label">Как добраться:</span>
+                            <p class="contact-value">
+                                Автобусы: № 2, 12, 22, 315, 345, 352
+                                <br>Остановка: «Соборная площадь» («Площадь Ленина»)
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <a href="schedule.html" class="btn-gold">
+                            Расписание служб
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Карта -->
+                <div class="contacts-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2290.465429412968!2d39.60159437622125!3d52.60842607222346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x413b2f7f37c8e0f1%3A0x9d1a87c5c7f1c6e3!2z0YPQuy4g0JzQvtGB0LrQstCw0YfQsNC70LjRgdGC0YDQsNGG0LjQvtC90Y7RidC10L3QvdCw0Y8g0JfQsNC70LDRgdGC0YwsIDQsINCc0L7RgdC60LLQsNGH0LDQu9C40YHRgtGA0LDRhtC40L7QvdGO0YnQtdC90L3QsNGPLCDQnNC-0YHQutCy0LDRh9Cw0LvQuNGG0LXQvdGC0YzQutC4INC-0LHQu9Cw0YHRgtGMLCAzOTgwMTk!5e0!3m2!1sru!2sru!4v1707289200000!5m2!1sru!2sru" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+            
+            <!-- Реквизиты для пожертвований -->
+            <div class="bank-details">
+                <h3>Реквизиты для пожертвований</h3>
+                <p>
+                    Местная религиозная организация православный Приход Христо-Рождественского кафедрального собора г. Липецка
+                </p>
+                <p><span class="bank-code">ИНН:</span> 4826014457 / <span class="bank-code">КПП:</span> 482601001</p>
+                <p><span class="bank-code">Р/с:</span> 40703810235000000123 (Липецкое отделение №8593 ПАО Сбербанк)</p>
+                <p><span class="bank-code">БИК:</span> 044206604 / <span class="bank-code">К/с:</span> 30101810800000000604</p>
+                <p><span class="bank-code">Назначение платежа:</span> Добровольное пожертвование на уставную деятельность. НДС не облагается.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer class="main-footer">
+        <div class="container footer-inner">
+            <div class="footer-block">
+                <h6>Навигация</h6>
+                <a href="about.html">О соборе</a>
+                <a href="schedule.html">Расписание</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="#">Подать записку</a>
+            </div>
+            
+            <div class="footer-block">
+                <h6>Контакты</h6>
+                <p>г. Липецк, Соборная площадь, 4</p>
+                <a href="tel:+74742270478"><i class="fas fa-phone"></i> +7 (4742) 27-04-78</a>
+                <a href="mailto:sobor48@mail.ru"><i class="fas fa-envelope"></i> sobor48@mail.ru</a>
+            </div>
+            
+            <div class="footer-block">
+                <h6>Мы в соцсетях</h6>
+                <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+                <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a>
+            </div>
+        </div>
+        
+        <div class="container footer-copy">
+            <p>© 2026 Кафедральный собор Рождества Христова г. Липецка.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Мобильное меню
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.querySelector('.main-nav');
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.style.display = mainNav.style.display === 'block' ? 'none' : 'block';
+            });
+        }
+    </script>
+</body>
+</html>
