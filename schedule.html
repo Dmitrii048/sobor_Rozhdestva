@@ -37,16 +37,25 @@
                 <img src="logo.png" alt="Логотип" class="logo-img">
                 <div class="logo-text">
                     <span class="logo-title">Христорождественский</span>
+                    <span class="logo-subtitle">Кафедральный собор</span>
                 </div>
             </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="about.html">Летопись</a></li>
-                    <li><a href="schedule.html" style="color:var(--gold-dark);">Расписание</a></li>
-                    <li><a href="architecture.html">Архитектура</a></li>
-                    <li><a href="index.html">Главная</a></li>
+                    <li class="has-dropdown">
+                        <a href="about.html">О Соборе <i class="fas fa-angle-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="about.html">История (Летопись)</a></li>
+                            <li><a href="ministry.html">Наше служение</a></li>
+                            <li><a href="architecture.html">Архитектура</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="schedule.html">Богослужения</a></li>
+                    <li><a href="#">Духовенство</a></li>
+                    <li><a href="#">Контакты</a></li>
                 </ul>
             </nav>
+            <div class="mobile-toggle"><i class="fas fa-bars"></i></div>
         </div>
     </header>
 
