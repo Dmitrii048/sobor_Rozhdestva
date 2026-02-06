@@ -1,43 +1,8 @@
 /* =========================================
-   1. БАЗОВЫЕ НАСТРОЙКИ И ЦВЕТА
+   2. ШАПКА И МЕНЮ (ИСПРАВЛЕННАЯ ВЕРСИЯ 2.0)
    ========================================= */
-:root {
-    /* ЗОЛОТАЯ ПАЛИТРА */
-    --gold-primary: #C5A059;   /* Основное золото */
-    --gold-light: #F3DFA2;     /* Светлое золото (блик) */
-    --gold-dark: #8C6B30;      /* Темное золото (тень) */
-    --gold-gradient: linear-gradient(135deg, #C5A059 0%, #F3DFA2 50%, #C5A059 100%);
-    
-    /* НОВАЯ ПАЛИТРА (ВМЕСТО ЧЕРНОГО) */
-    --deep-brown: #3E2F26;     /* Цвет "Мореный дуб" - для шапки и футера */
-    --text-main: #4A4A4A;      /* Теплый темно-серый для текста */
-    --text-dark: #2A2A2A;      /* Почти черный, но мягче (для заголовков) */
-    
-    --white: #FFFFFF;
-    --bg-light: #FDFCF8;       /* Цвет слоновой кости (фон) */
-    
-    /* ШРИФТЫ */
-    --font-serif: 'PT Serif', serif;
-    --font-sans: 'Open Sans', sans-serif;
-}
 
-body {
-    margin: 0;
-    font-family: var(--font-sans);
-    color: var(--text-main);
-    background-color: var(--bg-light);
-    line-height: 1.7; /* Чуть больше воздуха в тексте */
-}
-
-a { text-decoration: none; color: inherit; transition: 0.3s; }
-ul { list-style: none; padding: 0; margin: 0; }
-img { max-width: 100%; display: block; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-/* =========================================
-   2. ШАПКА И МЕНЮ (ИСПРАВЛЕНИЕ)
-   ========================================= */
-/* Верхняя полоска - теперь коричневая, а не черная */
+/* Верхняя полоска */
 .top-bar {
     background-color: var(--deep-brown);
     color: var(--gold-light);
@@ -55,63 +20,79 @@ img { max-width: 100%; display: block; }
 /* Основной хедер */
 .main-header {
     background: var(--white);
-    box-shadow: 0 4px 20px rgba(62, 47, 38, 0.08); /* Тень стала мягче */
+    box-shadow: 0 4px 20px rgba(62, 47, 38, 0.08);
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 3px solid var(--gold-primary);
+    border-bottom: 4px solid var(--gold-primary); /* Линия чуть толще */
+    padding: 10px 0; /* Добавили воздух сверху и снизу */
 }
+
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100px; /* Чуть выше, чтобы всё влезло */
+    /* Убрали фиксированную высоту, пусть подстраивается под лого */
 }
 
-/* Логотип */
+/* Логотип - ТЕПЕРЬ КРУПНЫЙ */
 .logo-link {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
     text-decoration: none;
-    min-width: 300px; /* Зарезервируем место для лого, чтобы меню не наезжало */
+    margin-right: 40px; /* Отталкиваем меню */
 }
-.logo-img { height: 75px; width: auto; }
-.logo-text { display: flex; flex-direction: column; }
+.logo-img {
+    height: 95px; /* Увеличили размер */
+    width: auto;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); /* Тень для объема */
+}
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .logo-title {
     font-family: var(--font-serif);
-    font-size: 19px;
+    font-size: 22px; /* Шрифт крупнее */
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--deep-brown); /* Коричневый вместо черного */
-    line-height: 1.2;
+    color: var(--deep-brown);
+    line-height: 1.1;
 }
 .logo-subtitle {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--gold-dark);
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-top: 3px;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    font-weight: 600;
 }
 
-/* Навигация - ИСПРАВЛЕНИЕ "УЛЕТАНИЯ" */
-.main-nav { flex-grow: 1; display: flex; justify-content: flex-end; } /* Меню прижато вправо */
-.main-nav > ul { 
-    display: flex; 
-    gap: 25px; 
+/* Навигация */
+.main-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end; /* Меню справа */
+}
+.main-nav > ul {
+    display: flex;
+    gap: 30px; /* Расстояние между пунктами */
     align-items: center;
+    flex-wrap: wrap; /* Если не влезет - перенесется, но не сломается */
 }
 .main-nav a {
     font-family: var(--font-serif);
     font-weight: 600;
-    font-size: 14px; /* Чуть уменьшили шрифт, чтобы влезло */
+    font-size: 15px;
     text-transform: uppercase;
     color: var(--deep-brown);
-    padding: 10px 0;
+    padding: 5px 0;
     letter-spacing: 0.5px;
-    white-space: nowrap; /* Запрет переноса строк в пунктах */
+    position: relative;
 }
-.main-nav > ul > li > a:hover { color: var(--gold-primary); }
+.main-nav > ul > li > a:hover { color: var(--gold-dark); }
 .main-nav > ul > li > a::after {
     content: '';
     position: absolute;
@@ -122,225 +103,22 @@ img { max-width: 100%; display: block; }
 }
 .main-nav > ul > li > a:hover::after { width: 100%; }
 
-/* Скрытие элементов на планшетах, чтобы не ломалось */
-@media (max-width: 1024px) {
+/* Кнопка "Пожертвовать" в меню */
+.header-action { margin-left: 30px; flex-shrink: 0; }
+
+/* БУРГЕР (Скрыт на ПК) */
+.mobile-toggle { 
+    display: none; 
+    font-size: 26px; 
+    cursor: pointer; 
+    color: var(--deep-brown);
+}
+
+/* АДАПТИВНОСТЬ */
+@media (max-width: 1100px) {
     .logo-title { font-size: 16px; }
-    .main-nav { display: none; } /* Тут потом сделаем бургер */
-    .mobile-toggle { display: block; color: var(--deep-brown); font-size: 24px;}
+    .logo-img { height: 60px; }
+    .main-nav, .header-action { display: none; } /* Скрываем меню на планшетах */
+    .mobile-toggle { display: block; } /* Показываем бургер */
+    .header-content { height: 70px; }
 }
-
-/* Кнопки */
-.header-action { margin-left: 30px; }
-
-.btn-gold {
-    background: var(--gold-gradient);
-    color: #fff;
-    padding: 12px 30px;
-    border-radius: 2px; /* Более строгие углы */
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 13px;
-    letter-spacing: 1px;
-    border: none;
-    cursor: pointer;
-    background-size: 200% auto;
-    transition: 0.5s;
-    box-shadow: 0 4px 10px rgba(197, 160, 89, 0.3);
-}
-.btn-gold:hover {
-    background-position: right center;
-    box-shadow: 0 6px 15px rgba(197, 160, 89, 0.5);
-    transform: translateY(-2px);
-}
-
-/* НОВАЯ КНОПКА "ПОЛНАЯ ЛЕТОПИСЬ" */
-.btn-chronicle {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 15px 40px;
-    background: transparent;
-    border: 2px solid var(--gold-primary);
-    color: var(--deep-brown);
-    font-family: var(--font-serif);
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 2px;
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-}
-.btn-chronicle:hover {
-    background: var(--gold-primary);
-    color: var(--white);
-    box-shadow: 0 10px 20px rgba(62, 47, 38, 0.1);
-}
-
-/* =========================================
-   3. ГЛАВНЫЙ ЭКРАН (HERO)
-   ========================================= */
-.hero {
-    height: 85vh;
-    background: url('hero-bg.jpg') no-repeat center center/cover;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--white);
-}
-.hero-overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(to bottom, rgba(62, 47, 38, 0.3), rgba(62, 47, 38, 0.6)); /* Коричневый градиент вместо черного */
-}
-.hero-content { position: relative; z-index: 2; }
-.hero h1 {
-    font-family: var(--font-serif);
-    font-size: 3.5rem;
-    margin-bottom: 15px;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    line-height: 1.2;
-}
-.hero p { font-size: 1.4rem; margin-bottom: 40px; font-weight: 300; opacity: 0.9; }
-
-/* =========================================
-   4. ЗАГОЛОВКИ СЕКЦИЙ (ЗОЛОТОЙ СТИЛЬ)
-   ========================================= */
-.section-title {
-    text-align: center;
-    font-family: var(--font-serif);
-    font-size: 2.8rem;
-    color: var(--deep-brown);
-    margin: 0 0 60px;
-    position: relative;
-}
-.section-title::after {
-    content: "☦";
-    display: block;
-    margin-top: 15px;
-    color: var(--gold-primary);
-    font-size: 24px;
-}
-
-/* =========================================
-   5. ИСТОРИЯ (ОБНОВЛЕНИЕ)
-   ========================================= */
-.about-section { padding: 90px 0; background-color: var(--white); }
-.about-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr; /* Тексту больше места */
-    gap: 80px;
-    align-items: start;
-    margin-bottom: 80px;
-}
-.about-text p {
-    font-size: 1.15rem;
-    color: var(--text-main);
-    margin-bottom: 25px;
-    text-align: justify;
-}
-.about-image img {
-    width: 100%;
-    border-radius: 2px;
-    /* Двойная рамка: тонкая белая и золотая */
-    border: 5px solid var(--white);
-    outline: 1px solid var(--gold-primary);
-    box-shadow: 0 20px 40px rgba(62, 47, 38, 0.15);
-}
-
-/* Таймлайн */
-.timeline {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px 0;
-}
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 0; bottom: 0; left: 50%;
-    width: 1px;
-    background: var(--gold-primary); /* Тонкая золотая линия */
-    transform: translateX(-50%);
-}
-.timeline-item {
-    position: relative;
-    width: 50%;
-    padding: 0 50px;
-    box-sizing: border-box;
-    margin-bottom: 50px;
-}
-.timeline-item:nth-child(odd) { left: 0; text-align: right; }
-.timeline-item:nth-child(even) { left: 50%; text-align: left; }
-
-.timeline-item::after {
-    content: '';
-    position: absolute;
-    width: 12px; height: 12px;
-    background: var(--deep-brown); /* Коричневая точка */
-    border: 2px solid var(--gold-primary);
-    transform: rotate(45deg); /* Ромб вместо круга */
-    top: 6px;
-    z-index: 2;
-}
-.timeline-item:nth-child(odd)::after { right: -9px; }
-.timeline-item:nth-child(even)::after { left: -9px; }
-
-.time-date {
-    font-family: var(--font-serif);
-    color: var(--gold-dark);
-    font-weight: 700;
-    font-size: 1.5rem;
-    display: block;
-    margin-bottom: 10px;
-}
-.time-content {
-    background: var(--bg-light);
-    padding: 25px;
-    border-left: 3px solid var(--gold-primary); /* Золотая черта слева */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-}
-.timeline-item:nth-child(odd) .time-content { border-left: none; border-right: 3px solid var(--gold-primary); }
-
-/* =========================================
-   6. СВЯТЫНИ (FIXED)
-   ========================================= */
-.shrines-section { padding: 90px 0; background-color: var(--bg-light); }
-.shrines-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
-    margin-top: 50px;
-}
-.shrine-card {
-    background: var(--white);
-    transition: 0.4s;
-    border-bottom: 3px solid transparent;
-}
-.shrine-card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2);
-    border-bottom: 3px solid var(--gold-primary);
-}
-.shrine-img-box { height: 280px; overflow: hidden; }
-.shrine-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-.shrine-card:hover .shrine-img-box img { transform: scale(1.08); }
-
-.shrine-info { padding: 30px; text-align: center; }
-.shrine-title {
-    font-family: var(--font-serif);
-    font-size: 1.3rem;
-    color: var(--deep-brown);
-    margin-bottom: 15px;
-    font-weight: 700;
-}
-.btn-link {
-    color: var(--gold-dark);
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 1.5px;
-    border-bottom: 1px solid rgba(140, 107, 48, 0.3);
-    padding-bottom: 3px;
-}
-.btn-link:hover { color: var(--gold-primary); border-color: var(--gold-primary); }
