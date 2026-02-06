@@ -5,43 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Христорождественский Кафедральный собор</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Иконки для карточек -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <header class="main-header">
         <div class="container">
-            <div class="header-top">
-                <!-- Ваше ЛОГО вернулось -->
-                <img src="logo.png" alt="Логотип собора" class="logo-img">
-                <div class="logo-text-group">
-                    <h1 class="logo-title">Христорождественский</h1>
-                    <p class="logo-subtitle">Кафедральный собор города Липецка</p>
-                </div>
+            <div class="logo-wrapper">
+                <img src="logo.png" alt="Христорождественский Кафедральный собор" class="logo-full">
             </div>
             
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Главная</a></li>
+                    
                     <li class="has-dropdown">
                         <a href="#">О соборе</a>
                         <ul class="dropdown-menu">
                             <li><a href="about.html">История и летопись</a></li>
                             <li><a href="architecture.html">Архитектура</a></li>
                             <li><a href="clergy.html">Духовенство</a></li>
-                            <li><a href="shrine.html">Святыни</a></li>
+                            <li><a href="shrines.html">Святыни и реликвии</a></li>
                         </ul>
                     </li>
+
                     <li class="has-dropdown">
                         <a href="#">Служение</a>
                         <ul class="dropdown-menu">
                             <li><a href="ministry.html">Миссионерский отдел</a></li>
                             <li><a href="social.html">Социальная работа</a></li>
                             <li><a href="school.html">Воскресная школа</a></li>
+                            <li><a href="youth.html">Молодежное движение</a></li>
                         </ul>
                     </li>
+
                     <li><a href="schedule.html">Расписание</a></li>
                     <li><a href="contacts.html">Контакты</a></li>
+                    
                     <li><a href="#" class="btn-note">Подать записку</a></li>
                 </ul>
             </nav>
@@ -49,50 +52,74 @@
     </header>
 
     <main>
-        <!-- О храме (Информационный блок) -->
-        <section style="padding: 80px 0; text-align: center;">
-            <div class="container" style="max-width: 800px;">
-                <h2 style="font-family: 'PT Serif'; font-size: 2.5rem; margin-bottom: 20px;">Добро пожаловать</h2>
-                <p style="font-size: 1.1rem; color: var(--text-muted);">
-                    Христорождественский собор — это не только памятник архитектуры классицизма, 
-                    но и живое сердце духовной жизни Липецкого края. Здесь на протяжении столетий 
-                    возносится молитва о граде нашем и его жителях.
-                </p>
+        <!-- Блок Приветствия -->
+        <section class="welcome-block container">
+            <h1>Добро пожаловать</h1>
+            <p class="welcome-text">
+                «Христорождественский собор — это не только памятник архитектуры классицизма, 
+                но и живое сердце духовной жизни Липецкого края. Здесь на протяжении столетий 
+                возносится молитва о граде нашем и его жителях».
+            </p>
+        </section>
+
+        <!-- Сетка основных направлений (Логика: что ищет прихожанин?) -->
+        <section class="container info-grid">
+            <div class="info-card">
+                <i class="fas fa-church"></i>
+                <h3>Богослужения</h3>
+                <p>Ежедневные службы, Таинства исповеди и причастия. Узнайте время начала литургии.</p>
+                <a href="schedule.html" style="color: var(--gold); font-size: 12px; font-weight: 700;">РАСПИСАНИЕ →</a>
+            </div>
+
+            <div class="info-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Воскресная школа</h3>
+                <p>Духовное воспитание детей, творческие кружки и праздничные постановки для всей семьи.</p>
+                <a href="school.html" style="color: var(--gold); font-size: 12px; font-weight: 700;">ПОДРОБНЕЕ →</a>
+            </div>
+
+            <div class="info-card">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3>Помощь собору</h3>
+                <p>Вы можете внести свой вклад в благоукрашение храма или подать записку о здравии близких.</p>
+                <a href="#" style="color: var(--gold); font-size: 12px; font-weight: 700;">ПОДДЕРЖАТЬ →</a>
             </div>
         </section>
 
-        <!-- Инфографика: Вехи истории -->
-        <section class="history-preview">
+        <!-- Секция Истории (Инфографика) -->
+        <section class="history-section">
             <div class="container">
-                <h2 style="font-family: 'PT Serif';">Вехи истории</h2>
-                <div class="timeline-mini">
-                    <div class="tm-item">
-                        <div class="tm-year">1791</div>
-                        <div class="tm-dot"></div>
-                        <div class="tm-desc">Начало строительства по указу Екатерины II</div>
+                <h2 style="font-family: 'PT Serif'; font-size: 2.2rem; margin-bottom: 50px;">История в датах</h2>
+                <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--border-light); padding-top: 40px;">
+                    <div>
+                        <span style="display: block; font-family: 'PT Serif'; color: var(--gold); font-size: 24px;">1791</span>
+                        <p style="font-size: 13px;">Указ Екатерины II о строительстве</p>
                     </div>
-                    <div class="tm-item">
-                        <div class="tm-year">1831</div>
-                        <div class="tm-dot"></div>
-                        <div class="tm-desc">Чудесное избавление города от холеры</div>
+                    <div>
+                        <span style="display: block; font-family: 'PT Serif'; color: var(--gold); font-size: 24px;">1831</span>
+                        <p style="font-size: 13px;">Избавление города от эпидемии</p>
                     </div>
-                    <div class="tm-item">
-                        <div class="tm-year">1931</div>
-                        <div class="tm-dot"></div>
-                        <div class="tm-desc">Закрытие собора и эпоха гонений</div>
-                    </div>
-                    <div class="tm-item">
-                        <div class="tm-year">1991</div>
-                        <div class="tm-dot"></div>
-                        <div class="tm-desc">Возвращение храма Церкви и возрождение</div>
+                    <div>
+                        <span style="display: block; font-family: 'PT Serif'; color: var(--gold); font-size: 24px;">1991</span>
+                        <p style="font-size: 13px;">Возвращение собора верующим</p>
                     </div>
                 </div>
-                <a href="about.html" class="btn-gold-outline">Читать полную летопись →</a>
+                <div style="margin-top: 50px;">
+                    <a href="about.html" style="background: var(--gold); color: #fff; padding: 15px 40px; text-decoration: none; font-size: 12px; letter-spacing: 2px;">ЧИТАТЬ ПОЛНУЮ ЛЕТОПИСЬ</a>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Ваш футер остается прежним, только обновляем цвета в CSS под общую стилистику -->
+    <footer style="padding: 60px 0; border-top: 1px solid var(--border-light); text-align: center; font-size: 13px; color: #888;">
+        <div class="container">
+            <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
+            <div style="margin-top: 20px;">
+                <a href="#" style="margin: 0 10px;">ВКонтакте</a>
+                <a href="#" style="margin: 0 10px;">Telegram</a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
