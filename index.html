@@ -19,14 +19,14 @@
             </div>
             <div class="social-links">
                 <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i></a>
+                <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i></a>
             </div>
         </div>
     </div>
 
-    <!-- Хедер (Без кнопки Пожертвовать) -->
+    <!-- Хедер -->
     <header class="main-header">
         <div class="container header-content">
-            <!-- Логотип -->
             <a href="index.html" class="logo-link">
                 <img src="logo.png" alt="Логотип" class="logo-img">
                 <div class="logo-text">
@@ -34,30 +34,23 @@
                     <span class="logo-subtitle">Кафедральный собор</span>
                 </div>
             </a>
-
-            <!-- Меню -->
-<nav class="main-nav">
+            <nav class="main-nav">
                 <ul>
                     <li class="has-dropdown">
                         <a href="about.html">О Соборе <i class="fas fa-angle-down" style="font-size: 12px; margin-left: 5px;"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="about.html">История (Летопись)</a></li>
-                            <!-- Ссылка на новую страницу -->
                             <li><a href="ministry.html">Наше служение</a></li>
-                            <li><a href="#">Воскресная школа</a></li>
                             <li><a href="architecture.html">Архитектура</a></li>
                         </ul>
                     </li>
                     <li><a href="schedule.html">Богослужения</a></li>
-                    <li><a href="#">Духовенство</a></li>
                     <li><a href="#">Контакты</a></li>
+                    <!-- Кнопка -->
+                    <li><a href="#" class="btn-note">Подать записку</a></li>
                 </ul>
             </nav>
-
-            <!-- Бургер -->
-            <div class="mobile-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+            <div class="mobile-toggle"><i class="fas fa-bars"></i></div>
         </div>
     </header>
 
@@ -65,7 +58,7 @@
     <section class="hero" style="background-image: url('hero-bg.jpg');">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <h1 class="fade-in">Духовное сердце Липецка</h1>
+            <h1>Духовное сердце Липецка</h1>
             <p>Кафедральный собор Рождества Христова</p>
             <div style="margin-top: 30px;">
                 <a href="schedule.html" class="btn-gold">Расписание богослужений</a>
@@ -73,60 +66,82 @@
         </div>
     </section>
 
-    <!-- Секция: Соцсети (LIVE) -->
-    <section style="padding: 80px 0; background: var(--white); border-top: 1px solid var(--gold-light);">
-        <div class="container" style="text-align: center;">
+    <!-- Секция: Соцсети -->
+    <section style="padding: 80px 0; background: var(--white);">
+        <div class="container">
             <h2 class="section-title">Живая жизнь прихода</h2>
-            <p style="max-width: 600px; margin: 0 auto 50px; font-size: 1.1rem; color: #555;">
-                Следите за новостями, смотрите прямые трансляции и фоторепортажи с мест служения наших пастырей.
-            </p>
-
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
                 
-                <!-- Telegram -->
-                <a href="https://t.me/Lsobor" target="_blank" style="text-decoration: none; flex: 1; min-width: 300px; max-width: 400px;">
-                    <div style="background: #F5F9FC; padding: 40px; border-radius: 10px; border: 2px solid #2AABEE; transition: 0.3s; height: 100%; box-sizing: border-box;">
-                        <i class="fab fa-telegram-plane" style="font-size: 60px; color: #2AABEE; margin-bottom: 20px;"></i>
-                        <h3 style="color: #2AABEE; margin-bottom: 10px; font-weight: 700; font-size: 1.5rem;">Telegram @Lsobor</h3>
-                        <p style="color: #555;">Молнии, новости без официоза, видеопроповеди и репортажи о. Владимира из храма УВД.</p>
-                        <span style="display: inline-block; margin-top: 20px; background: #2AABEE; color: #fff; padding: 10px 25px; border-radius: 50px; font-weight: 600;">Подписаться</span>
+                <a href="https://t.me/Lsobor" target="_blank" style="flex: 1; min-width: 300px; max-width: 450px;">
+                    <div style="background: #F5F9FC; padding: 40px; border-radius: 4px; border: 1px solid #2AABEE; height: 100%; box-sizing: border-box; text-align: center;">
+                        <i class="fab fa-telegram-plane" style="font-size: 50px; color: #2AABEE; margin-bottom: 20px;"></i>
+                        <h3 style="color: #2AABEE; margin-bottom: 10px;">Telegram @Lsobor</h3>
+                        <p>Новости, видеопроповеди и репортажи о. Владимира.</p>
                     </div>
                 </a>
 
-                <!-- VKontakte -->
-                <a href="https://vk.com/sobor48" target="_blank" style="text-decoration: none; flex: 1; min-width: 300px; max-width: 400px;">
-                    <div style="background: #F2F7FD; padding: 40px; border-radius: 10px; border: 2px solid #0077FF; transition: 0.3s; height: 100%; box-sizing: border-box;">
-                        <i class="fab fa-vk" style="font-size: 60px; color: #0077FF; margin-bottom: 20px;"></i>
-                        <h3 style="color: #0077FF; margin-bottom: 10px; font-weight: 700; font-size: 1.5rem;">ВКонтакте</h3>
-                        <p style="color: #555;">Официальные новости, фотоальбомы с праздников и расписание богослужений.</p>
-                        <span style="display: inline-block; margin-top: 20px; background: #0077FF; color: #fff; padding: 10px 25px; border-radius: 50px; font-weight: 600;">Перейти в группу</span>
+                <a href="https://vk.com/sobor48" target="_blank" style="flex: 1; min-width: 300px; max-width: 450px;">
+                    <div style="background: #F2F7FD; padding: 40px; border-radius: 4px; border: 1px solid #0077FF; height: 100%; box-sizing: border-box; text-align: center;">
+                        <i class="fab fa-vk" style="font-size: 50px; color: #0077FF; margin-bottom: 20px;"></i>
+                        <h3 style="color: #0077FF; margin-bottom: 10px;">ВКонтакте</h3>
+                        <p>Официальные новости и фотоальбомы.</p>
                     </div>
                 </a>
-    <div class="col-lg-4">
-                    <div class="sidebar-calendar">
-                        <h5 class="sidebar-calendar-title">Православный календарь</h5>
-                        <div class="pravoslavie-calendar-widget">
-                            <script src="https://script.pravoslavie.ru/calendar.php?advanced=1&dayicon=1&bold=1&tipikon=1&para=1&icon=1&target=1&name=1"></script>
-                            <script>print_holiday();</script>
-                            <p class="pravoslavie-calendar-center">
-                                <b><script>print_day()</script></b><br>
-                                <script>print_week()</script>
-                                <script>print_post()</script><br>
-                                <i><script>print_trapeza();</script></i><br><br>
-                                <script>print_icon()</script><br>
-                                <b>Святые дня: </b>
-                                <script>print_saints()</script><br><br>
-                                <b>Евангельские Чтения: </b><br>
-                                <script>print_chten()</script>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
             </div>
         </div>
     </section>
 
+    <!-- Секция: Календарь -->
+    <section style="padding: 60px 0; background: var(--bg-light); border-top: 1px solid #eee;">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title" style="margin-top: 0;">Православный календарь</h2>
+            <div class="pravoslavie-calendar-widget" style="max-width: 600px; margin: 0 auto; background: #fff; padding: 30px; border: 1px solid var(--gold-light);">
+                <script src="https://script.pravoslavie.ru/calendar.php?advanced=1&dayicon=1&bold=1&tipikon=1&para=1&icon=1&target=1&name=1"></script>
+                <script>if(typeof print_holiday === 'function') print_holiday();</script>
+                <div style="margin-top: 20px;">
+                    <b><script>if(typeof print_day === 'function') print_day()</script></b><br>
+                    <script>if(typeof print_week === 'function') print_week()</script>
+                    <script>if(typeof print_post === 'function') print_post()</script><br>
+                    <i><script>if(typeof print_trapeza === 'function') print_trapeza();</script></i><br><br>
+                    <b>Святые дня: </b>
+                    <script>if(typeof print_saints === 'function') print_saints()</script><br><br>
+                    <b>Евангельские Чтения: </b><br>
+                    <script>if(typeof print_chten === 'function') print_chten()</script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-block">
+                    <h6>Навигация</h6>
+                    <p><a href="about.html">О соборе</a></p>
+                    <p><a href="schedule.html">Расписание</a></p>
+                    <p><a href="ministry.html">Служение</a></p>
+                    <p><a href="#">Подать записку</a></p>
+                </div>
+                <div class="footer-block">
+                    <h6>Контакты</h6>
+                    <p>г. Липецк, Соборная площадь, 4</p>
+                    <p><a href="tel:+74742270478">+7 (4742) 27-04-78</a></p>
+                    <p><a href="mailto:sobor48@mail.ru">sobor48@mail.ru</a></p>
+                </div>
+                <div class="footer-block">
+                    <h6>Мы в соцсетях</h6>
+                    <p><a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a></p>
+                    <p><a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a></p>
+                </div>
+            </div>
+            <p class="footer-copy">© <span id="current-year"></span> Кафедральный собор Рождества Христова г. Липецка.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
