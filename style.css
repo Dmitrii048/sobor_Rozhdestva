@@ -1,18 +1,20 @@
 /* =========================================
-   1. БАЗОВЫЕ НАСТРОЙКИ (VARIABLES & RESET)
+   1. БАЗОВЫЕ НАСТРОЙКИ И ЦВЕТА
    ========================================= */
 :root {
     /* ЗОЛОТАЯ ПАЛИТРА */
-    --gold-primary: #C5A059;   /* Спокойное золото */
-    --gold-light: #E5C585;     /* Светлое золото */
-    --gold-dark: #9A7B3E;      /* Темное золото */
+    --gold-primary: #C5A059;   /* Основное золото */
+    --gold-light: #F3DFA2;     /* Светлое золото (блик) */
+    --gold-dark: #8C6B30;      /* Темное золото (тень) */
     --gold-gradient: linear-gradient(135deg, #C5A059 0%, #F3DFA2 50%, #C5A059 100%);
     
-    /* БАЗОВЫЕ ЦВЕТА */
-    --text-dark: #2C2C2C;
-    --text-gray: #555555;
+    /* НОВАЯ ПАЛИТРА (ВМЕСТО ЧЕРНОГО) */
+    --deep-brown: #3E2F26;     /* Цвет "Мореный дуб" - для шапки и футера */
+    --text-main: #4A4A4A;      /* Теплый темно-серый для текста */
+    --text-dark: #2A2A2A;      /* Почти черный, но мягче (для заголовков) */
+    
     --white: #FFFFFF;
-    --bg-light: #F9F9F7;       /* Теплый белый оттенок */
+    --bg-light: #FDFCF8;       /* Цвет слоновой кости (фон) */
     
     /* ШРИФТЫ */
     --font-serif: 'PT Serif', serif;
@@ -22,9 +24,9 @@
 body {
     margin: 0;
     font-family: var(--font-sans);
-    color: var(--text-dark);
+    color: var(--text-main);
     background-color: var(--bg-light);
-    line-height: 1.6;
+    line-height: 1.7; /* Чуть больше воздуха в тексте */
 }
 
 a { text-decoration: none; color: inherit; transition: 0.3s; }
@@ -33,26 +35,27 @@ img { max-width: 100%; display: block; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
 /* =========================================
-   2. ШАПКА И МЕНЮ (HEADER)
+   2. ШАПКА И МЕНЮ (ИСПРАВЛЕНИЕ)
    ========================================= */
+/* Верхняя полоска - теперь коричневая, а не черная */
 .top-bar {
-    background-color: #1a1a1a;
+    background-color: var(--deep-brown);
     color: var(--gold-light);
     font-size: 14px;
-    padding: 8px 0;
+    padding: 10px 0;
 }
 .top-bar-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.contact-info span { margin-right: 20px; }
-.contact-info i { margin-right: 5px; color: var(--gold-primary); }
-.social-links a:hover { color: var(--white); }
+.contact-info i { margin-right: 8px; color: var(--gold-primary); }
+.contact-info span { margin-right: 25px; }
 
+/* Основной хедер */
 .main-header {
     background: var(--white);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 20px rgba(62, 47, 38, 0.08); /* Тень стала мягче */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -62,7 +65,7 @@ img { max-width: 100%; display: block; }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 90px;
+    height: 100px; /* Чуть выше, чтобы всё влезло */
 }
 
 /* Логотип */
@@ -70,95 +73,113 @@ img { max-width: 100%; display: block; }
     display: flex;
     align-items: center;
     gap: 15px;
+    text-decoration: none;
+    min-width: 300px; /* Зарезервируем место для лого, чтобы меню не наезжало */
 }
-.logo-img {
-    height: 70px;
-    width: auto;
-}
-.logo-text {
-    display: flex;
-    flex-direction: column;
-}
+.logo-img { height: 75px; width: auto; }
+.logo-text { display: flex; flex-direction: column; }
 .logo-title {
     font-family: var(--font-serif);
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--text-dark);
-    letter-spacing: 0.5px;
+    color: var(--deep-brown); /* Коричневый вместо черного */
+    line-height: 1.2;
 }
 .logo-subtitle {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--gold-dark);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    margin-top: 3px;
 }
 
-/* Навигация */
-.main-nav > ul { display: flex; gap: 30px; }
-.main-nav > ul > li { position: relative; }
+/* Навигация - ИСПРАВЛЕНИЕ "УЛЕТАНИЯ" */
+.main-nav { flex-grow: 1; display: flex; justify-content: flex-end; } /* Меню прижато вправо */
+.main-nav > ul { 
+    display: flex; 
+    gap: 25px; 
+    align-items: center;
+}
 .main-nav a {
     font-family: var(--font-serif);
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px; /* Чуть уменьшили шрифт, чтобы влезло */
     text-transform: uppercase;
-    color: var(--text-dark);
+    color: var(--deep-brown);
     padding: 10px 0;
-    position: relative;
+    letter-spacing: 0.5px;
+    white-space: nowrap; /* Запрет переноса строк в пунктах */
 }
+.main-nav > ul > li > a:hover { color: var(--gold-primary); }
 .main-nav > ul > li > a::after {
     content: '';
     position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
+    width: 0; height: 2px;
+    bottom: 0; left: 0;
     background: var(--gold-primary);
     transition: width 0.3s;
 }
 .main-nav > ul > li > a:hover::after { width: 100%; }
 
+/* Скрытие элементов на планшетах, чтобы не ломалось */
+@media (max-width: 1024px) {
+    .logo-title { font-size: 16px; }
+    .main-nav { display: none; } /* Тут потом сделаем бургер */
+    .mobile-toggle { display: block; color: var(--deep-brown); font-size: 24px;}
+}
+
 /* Кнопки */
+.header-action { margin-left: 30px; }
+
 .btn-gold {
     background: var(--gold-gradient);
     color: #fff;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
-    padding: 10px 25px;
-    border-radius: 4px;
+    padding: 12px 30px;
+    border-radius: 2px; /* Более строгие углы */
     font-weight: 600;
     text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
     border: none;
     cursor: pointer;
     background-size: 200% auto;
     transition: 0.5s;
-    display: inline-block;
+    box-shadow: 0 4px 10px rgba(197, 160, 89, 0.3);
 }
 .btn-gold:hover {
     background-position: right center;
-    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
-}
-.btn-outline {
-    border: 2px solid var(--white);
-    color: var(--white);
-    padding: 10px 25px;
-    border-radius: 4px;
-    text-transform: uppercase;
-    font-weight: 600;
-    display: inline-block;
-}
-.btn-outline:hover {
-    background: var(--white);
-    color: var(--text-dark);
+    box-shadow: 0 6px 15px rgba(197, 160, 89, 0.5);
+    transform: translateY(-2px);
 }
 
-.mobile-toggle { display: none; font-size: 24px; cursor: pointer; }
+/* НОВАЯ КНОПКА "ПОЛНАЯ ЛЕТОПИСЬ" */
+.btn-chronicle {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 15px 40px;
+    background: transparent;
+    border: 2px solid var(--gold-primary);
+    color: var(--deep-brown);
+    font-family: var(--font-serif);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+.btn-chronicle:hover {
+    background: var(--gold-primary);
+    color: var(--white);
+    box-shadow: 0 10px 20px rgba(62, 47, 38, 0.1);
+}
 
 /* =========================================
    3. ГЛАВНЫЙ ЭКРАН (HERO)
    ========================================= */
 .hero {
-    height: 80vh;
-    /* Убедись, что файл hero-bg.jpg лежит в папке! */
+    height: 85vh;
     background: url('hero-bg.jpg') no-repeat center center/cover;
     position: relative;
     display: flex;
@@ -170,91 +191,67 @@ img { max-width: 100%; display: block; }
 .hero-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.4);
+    background: linear-gradient(to bottom, rgba(62, 47, 38, 0.3), rgba(62, 47, 38, 0.6)); /* Коричневый градиент вместо черного */
 }
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
+.hero-content { position: relative; z-index: 2; }
 .hero h1 {
     font-family: var(--font-serif);
-    font-size: 4rem;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    line-height: 1.2;
 }
-.hero p {
-    font-size: 1.5rem;
-    margin-bottom: 40px;
-    font-weight: 300;
-}
-.hero-buttons { display: flex; gap: 20px; justify-content: center; }
-
-/* Анимации */
-.fade-in { animation: fadeIn 1s ease-out; }
-.fade-in-delay { animation: fadeIn 1s ease-out 0.5s backwards; }
-.fade-in-delay-2 { animation: fadeIn 1s ease-out 1s backwards; }
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+.hero p { font-size: 1.4rem; margin-bottom: 40px; font-weight: 300; opacity: 0.9; }
 
 /* =========================================
-   4. ЗАГОЛОВКИ СЕКЦИЙ
+   4. ЗАГОЛОВКИ СЕКЦИЙ (ЗОЛОТОЙ СТИЛЬ)
    ========================================= */
 .section-title {
     text-align: center;
     font-family: var(--font-serif);
-    font-size: 2.5rem;
-    color: var(--text-dark);
-    margin: 0 0 50px;
+    font-size: 2.8rem;
+    color: var(--deep-brown);
+    margin: 0 0 60px;
     position: relative;
-    padding-bottom: 20px;
 }
 .section-title::after {
     content: "☦";
     display: block;
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 15px;
     color: var(--gold-primary);
-    font-size: 20px;
+    font-size: 24px;
 }
 
 /* =========================================
-   5. О СОБОРЕ (ИСТОРИЯ & ТАЙМЛАЙН)
+   5. ИСТОРИЯ (ОБНОВЛЕНИЕ)
    ========================================= */
-.about-section {
-    padding: 80px 0;
-    background-color: var(--white);
-}
-
+.about-section { padding: 90px 0; background-color: var(--white); }
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    margin-bottom: 60px;
+    grid-template-columns: 1.2fr 0.8fr; /* Тексту больше места */
+    gap: 80px;
+    align-items: start;
+    margin-bottom: 80px;
 }
-
 .about-text p {
-    font-size: 1.1rem;
-    color: var(--text-gray);
-    margin-bottom: 20px;
+    font-size: 1.15rem;
+    color: var(--text-main);
+    margin-bottom: 25px;
     text-align: justify;
 }
-
 .about-image img {
     width: 100%;
-    border-radius: 4px;
-    box-shadow: 20px 20px 0px var(--bg-light), 20px 20px 0px 2px var(--gold-primary);
+    border-radius: 2px;
+    /* Двойная рамка: тонкая белая и золотая */
+    border: 5px solid var(--white);
+    outline: 1px solid var(--gold-primary);
+    box-shadow: 0 20px 40px rgba(62, 47, 38, 0.15);
 }
 
 /* Таймлайн */
 .timeline {
     position: relative;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px 0;
 }
@@ -262,16 +259,16 @@ img { max-width: 100%; display: block; }
     content: '';
     position: absolute;
     top: 0; bottom: 0; left: 50%;
-    width: 2px;
-    background: var(--gold-light);
+    width: 1px;
+    background: var(--gold-primary); /* Тонкая золотая линия */
     transform: translateX(-50%);
 }
 .timeline-item {
     position: relative;
     width: 50%;
-    padding: 0 40px;
+    padding: 0 50px;
     box-sizing: border-box;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 .timeline-item:nth-child(odd) { left: 0; text-align: right; }
 .timeline-item:nth-child(even) { left: 50%; text-align: left; }
@@ -279,119 +276,71 @@ img { max-width: 100%; display: block; }
 .timeline-item::after {
     content: '';
     position: absolute;
-    width: 16px; height: 16px;
-    background: var(--gold-primary);
-    border: 3px solid var(--white);
-    border-radius: 50%;
-    top: 5px;
-    box-shadow: 0 0 0 3px var(--gold-light);
+    width: 12px; height: 12px;
+    background: var(--deep-brown); /* Коричневая точка */
+    border: 2px solid var(--gold-primary);
+    transform: rotate(45deg); /* Ромб вместо круга */
+    top: 6px;
+    z-index: 2;
 }
-.timeline-item:nth-child(odd)::after { right: -11px; }
-.timeline-item:nth-child(even)::after { left: -11px; }
+.timeline-item:nth-child(odd)::after { right: -9px; }
+.timeline-item:nth-child(even)::after { left: -9px; }
 
 .time-date {
     font-family: var(--font-serif);
     color: var(--gold-dark);
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 .time-content {
     background: var(--bg-light);
-    padding: 20px;
-    border-radius: 4px;
-    border: 1px solid rgba(197, 160, 89, 0.2);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    padding: 25px;
+    border-left: 3px solid var(--gold-primary); /* Золотая черта слева */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
 }
+.timeline-item:nth-child(odd) .time-content { border-left: none; border-right: 3px solid var(--gold-primary); }
 
 /* =========================================
-   6. СВЯТЫНИ (SHRINES)
+   6. СВЯТЫНИ (FIXED)
    ========================================= */
-.shrines-section {
-    padding: 80px 0;
-    background-color: var(--bg-light);
-    border-top: 1px solid var(--gold-light);
-}
-
+.shrines-section { padding: 90px 0; background-color: var(--bg-light); }
 .shrines-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
 }
-
 .shrine-card {
     background: var(--white);
-    border: 1px solid #eee;
-    transition: 0.3s;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    transition: 0.4s;
+    border-bottom: 3px solid transparent;
 }
-
 .shrine-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--gold-primary);
-    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2);
+    border-bottom: 3px solid var(--gold-primary);
 }
+.shrine-img-box { height: 280px; overflow: hidden; }
+.shrine-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+.shrine-card:hover .shrine-img-box img { transform: scale(1.08); }
 
-.shrine-img-box {
-    height: 250px;
-    overflow: hidden;
-    position: relative;
-}
-.shrine-img-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: 0.5s;
-}
-.shrine-card:hover .shrine-img-box img { transform: scale(1.05); }
-
-.shrine-info {
-    padding: 25px;
-    text-align: center;
-}
-
+.shrine-info { padding: 30px; text-align: center; }
 .shrine-title {
     font-family: var(--font-serif);
-    font-size: 1.2rem;
-    color: var(--text-dark);
+    font-size: 1.3rem;
+    color: var(--deep-brown);
     margin-bottom: 15px;
     font-weight: 700;
 }
-
-.shrine-desc {
-    font-size: 0.95rem;
-    color: var(--text-gray);
-    margin-bottom: 20px;
-}
-
 .btn-link {
     color: var(--gold-dark);
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    display: inline-block;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid rgba(140, 107, 48, 0.3);
+    padding-bottom: 3px;
 }
-.btn-link:hover { color: var(--gold-primary); }
-
-/* =========================================
-   7. АДАПТИВНОСТЬ (MOBILE)
-   ========================================= */
-@media (max-width: 768px) {
-    .top-bar { display: none; }
-    .main-nav, .header-action { display: none; }
-    .mobile-toggle { display: block; }
-    .hero h1 { font-size: 2.5rem; }
-    
-    .about-grid { grid-template-columns: 1fr; }
-    
-    .timeline::before { left: 20px; }
-    .timeline-item { width: 100%; padding-left: 50px; padding-right: 0; text-align: left; }
-    .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { left: 0; text-align: left; }
-    .timeline-item:nth-child(odd)::after, .timeline-item:nth-child(even)::after { left: 9px; right: auto; }
-}
+.btn-link:hover { color: var(--gold-primary); border-color: var(--gold-primary); }
