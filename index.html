@@ -27,35 +27,27 @@
         </div>
     </div>
 
-    <!-- Основной Хедер и Меню -->
+<!-- Основной Хедер и Меню -->
     <header class="main-header">
         <div class="container header-content">
             <!-- Логотип -->
-            <div class="logo-container">
-                <a href="/" class="logo-link">
-                    <!-- Замени 'logo.png' на путь к твоему файлу логотипа -->
-                    <img src="logo.png" alt="Логотип Собора" class="logo-img">
-                    <div class="logo-text">
-                        <span class="logo-title">Христорождественский</span>
-                        <span class="logo-subtitle">Кафедральный собор г. Липецка</span>
-                    </div>
-                </a>
-            </div>
+            <a href="index.html" class="logo-link">
+                <!-- Убедись, что файл logo.png существует! -->
+                <img src="logo.png" alt="Логотип Собора" class="logo-img">
+                <div class="logo-text">
+                    <span class="logo-title">Христорождественский</span>
+                    <span class="logo-subtitle">Кафедральный собор</span>
+                </div>
+            </a>
 
             <!-- Навигация -->
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#">О Соборе</a>
-                        <!-- Выпадающее меню (структура на будущее) -->
-                        <ul class="dropdown">
-                            <li><a href="#">История</a></li>
-                            <li><a href="#">Святыни и Иконы</a></li>
-                            <li><a href="#">Архитектура</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Богослужения</a></li>
+                    <li><a href="about.html">История</a></li>
+                    <!-- Пока убрали выпадающий список, чтобы не ломался, включим позже -->
+                    <li><a href="schedule.html">Богослужения</a></li>
                     <li><a href="#">Духовенство</a></li>
-                    <li><a href="#">Галерея</a></li>
+                    <li><a href="architecture.html">Архитектура</a></li>
                     <li><a href="#">Контакты</a></li>
                 </ul>
             </nav>
@@ -65,7 +57,7 @@
                 <a href="#" class="btn-gold">Пожертвовать</a>
             </div>
             
-            <!-- Мобильное меню (бургер) - реализуем JS позже -->
+            <!-- Мобильное меню (бургер) -->
             <div class="mobile-toggle">
                 <i class="fas fa-bars"></i>
             </div>
