@@ -1,19 +1,17 @@
 /* =========================================
-   1. БАЗОВЫЕ НАСТРОЙКИ И ЦВЕТА
+   1. БАЗОВЫЕ НАСТРОЙКИ
    ========================================= */
 :root {
-    /* ПАЛИТРА */
-    --gold-primary: #C5A059;   /* Основное золото */
-    --gold-light: #F3DFA2;     /* Светлое золото (фон) */
-    --gold-dark: #8C6B30;      /* Темное золото (текст) */
+    --gold-primary: #C5A059;
+    --gold-light: #F3DFA2;
+    --gold-dark: #8C6B30;
     --gold-gradient: linear-gradient(135deg, #C5A059 0%, #F3DFA2 50%, #C5A059 100%);
     
-    --deep-brown: #3E2F26;     /* Благородный коричневый (вместо черного) */
-    --text-main: #4A4A4A;      /* Основной текст */
-    --bg-light: #FDFCF8;       /* Цвет слоновой кости */
+    --deep-brown: #3E2F26;
+    --text-main: #4A4A4A;
+    --bg-light: #FDFCF8;
     --white: #FFFFFF;
 
-    /* ШРИФТЫ */
     --font-serif: 'PT Serif', serif;
     --font-sans: 'Open Sans', sans-serif;
 }
@@ -23,7 +21,7 @@ body {
     font-family: var(--font-sans);
     color: var(--text-main);
     background-color: var(--bg-light);
-    line-height: 1.7; /* Больше воздуха в тексте */
+    line-height: 1.6;
 }
 
 a { text-decoration: none; color: inherit; transition: 0.3s; }
@@ -32,13 +30,13 @@ img { max-width: 100%; display: block; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
 /* =========================================
-   2. ШАПКА И МЕНЮ (БЕЗ КНОПКИ)
+   2. ШАПКА (СТАБИЛЬНАЯ)
    ========================================= */
 .top-bar {
     background-color: var(--deep-brown);
     color: var(--gold-light);
     font-size: 14px;
-    padding: 10px 0;
+    padding: 8px 0;
 }
 .top-bar-content { display: flex; justify-content: space-between; align-items: center; }
 .contact-info i { margin-right: 8px; color: var(--gold-primary); }
@@ -51,193 +49,147 @@ img { max-width: 100%; display: block; }
     top: 0;
     z-index: 1000;
     border-bottom: 4px solid var(--gold-primary);
-    padding: 15px 0;
+    padding: 10px 0;
+    height: 90px; /* ФИКСИРОВАННАЯ ВЫСОТА, ЧТОБЫ НЕ ПЛЫЛО */
+    display: flex;
+    align-items: center;
 }
 
 .header-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 }
 
 /* Логотип */
 .logo-link {
     display: flex;
     align-items: center;
-    gap: 20px;
-    margin-right: auto; /* Логотип слева */
+    gap: 15px;
+    margin-right: auto;
 }
-.logo-img { height: 90px; width: auto; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+.logo-img { height: 80px; width: auto; }
 .logo-text { display: flex; flex-direction: column; }
 .logo-title {
     font-family: var(--font-serif);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
     color: var(--deep-brown);
     line-height: 1.1;
 }
-.logo-subtitle {
-    font-size: 11px;
-    color: var(--gold-dark);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 5px;
-}
+.logo-subtitle { font-size: 11px; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 1px; }
 
-/* Навигация (По центру и справа) */
+/* Навигация */
 .main-nav { margin-left: auto; }
-.main-nav > ul { display: flex; gap: 35px; align-items: center; }
+.main-nav > ul { display: flex; gap: 30px; align-items: center; }
 .main-nav a {
     font-family: var(--font-serif);
     font-weight: 600;
-    font-size: 15px;
+    font-size: 14px;
     text-transform: uppercase;
     color: var(--deep-brown);
     padding: 10px 0;
     position: relative;
-    letter-spacing: 0.5px;
 }
 .main-nav a:hover { color: var(--gold-dark); }
-.main-nav a::after {
-    content: ''; position: absolute; width: 0; height: 2px;
-    bottom: 0; left: 0; background: var(--gold-primary); transition: 0.3s;
-}
-.main-nav a:hover::after { width: 100%; }
 
-/* Выпадающее меню (простое) */
-.has-dropdown { position: relative; cursor: pointer; }
+/* Выпадающее меню */
+.has-dropdown { position: relative; }
 .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: -20px;
-    background: var(--white);
-    min-width: 220px;
+    position: absolute; top: 100%; left: -20px;
+    background: var(--white); min-width: 200px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     border-top: 3px solid var(--gold-primary);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: 0.3s;
+    opacity: 0; visibility: hidden; transform: translateY(10px); transition: 0.3s;
     padding: 10px 0;
 }
 .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
 .dropdown-menu li a {
-    display: block;
-    padding: 10px 20px;
-    font-size: 14px;
-    text-transform: none; /* Обычный текст, не капс */
-    color: var(--text-main);
-    border-bottom: 1px solid #f0f0f0;
+    display: block; padding: 10px 20px; font-size: 13px;
+    text-transform: none; border-bottom: 1px solid #f0f0f0;
 }
-.dropdown-menu li a:hover { background: var(--bg-light); color: var(--gold-dark); }
 
-.mobile-toggle { display: none; font-size: 26px; color: var(--deep-brown); cursor: pointer; }
+.mobile-toggle { display: none; font-size: 24px; color: var(--deep-brown); cursor: pointer; }
 
 /* =========================================
-   3. СТИЛИ ДЛЯ ИСТОРИИ (КРАСИВАЯ КНИГА)
+   3. ГЛАВНЫЙ ЭКРАН & КНОПКИ
    ========================================= */
-.history-container {
-    max-width: 800px; /* Узкая колонка для удобного чтения */
-    margin: 0 auto;
-    padding: 80px 20px;
-}
-
-.chapter { margin-bottom: 80px; }
-
-.chapter-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-.chapter-num {
-    display: block;
-    font-family: var(--font-serif);
-    color: var(--gold-dark);
-    font-size: 1.1rem;
-    font-style: italic;
-    margin-bottom: 10px;
-}
-.chapter-title {
-    font-family: var(--font-serif);
-    font-size: 2.2rem;
-    color: var(--deep-brown);
-    line-height: 1.2;
-    margin: 0;
-}
-
-.text-block p {
-    font-size: 1.2rem;
-    margin-bottom: 25px;
-    text-align: justify;
-    line-height: 1.8;
-}
-
-/* Буквица (Первая буква огромная) */
-.drop-cap::first-letter {
-    float: left;
-    font-size: 5rem;
-    line-height: 0.8;
-    font-family: var(--font-serif);
-    color: var(--gold-primary);
-    padding-right: 15px;
-    padding-top: 5px;
-    font-weight: 700;
-}
-
-/* Блок "Чудо" (выделенный) */
-.miracle-box {
-    background: #fff;
-    border: 2px solid var(--gold-light);
-    padding: 40px;
-    margin: 50px -40px; /* Выходит за границы текста */
-    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.1);
-    position: relative;
-}
-.miracle-box::before {
-    content: "☦";
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--bg-light);
-    padding: 0 15px;
-    color: var(--gold-primary);
-    font-size: 24px;
-}
-
-/* Цитаты */
-.quote {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1.3rem;
-    color: #555;
-    border-left: 4px solid var(--gold-primary);
-    padding-left: 20px;
-    margin: 40px 0;
-}
-
-/* Разделитель */
-.separator {
-    text-align: center;
-    margin: 60px 0;
-    color: var(--gold-light);
-    font-size: 30px;
-}
-
-/* Кнопки и прочее */
 .hero {
-    height: 60vh;
-    background: url('history.jpg') no-repeat center center/cover;
+    height: 80vh;
+    background: url('hero-bg.jpg') no-repeat center center/cover;
     position: relative;
     display: flex; align-items: center; justify-content: center;
-    color: #fff; text-align: center;
+    text-align: center; color: var(--white);
 }
-.hero-overlay { position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(62,47,38,0.6); }
+.hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(62, 47, 38, 0.5); }
 .hero-content { position: relative; z-index: 2; }
-.hero h1 { font-family: var(--font-serif); font-size: 3.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+.hero h1 { font-family: var(--font-serif); font-size: 3.5rem; text-shadow: 0 4px 10px rgba(0,0,0,0.5); margin-bottom: 15px; }
+.hero p { font-size: 1.5rem; font-weight: 300; }
 
+.btn-gold {
+    background: var(--gold-gradient);
+    color: #fff; padding: 12px 30px; border-radius: 2px;
+    font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 1px;
+    display: inline-block; transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(197, 160, 89, 0.6); }
+
+/* =========================================
+   4. ТАЙМЛАЙН (ИСТОРИЯ) - ВЕРНУЛИ!
+   ========================================= */
+.timeline-section { padding: 80px 0; background: var(--white); }
+.section-title {
+    text-align: center; font-family: var(--font-serif);
+    font-size: 2.5rem; color: var(--deep-brown); margin-bottom: 50px;
+}
+.timeline { position: relative; max-width: 900px; margin: 0 auto; padding: 20px 0; }
+.timeline::before {
+    content: ''; position: absolute; top: 0; bottom: 0; left: 50%;
+    width: 2px; background: var(--gold-primary); transform: translateX(-50%);
+}
+.timeline-item { position: relative; width: 50%; padding: 0 40px; box-sizing: border-box; margin-bottom: 40px; }
+.timeline-item:nth-child(odd) { left: 0; text-align: right; }
+.timeline-item:nth-child(even) { left: 50%; text-align: left; }
+.timeline-item::after {
+    content: ''; position: absolute; width: 14px; height: 14px;
+    background: var(--white); border: 3px solid var(--gold-primary);
+    border-radius: 50%; top: 5px; z-index: 2;
+}
+.timeline-item:nth-child(odd)::after { right: -10px; }
+.timeline-item:nth-child(even)::after { left: -10px; }
+
+.time-date { font-family: var(--font-serif); color: var(--gold-dark); font-size: 1.3rem; font-weight: 700; display: block; }
+.time-content { background: var(--bg-light); padding: 20px; border: 1px solid #eee; box-shadow: 0 5px 10px rgba(0,0,0,0.05); }
+
+/* Кнопка летописи */
+.btn-chronicle {
+    display: inline-block; margin-top: 40px; padding: 15px 40px;
+    border: 2px solid var(--gold-primary); color: var(--deep-brown);
+    font-family: var(--font-serif); text-transform: uppercase; font-weight: 700;
+}
+.btn-chronicle:hover { background: var(--gold-primary); color: #fff; }
+
+/* =========================================
+   5. КАЛЕНДАРЬ И РАСПИСАНИЕ (НОВОЕ)
+   ========================================= */
+.schedule-preview-section { padding: 60px 0; background: var(--bg-light); border-bottom: 1px solid var(--gold-light); }
+.calendar-widget {
+    background: #fff; padding: 20px; border: 1px solid var(--gold-light);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center;
+    font-family: var(--font-serif);
+}
+/* Стили для виджета Православие */
+.pravoslavie-calendar-widget a { color: var(--deep-brown); text-decoration: underline; }
+
+/* АДАПТИВ */
 @media (max-width: 900px) {
     .main-nav { display: none; }
-    .mobile-toggle { display: block; margin-left: auto; }
-    .miracle-box { margin: 30px 0; padding: 20px; }
+    .mobile-toggle { display: block; }
+    .timeline::before { left: 20px; }
+    .timeline-item { width: 100%; padding-left: 50px; text-align: left; }
+    .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { left: 0; }
+    .timeline-item::after { left: 11px; }
 }
