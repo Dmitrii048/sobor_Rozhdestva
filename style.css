@@ -1,17 +1,15 @@
 /* =========================================
-   1. БАЗОВЫЕ НАСТРОЙКИ
+   ОБНОВЛЕННЫЙ СТИЛЬ: "СВЕТЛЫЙ СОБОР"
    ========================================= */
 :root {
-    --gold-primary: #C5A059;
-    --gold-light: #F3DFA2;
-    --gold-dark: #8C6B30;
-    --gold-gradient: linear-gradient(135deg, #C5A059 0%, #F3DFA2 50%, #C5A059 100%);
-
-    --deep-brown: #3E2F26;
-    --text-main: #4A4A4A;
-    --bg-light: #FDFCF8;
-    --white: #FFFFFF;
-
+    --gold-main: #D4AF37;       /* Классическое золото */
+    --gold-light: #F9F4E8;      /* Фон карточек */
+    --text-dark: #2C2621;       /* Глубокий коричнево-серый для текста */
+    --text-muted: #6B645E;      /* Вторичный текст */
+    --bg-white: #FFFFFF;        /* Основной фон */
+    --bg-accent: #FBFBFA;       /* Чередование секций */
+    --border-color: #EAE3D5;    /* Цвет тонких линий */
+    
     --font-serif: 'PT Serif', serif;
     --font-sans: 'Open Sans', sans-serif;
 }
@@ -19,314 +17,169 @@
 body {
     margin: 0;
     font-family: var(--font-sans);
-    color: var(--text-main);
-    background-color: var(--bg-light);
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    color: var(--text-dark);
+    background-color: var(--bg-white);
+    line-height: 1.8;
 }
 
-a { text-decoration: none; color: inherit; transition: 0.3s; }
-ul { list-style: none; padding: 0; margin: 0; }
-img { max-width: 100%; display: block; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+/* Общие контейнеры */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
 /* =========================================
-   2. ШАПКА (СТАБИЛЬНАЯ)
-   2. ШАПКА И НАВИГАЦИЯ
+   ШАПКА (В СТИЛЕ STPIMEN)
    ========================================= */
-.top-bar {
-    background-color: var(--deep-brown);
-    color: var(--gold-light);
-    font-size: 14px;
-    padding: 8px 0;
-}
-.top-bar-content { display: flex; justify-content: space-between; align-items: center; }
-.contact-info i { margin-right: 8px; color: var(--gold-primary); }
-.contact-info span { margin-right: 25px; }
-.social-links a { margin-left: 15px; color: var(--gold-light); }
-.social-links a:hover { color: var(--white); }
-
 .main-header {
-    background: var(--white);
-    box-shadow: 0 4px 20px rgba(62, 47, 38, 0.08);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 4px solid var(--gold-primary);
-    padding: 10px 0;
-    height: 90px; /* ФИКСИРОВАННАЯ ВЫСОТА, ЧТОБЫ НЕ ПЛЫЛО */
-    height: 90px;
-    display: flex;
-    align-items: center;
+    padding: 40px 0 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+.logo-container {
+    margin-bottom: 30px;
 }
 
-/* Логотип */
-.logo-link {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-right: auto;
+.logo-img {
+    height: 120px; /* Увеличили логотип */
+    margin: 0 auto 15px;
+    filter: sepia(0.2); /* Придает благородный оттенок */
 }
-.logo-img { height: 80px; width: auto; }
-.logo-text { display: flex; flex-direction: column; }
+
 .logo-title {
     font-family: var(--font-serif);
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 2.2rem;
     text-transform: uppercase;
-    color: var(--deep-brown);
-    line-height: 1.1;
+    letter-spacing: 2px;
+    margin: 0;
+    color: var(--text-dark);
 }
-.logo-subtitle { font-size: 11px; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 1px; }
 
-/* Навигация */
-.main-nav { margin-left: auto; }
-.main-nav > ul { display: flex; gap: 30px; align-items: center; }
-.main-nav a {
+.logo-subtitle {
     font-family: var(--font-serif);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--gold-main);
+}
+
+/* Навигация (Минимализм) */
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    list-style: none;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 13px;
     font-weight: 600;
-    font-size: 14px;
     text-transform: uppercase;
-    color: var(--deep-brown);
-    padding: 10px 0;
-    position: relative;
-}
-.main-nav a:hover { color: var(--gold-dark); }
-.main-nav a:not(.btn-note):hover { color: var(--gold-dark); }
-
-/* Кнопка "Подать записку" в меню */
-.btn-note {
-    background: var(--gold-primary);
-    color: var(--white) !important;
-    padding: 10px 20px !important;
-    border-radius: 4px;
+    letter-spacing: 1px;
     transition: 0.3s;
-    box-shadow: 0 4px 10px rgba(197, 160, 89, 0.3);
 }
+
+.main-nav a:hover, .main-nav a.active {
+    color: var(--gold-main);
+}
+
+/* Кнопка "Подать записку" (Акцентная, но деликатная) */
+.btn-note {
+    border: 1px solid var(--gold-main);
+    padding: 8px 20px !important;
+    border-radius: 0;
+    transition: 0.3s;
+}
+
 .btn-note:hover {
-    background: var(--gold-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(197, 160, 89, 0.5);
+    background: var(--gold-main);
+    color: white !important;
 }
-
-/* Выпадающее меню */
-.has-dropdown { position: relative; }
-.dropdown-menu {
-    position: absolute; top: 100%; left: -20px;
-    background: var(--white); min-width: 200px;
-    background: var(--white); min-width: 220px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    border-top: 3px solid var(--gold-primary);
-    opacity: 0; visibility: hidden; transform: translateY(10px); transition: 0.3s;
-    padding: 10px 0;
-}
-.has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-.dropdown-menu li a {
-    display: block; padding: 10px 20px; font-size: 13px;
-    text-transform: none; border-bottom: 1px solid #f0f0f0;
-}
-
-.mobile-toggle { display: none; font-size: 24px; color: var(--deep-brown); cursor: pointer; }
 
 /* =========================================
-   3. ГЛАВНЫЙ ЭКРАН & КНОПКИ
-   3. ОБЩИЕ ЭЛЕМЕНТЫ И HERO
+   ГЛАВНЫЙ ЭКРАН (HERO)
    ========================================= */
 .hero {
-    height: 80vh;
-    background: url('hero-bg.jpg') no-repeat center center/cover;
-    min-height: 60vh;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
     position: relative;
-    display: flex; align-items: center; justify-content: center;
-    text-align: center; color: var(--white);
-}
-.hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(62, 47, 38, 0.5); }
-.hero-content { position: relative; z-index: 2; }
-.hero h1 { font-family: var(--font-serif); font-size: 3.5rem; text-shadow: 0 4px 10px rgba(0,0,0,0.5); margin-bottom: 15px; }
-.hero p { font-size: 1.5rem; font-weight: 300; }
-
-.section-title {
-    text-align: center; font-family: var(--font-serif);
-    font-size: 2.5rem; color: var(--deep-brown); margin: 50px 0 30px;
+    height: 60vh;
+    background: var(--bg-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
-.btn-gold {
-    background: var(--gold-gradient);
-    color: #fff; padding: 12px 30px; border-radius: 2px;
-    font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 1px;
-    display: inline-block; transition: 0.3s;
-    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+/* Если есть карандашный рисунок собора — ставим его фоном */
+.hero-sketch {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 90%;
+    opacity: 0.15;
+    pointer-events: none;
 }
-.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(197, 160, 89, 0.6); }
+
+.hero-content h1 {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    margin: 0;
+}
 
 /* =========================================
-   4. ТАЙМЛАЙН (ИСТОРИЯ) - ВЕРНУЛИ!
-   4. СТРАНИЦЫ (Специфические стили)
+   СЕТКА КАРТОЧЕК (Architecture / Ministry)
    ========================================= */
-.timeline-section { padding: 80px 0; background: var(--white); }
-.section-title {
-    text-align: center; font-family: var(--font-serif);
-    font-size: 2.5rem; color: var(--deep-brown); margin-bottom: 50px;
-/* Летопись */
-.history-container { max-width: 800px; margin: 0 auto; padding: 60px 20px; background: #fff; box-shadow: 0 0 30px rgba(0,0,0,0.03); }
-.text-block { font-size: 1.15rem; color: #333; margin-bottom: 30px; text-align: justify; }
-.drop-cap::first-letter { font-family: var(--font-serif); font-size: 3.5rem; float: left; line-height: 0.8; padding-right: 10px; color: var(--gold-primary); }
-.chapter-header { text-align: center; margin: 60px 0 30px; }
-.chapter-num { display: block; font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: #999; margin-bottom: 10px; }
-.chapter-title { font-family: var(--font-serif); font-size: 2rem; color: var(--deep-brown); }
-.miracle-box { background: var(--bg-light); border: 2px solid var(--gold-light); padding: 40px; margin: 50px 0; border-radius: 4px; }
-.separator { text-align: center; color: var(--gold-primary); font-size: 2rem; margin: 40px 0; letter-spacing: 10px; }
-.quote { font-family: var(--font-serif); font-style: italic; font-size: 1.3rem; color: var(--gold-dark); text-align: center; margin: 30px 40px; border-left: 3px solid var(--gold-primary); padding-left: 20px; }
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 60px 0;
+}
 
-/* Архитектура */
-.arch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-.arch-item { position: relative; height: 400px; overflow: hidden; }
-.arch-content { padding: 60px; background: var(--white); height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
-.arch-img { background-size: cover; background-position: center; height: 100%; width: 100%; }
-.arch-title { font-family: var(--font-serif); font-size: 1.8rem; color: var(--deep-brown); margin-bottom: 20px; }
+.card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    transition: 0.3s ease;
+    text-align: center;
+}
 
-/* Служение */
-.ministry-card { display: flex; background: var(--white); border: 1px solid #eee; margin-bottom: 60px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; }
-.ministry-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(197, 160, 89, 0.15); border-color: var(--gold-primary); }
-.ministry-img { flex: 1; min-height: 400px; position: relative; overflow: hidden; }
-.ministry-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-.ministry-card:hover .ministry-img img { transform: scale(1.05); }
-.ministry-info { flex: 1; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
-.ministry-badge { display: inline-block; background: var(--gold-light); color: var(--deep-brown); padding: 5px 15px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; width: fit-content; }
-.ministry-title { font-family: var(--font-serif); font-size: 2rem; color: var(--deep-brown); margin: 0 0 20px; line-height: 1.2; }
+.card:hover {
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+    border-color: var(--gold-main);
+    transform: translateY(-5px);
+}
 
-/* Расписание */
-.schedule-container { max-width: 1000px; margin: 50px auto; padding: 20px; background: var(--white); box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid var(--gold-light); }
-.doc-frame { width: 100%; height: 800px; border: none; }
-
-/* Календарь (виджет) */
-.pravoslavie-calendar-widget { font-family: var(--font-serif); line-height: 1.5; color: #333; }
-.pravoslavie-calendar-widget a { color: var(--deep-brown); text-decoration: underline; }
+.card h3 {
+    font-family: var(--font-serif);
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
 
 /* =========================================
-   5. НОВЫЙ ФУТЕР
+   ФУТЕР
    ========================================= */
 .main-footer {
-    background: var(--deep-brown);
-    color: var(--gold-light);
-    padding: 60px 0 20px;
-    margin-top: auto; /* Прижимает футер к низу */
-}
-.timeline { position: relative; max-width: 900px; margin: 0 auto; padding: 20px 0; }
-.timeline::before {
-    content: ''; position: absolute; top: 0; bottom: 0; left: 50%;
-    width: 2px; background: var(--gold-primary); transform: translateX(-50%);
-
-.footer-inner {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 40px;
-    margin-bottom: 40px;
-}
-.timeline-item { position: relative; width: 50%; padding: 0 40px; box-sizing: border-box; margin-bottom: 40px; }
-.timeline-item:nth-child(odd) { left: 0; text-align: right; }
-.timeline-item:nth-child(even) { left: 50%; text-align: left; }
-.timeline-item::after {
-    content: ''; position: absolute; width: 14px; height: 14px;
-    background: var(--white); border: 3px solid var(--gold-primary);
-    border-radius: 50%; top: 5px; z-index: 2;
-
-.footer-block {
-    flex: 1;
-    min-width: 250px;
-}
-.timeline-item:nth-child(odd)::after { right: -10px; }
-.timeline-item:nth-child(even)::after { left: -10px; }
-
-.time-date { font-family: var(--font-serif); color: var(--gold-dark); font-size: 1.3rem; font-weight: 700; display: block; }
-.time-content { background: var(--bg-light); padding: 20px; border: 1px solid #eee; box-shadow: 0 5px 10px rgba(0,0,0,0.05); }
-.footer-block h6 {
-    font-family: var(--font-serif);
-    font-size: 18px;
-    color: var(--white);
-    margin-top: 0;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    border-bottom: 2px solid var(--gold-primary);
-    display: inline-block;
-    padding-bottom: 5px;
-}
-
-/* Кнопка летописи */
-.btn-chronicle {
-    display: inline-block; margin-top: 40px; padding: 15px 40px;
-    border: 2px solid var(--gold-primary); color: var(--deep-brown);
-    font-family: var(--font-serif); text-transform: uppercase; font-weight: 700;
-.footer-block p {
-    margin-bottom: 12px;
-    font-size: 15px;
-    color: #e0e0e0;
-}
-.btn-chronicle:hover { background: var(--gold-primary); color: #fff; }
-
-/* =========================================
-   5. КАЛЕНДАРЬ И РАСПИСАНИЕ (НОВОЕ)
-   ========================================= */
-.schedule-preview-section { padding: 60px 0; background: var(--bg-light); border-bottom: 1px solid var(--gold-light); }
-.calendar-widget {
-    background: #fff; padding: 20px; border: 1px solid var(--gold-light);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center;
-    font-family: var(--font-serif);
-.footer-block a {
-    color: var(--gold-light);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-block a:hover {
-    color: var(--white);
-    text-decoration: underline;
-}
-
-.footer-copy {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 20px;
-    text-align: center;
+    background: var(--bg-accent);
+    padding: 80px 0 40px;
+    border-top: 1px solid var(--border-color);
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.6);
-}
-/* Стили для виджета Православие */
-.pravoslavie-calendar-widget a { color: var(--deep-brown); text-decoration: underline; }
-
-/* АДАПТИВ */
-/* =========================================
-   6. АДАПТИВ
-   ========================================= */
-@media (max-width: 900px) {
-    .main-nav { display: none; }
-    .main-nav { display: none; } /* Здесь можно добавить логику JS для открытия меню */
-    .mobile-toggle { display: block; }
-    .arch-grid, .ministry-card { display: block; }
-    .arch-item { height: auto; min-height: 300px; }
-    .hero h1 { font-size: 2.2rem; }
-    .footer-inner { flex-direction: column; }
-    .timeline::before { left: 20px; }
-    .timeline-item { width: 100%; padding-left: 50px; text-align: left; }
-    .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { left: 0; }
-    .timeline-item::after { left: 11px; }
 }
 
-@media (min-width: 768px) {
-    .arch-item:nth-child(4n+1) .arch-content { order: 1; }
-    .arch-item:nth-child(4n+2) .arch-img { order: 2; }     
-    .arch-item:nth-child(4n+3) .arch-img { order: 1; }     
-    .arch-item:nth-child(4n+4) .arch-content { order: 2; } 
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.footer-title {
+    font-family: var(--font-serif);
+    text-transform: uppercase;
+    color: var(--gold-main);
+    margin-bottom: 20px;
+    display: block;
 }
