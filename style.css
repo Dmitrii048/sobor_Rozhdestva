@@ -1,49 +1,36 @@
-/* Базовые настройки шрифтов и цветов */
-:root {
-    --gold: #C5A059;
-    --text-main: #2C2C2C;
-    --text-muted: #666666;
-    --bg-creme: #FDFCFB;
-    --border-light: #EAE3D5;
-    --font-serif: 'PT Serif', serif;
-    --font-sans: 'Open Sans', sans-serif;
-}
-
-body {
-    margin: 0;
-    font-family: var(--font-sans);
-    background-color: #fff;
-    color: var(--text-main);
-    line-height: 1.8;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* --- ХЕДЕР: ЛОГОТИП И МЕНЮ --- */
+/* --- ОБНОВЛЕННАЯ ШАПКА ПОД НОВЫЙ ЛОГОТИП --- */
 .main-header {
-    padding: 60px 0 30px;
+    padding: 30px 0 0 0; /* Минимальный отступ сверху */
     background: #fff;
+    text-align: center;
 }
 
 .logo-wrapper {
-    text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 15px; /* Уплотняем связь с меню */
 }
 
 .logo-full {
-    max-width: 600px; /* Крупный размер как на макете */
-    width: 100%;
+    /* Рассчитанный размер: 580px в ширину даст около 270px в высоту */
+    max-width: 580px; 
+    width: 95%; /* Для гибкости на малых экранах */
     height: auto;
+    display: inline-block;
+    transition: transform 0.3s ease;
 }
 
-/* Навигация */
+/* Эффект при наведении на лого (как на дорогих сайтах) */
+.logo-full:hover {
+    transform: scale(1.02);
+}
+
+/* --- ВОЗДУШНОЕ МЕНЮ --- */
 .main-nav {
-    border-top: 1px solid var(--border-light);
-    border-bottom: 1px solid var(--border-light);
+    border-top: 1px solid #F5F2EE;
+    border-bottom: 1px solid #F5F2EE;
+    background: #fff;
+    position: sticky; /* Чтобы меню «прилипало» при скролле, если захотите */
+    top: 0;
+    z-index: 1000;
 }
 
 .main-nav ul {
@@ -56,134 +43,49 @@ body {
 
 .main-nav > ul > li {
     position: relative;
-    padding: 20px 25px;
+    padding: 18px 25px; /* Много пространства между пунктами */
 }
 
 .main-nav a {
     text-decoration: none;
-    color: var(--text-main);
+    color: #333;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 12px; /* Чуть меньше размер для элегантности */
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 2px; /* Увеличенный межбуквенный интервал */
     transition: 0.3s;
 }
 
 .main-nav a:hover {
-    color: var(--gold);
+    color: #C5A059; /* Золотой при наведении */
 }
 
-/* ВЫПАДАЮЩЕЕ МЕНЮ (ВОЗДУШНОЕ) */
+/* Выпадающее меню (улучшенная прозрачность) */
 .dropdown-menu {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%);
-    background: #fff;
-    min-width: 250px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-    border: 1px solid var(--border-light);
-    padding: 20px 0;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(255, 255, 255, 0.98);
+    min-width: 240px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    border: 1px solid #F0EDE8;
+    padding: 15px 0;
     opacity: 0;
     visibility: hidden;
-    transition: 0.4s ease;
-    z-index: 1000;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .has-dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
-    top: 90%; /* Плавный эффект подъезда */
-}
-
-.dropdown-menu li {
-    padding: 0;
+    transform: translateX(-50%) translateY(0);
 }
 
 .dropdown-menu a {
-    display: block;
-    padding: 12px 30px;
-    text-transform: none;
-    font-weight: 400;
-    font-size: 14px;
+    text-transform: none; /* Обычный регистр в подменю */
     letter-spacing: 0.5px;
-    border-bottom: 1px solid #f9f9f9;
-}
-
-.dropdown-menu a:hover {
-    background-color: var(--bg-creme);
-    color: var(--gold);
-}
-
-/* --- СЕКЦИИ КОНТЕНТА --- */
-.welcome-block {
-    padding: 120px 0;
-    text-align: center;
-}
-
-.welcome-block h1 {
-    font-family: var(--font-serif);
-    font-size: 3.5rem;
     font-weight: 400;
-    margin-bottom: 40px;
-}
-
-.welcome-text {
-    max-width: 850px;
-    margin: 0 auto;
-    font-size: 1.25rem;
-    color: var(--text-muted);
-    font-style: italic;
-}
-
-/* СЕТКА КАРТОЧЕК (ДЛЯ СЛУЖЕНИЯ И ШКОЛЫ) */
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-bottom: 100px;
-}
-
-.info-card {
-    text-align: center;
-    padding: 40px 20px;
-    border: 1px solid var(--border-light);
-    transition: 0.4s;
-}
-
-.info-card:hover {
-    border-color: var(--gold);
-    background-color: var(--bg-creme);
-}
-
-.info-card i {
-    font-size: 30px;
-    color: var(--gold);
-    margin-bottom: 20px;
-    display: block;
-}
-
-.info-card h3 {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-}
-
-/* КНОПКА ЗАПИСКИ */
-.btn-note {
-    border: 1px solid var(--gold) !important;
-    padding: 10px 20px !important;
-    color: var(--gold) !important;
-}
-
-.btn-note:hover {
-    background: var(--gold);
-    color: #fff !important;
-}
-
-/* ИНФОГРАФИКА ИСТОРИИ */
-.history-section {
-    background-color: var(--bg-creme);
-    padding: 100px 0;
-    text-align: center;
+    padding: 10px 25px;
+    border-bottom: none;
 }
