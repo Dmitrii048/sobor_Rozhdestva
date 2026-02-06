@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Христорождественский Кафедральный собор</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Шрифты -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- Иконки для карточек -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -15,140 +13,57 @@
     <header class="main-header">
         <div class="container">
             <div class="logo-wrapper">
-                <img src="logo.png" alt="Христорождественский Кафедральный собор" class="logo-full">
+                <img src="logo.png" alt="Собор" class="logo-full">
             </div>
-            
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Главная</a></li>
-                    
-                    <li class="has-dropdown">
-                        <a href="#">О соборе</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="about.html">История и летопись</a></li>
-                            <li><a href="architecture.html">Архитектура</a></li>
-                            <li><a href="clergy.html">Духовенство</a></li>
-                            <li><a href="shrines.html">Святыни и реликвии</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="has-dropdown">
-                        <a href="#">Служение</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="ministry.html">Миссионерский отдел</a></li>
-                            <li><a href="social.html">Социальная работа</a></li>
-                            <li><a href="school.html">Воскресная школа</a></li>
-                            <li><a href="youth.html">Молодежное движение</a></li>
-                        </ul>
-                    </li>
-
+                    <li><a href="about.html">О соборе</a></li>
+                    <li><a href="ministry.html">Служение</a></li>
                     <li><a href="schedule.html">Расписание</a></li>
                     <li><a href="contacts.html">Контакты</a></li>
-                    
                     <li><a href="#" class="btn-note">Подать записку</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
+    <main class="container">
         <!-- Блок Приветствия -->
-        <section class="welcome-block container">
+        <section class="welcome-section">
             <h1>Добро пожаловать</h1>
             <p class="welcome-text">
-                «Христорождественский собор — это не только памятник архитектуры классицизма, 
-                но и живое сердце духовной жизни Липецкого края. Здесь на протяжении столетий 
-                возносится молитва о граде нашем и его жителях».
+                Христорождественский собор — это не только памятник архитектуры классицизма, 
+                но и живое сердце духовной жизни Липецкого края.
             </p>
         </section>
-        <section class="container" style="padding-bottom: 100px;">
-    <div class="info-grid">
-        
-        <!-- Карточка: Воскресная школа -->
-        <div class="info-card">
-            <i class="fas fa-sun"></i>
-            <h3>Воскресная школа</h3>
-            <p>Детская школа «Светоч» приглашает воспитанников от 5 до 14 лет. Духовные беседы, творчество и праздники.</p>
-            <a href="school.html" class="card-link">СТРАНИЦА ШКОЛЫ →</a>
-        </div>
 
-        <!-- Карточка: Расписание -->
-        <div class="info-card">
-            <i class="fas fa-clock"></i>
-            <h3>Богослужения</h3>
-            <p>Литургия совершается ежедневно. Узнайте время начала утренних и вечерних служб на текущую неделю.</p>
-            <a href="schedule.html" class="card-link">СМОТРЕТЬ ГРАФИК →</a>
-        </div>
-
-        <!-- Карточка: Социальная работа -->
-        <div class="info-card">
-            <i class="fas fa-heart"></i>
-            <h3>Помощь и служение</h3>
-            <p>Окормление больниц, помощь нуждающимся и миссионерская деятельность нашего прихода.</p>
-            <a href="ministry.html" class="card-link">УЗНАТЬ БОЛЬШЕ →</a>
-        </div>
-
-    </div>
-</section>
-
-        <!-- Сетка основных направлений (Логика: что ищет прихожанин?) -->
-        <section class="container info-grid">
-            <div class="info-card">
-                <i class="fas fa-church"></i>
-                <h3>Богослужения</h3>
-                <p>Ежедневные службы, Таинства исповеди и причастия. Узнайте время начала литургии.</p>
-                <a href="schedule.html" style="color: var(--gold); font-size: 12px; font-weight: 700;">РАСПИСАНИЕ →</a>
-            </div>
-
+        <!-- Сетка карточек -->
+        <section class="info-grid">
+            
             <div class="info-card">
                 <i class="fas fa-graduation-cap"></i>
                 <h3>Воскресная школа</h3>
-                <p>Духовное воспитание детей, творческие кружки и праздничные постановки для всей семьи.</p>
-                <a href="school.html" style="color: var(--gold); font-size: 12px; font-weight: 700;">ПОДРОБНЕЕ →</a>
+                <p>Детская школа «Светоч» приглашает воспитанников от 5 до 14 лет. Духовные беседы, творчество и праздники.</p>
+                <a href="school.html" class="card-link">СТРАНИЦА ШКОЛЫ →</a>
             </div>
 
             <div class="info-card">
-                <i class="fas fa-hand-holding-heart"></i>
-                <h3>Помощь собору</h3>
-                <p>Вы можете внести свой вклад в благоукрашение храма или подать записку о здравии близких.</p>
-                <a href="#" style="color: var(--gold); font-size: 12px; font-weight: 700;">ПОДДЕРЖАТЬ →</a>
+                <i class="fas fa-clock"></i>
+                <h3>Богослужения</h3>
+                <p>Литургия совершается ежедневно. Узнайте время начала утренних и вечерних служб на текущую неделю.</p>
+                <a href="schedule.html" class="card-link">СМОТРЕТЬ ГРАФИК →</a>
             </div>
-        </section>
 
-        <!-- Секция Истории (Инфографика) -->
-        <section class="history-section">
-            <div class="container">
-                <h2 style="font-family: 'PT Serif'; font-size: 2.2rem; margin-bottom: 50px;">История в датах</h2>
-                <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--border-light); padding-top: 40px;">
-                    <div>
-                        <span style="display: block; font-family: 'PT Serif'; color: var(--gold); font-size: 24px;">1791</span>
-                        <p style="font-size: 13px;">Указ Екатерины II о строительстве</p>
-                    </div>
-                    <div>
-                        <span style="display: block; font-family: 'PT Serif'; color: var(--gold); font-size: 24px;">1831</span>
-                        <p style="font-size: 13px;">Избавление города от эпидемии</p>
-                    </div>
-                    <div>
-                        <span style="display: block; font-family: 'PT Serif'; color: var(--gold); font-size: 24px;">1991</span>
-                        <p style="font-size: 13px;">Возвращение собора верующим</p>
-                    </div>
-                </div>
-                <div style="margin-top: 50px;">
-                    <a href="about.html" style="background: var(--gold); color: #fff; padding: 15px 40px; text-decoration: none; font-size: 12px; letter-spacing: 2px;">ЧИТАТЬ ПОЛНУЮ ЛЕТОПИСЬ</a>
-                </div>
+            <div class="info-card">
+                <i class="fas fa-heart"></i>
+                <h3>Наше служение</h3>
+                <p>Окормление больниц, помощь нуждающимся и миссионерская деятельность нашего прихода.</p>
+                <a href="ministry.html" class="card-link">УЗНАТЬ БОЛЬШЕ →</a>
             </div>
+
         </section>
     </main>
-
-    <footer style="padding: 60px 0; border-top: 1px solid var(--border-light); text-align: center; font-size: 13px; color: #888;">
-        <div class="container">
-            <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
-            <div style="margin-top: 20px;">
-                <a href="#" style="margin: 0 10px;">ВКонтакте</a>
-                <a href="#" style="margin: 0 10px;">Telegram</a>
-            </div>
-        </div>
-    </footer>
 
 </body>
 </html>
