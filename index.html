@@ -84,7 +84,30 @@
             </div>
         </div>
     </section>
+<!-- Секция: Актуальное (Расписание и Календарь) -->
+    <section class="current-events" style="padding: 60px 0; background: var(--bg-light); border-bottom: 1px solid var(--gold-light);">
+        <div class="container">
+            <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center;">
+                
+                <!-- Блок 1: Призыв к расписанию -->
+                <div style="flex: 1; min-width: 300px; background: var(--white); padding: 40px; border: 1px solid #eee; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+                    <h3 style="font-family: var(--font-serif); color: var(--deep-brown); font-size: 1.8rem; margin-bottom: 20px;">Богослужения</h3>
+                    <p style="margin-bottom: 30px; color: var(--text-gray);">
+                        Приглашаем вас на соборную молитву. Божественная Литургия совершается ежедневно.
+                    </p>
+                    <a href="schedule.html" class="btn-gold">Смотреть расписание</a>
+                </div>
 
+                <!-- Блок 2: Православный календарь (Виджет) -->
+                <div style="flex: 1; min-width: 300px; background: var(--white); padding: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: flex; justify-content: center; align-items: center;">
+                    <!-- Код виджета Азбука.ру -->
+                    <script language="JavaScript" src="http://azbyka.ru/days/assets/js/calendars/day-colored.js"></script>
+                    <!-- Конец кода виджета -->
+                </div>
+
+            </div>
+        </div>
+    </section>
 <!-- Раздел: О Соборе (История) -->
     <section class="about-section" id="about">
         <div class="container">
