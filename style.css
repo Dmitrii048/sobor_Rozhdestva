@@ -1,41 +1,47 @@
-/* --- ОБНОВЛЕННАЯ ШАПКА ПОД НОВЫЙ ЛОГОТИП --- */
+/* Переменные */
+:root {
+    --gold: #C5A059;
+    --text-main: #2C2C2C;
+    --text-muted: #666;
+    --bg-creme: #FDFCFB;
+    --border: #F0EDE8;
+    --font-serif: 'PT Serif', serif;
+    --font-sans: 'Open Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background-color: #fff;
+    color: var(--text-main);
+    line-height: 1.8;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- ХЕДЕР: ЛОГОТИП И МЕНЮ --- */
 .main-header {
-    padding: 30px 0 0 0; /* Минимальный отступ сверху */
-    background: #fff;
+    padding: 40px 0 0 0;
     text-align: center;
 }
 
-.logo-wrapper {
-    margin-bottom: 15px; /* Уплотняем связь с меню */
-}
-
 .logo-full {
-    /* Рассчитанный размер: 580px в ширину даст около 270px в высоту */
     max-width: 580px; 
-    width: 95%; 
+    width: 90%;
     height: auto;
-    display: inline-block;
-    transition: transform 0.3s ease;
-
-    /* ДОБАВЬТЕ ЭТИ ДВЕ СТРОЧКИ НИЖЕ */
-    mix-blend-mode: multiply; /* Магия прозрачности фона */
-    filter: contrast(1.1);    /* Делает линии рисунка чуть четче */
+    mix-blend-mode: multiply; /* Убирает серый фон логотипа */
+    filter: contrast(1.1);
+    transition: 0.3s;
 }
 
-/* Эффект при наведении на лого */
-.logo-full:hover {
-    transform: scale(1.02);
-}
-}
-
-/* --- ВОЗДУШНОЕ МЕНЮ --- */
 .main-nav {
-    border-top: 1px solid #F5F2EE;
-    border-bottom: 1px solid #F5F2EE;
-    background: #fff;
-    position: sticky; /* Чтобы меню «прилипало» при скролле, если захотите */
-    top: 0;
-    z-index: 1000;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-top: 20px;
 }
 
 .main-nav ul {
@@ -48,50 +54,86 @@
 
 .main-nav > ul > li {
     position: relative;
-    padding: 18px 25px; /* Много пространства между пунктами */
+    padding: 15px 20px;
 }
 
 .main-nav a {
     text-decoration: none;
-    color: #333;
+    color: var(--text-main);
     text-transform: uppercase;
-    font-size: 12px; /* Чуть меньше размер для элегантности */
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 2px; /* Увеличенный межбуквенный интервал */
-    transition: 0.3s;
+    letter-spacing: 2px;
 }
 
-.main-nav a:hover {
-    color: #C5A059; /* Золотой при наведении */
+.main-nav a:hover { color: var(--gold); }
+
+/* --- ПРИВЕТСТВИЕ --- */
+.welcome-section {
+    padding: 80px 0;
+    text-align: center;
 }
 
-/* Выпадающее меню (улучшенная прозрачность) */
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    background: rgba(255, 255, 255, 0.98);
-    min-width: 240px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-    border: 1px solid #F0EDE8;
-    padding: 15px 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+.welcome-section h1 {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    margin-bottom: 20px;
 }
 
-.has-dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
+.welcome-text {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--text-muted);
 }
 
-.dropdown-menu a {
-    text-transform: none; /* Обычный регистр в подменю */
-    letter-spacing: 0.5px;
-    font-weight: 400;
-    padding: 10px 25px;
-    border-bottom: none;
+/* --- СЕТКА КАРТОЧЕК --- */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding-bottom: 80px;
 }
 
+.info-card {
+    border: 1px solid var(--border);
+    padding: 40px 30px;
+    text-align: center;
+    transition: 0.4s;
+}
+
+.info-card:hover {
+    border-color: var(--gold);
+    background: var(--bg-creme);
+    transform: translateY(-5px);
+}
+
+.info-card i {
+    font-size: 28px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.info-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.card-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Кнопка "Подать записку" */
+.btn-note {
+    border: 1px solid var(--gold) !important;
+    padding: 8px 15px !important;
+    color: var(--gold) !important;
+}
