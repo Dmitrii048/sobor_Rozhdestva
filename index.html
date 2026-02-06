@@ -36,21 +36,20 @@
             </a>
 
             <!-- Меню -->
-            <nav class="main-nav">
+<nav class="main-nav">
                 <ul>
-                    <!-- Пункт с выпадающим списком -->
                     <li class="has-dropdown">
                         <a href="about.html">О Соборе <i class="fas fa-angle-down" style="font-size: 12px; margin-left: 5px;"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="about.html">История (Летопись)</a></li>
+                            <!-- Ссылка на новую страницу -->
+                            <li><a href="ministry.html">Наше служение</a></li>
                             <li><a href="#">Воскресная школа</a></li>
                             <li><a href="architecture.html">Архитектура</a></li>
-                            <li><a href="#">Святыни</a></li>
                         </ul>
                     </li>
                     <li><a href="schedule.html">Богослужения</a></li>
                     <li><a href="#">Духовенство</a></li>
-                    <li><a href="#">Галерея</a></li>
                     <li><a href="#">Контакты</a></li>
                 </ul>
             </nav>
@@ -74,7 +73,60 @@
         </div>
     </section>
 
-    <!-- Тут дальше может идти календарь или анонсы -->
+    <!-- Секция: Соцсети (LIVE) -->
+    <section style="padding: 80px 0; background: var(--white); border-top: 1px solid var(--gold-light);">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title">Живая жизнь прихода</h2>
+            <p style="max-width: 600px; margin: 0 auto 50px; font-size: 1.1rem; color: #555;">
+                Следите за новостями, смотрите прямые трансляции и фоторепортажи с мест служения наших пастырей.
+            </p>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
+                
+                <!-- Telegram -->
+                <a href="https://t.me/Lsobor" target="_blank" style="text-decoration: none; flex: 1; min-width: 300px; max-width: 400px;">
+                    <div style="background: #F5F9FC; padding: 40px; border-radius: 10px; border: 2px solid #2AABEE; transition: 0.3s; height: 100%; box-sizing: border-box;">
+                        <i class="fab fa-telegram-plane" style="font-size: 60px; color: #2AABEE; margin-bottom: 20px;"></i>
+                        <h3 style="color: #2AABEE; margin-bottom: 10px; font-weight: 700; font-size: 1.5rem;">Telegram @Lsobor</h3>
+                        <p style="color: #555;">Молнии, новости без официоза, видеопроповеди и репортажи о. Владимира из храма УВД.</p>
+                        <span style="display: inline-block; margin-top: 20px; background: #2AABEE; color: #fff; padding: 10px 25px; border-radius: 50px; font-weight: 600;">Подписаться</span>
+                    </div>
+                </a>
+
+                <!-- VKontakte -->
+                <a href="https://vk.com/sobor48" target="_blank" style="text-decoration: none; flex: 1; min-width: 300px; max-width: 400px;">
+                    <div style="background: #F2F7FD; padding: 40px; border-radius: 10px; border: 2px solid #0077FF; transition: 0.3s; height: 100%; box-sizing: border-box;">
+                        <i class="fab fa-vk" style="font-size: 60px; color: #0077FF; margin-bottom: 20px;"></i>
+                        <h3 style="color: #0077FF; margin-bottom: 10px; font-weight: 700; font-size: 1.5rem;">ВКонтакте</h3>
+                        <p style="color: #555;">Официальные новости, фотоальбомы с праздников и расписание богослужений.</p>
+                        <span style="display: inline-block; margin-top: 20px; background: #0077FF; color: #fff; padding: 10px 25px; border-radius: 50px; font-weight: 600;">Перейти в группу</span>
+                    </div>
+                </a>
+    <div class="col-lg-4">
+                    <div class="sidebar-calendar">
+                        <h5 class="sidebar-calendar-title">Православный календарь</h5>
+                        <div class="pravoslavie-calendar-widget">
+                            <script src="https://script.pravoslavie.ru/calendar.php?advanced=1&dayicon=1&bold=1&tipikon=1&para=1&icon=1&target=1&name=1"></script>
+                            <script>print_holiday();</script>
+                            <p class="pravoslavie-calendar-center">
+                                <b><script>print_day()</script></b><br>
+                                <script>print_week()</script>
+                                <script>print_post()</script><br>
+                                <i><script>print_trapeza();</script></i><br><br>
+                                <script>print_icon()</script><br>
+                                <b>Святые дня: </b>
+                                <script>print_saints()</script><br><br>
+                                <b>Евангельские Чтения: </b><br>
+                                <script>print_chten()</script>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
