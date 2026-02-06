@@ -1,8 +1,40 @@
 /* =========================================
-   2. ШАПКА И МЕНЮ (ИСПРАВЛЕННАЯ ВЕРСИЯ 2.0)
+   1. БАЗОВЫЕ НАСТРОЙКИ И ЦВЕТА (ЭТО САМОЕ ВАЖНОЕ!)
    ========================================= */
+:root {
+    /* ПАЛИТРА */
+    --gold-primary: #C5A059;   /* Основное золото */
+    --gold-light: #F3DFA2;     /* Светлое золото */
+    --gold-dark: #8C6B30;      /* Темное золото */
+    --gold-gradient: linear-gradient(135deg, #C5A059 0%, #F3DFA2 50%, #C5A059 100%);
+    
+    --deep-brown: #3E2F26;     /* Благородный коричневый */
+    --text-main: #4A4A4A;      /* Темно-серый текст */
+    
+    --white: #FFFFFF;
+    --bg-light: #FDFCF8;       /* Цвет слоновой кости */
+    
+    /* ШРИФТЫ */
+    --font-serif: 'PT Serif', serif;
+    --font-sans: 'Open Sans', sans-serif;
+}
 
-/* Верхняя полоска */
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--text-main);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; padding: 0; margin: 0; }
+img { max-width: 100%; display: block; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* =========================================
+   2. ШАПКА И МЕНЮ (Версия 2.0 - Исправленная)
+   ========================================= */
 .top-bar {
     background-color: var(--deep-brown);
     color: var(--gold-light);
@@ -17,108 +49,224 @@
 .contact-info i { margin-right: 8px; color: var(--gold-primary); }
 .contact-info span { margin-right: 25px; }
 
-/* Основной хедер */
 .main-header {
     background: var(--white);
     box-shadow: 0 4px 20px rgba(62, 47, 38, 0.08);
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 4px solid var(--gold-primary); /* Линия чуть толще */
-    padding: 10px 0; /* Добавили воздух сверху и снизу */
+    border-bottom: 4px solid var(--gold-primary);
+    padding: 10px 0;
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Убрали фиксированную высоту, пусть подстраивается под лого */
 }
 
-/* Логотип - ТЕПЕРЬ КРУПНЫЙ */
+/* Логотип */
 .logo-link {
     display: flex;
     align-items: center;
     gap: 20px;
-    text-decoration: none;
-    margin-right: 40px; /* Отталкиваем меню */
+    margin-right: 40px;
 }
 .logo-img {
-    height: 95px; /* Увеличили размер */
+    height: 95px;
     width: auto;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); /* Тень для объема */
 }
 .logo-text {
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 .logo-title {
     font-family: var(--font-serif);
-    font-size: 22px; /* Шрифт крупнее */
+    font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;
     color: var(--deep-brown);
     line-height: 1.1;
 }
 .logo-subtitle {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--gold-dark);
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-top: 5px;
-    font-weight: 600;
 }
 
 /* Навигация */
 .main-nav {
     flex-grow: 1;
     display: flex;
-    justify-content: flex-end; /* Меню справа */
+    justify-content: flex-end;
 }
 .main-nav > ul {
     display: flex;
-    gap: 30px; /* Расстояние между пунктами */
+    gap: 25px;
     align-items: center;
-    flex-wrap: wrap; /* Если не влезет - перенесется, но не сломается */
+    flex-wrap: wrap;
 }
 .main-nav a {
     font-family: var(--font-serif);
     font-weight: 600;
-    font-size: 15px;
+    font-size: 14px;
     text-transform: uppercase;
     color: var(--deep-brown);
     padding: 5px 0;
-    letter-spacing: 0.5px;
     position: relative;
 }
-.main-nav > ul > li > a:hover { color: var(--gold-dark); }
-.main-nav > ul > li > a::after {
-    content: '';
+.main-nav a:hover { color: var(--gold-dark); }
+.main-nav a::after {
+    content: ''; position: absolute; width: 0; height: 2px;
+    bottom: 0; left: 0; background: var(--gold-primary); transition: 0.3s;
+}
+.main-nav a:hover::after { width: 100%; }
+
+/* Скрываем выпадающее меню пока не настроим JS, чтобы не ломало верстку */
+.dropdown { display: none; }
+
+.header-action { margin-left: 20px; }
+
+/* Бургер (скрыт на ПК) */
+.mobile-toggle { display: none; font-size: 26px; cursor: pointer; color: var(--deep-brown); }
+
+/* Кнопки */
+.btn-gold {
+    background: var(--gold-gradient);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(197, 160, 89, 0.3);
+    display: inline-block;
+}
+.btn-outline {
+    border: 2px solid var(--white);
+    color: var(--white);
+    padding: 10px 25px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* =========================================
+   3. ГЛАВНЫЙ ЭКРАН (HERO)
+   ========================================= */
+.hero {
+    height: 85vh;
+    background: url('hero-bg.jpg') no-repeat center center/cover; /* Проверь имя файла! */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+}
+.hero-overlay {
     position: absolute;
-    width: 0; height: 2px;
-    bottom: 0; left: 0;
-    background: var(--gold-primary);
-    transition: width 0.3s;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(62, 47, 38, 0.4), rgba(62, 47, 38, 0.7));
 }
-.main-nav > ul > li > a:hover::after { width: 100%; }
+.hero-content { position: relative; z-index: 2; }
+.hero h1 {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+.hero p { font-size: 1.4rem; margin-bottom: 40px; }
 
-/* Кнопка "Пожертвовать" в меню */
-.header-action { margin-left: 30px; flex-shrink: 0; }
-
-/* БУРГЕР (Скрыт на ПК) */
-.mobile-toggle { 
-    display: none; 
-    font-size: 26px; 
-    cursor: pointer; 
+/* =========================================
+   4. СЕКЦИЯ О СОБОРЕ (ИСТОРИЯ)
+   ========================================= */
+.about-section { padding: 90px 0; background: var(--white); }
+.section-title {
+    text-align: center;
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
     color: var(--deep-brown);
+    margin-bottom: 60px;
+    position: relative;
+}
+.section-title::after {
+    content: "☦"; display: block; margin-top: 10px; color: var(--gold-primary); font-size: 24px;
 }
 
-/* АДАПТИВНОСТЬ */
-@media (max-width: 1100px) {
-    .logo-title { font-size: 16px; }
-    .logo-img { height: 60px; }
-    .main-nav, .header-action { display: none; } /* Скрываем меню на планшетах */
-    .mobile-toggle { display: block; } /* Показываем бургер */
-    .header-content { height: 70px; }
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+/* Картинка в истории - фиксим размер */
+.about-image img {
+    width: 100%;
+    height: auto;
+    border: 5px solid var(--white);
+    outline: 1px solid var(--gold-primary);
+    box-shadow: 0 20px 40px rgba(62, 47, 38, 0.1);
+}
+.btn-chronicle {
+    display: inline-block;
+    padding: 15px 30px;
+    border: 2px solid var(--gold-primary);
+    color: var(--deep-brown);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 20px;
+}
+.btn-chronicle:hover { background: var(--gold-primary); color: #fff; }
+
+/* Таймлайн */
+.timeline { position: relative; max-width: 900px; margin: 0 auto; padding: 20px 0; }
+.timeline::before {
+    content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px;
+    background: var(--gold-primary); transform: translateX(-50%);
+}
+.timeline-item { position: relative; width: 50%; padding: 0 40px; box-sizing: border-box; margin-bottom: 40px; }
+.timeline-item:nth-child(odd) { left: 0; text-align: right; }
+.timeline-item:nth-child(even) { left: 50%; text-align: left; }
+.timeline-item::after {
+    content: ''; position: absolute; width: 12px; height: 12px;
+    background: var(--deep-brown); border: 2px solid var(--gold-primary);
+    transform: rotate(45deg); top: 6px; z-index: 2;
+}
+.timeline-item:nth-child(odd)::after { right: -8px; }
+.timeline-item:nth-child(even)::after { left: -8px; }
+.time-date { font-family: var(--font-serif); color: var(--gold-dark); font-size: 1.4rem; font-weight: 700; display: block; }
+.time-content { background: var(--bg-light); padding: 20px; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+/* =========================================
+   5. СВЯТЫНИ
+   ========================================= */
+.shrines-section { padding: 80px 0; background: var(--bg-light); }
+.shrines-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.shrine-card { background: var(--white); border-bottom: 3px solid transparent; transition: 0.3s; }
+.shrine-card:hover { transform: translateY(-5px); border-bottom-color: var(--gold-primary); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.shrine-img-box { height: 260px; overflow: hidden; }
+.shrine-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.shrine-card:hover img { transform: scale(1.1); }
+.shrine-info { padding: 25px; text-align: center; }
+.shrine-title { font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 10px; color: var(--deep-brown); font-weight: 700; }
+.btn-link { color: var(--gold-dark); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; border-bottom: 1px solid rgba(140, 107, 48, 0.3); }
+
+/* АДАПТИВ (Mobile) */
+@media (max-width: 1024px) {
+    .main-nav, .header-action, .top-bar { display: none; }
+    .mobile-toggle { display: block; }
+    .header-content { justify-content: space-between; padding: 10px 20px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .timeline::before { left: 20px; }
+    .timeline-item { width: 100%; padding-left: 50px; text-align: left; }
+    .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { left: 0; }
+    .timeline-item::after { left: 14px; right: auto; }
 }
