@@ -1,12 +1,10 @@
+/* Базовые настройки шрифтов и цветов */
 :root {
-    --gold-main: #C5A059;
-    --gold-light: #F4EFE3;
-    --text-dark: #3E2F26;
-    --text-muted: #6B645E;
-    --white: #FFFFFF;
-    --bg-light: #FDFCF8;
-    --border: #EAE3D5;
-    
+    --gold: #C5A059;
+    --text-main: #2C2C2C;
+    --text-muted: #666666;
+    --bg-creme: #FDFCFB;
+    --border-light: #EAE3D5;
     --font-serif: 'PT Serif', serif;
     --font-sans: 'Open Sans', sans-serif;
 }
@@ -14,144 +12,178 @@
 body {
     margin: 0;
     font-family: var(--font-sans);
-    color: var(--text-dark);
-    background-color: var(--white);
-    line-height: 1.7;
+    background-color: #fff;
+    color: var(--text-main);
+    line-height: 1.8;
 }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-/* --- ШАПКА И ЛОГО --- */
+/* --- ХЕДЕР: ЛОГОТИП И МЕНЮ --- */
 .main-header {
-    padding: 20px 0;
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
+    padding: 60px 0 30px;
+    background: #fff;
 }
 
-.header-top {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 25px;
+.logo-wrapper {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
-.logo-img { height: 100px; width: auto; margin-bottom: 10px; }
-
-.logo-text-group { text-align: center; }
-.logo-title { 
-    font-family: var(--font-serif); 
-    font-size: 24px; 
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
-    margin: 0; 
-}
-.logo-subtitle { 
-    font-size: 12px; 
-    color: var(--gold-main); 
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
+.logo-full {
+    max-width: 600px; /* Крупный размер как на макете */
+    width: 100%;
+    height: auto;
 }
 
-/* --- ВОЗДУШНОЕ МЕНЮ С ВЫПАДАШКАМИ --- */
+/* Навигация */
+.main-nav {
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
 .main-nav ul {
     display: flex;
     justify-content: center;
     list-style: none;
     padding: 0;
     margin: 0;
-    gap: 30px;
 }
 
-.main-nav li { position: relative; padding: 15px 0; }
+.main-nav > ul > li {
+    position: relative;
+    padding: 20px 25px;
+}
 
 .main-nav a {
     text-decoration: none;
-    color: var(--text-dark);
+    color: var(--text-main);
+    text-transform: uppercase;
     font-size: 13px;
     font-weight: 600;
-    text-transform: uppercase;
+    letter-spacing: 2px;
     transition: 0.3s;
 }
 
-.main-nav a:hover { color: var(--gold-main); }
+.main-nav a:hover {
+    color: var(--gold);
+}
 
-/* Выпадающее меню */
+/* ВЫПАДАЮЩЕЕ МЕНЮ (ВОЗДУШНОЕ) */
 .dropdown-menu {
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--white);
-    min-width: 220px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    border-top: 2px solid var(--gold-main);
+    background: #fff;
+    min-width: 250px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-light);
+    padding: 20px 0;
     opacity: 0;
     visibility: hidden;
-    transition: 0.3s ease;
-    z-index: 100;
-    padding: 10px 0;
+    transition: 0.4s ease;
+    z-index: 1000;
 }
 
 .has-dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
-    top: 90%; /* Плавный выезд вверх */
+    top: 90%; /* Плавный эффект подъезда */
 }
 
-.dropdown-menu li { padding: 0; margin: 0; }
+.dropdown-menu li {
+    padding: 0;
+}
+
 .dropdown-menu a {
     display: block;
-    padding: 10px 20px;
+    padding: 12px 30px;
     text-transform: none;
-    font-size: 14px;
     font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.5px;
     border-bottom: 1px solid #f9f9f9;
 }
 
-/* --- СЕКЦИЯ ИСТОРИИ (ИНФОГРАФИКА) --- */
-.history-preview { padding: 80px 0; background: var(--bg-light); text-align: center; }
-
-.timeline-mini {
-    display: flex;
-    justify-content: space-between;
-    margin: 50px 0;
-    position: relative;
+.dropdown-menu a:hover {
+    background-color: var(--bg-creme);
+    color: var(--gold);
 }
 
-.timeline-mini::before {
-    content: '';
-    position: absolute;
-    top: 25px; left: 0; right: 0;
-    height: 1px; background: var(--border);
-    z-index: 1;
+/* --- СЕКЦИИ КОНТЕНТА --- */
+.welcome-block {
+    padding: 120px 0;
+    text-align: center;
 }
 
-.tm-item { position: relative; z-index: 2; flex: 1; padding: 0 10px; }
-.tm-dot { 
-    width: 12px; height: 12px; background: var(--gold-main); 
-    border-radius: 50%; margin: 20px auto; 
-}
-.tm-year { font-family: var(--font-serif); font-weight: 700; color: var(--gold-main); font-size: 1.2rem; }
-.tm-desc { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
-
-.btn-gold-outline {
-    display: inline-block;
-    padding: 12px 30px;
-    border: 1px solid var(--gold-main);
-    color: var(--text-dark);
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 1px;
-    font-weight: 600;
-    transition: 0.3s;
+.welcome-block h1 {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin-bottom: 40px;
 }
 
-.btn-gold-outline:hover { background: var(--gold-main); color: #fff; }
+.welcome-text {
+    max-width: 850px;
+    margin: 0 auto;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
 
-/* Кнопка в меню */
+/* СЕТКА КАРТОЧЕК (ДЛЯ СЛУЖЕНИЯ И ШКОЛЫ) */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 100px;
+}
+
+.info-card {
+    text-align: center;
+    padding: 40px 20px;
+    border: 1px solid var(--border-light);
+    transition: 0.4s;
+}
+
+.info-card:hover {
+    border-color: var(--gold);
+    background-color: var(--bg-creme);
+}
+
+.info-card i {
+    font-size: 30px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.info-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* КНОПКА ЗАПИСКИ */
 .btn-note {
-    background: var(--gold-main);
-    color: white !important;
+    border: 1px solid var(--gold) !important;
     padding: 10px 20px !important;
-    border-radius: 2px;
+    color: var(--gold) !important;
+}
+
+.btn-note:hover {
+    background: var(--gold);
+    color: #fff !important;
+}
+
+/* ИНФОГРАФИКА ИСТОРИИ */
+.history-section {
+    background-color: var(--bg-creme);
+    padding: 100px 0;
+    text-align: center;
 }
