@@ -10,7 +10,19 @@
 </head>
 <body>
 
-    <!-- Меню копируем из index.html -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span><i class="fas fa-map-marker-alt"></i> г. Липецк, Соборная площадь, 4</span>
+                <span><i class="fas fa-phone"></i> +7 (4742) 27-04-78</span>
+            </div>
+            <div class="social-links">
+                <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i></a>
+                <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+    </div>
+
     <header class="main-header">
         <div class="container header-content">
             <a href="index.html" class="logo-link">
@@ -22,14 +34,23 @@
             </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html">На главную</a></li>
-                    <li><a href="schedule.html">Расписание</a></li>
+                    <li class="has-dropdown">
+                        <a href="about.html">О Соборе <i class="fas fa-angle-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="about.html">История (Летопись)</a></li>
+                            <li><a href="ministry.html">Наше служение</a></li>
+                            <li><a href="architecture.html">Архитектура</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="schedule.html">Богослужения</a></li>
+                    <li><a href="#">Контакты</a></li>
+                    <li><a href="#" class="btn-note">Подать записку</a></li>
                 </ul>
             </nav>
+            <div class="mobile-toggle"><i class="fas fa-bars"></i></div>
         </div>
     </header>
 
-    <!-- Заголовок страницы -->
     <section class="hero" style="height: 50vh; background-image: url('history.jpg');">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
@@ -38,7 +59,6 @@
         </div>
     </section>
 
-    <!-- Основной текст -->
     <div class="history-container">
 
         <!-- ВСТУПЛЕНИЕ -->
@@ -63,9 +83,9 @@
             </div>
         </div>
 
-        <!-- ГЛАВА 2 (ЧУДО) - ВЫДЕЛЕННЫЙ БЛОК -->
+        <!-- ГЛАВА 2 (ЧУДО) -->
         <div class="miracle-box">
-            <div class="chapter-header">
+            <div class="chapter-header" style="margin-top: 0;">
                 <span class="chapter-num" style="color: var(--gold-primary);">Глава II</span>
                 <h2 class="chapter-title">Чудо 1831 года</h2>
             </div>
@@ -109,11 +129,35 @@
     </div>
 
     <!-- Футер -->
-    <footer style="background: var(--deep-brown); color: var(--gold-light); padding: 40px 0; text-align: center;">
+    <footer class="main-footer">
         <div class="container">
-            <p>© 2024 Кафедральный собор Рождества Христова г. Липецка</p>
+            <div class="footer-inner">
+                <div class="footer-block">
+                    <h6>Навигация</h6>
+                    <p><a href="about.html">О соборе</a></p>
+                    <p><a href="schedule.html">Расписание</a></p>
+                    <p><a href="ministry.html">Служение</a></p>
+                    <p><a href="#">Подать записку</a></p>
+                </div>
+                <div class="footer-block">
+                    <h6>Контакты</h6>
+                    <p>г. Липецк, Соборная площадь, 4</p>
+                    <p><a href="tel:+74742270478">+7 (4742) 27-04-78</a></p>
+                    <p><a href="mailto:sobor48@mail.ru">sobor48@mail.ru</a></p>
+                </div>
+                <div class="footer-block">
+                    <h6>Мы в соцсетях</h6>
+                    <p><a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a></p>
+                    <p><a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a></p>
+                </div>
+            </div>
+            <p class="footer-copy">© <span id="current-year"></span> Кафедральный собор Рождества Христова г. Липецка.</p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 
 </body>
 </html>
