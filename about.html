@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Летопись Собора | Христорождественский собор</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Особые стили для текстовой страницы */
+        .text-content { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+        .chapter-title { 
+            color: var(--gold-dark); 
+            font-family: var(--font-serif); 
+            font-size: 1.8rem; 
+            margin-top: 50px; 
+            border-bottom: 2px solid var(--gold-light);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        .text-content p { font-size: 1.15rem; margin-bottom: 25px; text-align: justify; }
+        
+        /* Буквица (Первая буква большая) */
+        .drop-cap::first-letter {
+            float: left;
+            font-size: 4.5rem;
+            line-height: 0.8;
+            font-family: var(--font-serif);
+            color: var(--gold-primary);
+            padding-right: 15px;
+            padding-top: 5px;
+            font-weight: 700;
+        }
+        .quote-box {
+            background: var(--bg-light);
+            border-left: 4px solid var(--gold-primary);
+            padding: 30px;
+            font-style: italic;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--deep-brown);
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Меню скопируй из index.html -->
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo-link">
+                <img src="logo.png" alt="Логотип" class="logo-img">
+                <div class="logo-text">
+                    <span class="logo-title">Христорождественский</span>
+                    <span class="logo-subtitle">Кафедральный собор</span>
+                </div>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="about.html" style="color:var(--gold-dark);">История</a></li>
+                    <li><a href="architecture.html">Архитектура</a></li>
+                    <li><a href="#">Святыни</a></li>
+                    <li><a href="index.html">Главная</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" style="height: 40vh; background-image: url('history.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="fade-in">Живая летопись</h1>
+            <p>От первого камня до наших дней</p>
+        </div>
+    </section>
+
+    <div class="container text-content">
+        <p class="drop-cap">
+            Кафедральный собор Рождества Христова по праву считается духовным сердцем Липецкой земли. Занимая вершину Соборной горы, он словно маяк веры возвышается над суетой городской жизни, призывая каждого к Небу.
+        </p>
+        <p>
+            История его основания уходит корнями в конец XVIII века. Согласно преданию и архивным записям, строительство каменного храма началось в 1791 году по высочайшему повелению Императрицы Екатерины II. Это было время, когда деревянная церковь, стоявшая здесь веками, уже не могла вместить всех молящихся, и город нуждался в новой святыне.
+        </p>
+
+        <h3 class="chapter-title">Созидание Святыни</h3>
+        <p>
+            Главным храмоздателем выступил помещик Петр Лукич Вельяминов. Легенда гласит, что проект был заказан итальянскому зодчему Томазо Адамини. Именно поэтому в облике собора так гармонично сплелись русская мощь и итальянская легкость классицизма.
+        </p>
+        <div class="quote-box">
+            «Сей храм Бог Отец созда, Сын утверди... Освящен 1807-го года мая 25-го дня».<br>
+            <span style="font-size: 0.9rem; margin-top: 10px; display:block;">— Надпись, сохранявшаяся на хорах собора</span>
+        </div>
+        <p>
+            В 1835 году ансамбль завершила величественная колокольня. Стройная, устремленная ввысь, она стала доминантой города. Говорят, что звон ее главного колокола весом в 489 пудов был слышен за многие версты, возвещая радость праздников.
+        </p>
+
+        <h3 class="chapter-title">Годы испытаний</h3>
+        <p>
+            XX век принес собору тяжкие испытания. В 1931 году храм был закрыт. Безбожная власть пыталась стереть память о святыне: сбрасывались колокола, изымались ценности, а в алтаре, где совершалась Бескровная Жертва, устроили склад.
+        </p>
+        <p>
+            Но Господь поругаем не бывает. Даже лишенный крестов, собор выстоял. В 1991 году, спустя 60 лет забвения, двери храма вновь открылись для верующих. Это стало символом духовного возрождения всего Липецка.
+        </p>
+
+        <h3 class="chapter-title">Собор сегодня</h3>
+        <p>
+            Ныне Христорождественский собор предстает во всем своем великолепии. Сияют золотом купола, восстановлены уникальные росписи, а под сводами вновь звучит молитва. В 2003 году, с образованием Липецкой епархии, храм обрел статус Кафедрального собора.
+        </p>
+    </div>
+
+</body>
+</html>
