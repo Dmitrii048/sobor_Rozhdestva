@@ -4,17 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кафедральный собор Рождества Христова | Липецк</title>
-    <!-- Подключаем красивые шрифты (PT Serif для заголовков и Open Sans для текста) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- Иконки (для телефона и соцсетей) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Верхняя инфо-панель (Top Bar) -->
+    <!-- Верхняя панель -->
     <div class="top-bar">
         <div class="container top-bar-content">
             <div class="contact-info">
@@ -22,199 +18,63 @@
                 <span><i class="fas fa-phone"></i> +7 (4742) 27-04-78</span>
             </div>
             <div class="social-links">
-                <a href="https://vk.com/sobor48" target="_blank" title="Мы ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i></a>
             </div>
         </div>
     </div>
 
-<!-- Основной Хедер и Меню -->
+    <!-- Хедер (Без кнопки Пожертвовать) -->
     <header class="main-header">
         <div class="container header-content">
             <!-- Логотип -->
             <a href="index.html" class="logo-link">
-                <!-- Убедись, что файл logo.png существует! -->
-                <img src="logo.png" alt="Логотип Собора" class="logo-img">
+                <img src="logo.png" alt="Логотип" class="logo-img">
                 <div class="logo-text">
                     <span class="logo-title">Христорождественский</span>
                     <span class="logo-subtitle">Кафедральный собор</span>
                 </div>
             </a>
 
-            <!-- Навигация -->
+            <!-- Меню -->
             <nav class="main-nav">
                 <ul>
-                    <li><a href="about.html">История</a></li>
-                    <!-- Пока убрали выпадающий список, чтобы не ломался, включим позже -->
+                    <!-- Пункт с выпадающим списком -->
+                    <li class="has-dropdown">
+                        <a href="about.html">О Соборе <i class="fas fa-angle-down" style="font-size: 12px; margin-left: 5px;"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="about.html">История (Летопись)</a></li>
+                            <li><a href="#">Воскресная школа</a></li>
+                            <li><a href="architecture.html">Архитектура</a></li>
+                            <li><a href="#">Святыни</a></li>
+                        </ul>
+                    </li>
                     <li><a href="schedule.html">Богослужения</a></li>
                     <li><a href="#">Духовенство</a></li>
-                    <li><a href="architecture.html">Архитектура</a></li>
+                    <li><a href="#">Галерея</a></li>
                     <li><a href="#">Контакты</a></li>
                 </ul>
             </nav>
 
-            <!-- Кнопка действия -->
-            <div class="header-action">
-                <a href="#" class="btn-gold">Пожертвовать</a>
-            </div>
-            
-            <!-- Мобильное меню (бургер) -->
+            <!-- Бургер -->
             <div class="mobile-toggle">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
     </header>
 
-    <!-- Главный экран (Hero Section) -->
-    <section class="hero">
+    <!-- Главный экран -->
+    <section class="hero" style="background-image: url('hero-bg.jpg');">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <h1 class="fade-in">Добро пожаловать в<br>Кафедральный собор</h1>
-            <p class="fade-in-delay">Духовный центр Липецкой земли</p>
-            <div class="hero-buttons fade-in-delay-2">
-                <a href="#" class="btn-gold btn-large">Расписание служб</a>
-                <a href="#" class="btn-outline">О соборе</a>
-            </div>
-        </div>
-    </section>
-<!-- Секция: Актуальное (Расписание и Календарь) -->
-    <section class="current-events" style="padding: 60px 0; background: var(--bg-light); border-bottom: 1px solid var(--gold-light);">
-        <div class="container">
-            <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center;">
-                
-                <!-- Блок 1: Призыв к расписанию -->
-                <div style="flex: 1; min-width: 300px; background: var(--white); padding: 40px; border: 1px solid #eee; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-                    <h3 style="font-family: var(--font-serif); color: var(--deep-brown); font-size: 1.8rem; margin-bottom: 20px;">Богослужения</h3>
-                    <p style="margin-bottom: 30px; color: var(--text-gray);">
-                        Приглашаем вас на соборную молитву. Божественная Литургия совершается ежедневно.
-                    </p>
-                    <a href="schedule.html" class="btn-gold">Смотреть расписание</a>
-                </div>
-
-                <!-- Блок 2: Православный календарь (Виджет) -->
-                <div style="flex: 1; min-width: 300px; background: var(--white); padding: 20px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: flex; justify-content: center; align-items: center;">
-                    <!-- Код виджета Азбука.ру -->
-                    <script language="JavaScript" src="http://azbyka.ru/days/assets/js/calendars/day-colored.js"></script>
-                    <!-- Конец кода виджета -->
-                </div>
-
-            </div>
-        </div>
-    </section>
-<!-- Раздел: О Соборе (История) -->
-    <section class="about-section" id="about">
-        <div class="container">
-            <h2 class="section-title">История и Архитектура</h2>
-            
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>Кафедральный собор Рождества Христова по праву считается духовным центром Липецка и его архитектурной доминантой. Занимая вершину Соборной горы, он возвышается над городом, объединяя в молитве тысячи верующих, как и столетия назад.</p>
-                    <p>Строительство каменного храма началось в 1791 году по указу Императрицы Екатерины II. Храм возводился тщанием помещика Петра Вельяминова и жителей города. Это уникальный памятник классицизма, сохранивший в себе дух эпох и молитву поколений.</p>
-<div style="margin-top: 40px; text-align: left;">
-    <a href="https://mitropolia-lip.ru/history" target="_blank" class="btn-chronicle">
-        Читать полную летопись
-    </a>
-</div>
-                </div>
-                <div class="about-image">
-                    <!-- Сюда нужно вставить фото общего вида собора или старинную гравюру -->
-                    <img src="history.jpg" alt="Вид на Собор">
-                    <!-- Я поставил временную ссылку, замени её на локальный файл history.jpg -->
-                </div>
-            </div>
-
-            <!-- Таймлайн (Основные вехи) -->
-            <div class="timeline">
-                <div class="timeline-item">
-                    <span class="time-date">1791 год</span>
-                    <div class="time-content">
-                        Начало строительства каменного собора по проекту итальянского архитектора Томазо Адамини (по одной из версий).
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <span class="time-date">1835 год</span>
-                    <div class="time-content">
-                        Завершено строительство величественной колокольни высотой более 60 метров, ставшей маяком для города.
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <span class="time-date">1931 год</span>
-                    <div class="time-content">
-                        Трагические страницы: собор закрыт советской властью. Здание использовалось как музей и склад, но чудом уцелело.
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <span class="time-date">1991 год</span>
-                    <div class="time-content">
-                        Возвращение святыни верующим. Начало масштабной реставрации и возобновление богослужений.
-                    </div>
-                </div>
-                 <div class="timeline-item">
-                    <span class="time-date">Сегодня</span>
-                    <div class="time-content">
-                        Собор полностью расписан, сияет золотыми куполами и является сердцем Липецкой митрополии.
-                    </div>
-                </div>
+            <h1 class="fade-in">Духовное сердце Липецка</h1>
+            <p>Кафедральный собор Рождества Христова</p>
+            <div style="margin-top: 30px;">
+                <a href="schedule.html" class="btn-gold">Расписание богослужений</a>
             </div>
         </div>
     </section>
 
-    <!-- Раздел: Святыни -->
-    <section class="shrines-section" id="shrines">
-        <div class="container">
-            <h2 class="section-title">Святыни Собора</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
-                В соборе пребывают особо чтимые иконы и мощи угодников Божиих, к которым ежедневно притекают верующие за утешением и помощью.
-            </p>
+    <!-- Тут дальше может идти календарь или анонсы -->
 
-            <div class="shrines-grid">
-                
-                <!-- Святыня 1: Страстная икона -->
-                <div class="shrine-card">
-                    <div class="shrine-img-box">
-                        <!-- Замени на фото иконы -->
-                        <img src="icon-strastnaya.jpg" alt="Липецкая Страстная икона">
-                    </div>
-                    <div class="shrine-info">
-                        <h3 class="shrine-title">Липецкая икона «Страстная»</h3>
-                        <p class="shrine-desc">
-                            Главная святыня города. В 1831 году, во время эпидемии холеры, по молитвам перед этим образом болезнь отступила.
-                        </p>
-                        <a href="#" class="btn-link">Подробнее <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Святыня 2: Ковчег с мощами -->
-                <div class="shrine-card">
-                    <div class="shrine-img-box">
-                        <!-- Замени на фото раки с мощами -->
-                        <img src="relics.jpg" alt="Рака с мощами">
-                    </div>
-                    <div class="shrine-info">
-                        <h3 class="shrine-title">Ковчег с мощами</h3>
-                        <p class="shrine-desc">
-                            Фарфоровая рака с 81 частицей мощей Киево-Печерских чудотворцев, а также свт. Тихона Задонского.
-                        </p>
-                        <a href="#" class="btn-link">Подробнее <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Святыня 3: Свщмч. Уар -->
-                <div class="shrine-card">
-                    <div class="shrine-img-box">
-                        <!-- Замени на фото иконы Уара -->
-                        <img src="icon-uar.jpg" alt="Священномученик Уар">
-                    </div>
-                    <div class="shrine-info">
-                        <h3 class="shrine-title">Сщмч. Уар, епископ Липецкий</h3>
-                        <p class="shrine-desc">
-                            Первый епископ Липецкий, пострадавший за веру. Его икона в фарфоровом киоте находится в храме.
-                        </p>
-                        <a href="#" class="btn-link">Подробнее <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
 </body>
 </html>
