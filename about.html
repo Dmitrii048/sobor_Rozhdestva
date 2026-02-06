@@ -3,50 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Летопись Собора | Христорождественский собор</title>
+    <title>Летопись и Святыни | Кафедральный собор Липецка</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Особые стили для текстовой страницы */
-        .text-content { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
-        .chapter-title { 
-            color: var(--gold-dark); 
-            font-family: var(--font-serif); 
-            font-size: 1.8rem; 
-            margin-top: 50px; 
-            border-bottom: 2px solid var(--gold-light);
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-        .text-content p { font-size: 1.15rem; margin-bottom: 25px; text-align: justify; }
+        .text-content { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
         
-        /* Буквица (Первая буква большая) */
-        .drop-cap::first-letter {
-            float: left;
-            font-size: 4.5rem;
-            line-height: 0.8;
-            font-family: var(--font-serif);
-            color: var(--gold-primary);
-            padding-right: 15px;
-            padding-top: 5px;
-            font-weight: 700;
+        /* Заголовки глав */
+        .chapter-title { 
+            color: var(--deep-brown); 
+            font-family: var(--font-serif); 
+            font-size: 2rem; 
+            margin-top: 60px; 
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
         }
+        .chapter-title::after {
+            content: "☦";
+            display: block;
+            color: var(--gold-primary);
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        /* Текст */
+        .text-content p { 
+            font-size: 1.15rem; 
+            margin-bottom: 25px; 
+            text-align: justify; 
+            color: #333;
+        }
+        
+        /* Цитаты */
         .quote-box {
-            background: var(--bg-light);
-            border-left: 4px solid var(--gold-primary);
+            background: #FDFCF8;
+            border: 1px solid var(--gold-light);
+            border-left: 5px solid var(--gold-primary);
             padding: 30px;
-            font-style: italic;
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            color: var(--deep-brown);
             margin: 40px 0;
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--deep-brown);
+            font-style: italic;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        /* Список святынь внутри текста */
+        .shrine-item {
+            display: flex;
+            gap: 30px;
+            margin: 50px 0;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 30px;
+        }
+        .shrine-item img {
+            width: 300px;
+            border-radius: 4px;
+            box-shadow: 10px 10px 0 var(--gold-light);
+        }
+        .shrine-text h3 {
+            font-family: var(--font-serif);
+            color: var(--gold-dark);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        @media(max-width: 768px) {
+            .shrine-item { flex-direction: column; }
+            .shrine-item img { width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Меню скопируй из index.html -->
+    <!-- МЕНЮ -->
     <header class="main-header">
         <div class="container header-content">
             <a href="index.html" class="logo-link">
@@ -58,56 +90,80 @@
             </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="about.html" style="color:var(--gold-dark);">История</a></li>
+                    <li><a href="about.html" style="color:var(--gold-dark);">Летопись</a></li>
+                    <li><a href="schedule.html">Расписание</a></li>
                     <li><a href="architecture.html">Архитектура</a></li>
-                    <li><a href="#">Святыни</a></li>
                     <li><a href="index.html">Главная</a></li>
                 </ul>
             </nav>
+            <div class="mobile-toggle"><i class="fas fa-bars"></i></div>
         </div>
     </header>
 
-    <section class="hero" style="height: 40vh; background-image: url('history.jpg');">
+    <!-- ЗАГОЛОВОК СТРАНИЦЫ -->
+    <section class="hero" style="height: 45vh; background-image: url('history.jpg');">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <h1 class="fade-in">Живая летопись</h1>
-            <p>От первого камня до наших дней</p>
+            <h1 class="fade-in">История и Святыни</h1>
+            <p>Духовный путь длиной в столетия</p>
         </div>
     </section>
 
+    <!-- ОСНОВНОЙ ТЕКСТ -->
     <div class="container text-content">
-        <p class="drop-cap">
-            Кафедральный собор Рождества Христова по праву считается духовным сердцем Липецкой земли. Занимая вершину Соборной горы, он словно маяк веры возвышается над суетой городской жизни, призывая каждого к Небу.
-        </p>
-        <p>
-            История его основания уходит корнями в конец XVIII века. Согласно преданию и архивным записям, строительство каменного храма началось в 1791 году по высочайшему повелению Императрицы Екатерины II. Это было время, когда деревянная церковь, стоявшая здесь веками, уже не могла вместить всех молящихся, и город нуждался в новой святыне.
-        </p>
+        
+        <p><strong>Кафедральный собор Рождества Христова</strong> — это не просто памятник архитектуры, но живое сердце Липецка. Возвышаясь на Соборной горе, он веками собирает под свои своды тысячи верующих, разделяя с городом и дни скорби, и дни торжества.</p>
 
-        <h3 class="chapter-title">Созидание Святыни</h3>
-        <p>
-            Главным храмоздателем выступил помещик Петр Лукич Вельяминов. Легенда гласит, что проект был заказан итальянскому зодчему Томазо Адамини. Именно поэтому в облике собора так гармонично сплелись русская мощь и итальянская легкость классицизма.
-        </p>
+        <h2 class="chapter-title">Основание и Созидание</h2>
+        <p>История каменного собора началась в <strong>1791 году</strong>. К тому времени старая деревянная церковь обветшала и уже не могла вместить прихожан растущего города. Строительство велось по указу Императрицы Екатерины II, а главным попечителем стал помещик Петр Лукич Вельяминов.</p>
+        
         <div class="quote-box">
-            «Сей храм Бог Отец созда, Сын утверди... Освящен 1807-го года мая 25-го дня».<br>
-            <span style="font-size: 0.9rem; margin-top: 10px; display:block;">— Надпись, сохранявшаяся на хорах собора</span>
+            «Сей храм Бог Отец созда, Сын утверди. Повелением Благочестивейшия Государыни Императрицы Екатерины Алексеевны... храм сей во имя Рождества Христова созижден».
         </div>
-        <p>
-            В 1835 году ансамбль завершила величественная колокольня. Стройная, устремленная ввысь, она стала доминантой города. Говорят, что звон ее главного колокола весом в 489 пудов был слышен за многие версты, возвещая радость праздников.
-        </p>
 
-        <h3 class="chapter-title">Годы испытаний</h3>
-        <p>
-            XX век принес собору тяжкие испытания. В 1931 году храм был закрыт. Безбожная власть пыталась стереть память о святыне: сбрасывались колокола, изымались ценности, а в алтаре, где совершалась Бескровная Жертва, устроили склад.
-        </p>
-        <p>
-            Но Господь поругаем не бывает. Даже лишенный крестов, собор выстоял. В 1991 году, спустя 60 лет забвения, двери храма вновь открылись для верующих. Это стало символом духовного возрождения всего Липецка.
-        </p>
+        <p>Существует предание, что проект храма разработал итальянский архитектор Томазо Адамини. Именно его гению приписывают удивительную легкость и гармонию классических форм собора. Строительство шло непросто: в 1803 году случился страшный пожар, уничтоживший деревянные леса, но вера людей была сильнее огня. Всем миром храм восстановили, и уже в 1805 году начались первые богослужения.</p>
 
-        <h3 class="chapter-title">Собор сегодня</h3>
-        <p>
-            Ныне Христорождественский собор предстает во всем своем великолепии. Сияют золотом купола, восстановлены уникальные росписи, а под сводами вновь звучит молитва. В 2003 году, с образованием Липецкой епархии, храм обрел статус Кафедрального собора.
-        </p>
+        <p>В 1835 году ансамбль завершила грандиозная <strong>колокольня</strong>. Её высота превышает 60 метров. Стройный шпиль, устремленный в небо, стал главным ориентиром для путников, а звон колоколов плыл над рекой Воронеж, возвещая начало Литургии.</p>
+
+        <h2 class="chapter-title">Годы безбожия и Возрождение</h2>
+        <p>Трагический XX век принес собору тяжкие испытания. В 1931 году решением советской власти собор был закрыт. То, что веками создавали предки, пытались уничтожить в одночасье. С колокольни сбросили колокола, иконостасы были разорены.</p>
+        
+        <p>В разные годы в Доме Божьем располагался склад зерна, овощехранилище и даже музей. Но Господь сохранил святыню от полного разрушения. В 1991 году, спустя 60 лет тишины, собор был возвращен Русской Православной Церкви. Первую Литургию в открытом храме совершил митрополит Мефодий. С этого момента началось масштабное возрождение: засияли золотом купола, стены украсились новыми росписями, был установлен уникальный фарфоровый иконостас.</p>
+
+        <h2 class="chapter-title">Чтимые Святыни</h2>
+        <p>В соборе пребывают великие святыни, к которым ежедневно притекают верующие за утешением.</p>
+
+        <!-- Святыня 1 -->
+        <div class="shrine-item">
+            <img src="icon-strastnaya.jpg" alt="Страстная икона">
+            <div class="shrine-text">
+                <h3>Липецкая икона «Страстная»</h3>
+                <p>Главная святыня города. Особое почитание образа началось в 1831 году, когда в Липецке свирепствовала холера. Жители, потеряв надежду на врачей, с крестным ходом обнесли икону вокруг города. После слезной молитвы эпидемия чудесным образом прекратилась. С тех пор Царица Небесная считается покровительницей Липецка.</p>
+            </div>
+        </div>
+
+        <!-- Святыня 2 -->
+        <div class="shrine-item">
+            <img src="relics.jpg" alt="Ковчег с мощами">
+            <div class="shrine-text">
+                <h3>Ковчег с мощами святых</h3>
+                <p>В храмовой части находится драгоценная фарфоровая рака под сенью. В ней покоятся частицы мощей 81 угодника Божия из Киево-Печерской Лавры, а также святителя Тихона Задонского. Это источник благодати для всех приходящих с верой.</p>
+            </div>
+        </div>
+
+         <!-- Святыня 3 -->
+        <div class="shrine-item">
+            <img src="icon-uar.jpg" alt="Священномученик Уар">
+            <div class="shrine-text">
+                <h3>Сщмч. Уар, епископ Липецкий</h3>
+                <p>Первый епископ Липецкий, пострадавший за Христа в годы гонений. Его святой образ напоминает нам о мужестве исповедников веры.</p>
+            </div>
+        </div>
+
     </div>
+
+    <!-- Футер можно добавить позже -->
+    <div style="height: 50px;"></div>
 
 </body>
 </html>
