@@ -5,27 +5,94 @@
     --font-serif: 'PT Serif', serif;
 }
 
-/* --- ШАПКА --- */
-.main-header {
-    padding: 30px 0 10px 0;
-    background: #fff;
-    text-align: center;
+/* --- НОВАЯ СЛОЖНАЯ ШАПКА В СТИЛЕ ПИМЕНА --- */
+
+.logo-container {
+    padding: 20px 0;
+    margin-bottom: 20px;
 }
 
-.logo-wrapper {
-    margin-bottom: 30px;
+.logo-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px; /* Расстояние между рисунком и текстом */
 }
 
-.logo-full {
-    /* РАСШИРЯЕМ ЛОГОТИП */
-    max-width: 850px; /* Увеличили с 580 до 850 */
-    width: 95%;
+.logo-sketch-img {
+    max-width: 450px; /* Оптимальный размер рисунка */
     height: auto;
-    mix-blend-mode: multiply; /* Убирает серый фон */
-    filter: contrast(1.05); /* Делает буквы четче */
-    transition: 0.3s ease;
+    mix-blend-mode: multiply; /* Убирает фон рисунка */
+    filter: contrast(1.1);    /* Делает штрихи карандаша четче */
 }
 
+.logo-text-side {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Главный заголовок */
+.logo-main-title {
+    font-family: 'PT Serif', serif;
+    font-size: 28px;
+    line-height: 1.2;
+    color: #2C2C2C;
+    text-transform: none; /* Убираем капс для аристократичности */
+    margin: 0;
+    font-weight: 400;
+}
+
+.logo-main-title span {
+    font-size: 22px;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Красивая разделительная линия */
+.logo-divider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 15px 0;
+}
+
+.logo-divider .line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #EAE3D5;
+}
+
+.logo-divider .ornament {
+    padding: 0 15px;
+    color: #C5A059; /* Золотой цвет */
+    font-size: 18px;
+}
+
+/* Информация о патриархате */
+.logo-church-info {
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2px;
+    line-height: 1.6;
+    color: #888;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Адаптивность для телефонов */
+@media (max-width: 900px) {
+    .logo-flex {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .logo-sketch-img {
+        max-width: 300px;
+    }
+}
 /* --- НАВИГАЦИЯ (ИСПРАВЛЕННАЯ) --- */
 .main-nav {
     border-top: 1px solid var(--border);
