@@ -60,9 +60,15 @@ body {
 /* ХУДОЖЕСТВЕННАЯ ЛИНИЯ (ВИНИЕТКА) */
 .vignette-divider {
     width: 100%;
-    max-width: 400px;
-    margin: 15px 0;
+    max-width: 380px;
+    margin: 20px 0;
 }
+
+.vignette-divider svg {
+    width: 100%;
+    height: auto;
+}
+
 
 .patriarchate-text { font-family: var(--font-sans); text-transform: uppercase; font-size: 11px; letter-spacing: 5px; color: #999; margin: 0; }
 .metropolia-text { font-family: var(--font-sans); text-transform: uppercase; font-size: 11px; letter-spacing: 7px; font-weight: 700; color: #777; margin: 5px 0 0 0; }
