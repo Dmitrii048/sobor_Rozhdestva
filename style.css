@@ -137,3 +137,108 @@ body {
     padding: 8px 15px !important;
     color: var(--gold) !important;
 }
+/* --- ЛОГИКА ВЫПАДАЮЩЕГО МЕНЮ --- */
+
+.main-nav {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-top: 25px;
+    position: relative; /* Важно для позиционирования меню */
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav > ul > li {
+    position: relative; /* Контейнер для выпадашки */
+    padding: 18px 20px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-main);
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    transition: 0.3s ease;
+}
+
+/* Эффект наведения на главный пункт */
+.main-nav > ul > li:hover > a {
+    color: var(--gold);
+}
+
+/* Стили выпадающего списка */
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Появляется ровно под меню */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px); /* Смещение для анимации */
+    background: #ffffff;
+    min-width: 260px;
+    padding: 15px 0;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+    border: 1px solid var(--border);
+    display: block; /* Оставляем блоком, но скрываем визуально */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 1000;
+}
+
+/* Показ при наведении */
+.has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu li {
+    width: 100%;
+    text-align: left;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 25px;
+    text-transform: none; /* Обычный шрифт для легкого чтения */
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    color: var(--text-main);
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.dropdown-menu li:last-child a {
+    border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+    background-color: #fcfaf7;
+    color: var(--gold);
+}
+
+/* Особный стиль для кнопки "Подать записку" */
+.note-item {
+    display: flex;
+    align-items: center;
+}
+
+.btn-note {
+    border: 1px solid var(--gold) !important;
+    padding: 10px 20px !important;
+    color: var(--gold) !important;
+    background: transparent;
+    transition: 0.3s;
+}
+
+.btn-note:hover {
+    background: var(--gold) !important;
+    color: #fff !important;
+}
