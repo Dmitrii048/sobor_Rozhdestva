@@ -146,3 +146,105 @@ body {
 .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
 .info-card { border: 1px solid var(--border); padding: 40px 30px; text-align: center; }
 .btn-note { background: var(--gold) !important; color: #fff !important; padding: 10px 20px !important; margin-left: 15px; }
+
+/* --- СТИЛИ ДЛЯ ИЗЯЩНОЙ СТРАНИЦЫ АРХИПАСТЫРЯ --- */
+
+.arch-civil-name { font-family: var(--font-serif); font-size: 18px; color: #999; margin-top: 10px; }
+
+.bio-intro-text {
+    max-width: 850px; /* Ограничиваем ширину, чтобы текст не "разлетался" */
+    margin: 0 auto 50px;
+    text-align: center;
+    font-size: 18px;
+    color: #444;
+}
+
+/* Золотая линия времени */
+.bio-milestones-wrap {
+    padding: 40px 0;
+    margin: 40px 0;
+    border-top: 1px solid #F2EEE8;
+    border-bottom: 1px solid #F2EEE8;
+}
+
+.bio-milestones {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Сама линия */
+.bio-milestones::before {
+    content: '';
+    position: absolute;
+    top: 55px; /* Линия под годами */
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    z-index: 1;
+}
+
+.milestone {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.milestone .year {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--gold);
+    font-size: 26px;
+    background: #fff;
+    display: inline-block;
+    padding: 0 15px;
+}
+
+.milestone-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin: 10px auto;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px var(--gold);
+}
+
+.milestone p {
+    font-size: 13px;
+    color: #888;
+    line-height: 1.4;
+    padding: 0 10px;
+}
+
+/* Колонки биографии */
+.bio-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 950px;
+    margin: 60px auto;
+}
+
+.bio-column h4 {
+    font-family: var(--font-serif);
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.awards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 950px;
+    margin: 0 auto;
+    background: #FDFBFA;
+    padding: 40px;
+    border: 1px solid var(--border);
+}
