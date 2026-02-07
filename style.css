@@ -14,6 +14,12 @@ body {
     line-height: 1.8;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 /* --- ВАШ ТЕКСТОВЫЙ БЛОК (БЕЗ ИЗМЕНЕНИЙ) --- */
 .logo-brand-area {
     flex: 1;
@@ -65,12 +71,14 @@ body {
 }
 
 /* --- ШАПКА И КОНТЕЙНЕРЫ --- */
-.logo-expansive-container { max-width: 1400px; margin: 0 auto; padding: 30px 40px; }
+.main-header { padding: 30px 0 0 0; text-align: center; }
+.logo-expansive-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
 .logo-flex-row { display: flex; align-items: center; justify-content: center; gap: 60px; }
 .logo-sketch-large { max-width: 620px; height: auto; mix-blend-mode: multiply; filter: contrast(1.05); }
 .church-meta { font-family: 'Open Sans', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 4px; color: #999; margin: 0; text-align: center; }
+.church-meta span { font-weight: 700; color: #777; }
 
-/* --- МЕНЮ (ИСПРАВЛЕННОЕ ПО СКРИНШОТУ) --- */
+/* --- МЕНЮ (ЗОЛОТАЯ РАМКА И ПРАВИЛЬНЫЙ СПИСОК) --- */
 .main-nav {
     border-top: 1px solid var(--gold);
     border-bottom: 3px double var(--border);
@@ -101,9 +109,11 @@ body {
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 1.5px;
+    transition: 0.3s;
 }
 
-/* ВЫПАДАЮЩЕЕ МЕНЮ: КАК НА СКРИНШОТЕ (ЗОЛОТАЯ РАМКА) */
+.main-nav > ul > li:hover > a { color: var(--gold); }
+
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -113,8 +123,8 @@ body {
     min-width: 280px;
     padding: 15px 0;
     box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-    border: 1px solid var(--gold); /* Золотая рамка */
-    display: block !important; /* Строго вертикально */
+    border: 1px solid var(--gold);
+    display: block !important; /* Лечит слипание в кучу */
     opacity: 0;
     visibility: hidden;
     transition: 0.3s ease;
@@ -138,162 +148,50 @@ body {
 .dropdown-menu a:hover { color: var(--gold); background-color: #fdfaf5; }
 .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 
-/* Остальные стили для страниц */
-.arch-profile { display: flex; align-items: center; gap: 60px; margin: 60px 0; }
-.arch-photo { max-width: 400px; width: 100%; border: 1px solid var(--gold); padding: 10px; background: #fff; }
-.bio-milestones { display: flex; justify-content: space-between; margin: 60px 0; position: relative; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 30px 0; }
-.milestone .year { font-family: var(--font-serif); color: var(--gold); font-size: 24px; font-weight: 700; }
-.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-.info-card { border: 1px solid var(--border); padding: 40px 30px; text-align: center; }
-.btn-note { background: var(--gold) !important; color: #fff !important; padding: 10px 20px !important; margin-left: 15px; }
+/* --- КНОПКА ЗАПИСКИ --- */
+.btn-note { background: var(--gold) !important; color: #fff !important; padding: 10px 20px !important; margin-left: 15px; text-decoration: none; border-radius: 2px; }
+.btn-note:hover { background: #b38f4d !important; }
 
-/* --- СТИЛИ ДЛЯ ИЗЯЩНОЙ СТРАНИЦЫ АРХИПАСТЫРЯ --- */
+/* --- СТРАНИЦА АРХИПАСТЫРЯ (БИОГРАФИЯ И ТАЙМЛАЙН) --- */
+.page-content { padding-top: 60px; }
+.section-title-gold { font-family: 'PT Serif', serif; font-size: 32px; color: var(--gold); text-align: center; margin: 60px 0 40px; width: 100%; }
+.arch-profile { display: flex; align-items: center; gap: 60px; margin-bottom: 60px; }
+.arch-photo { max-width: 400px; width: 100%; border: 1px solid var(--gold); padding: 10px; background: #fff; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
+.arch-civil-name { font-family: var(--font-serif); font-size: 18px; color: #999; margin-top: 5px; }
 
-.arch-civil-name { font-family: var(--font-serif); font-size: 18px; color: #999; margin-top: 10px; }
-/* Центрирование заголовков */
-.section-title-gold {
-    font-family: 'PT Serif', serif;
-    font-size: 32px;
-    color: var(--gold);
-    text-align: center; /* ЭТА СТРОЧКА ВАЖНА */
-    margin: 60px 0 40px;
-    width: 100%;
-}
-.bio-intro-text {
-    max-width: 850px; /* Ограничиваем ширину, чтобы текст не "разлетался" */
-    margin: 0 auto 50px;
-    text-align: center;
-    font-size: 18px;
-    color: #444;
-}
+.bio-intro-text { max-width: 850px; margin: 0 auto 50px; text-align: center; font-size: 18px; color: #444; }
 
-/* Золотая линия времени */
-.bio-milestones-wrap {
-    padding: 40px 0;
-    margin: 40px 0;
-    border-top: 1px solid #F2EEE8;
-    border-bottom: 1px solid #F2EEE8;
-}
+/* Вертикальная связь биографии */
+.bio-flow { max-width: 900px; margin: 40px auto; position: relative; padding-left: 30px; border-left: 1px solid var(--gold); }
+.bio-step { position: relative; margin-bottom: 40px; padding-left: 20px; }
+.bio-step::before { content: ''; position: absolute; left: -35px; top: 5px; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; }
 
-.bio-milestones {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-}
+/* Горизонтальный таймлайн */
+.bio-milestones-wrap { padding: 40px 0; margin: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.bio-milestones { display: flex; justify-content: space-between; position: relative; max-width: 1000px; margin: 0 auto; }
+.bio-milestones::before { content: ''; position: absolute; top: 55px; left: 5%; right: 5%; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); z-index: 1; }
+.milestone { flex: 1; text-align: center; position: relative; z-index: 2; }
+.milestone .year { font-family: var(--font-serif); font-weight: 700; color: var(--gold); font-size: 26px; background: #fff; display: inline-block; padding: 0 15px; }
+.milestone-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; margin: 10px auto; border: 2px solid #fff; box-shadow: 0 0 0 1px var(--gold); }
+.milestone p { font-size: 13px; color: #888; line-height: 1.4; }
 
-/* Сама линия */
-.bio-milestones::before {
-    content: '';
-    position: absolute;
-    top: 55px; /* Линия под годами */
-    left: 5%;
-    right: 5%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-    z-index: 1;
-}
+.bio-details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 950px; margin: 40px auto; }
+.bio-column h4 { font-family: var(--font-serif); color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 10px; margin-bottom: 20px; text-transform: uppercase; font-size: 16px; }
 
-.milestone {
-    flex: 1;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
+.awards-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 950px; margin: 0 auto; background: #FDFBFA; padding: 40px; border: 1px solid var(--border); }
+.awards-list h4 { font-family: var(--font-serif); color: var(--text-main); border-bottom: 1px solid var(--gold); padding-bottom: 10px; margin-bottom: 20px; }
+.awards-list ul { list-style: none; padding: 0; }
+.awards-list li { font-size: 14px; margin-bottom: 10px; color: #666; position: relative; padding-left: 15px; }
+.awards-list li::before { content: '•'; color: var(--gold); position: absolute; left: 0; }
 
-.milestone .year {
-    font-family: var(--font-serif);
-    font-weight: 700;
-    color: var(--gold);
-    font-size: 26px;
-    background: #fff;
-    display: inline-block;
-    padding: 0 15px;
-}
-
-.milestone-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--gold);
-    border-radius: 50%;
-    margin: 10px auto;
-    border: 2px solid #fff;
-    box-shadow: 0 0 0 1px var(--gold);
-}
-
-.milestone p {
-    font-size: 13px;
-    color: #888;
-    line-height: 1.4;
-    padding: 0 10px;
-}
-
-/* Колонки биографии */
-.bio-details-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    max-width: 950px;
-    margin: 60px auto;
-}
-
-.bio-column h4 {
-    font-family: var(--font-serif);
-    color: var(--gold);
-    border-bottom: 1px solid var(--gold);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.awards-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    max-width: 950px;
-    margin: 0 auto;
-    background: #FDFBFA;
-    padding: 40px;
-    border: 1px solid var(--border);
-}
-
-/* --- ТРЕХКОЛОНОЧНАЯ СЕТКА БИОГРАФИИ --- */
-.bio-details-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin: 50px 0;
-}
-
-.bio-column {
-    padding: 25px;
-    border: 1px solid var(--border);
-    background: #fff;
-    text-align: center;
-}
-
-.bio-column.featured {
-    border: 2px solid var(--gold);
-    background: #FDFCF8; /* Легкий акцентный фон */
-    transform: scale(1.05); /* Делает центральную колонку чуть больше */
-    z-index: 2;
-}
-
-.bio-column h4 {
-    font-family: var(--font-serif);
-    color: var(--gold);
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    font-size: 16px;
-    letter-spacing: 1px;
-}
-
-/* --- ФУТЕР (ТЕМНЫЙ ПРЕМИУМ) --- */
-.site-footer {
-    background: #2C2621; /* Глубокий кофейный цвет */
-    color: #EAE3D5;
+/* --- СВЕТЛЫЙ ФУТЕР --- */
+.site-footer-light {
+    background: #FDFCFB; /* Светло-кремовый */
+    border-top: 1px solid var(--gold);
     padding: 60px 0 0 0;
-    margin-top: 100px;
+    margin-top: 80px;
+    color: #666;
+    text-align: center;
 }
 
 .footer-content {
@@ -308,46 +206,29 @@ body {
     color: var(--gold);
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 25px;
-    border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+    border-bottom: 1px solid var(--border);
     display: inline-block;
     padding-bottom: 5px;
+    margin-bottom: 25px;
 }
 
-.footer-block a {
-    display: block;
-    color: #EAE3D5;
-    text-decoration: none;
-    font-size: 14px;
-    margin-bottom: 10px;
-    transition: 0.3s;
-}
-
+.footer-block a { color: #666; display: block; margin-bottom: 10px; text-decoration: none; font-size: 14px; transition: 0.3s; }
 .footer-block a:hover { color: var(--gold); }
-
 .footer-block p { font-size: 14px; margin-bottom: 10px; }
-
-.footer-block i { color: var(--gold); margin-right: 10px; }
+.footer-block i { color: var(--gold); margin-right: 8px; }
 
 .footer-bottom {
-    background: #211C18;
+    background: #F5F2EE;
     padding: 20px 0;
     text-align: center;
     font-size: 12px;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid #EAE3D5;
 }
 
 /* АДАПТИВНОСТЬ */
 @media (max-width: 900px) {
-    .bio-details-grid-3, .footer-content {
-        grid-template-columns: 1fr;
-    }
-    .bio-column.featured {
-        transform: none;
-        order: -1; /* Выносит Липецкую кафедру наверх на мобилках */
-    }
-    .arch-profile {
-        flex-direction: column;
-        text-align: center;
-    }
+    .logo-flex-row, .arch-profile, .bio-details-grid, .awards-container, .footer-content { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
+    .logo-sketch-large { max-width: 100%; }
+    .bio-milestones { flex-wrap: wrap; gap: 20px; }
+    .bio-milestones::before { display: none; }
 }
