@@ -1,87 +1,26 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Духовенство | Христорождественский собор</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-
-<header class="main-header">
-    <div class="logo-expansive-container">
-        <div class="logo-flex-row">
-            <div class="logo-visual">
-                <img src="sobor-sketch.jpg" alt="Собор" class="logo-sketch-large">
-            </div>
-            <div class="logo-brand-area">
-                <h1 class="title-main">Христорождественский</h1>
-                <h2 class="title-secondary">кафедральный собор</h2>
-                <h3 class="title-sub">г. Липецка</h3>
-                <div class="art-divider">
-                    <svg viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 10 L150 10 C170 10 180 0 200 10 C220 20 230 10 250 10 L400 10" stroke="#EAE3D5" fill="transparent" />
-                        <circle cx="200" cy="10" r="3" fill="#C5A059" />
-                    </svg>
-                </div>
-                <div class="church-meta">
-                    <p>Московский Патриархат <br> <span>Липецкая митрополия</span></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <nav class="main-nav">
-        <ul>
-            <li><a href="index.html">Главная</a></li>
-            <li class="has-dropdown">
-                <a href="#">О соборе</a>
-                <ul class="dropdown-menu">
-                    <li><a href="about.html">Летопись храма</a></li>
-                    <li><a href="clergy.html">Духовенство</a></li>
-                    <li><a href="archpastor.html">Архипастырь</a></li>
-                    <li><a href="school.html">Воскресная школа</a></li>
-                    <li><a href="pilgrimage.html">Паломнические поездки</a></li>
-                    <li><a href="choir.html">Архиерейский хор</a></li>
-                </ul>
-            </li>
-            <li><a href="schedule.html">Расписание</a></li>
-            <li class="has-dropdown">
-                <a href="#">Служение</a>
-                <ul class="dropdown-menu">
-                    <li><a href="social.html">Социальное служение</a></li>
-                    <li><a href="missionary.html">Служение в других храмах</a></li>
-                </ul>
-            </li>
-            <li><a href="publications.html">Публикации</a></li>
-            <li><a href="contacts.html">Контакты</a></li>
-            <li><a href="#" class="btn-note">Подать записку</a></li>
-        </ul>
-    </nav>
-</header>
-
 <main class="container page-content">
     <h2 class="section-title-gold">Духовенство собора</h2>
 
     <!-- НАСТОЯТЕЛЬ -->
-    <section class="rector-card" style="margin-bottom: 80px;">
+    <section class="rector-card" style="margin-bottom: 80px; align-items: flex-start;">
         <div class="clergy-photo-wrap">
-            <img src="bilchuk.jpg" alt="Протоиерей Василий Бильчук" class="arch-photo" style="max-width: 320px;">
+            <!-- У настоятеля тоже фокусируемся на верхе -->
+            <img src="bilchuk.jpg" alt="Протоиерей Василий Бильчук" class="arch-photo" style="object-position: top;">
         </div>
         <div class="arch-title-wrap">
             <span class="label-top">Настоятель собора</span>
             <h2 class="arch-name">Протоиерей Василий Бильчук</h2>
-            <p class="arch-full-rank">Ключарь Христорождественского собора</p>
-            <div style="border-top: 1px solid var(--border); padding-top: 15px; margin-top: 15px; font-size: 14px; color: #666;">
-                <p>Рождение: 1957 | Хиротония: 1983</p>
-                <p>Образование: Одесская Духовная Семинария, Московская Духовная Академия</p>
+            <p class="arch-full-rank">Ключарь Христорождественского кафедрального собора</p>
+            
+            <div class="clergy-data-list">
+                <p><strong>Год рождения:</strong> 1957</p>
+                <p><strong>Образование:</strong> Одесская духовная семинария, Московская духовная академия</p>
+                <p><strong>Год хиротонии:</strong> 1983</p>
             </div>
         </div>
     </section>
 
-    <h3 class="section-title-gold" style="font-size: 24px; margin-bottom: 40px;">Священнослужители</h3>
+    <h3 class="section-title-gold" style="font-size: 24px;">Священнослужители</h3>
     
     <div class="clergy-grid">
         <!-- Максимчук -->
@@ -90,9 +29,10 @@
             <div class="clergy-info">
                 <span class="clergy-rank">Протоиерей</span>
                 <h4>Владимир Максимчук</h4>
-                <div class="clergy-data">
-                    <p>Хиротония: 2002</p>
-                    <p style="color: var(--gold); font-style: italic;">ОДС, СПбДА</p>
+                <div class="clergy-data-list">
+                    <p><strong>Год рождения:</strong> 1978</p>
+                    <p><strong>Образование:</strong> Одесская духовная семинария, Санкт-Петербургская духовная академия</p>
+                    <p><strong>Год хиротонии:</strong> 2002</p>
                 </div>
             </div>
         </div>
@@ -103,9 +43,10 @@
             <div class="clergy-info">
                 <span class="clergy-rank">Протоиерей</span>
                 <h4>Алексий Носач</h4>
-                <div class="clergy-data">
-                    <p>Хиротония: 1999</p>
-                    <p style="color: var(--gold); font-style: italic;">ОДС, МДА</p>
+                <div class="clergy-data-list">
+                    <p><strong>Год рождения:</strong> 1975</p>
+                    <p><strong>Образование:</strong> Одесская духовная семинария, Московская духовная академия</p>
+                    <p><strong>Год хиротонии:</strong> 1999</p>
                 </div>
             </div>
         </div>
@@ -116,9 +57,10 @@
             <div class="clergy-info">
                 <span class="clergy-rank">Иерей</span>
                 <h4>Сергий Гришанов</h4>
-                <div class="clergy-data">
-                    <p>Хиротония: 2008</p>
-                    <p style="color: var(--gold); font-style: italic;">МДС, МДА</p>
+                <div class="clergy-data-list">
+                    <p><strong>Год рождения:</strong> 1977</p>
+                    <p><strong>Образование:</strong> Московская духовная семинария, Московская духовная академия</p>
+                    <p><strong>Год хиротонии:</strong> 2008</p>
                 </div>
             </div>
         </div>
@@ -129,9 +71,10 @@
             <div class="clergy-info">
                 <span class="clergy-rank">Иерей</span>
                 <h4>Виктор Архипкин</h4>
-                <div class="clergy-data">
-                    <p>Хиротония: 2008</p>
-                    <p style="color: var(--gold); font-style: italic;">ПСТГУ</p>
+                <div class="clergy-data-list">
+                    <p><strong>Год рождения:</strong> 1984</p>
+                    <p><strong>Образование:</strong> Православный Свято-Тихоновский гуманитарный университет</p>
+                    <p><strong>Год хиротонии:</strong> 2008</p>
                 </div>
             </div>
         </div>
@@ -142,9 +85,10 @@
             <div class="clergy-info">
                 <span class="clergy-rank">Иерей</span>
                 <h4>Александр Алешин</h4>
-                <div class="clergy-data">
-                    <p>Хиротония: 2017</p>
-                    <p style="color: var(--gold); font-style: italic;">ВПДС</p>
+                <div class="clergy-data-list">
+                    <p><strong>Год рождения:</strong> 1985</p>
+                    <p><strong>Образование:</strong> Воронежская православная духовная семинария</p>
+                    <p><strong>Год хиротонии:</strong> 2017</p>
                 </div>
             </div>
         </div>
@@ -155,9 +99,10 @@
             <div class="clergy-info">
                 <span class="clergy-rank">Иерей</span>
                 <h4>Александр Лихошерст</h4>
-                <div class="clergy-data">
-                    <p>Хиротония: 2018</p>
-                    <p style="color: var(--gold); font-style: italic;">ВДС</p>
+                <div class="clergy-data-list">
+                    <p><strong>Год рождения:</strong> 1992</p>
+                    <p><strong>Образование:</strong> Воронежская духовная семинария</p>
+                    <p><strong>Год хиротонии:</strong> 2018</p>
                 </div>
             </div>
         </div>
@@ -168,9 +113,10 @@
             <div class="clergy-info">
                 <span class="clergy-rank">Иерей</span>
                 <h4>Павел Пигелев</h4>
-                <div class="clergy-data">
-                    <p>Хиротония: 2020</p>
-                    <p style="color: var(--gold); font-style: italic;">СПбДА</p>
+                <div class="clergy-data-list">
+                    <p><strong>Год рождения:</strong> 1994</p>
+                    <p><strong>Образование:</strong> Санкт-Петербургская духовная академия</p>
+                    <p><strong>Год хиротонии:</strong> 2020</p>
                 </div>
             </div>
         </div>
@@ -181,15 +127,16 @@
             <div class="clergy-info">
                 <span class="clergy-rank">Иерей</span>
                 <h4>Олег Мальцев</h4>
-                <div class="clergy-data">
-                    <p>Хиротония: 2025</p>
-                    <p style="color: var(--gold); font-style: italic;">ПДС, ЛГПУ</p>
+                <div class="clergy-data-list">
+                    <p><strong>Год рождения:</strong> 1978</p>
+                    <p><strong>Образование:</strong> Пензенская духовная семинария, Липецкий государственный педагогический университет</p>
+                    <p><strong>Год хиротонии:</strong> 2025</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <h3 class="section-title-gold" style="font-size: 24px; margin-top: 60px; margin-bottom: 40px;">Диаконский чин</h3>
+    <h3 class="section-title-gold" style="font-size: 24px; margin-top: 60px;">Диаконский чин</h3>
     
     <div class="clergy-grid">
         <!-- Кантарюк -->
@@ -198,9 +145,10 @@
             <div class="clergy-info">
                 <span class="clergy-rank">Диакон</span>
                 <h4>Андрей Кантарюк</h4>
-                <div class="clergy-data">
-                    <p>Хиротония: 2017</p>
-                    <p style="color: var(--gold); font-style: italic;">ОДС</p>
+                <div class="clergy-data-list">
+                    <p><strong>Год рождения:</strong> 1995</p>
+                    <p><strong>Образование:</strong> Одесская духовная семинария</p>
+                    <p><strong>Год хиротонии:</strong> 2017</p>
                 </div>
             </div>
         </div>
@@ -211,39 +159,12 @@
             <div class="clergy-info">
                 <span class="clergy-rank">Диакон</span>
                 <h4>Диомид Пигелев</h4>
-                <div class="clergy-data">
-                    <p>Хиротония: 2023</p>
-                    <p style="color: var(--gold); font-style: italic;">СПбДА</p>
+                <div class="clergy-data-list">
+                    <p><strong>Год рождения:</strong> 2000</p>
+                    <p><strong>Образование:</strong> Санкт-Петербургская духовная академия</p>
+                    <p><strong>Год хиротонии:</strong> 2023</p>
                 </div>
             </div>
         </div>
     </div>
 </main>
-
-<footer class="site-footer-light">
-    <div class="container footer-content">
-        <div class="footer-block">
-            <h5>Навигация</h5>
-            <a href="index.html">Главная</a>
-            <a href="about.html">О соборе</a>
-            <a href="schedule.html">Расписание</a>
-            <a href="#">Подать записку</a>
-        </div>
-        <div class="footer-block">
-            <h5>Контакты</h5>
-            <p><i class="fas fa-map-marker-alt"></i> Липецк, Соборная пл., 4</p>
-            <p><i class="fas fa-phone"></i> +7 (4742) 27-04-78</p>
-        </div>
-        <div class="footer-block">
-            <h5>Мы в соцсетях</h5>
-            <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a>
-            <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
-    </div>
-</footer>
-
-</body>
-</html>
