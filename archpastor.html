@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
+
 <header class="main-header">
     <div class="logo-expansive-container">
         <div class="logo-flex-row">
@@ -16,16 +17,13 @@
                 <h1 class="title-main">Христорождественский</h1>
                 <h2 class="title-secondary">кафедральный собор</h2>
                 <h3 class="title-sub">г. Липецка</h3>
-                <div class="vignette-divider">
+                <div class="art-divider">
                     <svg viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 10 C 40 10, 70 15, 110 10 S 170 5, 200 10 S 240 15, 300 10 S 370 10, 400 10" stroke="#C5A059" stroke-width="1.2" fill="transparent" stroke-linecap="round" />
-                        <path d="M140 12 Q 200 18, 260 12" stroke="#C5A059" stroke-width="0.5" fill="transparent" opacity="0.4" />
+                        <path d="M0 10 L150 10 C170 10 180 0 200 10 C220 20 230 10 250 10 L400 10" stroke="#EAE3D5" fill="transparent" />
+                        <circle cx="200" cy="10" r="3" fill="#C5A059" />
                     </svg>
                 </div>
-                <div class="church-meta-info">
-                    <p class="patriarchate-text">Московский Патриархат</p>
-                    <p class="metropolia-text">Липецкая митрополия</p>
-                </div>
+                <p class="church-meta">Московский Патриархат <br> <span>Липецкая митрополия</span></p>
             </div>
         </div>
     </div>
@@ -38,48 +36,63 @@
                     <li><a href="clergy.html">Духовенство</a></li>
                     <li><a href="archpastor.html">Архипастырь</a></li>
                     <li><a href="school.html">Воскресная школа</a></li>
+                    <li><a href="pilgrimage.html">Паломнические поездки</a></li>
+                    <li><a href="choir.html">Архиерейский хор</a></li>
                 </ul>
             </li>
             <li><a href="schedule.html">Расписание</a></li>
             <li class="has-dropdown"><a href="#">Служение</a>
                 <ul class="dropdown-menu">
                     <li><a href="social.html">Социальное служение</a></li>
-                    <li><a href="missionary.html">В других храмах</a></li>
+                    <li><a href="missionary.html">Служение в других храмах</a></li>
                 </ul>
             </li>
+            <li><a href="publications.html">Публикации</a></li>
             <li><a href="contacts.html">Контакты</a></li>
             <li><a href="#" class="btn-note">Подать записку</a></li>
         </ul>
     </nav>
 </header>
 
-<main class="container page-content">
+<main class="container">
     <section class="arch-profile">
         <div class="arch-image-wrap"><img src="archierey.jpg" alt="Митрополит Арсений" class="arch-photo"></div>
         <div class="arch-title-wrap">
-            <span class="label-top">Глава Липецкой митрополии</span>
-            <h2 class="arch-name">Владыка Арсений</h2>
-            <p class="arch-full-rank">Митрополит Липецкий и Задонский</p>
+            <h2 class="arch-name" style="font-size: 32px;">Высокопреосвященнейший Арсений</h2>
+            <p style="font-family: 'PT Serif'; font-style: italic; font-size: 22px; color: var(--gold);">Митрополит Липецкий и Задонский</p>
         </div>
     </section>
 
-    <section class="bio-section">
-        <h3 class="section-title-gold">Биография</h3>
-        <div class="bio-text">
-            <p>Митрополит Арсений родился 3 марта 1955 года. Его духовный путь связан с именами выдающихся иерархов Русской Церкви.</p>
-            <div class="bio-milestones">
-                <div class="milestone"><span class="year">1989</span><div class="milestone-dot"></div><p>Хиротония во епископа</p></div>
-                <div class="milestone"><span class="year">1997</span><div class="milestone-dot"></div><p>Сан архиепископа</p></div>
-                <div class="milestone"><span class="year">2014</span><div class="milestone-dot"></div><p>Сан митрополита</p></div>
-                <div class="milestone"><span class="year">2019</span><div class="milestone-dot"></div><p>Глава митрополии</p></div>
-            </div>
+    <section class="bio-content">
+        <h3 style="text-align: center; font-family: 'PT Serif'; color: var(--gold); font-size: 28px;">Биография</h3>
+        <p>Митрополит Липецкий и Задонский Арсений (Епифанов Юрий Александрович) родился 3 марта 1955 года в Московской области.</p>
+        <p>В 1976-1979 гг. учился в Московской духовной семинарии, затем – в Московской духовной академии (окончил в 1983 г.). В 1983-1989 гг. являлся личным секретарем митрополита Ленинградского Алексия (будущего Патриарха Алексия II).</p>
+        
+        <div class="bio-milestones">
+            <div class="milestone"><span class="year">1984</span><p>Диаконская хиротония</p></div>
+            <div class="milestone"><span class="year">1989</span><p>Постриг и хиротония во епископа</p></div>
+            <div class="milestone"><span class="year">1997</span><p>Возведен в сан архиепископа</p></div>
+            <div class="milestone"><span class="year">2014</span><p>Возведен в сан митрополита</p></div>
+            <div class="milestone"><span class="year">2019</span><p>Глава Липецкой митрополии</p></div>
         </div>
+
+        <p>Участвовал в освидетельствовании святых мощей: Александра Невского, Соловецких чудотворцев, Серафима Саровского, Патриарха Тихона, блж. Матроны Московской. С 1998 года возглавляет Научно-редакционный совет по изданию «Православной энциклопедии».</p>
     </section>
 
-    <section class="awards-section">
-        <div class="awards-grid">
-            <div class="awards-block"><h4>Церковные награды</h4><ul><li>Орден прп. Серафима Саровского II ст.</li><li>Орден св. кн. Даниила Московского II ст.</li></ul></div>
-            <div class="awards-block"><h4>Светские награды</h4><ul><li>Государственный орден Дружбы</li><li>Медаль «За заслуги перед Отечеством» II ст.</li></ul></div>
+    <section class="awards" style="margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+        <div><h4 style="font-family: 'PT Serif'; border-bottom: 1px solid var(--gold);">Церковные награды</h4>
+            <ul style="font-size: 14px; list-style: none; padding: 0;">
+                <li>• Орден прп. Серафима Саровского II ст.</li>
+                <li>• Орден св. Даниила Московского II и III ст.</li>
+                <li>• Орден св. князя Владимира III ст.</li>
+            </ul>
+        </div>
+        <div><h4 style="font-family: 'PT Serif'; border-bottom: 1px solid var(--gold);">Светские награды</h4>
+            <ul style="font-size: 14px; list-style: none; padding: 0;">
+                <li>• Государственный орден Дружбы</li>
+                <li>• Медаль «За заслуги перед Отечеством» II ст.</li>
+                <li>• Медаль «В память 850-летия Москвы»</li>
+            </ul>
         </div>
     </section>
 </main>
