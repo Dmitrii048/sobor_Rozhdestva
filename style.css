@@ -52,14 +52,15 @@
     margin: 0;
     letter-spacing: 1px;
 }
-.title-secondary { font-family: 'PT Serif', serif; font-size: 30px; font-weight: 400; color: #C5A059; margin: 0; letter-spacing: 1px; }
+.title-secondary { font-family: 'PT Serif', serif; font-size: 30px; font-weight: 400; color: #C5A059; margin: -5px 0 0 0; letter-spacing: 1px; }
 }
 .title-sub {
     font-family: 'PT Serif', serif;
-    font-style: italic; /* Изящный курсив */
+    font-style: italic;
     font-size: 22px;
     font-weight: 400;
-    color: #2C2C2C; /* Золотой оттенок для подзаголовка */
+    color: #C5A059; /* Тот же золотой цвет */
+    opacity: 0.8;   /* Легкая прозрачность для мягкости */
     margin-top: 5px;
 }
 
