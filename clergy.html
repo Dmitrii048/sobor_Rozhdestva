@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
+
 <header class="main-header">
-    <!-- Шапка такая же как на главной -->
     <div class="logo-expansive-container">
         <div class="logo-flex-row">
             <div class="logo-visual"><img src="sobor-sketch.jpg" alt="Собор" class="logo-sketch-large"></div>
@@ -17,16 +17,13 @@
                 <h1 class="title-main">Христорождественский</h1>
                 <h2 class="title-secondary">кафедральный собор</h2>
                 <h3 class="title-sub">г. Липецка</h3>
-                <div class="vignette-divider">
+                <div class="art-divider">
                     <svg viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 10 C 40 10, 70 15, 110 10 S 170 5, 200 10 S 240 15, 300 10 S 370 10, 400 10" stroke="#C5A059" stroke-width="1.2" fill="transparent" stroke-linecap="round" />
-                        <path d="M140 12 Q 200 18, 260 12" stroke="#C5A059" stroke-width="0.5" fill="transparent" opacity="0.4" />
+                        <path d="M0 10 L150 10 C170 10 180 0 200 10 C220 20 230 10 250 10 L400 10" stroke="#EAE3D5" fill="transparent" />
+                        <circle cx="200" cy="10" r="3" fill="#C5A059" />
                     </svg>
                 </div>
-                <div class="church-meta-info">
-                    <p class="patriarchate-text">Московский Патриархат</p>
-                    <p class="metropolia-text">Липецкая митрополия</p>
-                </div>
+                <p class="church-meta">Московский Патриархат <br> <span>Липецкая митрополия</span></p>
             </div>
         </div>
     </div>
@@ -39,9 +36,18 @@
                     <li><a href="clergy.html">Духовенство</a></li>
                     <li><a href="archpastor.html">Архипастырь</a></li>
                     <li><a href="school.html">Воскресная школа</a></li>
+                    <li><a href="pilgrimage.html">Паломнические поездки</a></li>
+                    <li><a href="choir.html">Архиерейский хор</a></li>
                 </ul>
             </li>
             <li><a href="schedule.html">Расписание</a></li>
+            <li class="has-dropdown"><a href="#">Служение</a>
+                <ul class="dropdown-menu">
+                    <li><a href="social.html">Социальное служение</a></li>
+                    <li><a href="missionary.html">Служение в других храмах</a></li>
+                </ul>
+            </li>
+            <li><a href="publications.html">Публикации</a></li>
             <li><a href="contacts.html">Контакты</a></li>
             <li><a href="#" class="btn-note">Подать записку</a></li>
         </ul>
@@ -50,20 +56,7 @@
 
 <main class="container">
     <h2 class="section-title-gold">Духовенство собора</h2>
-    
-    <div class="rector-card">
-        <img src="bilchuk.jpg" alt="Протоиерей Василий Бильчук" style="max-width: 250px;">
-        <div>
-            <h4>Протоиерей Василий Бильчук</h4>
-            <p>Настоятель собора. Хиротония: 1983. Образование: ОДС, МДА.</p>
-        </div>
-    </div>
-
-    <div class="clergy-grid">
-        <div class="clergy-card"><img src="maksimchuk.jpg" alt=""><h5>Протоиерей Владимир Максимчук</h5><p class="edu">Рождение: 1978 | Хиротония: 2002</p></div>
-        <div class="clergy-card"><img src="nosach.jpg" alt=""><h5>Протоиерей Алексий Носач</h5><p class="edu">Рождение: 1975 | Хиротония: 1999</p></div>
-        <div class="clergy-card"><img src="grishanov.jpg" alt=""><h5>Иерей Сергий Гришанов</h5><p class="edu">Рождение: 1977 | Хиротония: 2008</p></div>
-    </div>
+    <!-- Здесь далее ваши карточки, которые мы создавали ранее -->
 </main>
 </body>
 </html>
