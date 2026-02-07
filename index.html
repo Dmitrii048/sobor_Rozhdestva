@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Христорождественский Кафедральный собор</title>
+    <title>Христорождественский Кафедральный собор г. Липецка</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Иконки для карточек -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -13,58 +15,112 @@
 <header class="main-header">
     <div class="logo-expansive-container">
         <div class="logo-flex-row">
-            <div class="logo-visual"><img src="sobor-sketch.jpg" alt="Собор" class="logo-sketch-large"></div>
+            <!-- Рисунок собора -->
+            <div class="logo-visual">
+                <img src="sobor-sketch.jpg" alt="Христорождественский собор" class="logo-sketch-large">
+            </div>
+
+            <!-- Текстовый блок логотипа (Ваши настройки) -->
             <div class="logo-brand-area">
                 <h1 class="title-main">Христорождественский</h1>
                 <h2 class="title-secondary">кафедральный собор</h2>
                 <h3 class="title-sub">г. Липецка</h3>
-                <div class="vignette-divider">
+                
+                <!-- Та самая художественная линия с золотой точкой -->
+                <div class="art-divider">
                     <svg viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 10 C 40 10, 70 15, 110 10 S 170 5, 200 10 S 240 15, 300 10 S 370 10, 400 10" stroke="#C5A059" stroke-width="1.2" fill="transparent" stroke-linecap="round" />
-                        <path d="M140 12 Q 200 18, 260 12" stroke="#C5A059" stroke-width="0.5" fill="transparent" opacity="0.4" />
+                        <path d="M0 10 L150 10 C170 10 180 0 200 10 C220 20 230 10 250 10 L400 10" stroke="#EAE3D5" fill="transparent" />
+                        <circle cx="200" cy="10" r="3" fill="#C5A059" />
                     </svg>
                 </div>
-                <div class="church-meta-info">
-                    <p class="patriarchate-text">Московский Патриархат</p>
-                    <p class="metropolia-text">Липецкая митрополия</p>
-                </div>
+                
+                <p class="church-meta">
+                    Московский Патриархат <br>
+                    <span>Липецкая митрополия</span>
+                </p>
             </div>
         </div>
     </div>
+
+    <!-- Единое меню (со всеми пунктами) -->
     <nav class="main-nav">
         <ul>
             <li><a href="index.html">Главная</a></li>
-            <li class="has-dropdown"><a href="#">О соборе</a>
+            
+            <li class="has-dropdown">
+                <a href="#">О соборе</a>
                 <ul class="dropdown-menu">
                     <li><a href="about.html">Летопись храма</a></li>
                     <li><a href="clergy.html">Духовенство</a></li>
                     <li><a href="archpastor.html">Архипастырь</a></li>
                     <li><a href="school.html">Воскресная школа</a></li>
+                    <li><a href="pilgrimage.html">Паломнические поездки</a></li>
+                    <li><a href="choir.html">Архиерейский хор</a></li>
                 </ul>
             </li>
+
             <li><a href="schedule.html">Расписание</a></li>
-            <li class="has-dropdown"><a href="#">Служение</a>
+
+            <li class="has-dropdown">
+                <a href="#">Служение</a>
                 <ul class="dropdown-menu">
                     <li><a href="social.html">Социальное служение</a></li>
                     <li><a href="missionary.html">Служение в других храмах</a></li>
                 </ul>
             </li>
+
+            <li><a href="publications.html">Публикации</a></li>
             <li><a href="contacts.html">Контакты</a></li>
+            
             <li><a href="#" class="btn-note">Подать записку</a></li>
         </ul>
     </nav>
 </header>
 
 <main class="container">
+    <!-- Приветственный блок -->
     <section class="welcome-section">
-        <h1>Добро пожаловать</h1>
-        <p class="welcome-text">«Христорождественский собор — это не только памятник архитектуры классицизма, но и живое сердце духовной жизни Липецкого края».</p>
+        <h2 style="font-family: 'PT Serif', serif; font-size: 2.5rem; margin-bottom: 25px; font-weight: 400;">Добро пожаловать</h2>
+        <p class="welcome-text">
+            Христорождественский собор — это не только памятник архитектуры классицизма, 
+            но и живое сердце духовной жизни Липецкого края. Здесь на протяжении столетий 
+            возносится молитва о граде нашем и его жителях.
+        </p>
     </section>
+
+    <!-- Сетка карточек (Жизнь прихода) -->
     <section class="info-grid">
-        <div class="info-card"><i class="fas fa-graduation-cap"></i><h3>Воскресная школа</h3><p>Духовное воспитание детей и творчество.</p><a href="school.html" class="card-link">ПОДРОБНЕЕ →</a></div>
-        <div class="info-card"><i class="fas fa-clock"></i><h3>Богослужения</h3><p>Расписание утренних и вечерних служб.</p><a href="schedule.html" class="card-link">ГРАФИК →</a></div>
-        <div class="info-card"><i class="fas fa-heart"></i><h3>Наше служение</h3><p>Миссионерская и социальная деятельность.</p><a href="social.html" class="card-link">УЗНАТЬ БОЛЬШЕ →</a></div>
+        
+        <div class="info-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Воскресная школа</h3>
+            <p>Духовное воспитание детей в школе «Светоч», творческие кружки и праздники для всей семьи.</p>
+            <a href="school.html" class="card-link">СТРАНИЦА ШКОЛЫ →</a>
+        </div>
+
+        <div class="info-card">
+            <i class="fas fa-clock"></i>
+            <h3>Богослужения</h3>
+            <p>Ознакомьтесь с актуальным графиком утренних и вечерних служб в нашем соборе на текущую неделю.</p>
+            <a href="schedule.html" class="card-link">ГРАФИК СЛУЖБ →</a>
+        </div>
+
+        <div class="info-card">
+            <i class="fas fa-heart"></i>
+            <h3>Наше служение</h3>
+            <p>Миссионерская деятельность, социальная помощь нуждающимся и окормление больниц.</p>
+            <a href="social.html" class="card-link">УЗНАТЬ БОЛЬШЕ →</a>
+        </div>
+
     </section>
 </main>
+
+<footer style="margin-top: 60px; padding: 50px 0; border-top: 1px solid var(--border); text-align: center; color: #999; font-size: 13px; background: #fafafa;">
+    <div class="container">
+        <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
+        <p style="margin-top: 10px;">Липецкая и Задонская епархия</p>
+    </div>
+</footer>
+
 </body>
 </html>
