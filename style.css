@@ -1,163 +1,78 @@
 :root {
     --gold: #C5A059;
-    --text-main: #2C2C2C;
+    --text-dark: #2C2C2C;
     --border: #F0EDE8;
     --font-serif: 'PT Serif', serif;
+    --font-sans: 'Open Sans', sans-serif;
 }
 
-/* --- ПРЕМИАЛЬНАЯ ШАПКА: ИЕРАРХИЯ И ЗОЛОТО --- */
-/* --- ЭКСПАНСИВНАЯ (ШИРОКАЯ) ШАПКА --- */
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background-color: #fff;
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- ВЕЛИЧЕСТВЕННАЯ ШАПКА --- */
+.main-header {
+    padding: 30px 0 0 0;
+    text-align: center;
+}
 
 .logo-expansive-container {
-    max-width: 1400px; /* Занимаем больше места вширь */
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 20px 40px;
 }
 
 .logo-flex-row {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Распределяем по краям */
+    justify-content: center;
     gap: 60px;
 }
 
-/* Рисунок собора */
-.logo-visual {
-    flex: 1.2; /* Отдаем больше места под рисунок */
-    text-align: left;
-}
-
 .logo-sketch-large {
-    width: 100%;
-    max-width: 650px; /* Увеличили размер рисунка */
+    max-width: 620px;
     height: auto;
     mix-blend-mode: multiply;
-    filter: contrast(1.05) brightness(1.02);
+    filter: contrast(1.05);
 }
 
-
-/* Текстовый блок логотипа */
 .logo-brand-area {
-    flex: 1;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 550px;
 }
 
-.title-main {
-    font-family: 'PT Serif', serif;
-    font-size: 42px;
-    font-weight: 400;
-    color: #C5A059;
-    margin: 0;
-    letter-spacing: 1px;
-    line-height: 1.1;
-}
+.title-main { font-family: var(--font-serif); font-size: 42px; color: var(--gold); margin: 0; line-height: 1.1; font-weight: 400; }
+.title-secondary { font-family: var(--font-serif); font-size: 30px; color: var(--gold); margin: 0; line-height: 1.1; font-weight: 400; }
+.title-sub { font-family: var(--font-serif); font-style: italic; font-size: 24px; color: var(--gold); margin-top: 10px; opacity: 0.9; }
 
-.title-secondary {
-    font-family: 'PT Serif', serif;
-    font-size: 30px;
-    font-weight: 400;
-    color: #C5A059;
-    margin: 0;
-    letter-spacing: 3px;
-    line-height: 1.1;
-}
-
-.title-sub {
-    font-family: 'PT Serif', serif;
-    font-size: 24px; /* Сделал чуть крупнее для изящества */
-    font-weight: 400;
-    color: #C5A059; /* Теперь точно будет золотым */
-    margin-top: 5px;
-    opacity: 0.9;
-}
-
-/* Художественная линия */
-.art-divider {
+/* ХУДОЖЕСТВЕННАЯ ЛИНИЯ (ВИНИЕТКА) */
+.vignette-divider {
     width: 100%;
-    max-width: 380px;
-    margin: 20px 0;
+    max-width: 400px;
+    margin: 15px 0;
 }
 
-.art-divider svg {
-    width: 100%;
-    height: auto;
-}
+.patriarchate-text { font-family: var(--font-sans); text-transform: uppercase; font-size: 11px; letter-spacing: 5px; color: #999; margin: 0; }
+.metropolia-text { font-family: var(--font-sans); text-transform: uppercase; font-size: 11px; letter-spacing: 7px; font-weight: 700; color: #777; margin: 5px 0 0 0; }
 
-/* Мета-информация (Патриархат) */
-.church-meta {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 4px; /* Широкий, "дорогой" разлет букв */
-    line-height: 1.8;
-    color: #999;
-    margin: 0;
-}
-
-.church-meta span {
-    font-weight: 700;
-    color: #777;
-}
-
-/* Навигация (уточнение) */
+/* --- НАВИГАЦИЯ --- */
 .main-nav {
-    border-top: 1px solid #F2EEE8;
-    border-bottom: 1px solid #F2EEE8;
-    margin-top: 10px;
-}
-
-/* Адаптив для средних экранов */
-@media (max-width: 1100px) {
-    .logo-flex-row {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-    }
-    .title-main { font-size: 32px; }
-}
-/* --- ВЕЛИЧЕСТВЕННОЕ МЕНЮ (ИСПРАВЛЕНИЕ ОШИБОК) --- */
-.main-nav {
-    border-top: 1px solid #C5A059;
-    border-bottom: 3px double #F0EDE8;
+    border-top: 1px solid var(--gold);
+    border-bottom: 3px double var(--border);
     background: #fff;
-    margin-top: 20px;
-}
-
-.main-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.main-nav > ul > li {
-    position: relative;
-    padding: 0; /* Убираем падинги тут, переносим в ссылки */
-}
-
-.main-nav > ul > li > a {
-    display: block;
-    padding: 20px 25px;
-    font-family: 'PT Serif', serif;
-    text-transform: uppercase;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    color: #333;
-    text-decoration: none;
-}
-
-/* ВЫПАДАЮЩЕЕ МЕНЮ: СТРОГО В СТОЛБИК */
-/* --- ВЕЛИЧЕСТВЕННОЕ МЕНЮ --- */
-.main-nav {
-    border-top: 1px solid #C5A059;
-    border-bottom: 3px double #F0EDE8;
-    background: #fff;
-    margin-top: 20px;
+    margin-top: 25px;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -176,14 +91,17 @@
     padding: 20px 25px;
     text-decoration: none;
     color: #333;
-    font-family: 'PT Serif', serif;
+    font-family: var(--font-serif);
     text-transform: uppercase;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 1.5px;
+    transition: 0.3s;
 }
 
-/* ВЫПАДАЮЩЕЕ МЕНЮ (ИСПРАВЛЕНИЕ: СТРОГО В СТОЛБИК) */
+.main-nav > ul > li:hover > a { color: var(--gold); }
+
+/* ВЫПАДАЮЩЕЕ МЕНЮ */
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -193,25 +111,21 @@
     min-width: 280px;
     padding: 15px 0;
     box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-    border: 1px solid #C5A059;
-    
-    display: block !important; /* ЗАПРЕЩАЕМ FLEX, ТОЛЬКО БЛОК */
+    border: 1px solid var(--gold);
+    display: block !important;
     opacity: 0;
     visibility: hidden;
     transition: 0.3s ease;
 }
 
-.dropdown-menu li {
-    display: block !important; /* ГАРАНТИРУЕМ ПЕРЕНОС СТРОКИ */
-    width: 100%;
-}
+.dropdown-menu li { display: block !important; width: 100%; }
 
 .dropdown-menu a {
     display: block;
     padding: 12px 20px;
     text-align: center;
     text-transform: uppercase;
-    font-family: 'PT Serif', serif;
+    font-family: var(--font-serif);
     font-size: 11px;
     letter-spacing: 1px;
     color: #444;
@@ -219,318 +133,39 @@
     border-bottom: 1px solid #f9f9f9;
 }
 
-.has-dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-}
+.has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 
-.btn-note { background: #C5A059 !important; color: #fff !important; padding: 10px 20px !important; margin-top: 10px; }
+.btn-note { background: var(--gold) !important; color: #fff !important; padding: 10px 20px !important; margin-top: 10px; }
+
+/* --- СЕКЦИИ КОНТЕНТА --- */
+.welcome-section { padding: 80px 0; text-align: center; }
+.welcome-text { font-style: italic; max-width: 800px; margin: 0 auto; color: #666; font-size: 1.1rem; }
+
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding-bottom: 80px; }
+.info-card { border: 1px solid var(--border); padding: 40px 30px; text-align: center; transition: 0.4s; }
+.info-card:hover { border-color: var(--gold); }
+.info-card i { font-size: 28px; color: var(--gold); margin-bottom: 20px; display: block; }
+.card-link { color: var(--gold); font-weight: 700; text-decoration: none; font-size: 12px; }
+
 /* --- СТИЛИ СТРАНИЦЫ АРХИПАСТЫРЯ --- */
-
-.page-content { padding-top: 60px; }
-
-/* Профиль */
-.arch-profile {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    margin-bottom: 80px;
-}
-
-.arch-image-wrap {
-    flex: 1;
-    text-align: right;
-}
-
-.arch-photo {
-    max-width: 400px;
-    width: 100%;
-    border: 1px solid var(--gold);
-    padding: 10px; /* Эффект паспарту */
-    background: #fff;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-}
-
-.arch-title-wrap {
-    flex: 1.5;
-}
-
-.label-top {
-    font-family: 'Open Sans', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 12px;
-    color: var(--gold);
-    font-weight: 700;
-}
-
-.arch-name {
-    font-family: 'PT Serif', serif;
-    font-size: 42px;
-    margin: 10px 0;
-    color: #2C2C2C;
-    line-height: 1.2;
-}
-
-.arch-full-rank {
-    font-family: 'PT Serif', serif;
-    font-style: italic;
-    font-size: 24px;
-    color: #666;
-}
-
-/* Секция биографии */
-.section-title-gold {
-    font-family: 'PT Serif', serif;
-    font-size: 28px;
-    color: var(--gold);
-    text-align: center;
-    margin-bottom: 40px;
-    position: relative;
-}
-
-.section-title-gold::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 1px;
-    background: var(--gold);
-    margin: 15px auto;
-}
-
-.bio-text {
-    max-width: 900px;
-    margin: 0 auto;
-    font-size: 17px;
-    color: #444;
-    text-align: justify;
-}
-
-/* Вехи (мини-таймлайн) */
-.bio-milestones {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin: 50px 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 30px 0;
-}
-
-.milestone .year {
-    font-family: 'PT Serif', serif;
-    font-weight: 700;
-    color: var(--gold);
-    font-size: 20px;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.milestone p {
-    font-size: 13px;
-    line-height: 1.4;
-    color: #777;
-    margin: 0;
-}
-
-/* Награды */
-.awards-grid {
-    display: flex;
-    justify-content: center;
-    gap: 100px;
-    margin-top: 60px;
-}
-
-.mini-title {
-    font-family: 'PT Serif', serif;
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    color: #2C2C2C;
-}
-
-.awards-block ul {
-    list-style: none;
-    padding: 0;
-}
-
-.awards-block li {
-    font-size: 14px;
-    margin-bottom: 10px;
-    color: #666;
-    position: relative;
-    padding-left: 20px;
-}
-
-.awards-block li::before {
-    content: '•';
-    color: var(--gold);
-    position: absolute;
-    left: 0;
-}
-
-/* Адаптив */
-@media (max-width: 900px) {
-    .arch-profile { flex-direction: column; text-align: center; }
-    .arch-image-wrap { text-align: center; }
-    .bio-milestones { grid-template-columns: 1fr 1fr; }
-    .awards-grid { flex-direction: column; gap: 40px; text-align: center; }
-}
-/* --- ЛИНИЯ ВРЕМЕНИ В БИОГРАФИИ --- */
-.bio-milestones {
-    display: flex;
-    justify-content: space-between;
-    margin: 60px 0;
-    position: relative; /* Нужно для позиционирования линии */
-    padding-bottom: 20px;
-}
-
-/* Сама горизонтальная линия */
+.arch-profile { display: flex; align-items: center; gap: 60px; margin: 60px 0; }
+.arch-photo { max-width: 400px; width: 100%; border: 1px solid var(--gold); padding: 10px; background: #fff; }
+.arch-name { font-family: var(--font-serif); font-size: 42px; margin: 10px 0; }
+.bio-milestones { display: flex; justify-content: space-between; margin: 60px 0; position: relative; }
 .bio-milestones::before {
-    content: '';
-    position: absolute;
-    top: 52px; /* Высота линии - под годом */
-    left: 5%;
-    right: 5%;
-    height: 1px;
+    content: ''; position: absolute; top: 52px; left: 5%; right: 5%; height: 1px;
     background: linear-gradient(to right, transparent, var(--gold), transparent);
-    z-index: 1;
 }
+.milestone { flex: 1; text-align: center; position: relative; z-index: 2; }
+.milestone .year { font-family: var(--font-serif); font-weight: 700; color: var(--gold); font-size: 24px; background: #fff; display: inline-block; padding: 0 10px; }
+.milestone-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; margin: 5px auto 15px; border: 2px solid #fff; box-shadow: 0 0 0 1px var(--gold); }
 
-.milestone {
-    flex: 1;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-    padding: 0 10px;
-}
+/* --- СТИЛИ ДУХОВЕНСТВА --- */
+.rector-card { display: flex; align-items: center; gap: 40px; border: 1px solid var(--gold); padding: 30px; margin-bottom: 60px; }
+.clergy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.clergy-card { border: 1px solid var(--border); text-align: center; padding-bottom: 20px; }
+.clergy-card img { width: 100%; height: 350px; object-fit: cover; }
+.clergy-card h5 { font-family: var(--font-serif); font-size: 18px; margin: 15px 0 5px; }
+.clergy-card .edu { color: var(--gold); font-style: italic; font-size: 13px; padding: 0 10px; }
 
-.milestone .year {
-    font-family: 'PT Serif', serif;
-    font-weight: 700;
-    color: var(--gold);
-    font-size: 24px;
-    display: block;
-    margin-bottom: 10px;
-    background: #fff; /* Белый фон, чтобы линия не пересекала цифры */
-    display: inline-block;
-    padding: 0 10px;
-}
-
-/* Точка на линии */
-.milestone-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--gold);
-    border-radius: 50%;
-    margin: 5px auto 15px;
-    border: 2px solid #fff;
-    box-shadow: 0 0 0 1px var(--gold);
-}
-
-.milestone p {
-    font-size: 13px;
-    line-height: 1.4;
-    color: #666;
-    margin: 0;
-}
-/* --- СТРАНИЦА ДУХОВЕНСТВА --- */
-
-.section-title-gold {
-    font-family: 'PT Serif', serif;
-    font-size: 32px;
-    color: var(--gold);
-    text-align: center;
-    margin: 60px 0 40px;
-}
-
-.clergy-rank-title {
-    font-family: 'PT Serif', serif;
-    font-size: 24px;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 10px;
-    margin-bottom: 40px;
-    color: #444;
-}
-
-/* Карточка настоятеля (особенная) */
-.rector-card {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    max-width: 900px;
-    margin: 0 auto 80px;
-    padding: 30px;
-    border: 1px solid var(--gold);
-    background: #fdfcfb;
-}
-
-.rector-card .clergy-photo {
-    max-width: 300px;
-    border: 1px solid #eee;
-}
-
-.rector-card h4 {
-    font-family: 'PT Serif', serif;
-    font-size: 28px;
-    margin: 0 0 10px 0;
-}
-
-/* Сетка для остальных клириков */
-.clergy-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-bottom: 80px;
-}
-
-.clergy-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    text-align: center;
-    transition: 0.3s;
-}
-
-.clergy-card:hover {
-    border-color: var(--gold);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-.clergy-card img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover; /* Фото обрезается по высоте ровно */
-    border-bottom: 1px solid var(--border);
-}
-
-.card-body {
-    padding: 20px;
-}
-
-.card-body h5 {
-    font-family: 'PT Serif', serif;
-    font-size: 18px;
-    margin: 0 0 10px 0;
-    line-height: 1.3;
-}
-
-.card-body p {
-    font-size: 13px;
-    color: #888;
-    margin: 5px 0;
-}
-
-.card-body .edu {
-    font-style: italic;
-    color: var(--gold);
-    margin-top: 10px;
-    line-height: 1.4;
-}
-
-/* Адаптив */
-@media (max-width: 768px) {
-    .rector-card { flex-direction: column; text-align: center; }
-}
+@media (max-width: 900px) { .logo-flex-row, .arch-profile, .rector-card { flex-direction: column; text-align: center; } .logo-sketch-large { max-width: 100%; } }
