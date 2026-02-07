@@ -21,100 +21,42 @@
     gap: 80px;
 }
 
+/* --- ЛОГО И ХУДОЖЕСТВЕННАЯ ЛИНИЯ --- */
 .logo-sketch-large {
     max-width: 650px;
     height: auto;
-    mix-blend-mode: multiply; /* Убирает серый фон рисунка */
-    filter: contrast(1.05);
+    mix-blend-mode: multiply;
 }
 
-.logo-brand-area {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 580px;
+.calligraphic-divider {
+    width: 100%;
+    max-width: 450px;
+    margin: 20px 0;
+    filter: drop-shadow(0 1px 1px rgba(197, 160, 89, 0.3));
 }
 
-/* Основное название */
 .main-name {
     font-family: 'PT Serif', serif;
     font-size: 38px;
-    color: #2C2C2C;
-    font-weight: 400;
-    display: block;
-    letter-spacing: 0.5px;
     line-height: 1.1;
+    color: #2C2C2C;
 }
 
-/* Изящный золотой курсив для города */
 .city-name {
     font-family: 'PT Serif', serif;
     font-style: italic;
-    font-size: 28px;
+    font-size: 26px;
     color: #C5A059;
+    margin-top: 10px;
     display: block;
-    margin-top: 10px;
 }
 
-/* Художественная полосочка */
-.artistic-divider {
-    width: 100%;
-    max-width: 450px;
-    margin: 15px 0;
-}
-
-.artistic-divider svg {
-    width: 100%;
-    height: auto;
-}
-
-/* ТОТ САМЫЙ ШРИФТ ИЗ ВТОРОГО СКРИНШОТА (Широкий разлёт) */
-.church-meta-info {
-    margin-top: 10px;
-}
-
-.patriarchate-text {
-    font-family: 'Open Sans', sans-serif;
-    text-transform: uppercase;
-    font-size: 11px;
-    letter-spacing: 5px; /* Очень широкий разлет для "воздуха" */
-    color: #999;
-    margin: 0;
-}
-
-.metropolia-text {
-    font-family: 'Open Sans', sans-serif;
-    text-transform: uppercase;
-    font-size: 11px;
-    letter-spacing: 7px; /* Еще более широкий разлет для фундаментальности */
-    font-weight: 700;
-    color: #777;
-    margin: 5px 0 0 0;
-}
-
-/* Навигация остается легкой */
+/* --- ВЕЛИЧЕСТВЕННОЕ МЕНЮ (ИСПРАВЛЕНИЕ ОШИБОК) --- */
 .main-nav {
-    border-top: 1px solid #F0EDE8;
-    border-bottom: 1px solid #F0EDE8;
-    margin-top: 15px;
+    border-top: 1px solid #C5A059;
+    border-bottom: 3px double #F0EDE8;
     background: #fff;
-}
-
-/* --- ОБНОВЛЕННОЕ ВЕЛИЧЕСТВЕННОЕ МЕНЮ --- */
-
-.main-nav {
-    /* Добавляем очень легкий кремовый фон, чтобы выделить меню */
-    background-color: #FDFCFB; 
-    
-    /* Делаем границы более "церковными" - двойная тонкая линия сверху */
-    border-top: 1px solid var(--gold); 
-    border-bottom: 3px double var(--border); 
-    
     margin-top: 20px;
-    position: sticky; /* Теперь меню будет "прилипать" к верху при скролле */
-    top: 0;
-    z-index: 1000;
 }
 
 .main-nav ul {
@@ -127,57 +69,77 @@
 
 .main-nav > ul > li {
     position: relative;
-    /* Увеличили отступы, чтобы пункты были крупнее */
-    padding: 10px 5px; 
+    padding: 0; /* Убираем падинги тут, переносим в ссылки */
 }
 
 .main-nav > ul > li > a {
     display: block;
-    padding: 15px 25px;
-    text-decoration: none;
-    color: var(--text-main);
-    
-    /* Используем PT Serif для благородства */
+    padding: 20px 25px;
     font-family: 'PT Serif', serif;
     text-transform: uppercase;
-    font-size: 14px; /* Увеличили размер */
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 1.5px;
-    transition: 0.3s all ease;
+    color: #333;
+    text-decoration: none;
 }
 
-/* Эффект при наведении на пункт меню */
-.main-nav > ul > li:hover > a {
-    color: var(--gold);
-    background: #fff; /* Пункт меню как бы "подсвечивается" белым */
-    box-shadow: 0 -3px 0 var(--gold) inset; /* Золотая линия снизу внутри пункта */
-}
-
-/* Кнопка "Подать записку" в меню (делаем её акцентной) */
-.btn-note {
-    background-color: var(--gold) !important;
-    color: #fff !important;
-    border: none !important;
-    padding: 12px 25px !important;
-    margin-left: 15px;
-    box-shadow: 0 4px 10px rgba(197, 160, 89, 0.3);
-}
-
-.btn-note:hover {
-    background-color: #b38f4d !important;
-    transform: translateY(-2px);
-}
-
-/* Исправляем выпадающее меню, чтобы оно сочеталось с новым стилем */
+/* ВЫПАДАЮЩЕЕ МЕНЮ: СТРОГО В СТОЛБИК */
 .dropdown-menu {
-    background: #ffffff;
-    border: 1px solid var(--gold);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #fff;
+    min-width: 280px;
+    padding: 15px 0;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    border: 1px solid #C5A059;
+    
+    /* Эти свойства лечат "кашу" */
+    display: block !important; 
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+    z-index: 9999;
+}
+
+.dropdown-menu li {
+    display: block !important; /* Гарантируем перенос строки */
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 .dropdown-menu a {
-    font-family: 'PT Serif', serif;
-    font-size: 13px;
-    letter-spacing: 1px;
+    display: block;
+    padding: 12px 30px;
+    text-align: center;
     text-transform: uppercase;
+    font-family: 'PT Serif', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #444;
+    text-decoration: none;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.dropdown-menu a:hover {
+    color: #C5A059;
+    background: #fdfaf5;
+}
+
+/* Показ при наведении */
+.has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.btn-note {
+    background: #C5A059 !important;
+    color: #fff !important;
+    padding: 10px 20px !important;
+    margin-top: 10px; /* Чтобы кнопка центровалась визуально */
 }
