@@ -152,6 +152,38 @@
 }
 
 /* ВЫПАДАЮЩЕЕ МЕНЮ: СТРОГО В СТОЛБИК */
+/* --- ВЕЛИЧЕСТВЕННОЕ МЕНЮ --- */
+.main-nav {
+    border-top: 1px solid #C5A059;
+    border-bottom: 3px double #F0EDE8;
+    background: #fff;
+    margin-top: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav > ul > li > a {
+    display: block;
+    padding: 20px 25px;
+    text-decoration: none;
+    color: #333;
+    font-family: 'PT Serif', serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+/* ВЫПАДАЮЩЕЕ МЕНЮ (ИСПРАВЛЕНИЕ: СТРОГО В СТОЛБИК) */
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -163,53 +195,37 @@
     box-shadow: 0 15px 40px rgba(0,0,0,0.1);
     border: 1px solid #C5A059;
     
-    /* Эти свойства лечат "кашу" */
-    display: block !important; 
+    display: block !important; /* ЗАПРЕЩАЕМ FLEX, ТОЛЬКО БЛОК */
     opacity: 0;
     visibility: hidden;
     transition: 0.3s ease;
-    z-index: 9999;
 }
 
 .dropdown-menu li {
-    display: block !important; /* Гарантируем перенос строки */
+    display: block !important; /* ГАРАНТИРУЕМ ПЕРЕНОС СТРОКИ */
     width: 100%;
-    padding: 0;
-    margin: 0;
 }
 
 .dropdown-menu a {
     display: block;
-    padding: 12px 30px;
+    padding: 12px 20px;
     text-align: center;
     text-transform: uppercase;
     font-family: 'PT Serif', serif;
     font-size: 11px;
-    letter-spacing: 2px;
-    font-weight: 700;
+    letter-spacing: 1px;
     color: #444;
     text-decoration: none;
     border-bottom: 1px solid #f9f9f9;
 }
 
-.dropdown-menu a:hover {
-    color: #C5A059;
-    background: #fdfaf5;
-}
-
-/* Показ при наведении */
 .has-dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
 }
 
-.btn-note {
-    background: #C5A059 !important;
-    color: #fff !important;
-    padding: 10px 20px !important;
-    margin-top: 10px; /* Чтобы кнопка центровалась визуально */
-}
+.btn-note { background: #C5A059 !important; color: #fff !important; padding: 10px 20px !important; margin-top: 10px; }
 /* --- СТИЛИ СТРАНИЦЫ АРХИПАСТЫРЯ --- */
 
 .page-content { padding-top: 60px; }
