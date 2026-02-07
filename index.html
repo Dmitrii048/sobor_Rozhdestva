@@ -3,47 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Христорождественский Кафедральный собор</title>
+    <title>Архипастырь | Христорождественский собор</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header class="main-header">
+    <!-- Шапка в точности как на главной -->
     <div class="logo-expansive-container">
         <div class="logo-flex-row">
-            <!-- Рисунок собора (теперь больше) -->
             <div class="logo-visual">
                 <img src="sobor-sketch.jpg" alt="Собор" class="logo-sketch-large">
             </div>
 
-            <!-- Художественная текстовая часть -->
             <div class="logo-brand-area">
-    <h1 class="title-main">Христорождественский</h1> 
-    <h2 class="title-secondary">кафедральный собор</h2>
-    <h3 class="title-sub">г. Липецка</h3>
+                <h1 class="church-title-group">
+                    <span class="main-name">Христорождественский <br> кафедральный собор</span>
+                    <span class="city-name">г. Липецка</span>
+                </h1>
                 
-                <!-- Художественная линия (SVG виньетка) -->
-                <div class="art-divider">
+                <div class="vignette-divider">
                     <svg viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 10 L150 10 C170 10 180 0 200 10 C220 20 230 10 250 10 L400 10" stroke="#EAE3D5" fill="transparent" />
-                        <circle cx="200" cy="10" r="3" fill="#C5A059" />
+                        <path d="M0 10 C 40 10, 70 15, 110 10 S 170 5, 200 10 S 240 15, 300 10 S 370 10, 400 10" 
+                              stroke="#C5A059" stroke-width="1.2" fill="transparent" stroke-linecap="round" />
+                        <path d="M140 12 Q 200 18, 260 12" stroke="#C5A059" stroke-width="0.5" fill="transparent" opacity="0.4" />
                     </svg>
                 </div>
                 
-                <p class="church-meta">
-                    Московский Патриархат <br>
-                    <span>Липецкая митрополия</span>
-                </p>
+                <div class="church-footer-info">
+                    <p class="patriarchate-text">Московский Патриархат</p>
+                    <p class="metropolia-text">Липецкая митрополия</p>
+                </div>
             </div>
         </div>
     </div>
-    
-    <!-- Навигация остается ниже -->
-</header>
 
-    <!-- МЕНЮ (ИСПРАВЛЕННОЕ) -->
+    <!-- Меню в точности как на главной -->
     <nav class="main-nav">
         <ul>
             <li><a href="index.html">Главная</a></li>
@@ -54,7 +50,7 @@
                     <li><a href="clergy.html">Духовенство</a></li>
                     <li><a href="archpastor.html">Архипастырь</a></li>
                     <li><a href="school.html">Воскресная школа</a></li>
-                    <li><a href="pilgrimage.html">Паломнические поездки</a></li>
+                    <li><a href="pilgrimage.html">Паломничество</a></li>
                     <li><a href="choir.html">Архиерейский хор</a></li>
                 </ul>
             </li>
@@ -72,49 +68,79 @@
         </ul>
     </nav>
 </header>
-    
+
+<main class="container page-content">
+    <section class="arch-profile">
+        <div class="arch-image-wrap">
+            <img src="archierey.jpg" alt="Митрополит Арсений" class="arch-photo">
         </div>
-    </header>
+        <div class="arch-title-wrap">
+            <span class="label-top">Глава Липецкой митрополии</span>
+            <h2 class="arch-name">Высокопреосвященнейший Арсений</h2>
+            <p class="arch-full-rank">Митрополит Липецкий и Задонский</p>
+        </div>
+    </section>
 
-    <main class="container">
-        <!-- Блок Приветствия -->
-        <section class="welcome-section">
-            <h1>Добро пожаловать</h1>
-            <p class="welcome-text">
-                Христорождественский собор — это не только памятник архитектуры классицизма, 
-                но и живое сердце духовной жизни Липецкого края.
-            </p>
-        </section>
-
-        <!-- Сетка карточек -->
-        <section class="info-grid">
+    <section class="bio-section">
+        <h3 class="section-title-gold">Биография</h3>
+        <div class="bio-text">
+            <p>Митрополит Липецкий и Задонский Арсений (Епифанов Юрий Александрович) родился 3 марта 1955 года в Московской области.</p>
+            <p>Его духовный путь тесно связан с именами выдающихся иерархов Русской Церкви. В течение многих лет он являлся личным секретарем будущего Патриарха Алексия II, разделяя с ним труды по возрождению церковной жизни в сложный исторический период.</p>
             
-            <div class="info-card">
-                <i class="fas fa-graduation-cap"></i>
-                <h3>Воскресная школа</h3>
-                <p>Детская школа «Светоч» приглашает воспитанников от 5 до 14 лет. Духовные беседы, творчество и праздники.</p>
-                <a href="school.html" class="card-link">СТРАНИЦА ШКОЛЫ →</a>
+            <!-- Линия времени (Timeline) -->
+            <div class="bio-milestones">
+                <div class="milestone">
+                    <span class="year">1989</span>
+                    <div class="milestone-dot"></div>
+                    <p>Хиротонисан во епископа Ладожского.</p>
+                </div>
+                <div class="milestone">
+                    <span class="year">1997</span>
+                    <div class="milestone-dot"></div>
+                    <p>Возведен в сан архиепископа за усердное служение.</p>
+                </div>
+                <div class="milestone">
+                    <span class="year">2014</span>
+                    <div class="milestone-dot"></div>
+                    <p>Возведен в сан митрополита в Храме Христа Спасителя.</p>
+                </div>
+                <div class="milestone">
+                    <span class="year">2019</span>
+                    <div class="milestone-dot"></div>
+                    <p>Назначен главой Липецкой митрополии.</p>
+                </div>
             </div>
 
-            <div class="info-card">
-                <i class="fas fa-clock"></i>
-                <h3>Богослужения</h3>
-                <p>Литургия совершается ежедневно. Узнайте время начала утренних и вечерних служб на текущую неделю.</p>
-                <a href="schedule.html" class="card-link">СМОТРЕТЬ ГРАФИК →</a>
-            </div>
+            <p>Владыка Арсений принимал активное участие в важнейших событиях истории Церкви, включая работу комиссий по освидетельствованию мощей великих святых: прп. Серафима Саровского, свт. Тихона, Патриарха Московского, и блж. Матроны Московской.</p>
+        </div>
+    </section>
 
-            <div class="info-card">
-                <i class="fas fa-heart"></i>
-                <h3>Наше служение</h3>
-                <p>Окормление больниц, помощь нуждающимся и миссионерская деятельность нашего прихода.</p>
-                <a href="ministry.html" class="card-link">УЗНАТЬ БОЛЬШЕ →</a>
+    <section class="awards-section">
+        <div class="awards-grid">
+            <div class="awards-block">
+                <h4 class="mini-title">Церковные награды</h4>
+                <ul>
+                    <li>Орден прп. Серафима Саровского II ст.</li>
+                    <li>Орден св. блгв. кн. Даниила Московского II и III ст.</li>
+                    <li>Орден св. равноап. кн. Владимира III ст.</li>
+                    <li>Медаль прп. Сергия Радонежского II ст.</li>
+                </ul>
             </div>
+            <div class="awards-block">
+                <h4 class="mini-title">Светские награды</h4>
+                <ul>
+                    <li>Государственный орден Дружбы</li>
+                    <li>Медаль «За заслуги перед Отечеством» II ст.</li>
+                    <li>Медаль «В память 850-летия Москвы»</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
 
-        </section>
-    </main>
-<a href="#" class="floating-note-btn">
-    <i class="fas fa-pen-fancy"></i>
-    <span>Подать записку</span>
-</a>
+<footer style="margin-top: 100px; padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: #999; font-size: 13px;">
+    <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
+</footer>
+
 </body>
 </html>
