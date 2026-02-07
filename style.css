@@ -1,152 +1,41 @@
-/* Переменные */
 :root {
     --gold: #C5A059;
     --text-main: #2C2C2C;
-    --text-muted: #666;
-    --bg-creme: #FDFCFB;
     --border: #F0EDE8;
     --font-serif: 'PT Serif', serif;
-    --font-sans: 'Open Sans', sans-serif;
 }
 
-body {
-    margin: 0;
-    font-family: var(--font-sans);
-    background-color: #fff;
-    color: var(--text-main);
-    line-height: 1.8;
-}
-
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* --- ХЕДЕР: ЛОГОТИП И МЕНЮ --- */
+/* --- ШАПКА --- */
 .main-header {
-    padding: 40px 0 0 0;
+    padding: 30px 0 10px 0;
+    background: #fff;
     text-align: center;
+}
+
+.logo-wrapper {
+    margin-bottom: 30px;
 }
 
 .logo-full {
-    max-width: 580px; 
-    width: 90%;
+    /* РАСШИРЯЕМ ЛОГОТИП */
+    max-width: 850px; /* Увеличили с 580 до 850 */
+    width: 95%;
     height: auto;
-    mix-blend-mode: multiply; /* Убирает серый фон логотипа */
-    filter: contrast(1.1);
-    transition: 0.3s;
+    mix-blend-mode: multiply; /* Убирает серый фон */
+    filter: contrast(1.05); /* Делает буквы четче */
+    transition: 0.3s ease;
 }
 
+/* --- НАВИГАЦИЯ (ИСПРАВЛЕННАЯ) --- */
 .main-nav {
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
-    margin-top: 20px;
-}
-
-.main-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.main-nav > ul > li {
+    background: #fff;
     position: relative;
-    padding: 15px 20px;
 }
 
-.main-nav a {
-    text-decoration: none;
-    color: var(--text-main);
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
-}
-
-.main-nav a:hover { color: var(--gold); }
-
-/* --- ПРИВЕТСТВИЕ --- */
-.welcome-section {
-    padding: 80px 0;
-    text-align: center;
-}
-
-.welcome-section h1 {
-    font-family: var(--font-serif);
-    font-size: 3rem;
-    margin-bottom: 20px;
-}
-
-.welcome-text {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.1rem;
-    color: var(--text-muted);
-}
-
-/* --- СЕТКА КАРТОЧЕК --- */
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    padding-bottom: 80px;
-}
-
-.info-card {
-    border: 1px solid var(--border);
-    padding: 40px 30px;
-    text-align: center;
-    transition: 0.4s;
-}
-
-.info-card:hover {
-    border-color: var(--gold);
-    background: var(--bg-creme);
-    transform: translateY(-5px);
-}
-
-.info-card i {
-    font-size: 28px;
-    color: var(--gold);
-    margin-bottom: 20px;
-    display: block;
-}
-
-.info-card h3 {
-    font-family: var(--font-serif);
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-}
-
-.card-link {
-    display: inline-block;
-    margin-top: 15px;
-    color: var(--gold);
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-/* Кнопка "Подать записку" */
-.btn-note {
-    border: 1px solid var(--gold) !important;
-    padding: 8px 15px !important;
-    color: var(--gold) !important;
-}
-/* --- ЛОГИКА ВЫПАДАЮЩЕГО МЕНЮ --- */
-
-.main-nav {
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    margin-top: 25px;
-    position: relative; /* Важно для позиционирования меню */
-}
-
-.main-nav ul {
+/* Главный список - строго в один ряд */
+.main-nav > ul {
     display: flex;
     justify-content: center;
     list-style: none;
@@ -155,41 +44,71 @@ body {
 }
 
 .main-nav > ul > li {
-    position: relative; /* Контейнер для выпадашки */
-    padding: 18px 20px;
+    position: relative; /* База для выпадающего меню */
 }
 
-.main-nav a {
+/* Ссылки верхнего уровня */
+.main-nav > ul > li > a {
+    display: block;
+    padding: 20px 20px;
     text-decoration: none;
     color: var(--text-main);
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 1.5px;
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
-/* Эффект наведения на главный пункт */
 .main-nav > ul > li:hover > a {
     color: var(--gold);
 }
 
-/* Стили выпадающего списка */
+/* --- ВЫПАДАЮЩЕЕ МЕНЮ (ИСПРАВЛЕНО) --- */
 .dropdown-menu {
     position: absolute;
-    top: 100%; /* Появляется ровно под меню */
+    top: 100%; /* Под главным пунктом */
     left: 50%;
-    transform: translateX(-50%) translateY(10px); /* Смещение для анимации */
+    transform: translateX(-50%) translateY(10px);
+    
     background: #ffffff;
-    min-width: 260px;
-    padding: 15px 0;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.07);
+    min-width: 280px; /* Ширина под длинные названия */
+    padding: 10px 0;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
     border: 1px solid var(--border);
-    display: block; /* Оставляем блоком, но скрываем визуально */
+    
+    /* СКРЫВАЕМ ПО УМОЛЧАНИЮ */
     opacity: 0;
     visibility: hidden;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: block; /* Сбрасываем flex на обычный блок! */
+    transition: all 0.3s ease;
     z-index: 1000;
+}
+
+/* Элементы внутри выпадашки - строго в столбик */
+.dropdown-menu li {
+    display: block; /* Каждый пункт с новой строки */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 25px;
+    text-align: left;
+    text-decoration: none;
+    text-transform: none; /* Обычный регистр для легкости */
+    font-size: 14px;
+    color: var(--text-main);
+    letter-spacing: 0.2px;
+    border-bottom: 1px solid #fcfcfc;
+    transition: 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f9f7f4;
+    color: var(--gold);
 }
 
 /* Показ при наведении */
@@ -199,43 +118,12 @@ body {
     transform: translateX(-50%) translateY(0);
 }
 
-.dropdown-menu li {
-    width: 100%;
-    text-align: left;
-}
-
-.dropdown-menu a {
-    display: block;
-    padding: 12px 25px;
-    text-transform: none; /* Обычный шрифт для легкого чтения */
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 0.3px;
-    color: var(--text-main);
-    border-bottom: 1px solid #f9f9f9;
-}
-
-.dropdown-menu li:last-child a {
-    border-bottom: none;
-}
-
-.dropdown-menu a:hover {
-    background-color: #fcfaf7;
-    color: var(--gold);
-}
-
-/* Особный стиль для кнопки "Подать записку" */
-.note-item {
-    display: flex;
-    align-items: center;
-}
-
+/* Кнопка "Подать записку" */
 .btn-note {
     border: 1px solid var(--gold) !important;
-    padding: 10px 20px !important;
+    padding: 8px 15px !important;
+    margin-left: 10px;
     color: var(--gold) !important;
-    background: transparent;
-    transition: 0.3s;
 }
 
 .btn-note:hover {
