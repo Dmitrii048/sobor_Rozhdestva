@@ -5,10 +5,10 @@
     --font-serif: 'PT Serif', serif;
 }
 
-/* --- ЦЕЛЬНАЯ ВЕЛИЧЕСТВЕННАЯ ШАПКА --- */
+/* --- ПРЕМИАЛЬНАЯ ШАПКА: ИЕРАРХИЯ И ЗОЛОТО --- */
 
 .logo-expansive-container {
-    max-width: 1300px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 30px 40px;
 }
@@ -17,96 +17,85 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 80px; /* Большое расстояние, чтобы рисунок и текст не теснились */
+    gap: 70px;
 }
 
-/* Рисунок */
 .logo-sketch-large {
-    max-width: 600px;
+    max-width: 650px;
     height: auto;
     mix-blend-mode: multiply;
-    filter: contrast(1.05);
+    filter: contrast(1.05) brightness(1.03);
 }
 
-/* Текстовый блок */
 .logo-brand-area {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 500px;
+    min-width: 550px;
 }
 
-/* Единое название: Христорождественский кафедральный собор */
-.church-full-title {
-    font-family: 'PT Serif', serif;
-    font-size: 38px; /* Уравновешенный размер */
-    font-weight: 400;
-    color: #2C2C2C;
+/* Группа названия */
+.church-title-group {
     margin: 0;
     line-height: 1.1;
-    letter-spacing: 0.5px;
-    text-transform: none; /* Естественное написание */
 }
 
-.church-full-title span {
-    font-size: 28px; /* Чуть меньше, но тот же шрифт и стиль */
+.main-name {
+    font-family: 'PT Serif', serif;
+    font-size: 36px;
+    color: #2C2C2C;
+    font-weight: 400;
     display: block;
-    margin-top: 10px;
-    color: #2C2C2C; /* Тот же цвет, что и у первой строки */
+    letter-spacing: 0.5px;
 }
 
-/* Разделитель */
-.elegant-divider {
-    display: flex;
-    align-items: center;
+.city-name {
+    font-family: 'PT Serif', serif;
+    font-style: italic; /* Курсив добавляет изящества */
+    font-size: 24px;
+    color: #8C6B30; /* Приглушенное золото для города */
+    display: block;
+    margin-top: 8px;
+}
+
+/* Та самая золотая художественная линия */
+.fancy-gold-divider {
     width: 100%;
-    max-width: 400px;
-    margin: 25px 0;
+    max-width: 420px;
+    margin: 20px 0;
 }
 
-.elegant-divider .line {
-    flex-grow: 1;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #EAE3D5, transparent);
+.fancy-gold-divider svg {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 2px 2px rgba(197, 160, 89, 0.2));
 }
 
-.elegant-divider .symbol {
-    padding: 0 15px;
-    color: #C5A059;
-    font-size: 14px;
-}
-
-/* Иерархия (Патриархат / Митрополия) */
-.church-hierarchy {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.patriarchate, .metropolia {
+/* Нижний блок (Патриархат и епархия) */
+.church-footer-info {
     font-family: 'Open Sans', sans-serif;
+}
+
+.church-footer-info p {
+    margin: 2px 0;
+    font-size: 12px;
     text-transform: uppercase;
-    font-size: 11px;
     letter-spacing: 3px;
-    margin: 0;
     color: #999;
 }
 
-.metropolia {
+.church-footer-info p.highlight {
     font-weight: 700;
-    color: #777;
-    letter-spacing: 4px;
+    color: #666;
+    letter-spacing: 4.5px; /* Очень широкий разлет для "статусности" */
+    margin-top: 5px;
 }
 
 /* Адаптивность */
-@media (max-width: 1100px) {
-    .logo-flex-row {
-        flex-direction: column;
-        gap: 30px;
-    }
-    .church-full-title { font-size: 32px; }
-    .church-full-title span { font-size: 24px; }
+@media (max-width: 1150px) {
+    .logo-flex-row { flex-direction: column; gap: 30px; }
+    .main-name { font-size: 30px; }
 }
 /* --- НАВИГАЦИЯ (ИСПРАВЛЕННАЯ) --- */
 .main-nav {
