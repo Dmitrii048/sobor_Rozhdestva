@@ -64,69 +64,76 @@
     color: var(--gold);
 }
 
-/* --- ВЫПАДАЮЩЕЕ МЕНЮ (ИСПРАВЛЕНО) --- */
+/* --- СТИЛЬНОЕ ВЫПАДАЮЩЕЕ МЕНЮ (ПРЕМИУМ) --- */
+
 .dropdown-menu {
     position: absolute;
-    top: 100%; /* Под главным пунктом */
+    top: 100%;
     left: 50%;
-    transform: translateX(-50%) translateY(10px);
+    transform: translateX(-50%) translateY(15px);
     
     background: #ffffff;
-    min-width: 280px; /* Ширина под длинные названия */
-    padding: 10px 0;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-    border: 1px solid var(--border);
+    min-width: 300px; /* Немного шире для солидности */
+    padding: 20px 0;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1); /* Глубокая мягкая тень */
+    border: 1px solid #EAE3D5;
     
-    /* СКРЫВАЕМ ПО УМОЛЧАНИЮ */
     opacity: 0;
     visibility: hidden;
-    display: block; /* Сбрасываем flex на обычный блок! */
-    transition: all 0.3s ease;
+    display: block;
+    transition: all 0.4s ease;
     z-index: 1000;
 }
 
-/* Элементы внутри выпадашки - строго в столбик */
 .dropdown-menu li {
-    display: block; /* Каждый пункт с новой строки */
+    display: block;
     width: 100%;
-    margin: 0;
-    padding: 0;
 }
 
 .dropdown-menu a {
     display: block;
-    padding: 12px 25px;
-    text-align: left;
+    padding: 12px 30px;
+    text-align: center; /* Центрируем для торжественности */
     text-decoration: none;
-    text-transform: none; /* Обычный регистр для легкости */
-    font-size: 14px;
+    
+    /* ТЕПЕРЬ ТЕКСТ ВЫГЛЯДИТ ТАК ЖЕ, КАК ВЕРХНЕЕ МЕНЮ */
+    font-family: var(--font-serif); /* Используем благородный шрифт с засечками */
+    text-transform: uppercase;     /* Заглавные буквы */
+    font-size: 11px;               /* Но чуть меньше основного меню */
+    font-weight: 700;
+    letter-spacing: 2px;           /* Благородный разлет букв */
     color: var(--text-main);
-    letter-spacing: 0.2px;
-    border-bottom: 1px solid #fcfcfc;
-    transition: 0.2s;
+    
+    transition: 0.3s;
+    position: relative;
 }
 
+/* Эффект при наведении на пункт в списке */
 .dropdown-menu a:hover {
-    background-color: #f9f7f4;
+    background-color: transparent;
     color: var(--gold);
 }
 
-/* Показ при наведении */
+/* Маленькая золотая точка или черточка при наведении (как в дорогих интерфейсах) */
+.dropdown-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: 0.3s;
+    transform: translateX(-50%);
+}
+
+.dropdown-menu a:hover::after {
+    width: 30px; /* Появляется тонкая золотая линия под словом */
+}
+
+/* Показ при наведении на родительский li */
 .has-dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
-}
-
-/* Кнопка "Подать записку" */
-.btn-note {
-    border: 1px solid var(--gold) !important;
-    padding: 8px 15px !important;
-    margin-left: 10px;
-    color: var(--gold) !important;
-}
-
-.btn-note:hover {
-    background: var(--gold) !important;
-    color: #fff !important;
 }
