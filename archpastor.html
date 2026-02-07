@@ -11,7 +11,6 @@
 <body>
 
 <header class="main-header">
-    <!-- Шапка (Ваш эталон) -->
     <div class="logo-expansive-container">
         <div class="logo-flex-row">
             <div class="logo-visual"><img src="sobor-sketch.jpg" alt="Собор" class="logo-sketch-large"></div>
@@ -47,9 +46,10 @@
             <li class="has-dropdown"><a href="#">Служение</a>
                 <ul class="dropdown-menu">
                     <li><a href="social.html">Социальное служение</a></li>
-                    <li><a href="missionary.html">В других храмах</a></li>
+                    <li><a href="missionary.html">Служение в других храмах</a></li>
                 </ul>
             </li>
+            <li><a href="publications.html">Публикации</a></li>
             <li><a href="contacts.html">Контакты</a></li>
             <li><a href="#" class="btn-note">Подать записку</a></li>
         </ul>
@@ -57,11 +57,8 @@
 </header>
 
 <main class="container page-content">
-    <!-- Адаптивный блок профиля -->
     <section class="arch-profile">
-        <div class="arch-image-wrap">
-            <img src="archierey.jpg" alt="Митрополит Арсений" class="arch-photo">
-        </div>
+        <div class="arch-image-wrap"><img src="archierey.jpg" alt="Митрополит Арсений" class="arch-photo"></div>
         <div class="arch-title-wrap">
             <span class="label-top">Глава Липецкой митрополии</span>
             <h2 class="section-title-gold" style="text-align: left; margin: 10px 0;">Высокопреосвященнейший Арсений</h2>
@@ -70,33 +67,45 @@
         </div>
     </section>
 
-    <!-- Биография -->
     <section class="bio-full">
         <h3 class="section-title-gold">Биография</h3>
         <div class="bio-intro-text">
-            <p>Митрополит Арсений родился 3 марта 1955 года. Окончил Московскую духовную семинарию и академию. Долгие годы был личным секретарем Святейшего Патриарха Алексия II.</p>
+            <p>Митрополит Арсений родился 3 марта 1955 года в поселке Востряково Домодедовского района Московской области. В 1976-1979 гг. обучался в Московской духовной семинарии, затем — в Московской духовной академии, которую окончил в 1983 г. Со степенью кандидата богословия.</p>
         </div>
 
-        <!-- Сетка из 3 колонок -->
-        <div class="bio-details-grid-3">
-            <div class="bio-column">
-                <h4>Служение и труды</h4>
-                <p>Участвовал в освидетельствовании мощей прп. Серафима Саровского и свт. Тихона. С 1998 г. возглавляет Научно-редакционный совет «Православной энциклопедии».</p>
+        <!-- ХРОНОЛОГИЧЕСКИЕ БЛОКИ С ВИЗУАЛЬНОЙ СВЯЗЬЮ -->
+        <div class="bio-flow">
+            <div class="bio-step">
+                <div class="step-header"><h4>Начало пути и служение секретарем</h4><span class="step-years">1983 — 1989</span></div>
+                <p>В 1983-1989 гг. являлся референтом и личным секретарем митрополита Ленинградского Алексия, впоследствии Патриарха Московского и всея Руси. 28 августа 1984 года рукоположен во диакона, 28 августа 1986 года — во иерея, с 1988 года служил в Свято-Троицком соборе Александро-Невской лавры.</p>
             </div>
-            <div class="bio-column featured">
-                <h4>Липецкая кафедра</h4>
-                <p>9 июля 2019 года решением Священного Синода назначен Преосвященным Липецким и Задонским, Главой Липецкой митрополии.</p>
+
+            <div class="bio-step">
+                <div class="step-header"><h4>Монашество и архиерейская хиротония</h4><span class="step-years">1989 — 1997</span></div>
+                <p>30 сентября 1989 года пострижен в монашество, 5 октября в Свято-Троицком соборе Александро-Невской лавры хиротонисан во епископа Ладожского. С 1990 г. — епископ Истринский, викарий Московской епархии. 25 февраля 1997 года возведен в сан архиепископа.</p>
             </div>
-            <div class="bio-column">
-                <h4>Викариатство в Москве</h4>
-                <p>С 2009 по 2019 год являлся первым викарием Патриарха Московского и всея Руси по городу Москве.</p>
+
+            <div class="bio-step highlight-step">
+                <div class="step-header"><h4>Участие в освидетельствовании святых мощей</h4><span class="step-years">1988 — 1998</span></div>
+                <p>Владыка участвовал в работе комиссий по возвращению и обретению мощей великих святых: св. блгв. кн. Александра Невского (1988), прпп. Зосимы, Савватия и Германа Соловецких (1990), прп. Серафима Саровского (1991), свт. Иоасафа Белгородского (1991), свт. Тихона, Патриарха Московского (1991), блж. Матроны Никоновой (1998).</p>
+            </div>
+
+            <div class="bio-step">
+                <div class="step-header"><h4>Труды в Москве и Высший Церковный Совет</h4><span class="step-years">1998 — 2019</span></div>
+                <p>С 1998 года возглавляет Научно-редакционный совет по изданию «Православной энциклопедии». С 2009 года — первый викарий Патриарха Кирилла по г. Москве. 1 февраля 2014 года возведен в сан митрополита. В 2015 году включен в состав Высшего Церковного Совета РПЦ.</p>
+            </div>
+
+            <div class="bio-step lipetsk-step">
+                <div class="step-header"><h4>Липецкая кафедра</h4><span class="step-years">2019 — Настоящее время</span></div>
+                <p>Решением Священного Синода от 9 июля 2019 г. (журнал № 72) назначен Преосвященным Липецким и Задонским, главой Липецкой митрополии.</p>
             </div>
         </div>
 
-        <!-- Таймлайн -->
+        <!-- РАСШИРЕННЫЙ ТАЙМЛАЙН -->
         <div class="bio-milestones-wrap">
             <div class="bio-milestones">
-                <div class="milestone"><span class="year">1984</span><div class="milestone-dot"></div><p>Хиротония</p></div>
+                <div class="milestone"><span class="year">1984</span><div class="milestone-dot"></div><p>Диакон</p></div>
+                <div class="milestone"><span class="year">1986</span><div class="milestone-dot"></div><p>Священник</p></div>
                 <div class="milestone"><span class="year">1989</span><div class="milestone-dot"></div><p>Епископ</p></div>
                 <div class="milestone"><span class="year">1997</span><div class="milestone-dot"></div><p>Архиепископ</p></div>
                 <div class="milestone"><span class="year">2014</span><div class="milestone-dot"></div><p>Митрополит</p></div>
@@ -105,30 +114,34 @@
         </div>
     </section>
 
-    <!-- Награды -->
+    <!-- ПОЛНЫЙ СПИСОК НАГРАД -->
     <section class="awards-detailed">
         <h3 class="section-title-gold">Награды</h3>
         <div class="awards-container">
             <div class="awards-list">
                 <h4>Церковные</h4>
                 <ul>
-                    <li>Орден прп. Серафима Саровского II ст.</li>
-                    <li>Орден св. кн. Даниила Московского II и III ст.</li>
+                    <li>2015 г. — орден прп. Серафима Саровского II ст.;</li>
+                    <li>2019 г. — орден св. блгв. кн. Даниила Московского III ст.;</li>
+                    <li>орден св. равноап. кн. Владимира III ст.;</li>
+                    <li>орден св. блгв. кн. Даниила Московского II ст.;</li>
+                    <li>медаль прп. Сергия Радонежского II ст.;</li>
+                    <li>ордена и медали Поместных Православных Церквей.</li>
                 </ul>
             </div>
             <div class="awards-list">
                 <h4>Светские</h4>
                 <ul>
-                    <li>Государственный орден Дружбы</li>
-                    <li>Медаль «За заслуги перед Отечеством» II ст.</li>
+                    <li>Государственный орден Дружбы;</li>
+                    <li>Медаль «За заслуги перед Отечеством» II ст.;</li>
+                    <li>Медаль «В память 850-летия Москвы».</li>
                 </ul>
             </div>
         </div>
     </section>
 </main>
 
-<!-- ТЕМНЫЙ ФУТЕР -->
-<footer class="site-footer">
+<footer class="site-footer-light">
     <div class="container footer-content">
         <div class="footer-block">
             <h5>Навигация</h5>
@@ -146,8 +159,8 @@
         <div class="footer-block">
             <h5>Мы в соцсетях</h5>
             <div class="social-icons">
-                <a href="#"><i class="fab fa-vk"></i> ВКонтакте</a>
-                <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+                <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a>
+                <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
             </div>
         </div>
     </div>
