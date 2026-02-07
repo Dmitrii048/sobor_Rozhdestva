@@ -150,7 +150,15 @@ body {
 /* --- СТИЛИ ДЛЯ ИЗЯЩНОЙ СТРАНИЦЫ АРХИПАСТЫРЯ --- */
 
 .arch-civil-name { font-family: var(--font-serif); font-size: 18px; color: #999; margin-top: 10px; }
-
+/* Центрирование заголовков */
+.section-title-gold {
+    font-family: 'PT Serif', serif;
+    font-size: 32px;
+    color: var(--gold);
+    text-align: center; /* ЭТА СТРОЧКА ВАЖНА */
+    margin: 60px 0 40px;
+    width: 100%;
+}
 .bio-intro-text {
     max-width: 850px; /* Ограничиваем ширину, чтобы текст не "разлетался" */
     margin: 0 auto 50px;
