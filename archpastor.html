@@ -6,11 +6,12 @@
     <title>Архипастырь | Христорождественский собор</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
 <header class="main-header">
-    <!-- Ваша настроенная шапка (без изменений) -->
+    <!-- Шапка (Ваш эталон) -->
     <div class="logo-expansive-container">
         <div class="logo-flex-row">
             <div class="logo-visual"><img src="sobor-sketch.jpg" alt="Собор" class="logo-sketch-large"></div>
@@ -46,10 +47,9 @@
             <li class="has-dropdown"><a href="#">Служение</a>
                 <ul class="dropdown-menu">
                     <li><a href="social.html">Социальное служение</a></li>
-                    <li><a href="missionary.html">Служение в других храмах</a></li>
+                    <li><a href="missionary.html">В других храмах</a></li>
                 </ul>
             </li>
-            <li><a href="publications.html">Публикации</a></li>
             <li><a href="contacts.html">Контакты</a></li>
             <li><a href="#" class="btn-note">Подать записку</a></li>
         </ul>
@@ -57,71 +57,55 @@
 </header>
 
 <main class="container page-content">
-    <!-- 1. Портрет и Титул -->
+    <!-- Адаптивный блок профиля -->
     <section class="arch-profile">
         <div class="arch-image-wrap">
             <img src="archierey.jpg" alt="Митрополит Арсений" class="arch-photo">
         </div>
         <div class="arch-title-wrap">
             <span class="label-top">Глава Липецкой митрополии</span>
-            <h2 class="arch-name">Высокопреосвященнейший Арсений</h2>
+            <h2 class="section-title-gold" style="text-align: left; margin: 10px 0;">Высокопреосвященнейший Арсений</h2>
             <p class="arch-full-rank">Митрополит Липецкий и Задонский</p>
             <p class="arch-civil-name">(Епифанов Юрий Александрович)</p>
         </div>
     </section>
 
-    <!-- 2. Биография (Текст и Факты) -->
+    <!-- Биография -->
     <section class="bio-full">
         <h3 class="section-title-gold">Биография</h3>
-        
         <div class="bio-intro-text">
-            <p>Родился 3 марта 1955 года в поселке Востряково Домодедовского района Московской области. В 1979 году окончил Московскую духовную семинарию, в 1983 году — Московскую духовную академию. С 1983 по 1989 год являлся личным секретарем митрополита Ленинградского Алексия, будущего Патриарха.</p>
+            <p>Митрополит Арсений родился 3 марта 1955 года. Окончил Московскую духовную семинарию и академию. Долгие годы был личным секретарем Святейшего Патриарха Алексия II.</p>
         </div>
 
-        <div class="bio-details-grid">
+        <!-- Сетка из 3 колонок -->
+        <div class="bio-details-grid-3">
             <div class="bio-column">
                 <h4>Служение и труды</h4>
-                <p>Владыка Арсений принимал активное участие в освидетельствовании великих святых мощей: прп. Серафима Саровского, свт. Тихона, Патриарха Московского, блж. Матроны Московской. С 1998 года возглавляет Научно-редакционный совет «Православной энциклопедии».</p>
+                <p>Участвовал в освидетельствовании мощей прп. Серафима Саровского и свт. Тихона. С 1998 г. возглавляет Научно-редакционный совет «Православной энциклопедии».</p>
+            </div>
+            <div class="bio-column featured">
+                <h4>Липецкая кафедра</h4>
+                <p>9 июля 2019 года решением Священного Синода назначен Преосвященным Липецким и Задонским, Главой Липецкой митрополии.</p>
             </div>
             <div class="bio-column">
                 <h4>Викариатство в Москве</h4>
-                <p>С 2009 года являлся первым викарием Патриарха Московского и всея Руси по г. Москве. Решением Священного Синода в 2015 году включен в состав Высшего Церковного Совета РПЦ.</p>
+                <p>С 2009 по 2019 год являлся первым викарием Патриарха Московского и всея Руси по городу Москве.</p>
             </div>
         </div>
 
-        <!-- 3. Таймлайн (Теперь ПОСЛЕ фактов) -->
+        <!-- Таймлайн -->
         <div class="bio-milestones-wrap">
             <div class="bio-milestones">
-                <div class="milestone">
-                    <span class="year">1984</span>
-                    <div class="milestone-dot"></div>
-                    <p>Диаконская хиротония</p>
-                </div>
-                <div class="milestone">
-                    <span class="year">1989</span>
-                    <div class="milestone-dot"></div>
-                    <p>Хиротония во епископа</p>
-                </div>
-                <div class="milestone">
-                    <span class="year">1997</span>
-                    <div class="milestone-dot"></div>
-                    <p>Возведен в сан архиепископа</p>
-                </div>
-                <div class="milestone">
-                    <span class="year">2014</span>
-                    <div class="milestone-dot"></div>
-                    <p>Возведен в сан митрополита</p>
-                </div>
-                <div class="milestone">
-                    <span class="year">2019</span>
-                    <div class="milestone-dot"></div>
-                    <p>Глава Липецкой митрополии</p>
-                </div>
+                <div class="milestone"><span class="year">1984</span><div class="milestone-dot"></div><p>Хиротония</p></div>
+                <div class="milestone"><span class="year">1989</span><div class="milestone-dot"></div><p>Епископ</p></div>
+                <div class="milestone"><span class="year">1997</span><div class="milestone-dot"></div><p>Архиепископ</p></div>
+                <div class="milestone"><span class="year">2014</span><div class="milestone-dot"></div><p>Митрополит</p></div>
+                <div class="milestone"><span class="year">2019</span><div class="milestone-dot"></div><p>Липецк</p></div>
             </div>
         </div>
     </section>
 
-    <!-- 4. Награды -->
+    <!-- Награды -->
     <section class="awards-detailed">
         <h3 class="section-title-gold">Награды</h3>
         <div class="awards-container">
@@ -129,9 +113,7 @@
                 <h4>Церковные</h4>
                 <ul>
                     <li>Орден прп. Серафима Саровского II ст.</li>
-                    <li>Орден св. блгв. кн. Даниила Московского II и III ст.</li>
-                    <li>Орден св. равноап. кн. Владимира III ст.</li>
-                    <li>Медаль прп. Сергия Радонежского II ст.</li>
+                    <li>Орден св. кн. Даниила Московского II и III ст.</li>
                 </ul>
             </div>
             <div class="awards-list">
@@ -139,15 +121,39 @@
                 <ul>
                     <li>Государственный орден Дружбы</li>
                     <li>Медаль «За заслуги перед Отечеством» II ст.</li>
-                    <li>Медаль «В память 850-летия Москвы»</li>
                 </ul>
             </div>
         </div>
     </section>
 </main>
 
-<footer style="margin-top: 100px; padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: #999; font-size: 13px;">
-    <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
+<!-- ТЕМНЫЙ ФУТЕР -->
+<footer class="site-footer">
+    <div class="container footer-content">
+        <div class="footer-block">
+            <h5>Навигация</h5>
+            <a href="index.html">Главная</a>
+            <a href="about.html">О соборе</a>
+            <a href="schedule.html">Расписание</a>
+            <a href="#">Подать записку</a>
+        </div>
+        <div class="footer-block">
+            <h5>Контакты</h5>
+            <p><i class="fas fa-map-marker-alt"></i> г. Липецк, Соборная пл., 4</p>
+            <p><i class="fas fa-phone"></i> +7 (4742) 27-04-78</p>
+            <p><i class="fas fa-envelope"></i> sobor48@mail.ru</p>
+        </div>
+        <div class="footer-block">
+            <h5>Мы в соцсетях</h5>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-vk"></i> ВКонтакте</a>
+                <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
+    </div>
 </footer>
 
 </body>
