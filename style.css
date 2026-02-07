@@ -35,7 +35,8 @@
     filter: contrast(1.05) brightness(1.02);
 }
 
-/* Текстовый блок */
+
+/* Текстовый блок логотипа */
 .logo-brand-area {
     flex: 1;
     text-align: center;
@@ -46,22 +47,32 @@
 
 .title-main {
     font-family: 'PT Serif', serif;
-    font-size: 42px; /* Крупный, величественный размер */
+    font-size: 42px;
     font-weight: 400;
     color: #C5A059;
     margin: 0;
     letter-spacing: 1px;
+    line-height: 1.1;
 }
-.title-secondary { font-family: 'PT Serif', serif; font-size: 30px; font-weight: 400; color: #C5A059; margin: -5px 0 0 0; letter-spacing: 1px; }
+
+.title-secondary {
+    font-family: 'PT Serif', serif;
+    font-size: 30px;
+    font-weight: 400;
+    color: #C5A059;
+    margin: -5px 0 0 0;
+    letter-spacing: 1px;
+    line-height: 1.1;
 }
+
 .title-sub {
     font-family: 'PT Serif', serif;
     font-style: italic;
-    font-size: 22px;
+    font-size: 24px; /* Сделал чуть крупнее для изящества */
     font-weight: 400;
-    color: #C5A059; /* Тот же золотой цвет */
-    opacity: 0.8;   /* Легкая прозрачность для мягкости */
-    margin-top: 5px;
+    color: #C5A059; /* Теперь точно будет золотым */
+    margin-top: 10px;
+    opacity: 0.9;
 }
 
 /* Художественная линия */
