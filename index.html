@@ -18,39 +18,58 @@
                 <img src="sobor-sketch.jpg" alt="Собор" class="logo-sketch-large">
             </div>
 
-            <!-- Текстовый блок: Изящная классика -->
+            <!-- Текстовый блок -->
             <div class="logo-brand-area">
                 <h1 class="church-title-group">
                     <span class="main-name">Христорождественский <br> кафедральный собор</span>
                     <span class="city-name">г. Липецка</span>
                 </h1>
                 
-                <!-- ТА САМАЯ ХУДОЖЕСТВЕННАЯ ПОЛОСОЧКА -->
-                <div class="artistic-divider">
+                <!-- ХУДОЖЕСТВЕННАЯ НЕРОВНАЯ ЛИНИЯ (КАЛЛИГРАФИЯ) -->
+                <div class="calligraphic-divider">
                     <svg viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#C5A059;stop-opacity:0" />
-                                <stop offset="50%" style="stop-color:#C5A059;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#C5A059;stop-opacity:0" />
-                            </linearGradient>
-                        </defs>
-                        <!-- Линия с мягким исчезновением по краям -->
-                        <path d="M0 10 L400 10" stroke="url(#goldGrad)" stroke-width="1" fill="none" />
-                        <!-- Изящный центральный элемент -->
-                        <path d="M185 10 Q200 0 215 10 Q200 20 185 10" fill="#C5A059" opacity="0.8" />
-                        <circle cx="200" cy="10" r="2" fill="#fff" />
+                        <path d="M0 12 C 50 12, 80 15, 120 12 S 180 8, 200 12 S 250 16, 300 12 S 380 10, 400 12" 
+                              stroke="#C5A059" stroke-width="1.2" fill="transparent" stroke-linecap="round" />
+                        <path d="M150 12 Q 200 18, 250 12" stroke="#C5A059" stroke-width="0.5" fill="transparent" opacity="0.5" />
                     </svg>
                 </div>
                 
-                <!-- ТОТ САМЫЙ ШРИФТ С ШИРОКИМ РАЗЛЁТОМ -->
-                <div class="church-meta-info">
+                <div class="church-footer-info">
                     <p class="patriarchate-text">Московский Патриархат</p>
                     <p class="metropolia-text">Липецкая митрополия</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- МЕНЮ (ИСПРАВЛЕННОЕ) -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li class="has-dropdown">
+                <a href="#">О соборе</a>
+                <ul class="dropdown-menu">
+                    <li><a href="about.html">Летопись храма</a></li>
+                    <li><a href="clergy.html">Духовенство</a></li>
+                    <li><a href="archpastor.html">Архипастырь</a></li>
+                    <li><a href="school.html">Воскресная школа</a></li>
+                    <li><a href="pilgrimage.html">Паломнические поездки</a></li>
+                    <li><a href="choir.html">Архиерейский хор</a></li>
+                </ul>
+            </li>
+            <li><a href="schedule.html">Расписание</a></li>
+            <li class="has-dropdown">
+                <a href="#">Служение</a>
+                <ul class="dropdown-menu">
+                    <li><a href="social.html">Социальное служение</a></li>
+                    <li><a href="missionary.html">Служение в других храмах</a></li>
+                </ul>
+            </li>
+            <li><a href="publications.html">Публикации</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="#" class="btn-note">Подать записку</a></li>
+        </ul>
+    </nav>
 </header>
     
 
