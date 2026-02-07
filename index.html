@@ -13,34 +13,32 @@
 <header class="main-header">
     <div class="logo-expansive-container">
         <div class="logo-flex-row">
-            <!-- Рисунок собора -->
+            <!-- Рисунок собора: большой и величественный -->
             <div class="logo-visual">
                 <img src="sobor-sketch.jpg" alt="Собор" class="logo-sketch-large">
             </div>
 
-            <!-- Текстовый блок: Изящество, Традиция и Золото -->
+            <!-- Текстовый блок: Возвращаем "Дорогой" стиль -->
             <div class="logo-brand-area">
                 <h1 class="church-title-group">
                     <span class="main-name">Христорождественский <br> кафедральный собор</span>
                     <span class="city-name">г. Липецка</span>
                 </h1>
                 
-                <!-- ПРАВОСЛАВНАЯ ЦВЕТОЧНАЯ ВИНИЕТКА (КРИН) -->
+                <!-- Та самая красивая художественная полосочка (Виньетка) -->
                 <div class="fancy-gold-divider">
-                    <svg viewBox="0 0 400 50" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Левая ветвь с завитком -->
-                        <path d="M10 25 H160 Q170 25 180 15" stroke="#C5A059" fill="transparent" stroke-width="1" />
-                        
-                        <!-- Центральный элемент - Традиционный "Крин" (лилия) -->
-                        <path d="M200 40 Q200 10 185 15 Q200 5 215 15 Q200 10 200 40" fill="#C5A059" />
-                        <path d="M190 28 Q200 25 210 28" stroke="#C5A059" fill="transparent" stroke-width="1" />
-                        
-                        <!-- Правая ветвь с завитком -->
-                        <path d="M390 25 H240 Q230 25 220 15" stroke="#C5A059" fill="transparent" stroke-width="1" />
-                        
-                        <!-- Декоративные точки (капли росы) -->
-                        <circle cx="170" cy="25" r="1.5" fill="#C5A059" />
-                        <circle cx="230" cy="25" r="1.5" fill="#C5A059" />
+                    <svg viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Тонкая линия, уходящая в прозрачность по краям -->
+                        <defs>
+                            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#C5A059;stop-opacity:0" />
+                                <stop offset="50%" style="stop-color:#C5A059;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#C5A059;stop-opacity:0" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M0 10 L400 10" stroke="url(#lineGrad)" stroke-width="1" fill="none" />
+                        <!-- Изящный ромб в центре -->
+                        <rect x="196" y="6" width="8" height="8" fill="#C5A059" transform="rotate(45 200 10)" />
                     </svg>
                 </div>
                 
