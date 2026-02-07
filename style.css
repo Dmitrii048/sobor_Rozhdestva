@@ -6,12 +6,12 @@
 }
 
 /* --- ПРЕМИАЛЬНАЯ ШАПКА: ИЕРАРХИЯ И ЗОЛОТО --- */
-/* --- ВОЗВРАТ К ИЗЯЩНОМУ ПРЕМИУМ-СТИЛЮ --- */
+/* --- ПРЕМИАЛЬНАЯ ШАПКА: ВОЗВРАТ К ЛУЧШИМ ЭЛЕМЕНТАМ --- */
 
 .logo-expansive-container {
-    max-width: 1350px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 30px 40px;
+    padding: 20px 40px;
 }
 
 .logo-flex-row {
@@ -24,8 +24,8 @@
 .logo-sketch-large {
     max-width: 650px;
     height: auto;
-    mix-blend-mode: multiply;
-    filter: contrast(1.05) brightness(1.02);
+    mix-blend-mode: multiply; /* Убирает серый фон рисунка */
+    filter: contrast(1.05);
 }
 
 .logo-brand-area {
@@ -33,10 +33,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 550px;
+    min-width: 580px;
 }
 
-/* Главное название: Строгое и чистое */
+/* Основное название */
 .main-name {
     font-family: 'PT Serif', serif;
     font-size: 38px;
@@ -47,67 +47,77 @@
     line-height: 1.1;
 }
 
-/* Название города: Тот самый золотой курсив */
+/* Изящный золотой курсив для города */
 .city-name {
     font-family: 'PT Serif', serif;
-    font-style: italic; /* Изящество */
+    font-style: italic;
     font-size: 28px;
-    color: #C5A059; /* Золото */
+    color: #C5A059;
     display: block;
     margin-top: 10px;
-    letter-spacing: 1px;
 }
 
 /* Художественная полосочка */
-.fancy-gold-divider {
+.artistic-divider {
     width: 100%;
     max-width: 450px;
-    margin: 20px 0;
+    margin: 15px 0;
 }
 
-.fancy-gold-divider svg {
+.artistic-divider svg {
     width: 100%;
     height: auto;
 }
 
-/* Патриархат и епархия: Тонкий и широкий шрифт */
-.church-footer-info p {
-    margin: 3px 0;
+/* ТОТ САМЫЙ ШРИФТ ИЗ ВТОРОГО СКРИНШОТА (Широкий разлёт) */
+.church-meta-info {
+    margin-top: 10px;
+}
+
+.patriarchate-text {
     font-family: 'Open Sans', sans-serif;
-    font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 3.5px;
+    font-size: 11px;
+    letter-spacing: 5px; /* Очень широкий разлет для "воздуха" */
     color: #999;
+    margin: 0;
 }
 
-.church-footer-info p.highlight {
+.metropolia-text {
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 7px; /* Еще более широкий разлет для фундаментальности */
     font-weight: 700;
-    color: #666;
-    letter-spacing: 5px;
-    margin-top: 5px;
+    color: #777;
+    margin: 5px 0 0 0;
 }
 
-/* Убираем лишнее из навигации, чтобы не перебивало шапку */
+/* Навигация остается легкой */
 .main-nav {
     border-top: 1px solid #F0EDE8;
     border-bottom: 1px solid #F0EDE8;
-    margin-top: 10px;
-}
-/* Адаптивность */
-@media (max-width: 1150px) {
-    .logo-flex-row { flex-direction: column; gap: 30px; }
-    .main-name { font-size: 30px; }
-}
-/* --- НАВИГАЦИЯ (ИСПРАВЛЕННАЯ) --- */
-.main-nav {
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    margin-top: 15px;
     background: #fff;
-    position: relative;
 }
 
-/* Главный список - строго в один ряд */
-.main-nav > ul {
+/* --- ОБНОВЛЕННОЕ ВЕЛИЧЕСТВЕННОЕ МЕНЮ --- */
+
+.main-nav {
+    /* Добавляем очень легкий кремовый фон, чтобы выделить меню */
+    background-color: #FDFCFB; 
+    
+    /* Делаем границы более "церковными" - двойная тонкая линия сверху */
+    border-top: 1px solid var(--gold); 
+    border-bottom: 3px double var(--border); 
+    
+    margin-top: 20px;
+    position: sticky; /* Теперь меню будет "прилипать" к верху при скролле */
+    top: 0;
+    z-index: 1000;
+}
+
+.main-nav ul {
     display: flex;
     justify-content: center;
     list-style: none;
@@ -116,97 +126,58 @@
 }
 
 .main-nav > ul > li {
-    position: relative; /* База для выпадающего меню */
+    position: relative;
+    /* Увеличили отступы, чтобы пункты были крупнее */
+    padding: 10px 5px; 
 }
 
-/* Ссылки верхнего уровня */
 .main-nav > ul > li > a {
     display: block;
-    padding: 20px 20px;
+    padding: 15px 25px;
     text-decoration: none;
     color: var(--text-main);
+    
+    /* Используем PT Serif для благородства */
+    font-family: 'PT Serif', serif;
     text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 14px; /* Увеличили размер */
+    font-weight: 700;
     letter-spacing: 1.5px;
-    transition: 0.3s;
+    transition: 0.3s all ease;
 }
 
+/* Эффект при наведении на пункт меню */
 .main-nav > ul > li:hover > a {
     color: var(--gold);
+    background: #fff; /* Пункт меню как бы "подсвечивается" белым */
+    box-shadow: 0 -3px 0 var(--gold) inset; /* Золотая линия снизу внутри пункта */
 }
 
-/* --- СТИЛЬНОЕ ВЫПАДАЮЩЕЕ МЕНЮ (ПРЕМИУМ) --- */
+/* Кнопка "Подать записку" в меню (делаем её акцентной) */
+.btn-note {
+    background-color: var(--gold) !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 12px 25px !important;
+    margin-left: 15px;
+    box-shadow: 0 4px 10px rgba(197, 160, 89, 0.3);
+}
 
+.btn-note:hover {
+    background-color: #b38f4d !important;
+    transform: translateY(-2px);
+}
+
+/* Исправляем выпадающее меню, чтобы оно сочеталось с новым стилем */
 .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(15px);
-    
     background: #ffffff;
-    min-width: 300px; /* Немного шире для солидности */
-    padding: 20px 0;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.1); /* Глубокая мягкая тень */
-    border: 1px solid #EAE3D5;
-    
-    opacity: 0;
-    visibility: hidden;
-    display: block;
-    transition: all 0.4s ease;
-    z-index: 1000;
-}
-
-.dropdown-menu li {
-    display: block;
-    width: 100%;
+    border: 1px solid var(--gold);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .dropdown-menu a {
-    display: block;
-    padding: 12px 30px;
-    text-align: center; /* Центрируем для торжественности */
-    text-decoration: none;
-    
-    /* ТЕПЕРЬ ТЕКСТ ВЫГЛЯДИТ ТАК ЖЕ, КАК ВЕРХНЕЕ МЕНЮ */
-    font-family: var(--font-serif); /* Используем благородный шрифт с засечками */
-    text-transform: uppercase;     /* Заглавные буквы */
-    font-size: 11px;               /* Но чуть меньше основного меню */
-    font-weight: 700;
-    letter-spacing: 2px;           /* Благородный разлет букв */
-    color: var(--text-main);
-    
-    transition: 0.3s;
-    position: relative;
+    font-family: 'PT Serif', serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
-
-/* Эффект при наведении на пункт в списке */
-.dropdown-menu a:hover {
-    background-color: transparent;
-    color: var(--gold);
-}
-
-/* Маленькая золотая точка или черточка при наведении (как в дорогих интерфейсах) */
-.dropdown-menu a::after {
-    content: '';
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    width: 0;
-    height: 1px;
-    background: var(--gold);
-    transition: 0.3s;
-    transform: translateX(-50%);
-}
-
-.dropdown-menu a:hover::after {
-    width: 30px; /* Появляется тонкая золотая линия под словом */
-}
-
-/* Показ при наведении на родительский li */
-.has-dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-}
-
