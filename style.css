@@ -6,10 +6,10 @@
 }
 
 /* --- ПРЕМИАЛЬНАЯ ШАПКА: ИЕРАРХИЯ И ЗОЛОТО --- */
-/* --- ПРЕМИАЛЬНАЯ ШАПКА: ВОЗВРАТ К ЛУЧШИМ ЭЛЕМЕНТАМ --- */
+/* --- ЭКСПАНСИВНАЯ (ШИРОКАЯ) ШАПКА --- */
 
 .logo-expansive-container {
-    max-width: 1400px;
+    max-width: 1400px; /* Занимаем больше места вширь */
     margin: 0 auto;
     padding: 20px 40px;
 }
@@ -17,40 +17,95 @@
 .logo-flex-row {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 80px;
+    justify-content: space-between; /* Распределяем по краям */
+    gap: 60px;
 }
 
-/* --- ЛОГО И ХУДОЖЕСТВЕННАЯ ЛИНИЯ --- */
+/* Рисунок собора */
+.logo-visual {
+    flex: 1.2; /* Отдаем больше места под рисунок */
+    text-align: left;
+}
+
 .logo-sketch-large {
-    max-width: 650px;
+    width: 100%;
+    max-width: 650px; /* Увеличили размер рисунка */
     height: auto;
     mix-blend-mode: multiply;
+    filter: contrast(1.05) brightness(1.02);
 }
 
-.calligraphic-divider {
-    width: 100%;
-    max-width: 450px;
-    margin: 20px 0;
-    filter: drop-shadow(0 1px 1px rgba(197, 160, 89, 0.3));
+/* Текстовый блок */
+.logo-brand-area {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.main-name {
+.title-main {
     font-family: 'PT Serif', serif;
-    font-size: 38px;
-    line-height: 1.1;
-    color: #2C2C2C;
-}
-
-.city-name {
-    font-family: 'PT Serif', serif;
-    font-style: italic;
-    font-size: 26px;
+    font-size: 42px; /* Крупный, величественный размер */
+    font-weight: 400;
     color: #C5A059;
-    margin-top: 10px;
-    display: block;
+    margin: 0;
+    letter-spacing: 1px;
 }
 
+.title-sub {
+    font-family: 'PT Serif', serif;
+    font-style: italic; /* Изящный курсив */
+    font-size: 22px;
+    font-weight: 400;
+    color: #2C2C2C; /* Золотой оттенок для подзаголовка */
+    margin-top: 5px;
+}
+
+/* Художественная линия */
+.art-divider {
+    width: 100%;
+    max-width: 380px;
+    margin: 20px 0;
+}
+
+.art-divider svg {
+    width: 100%;
+    height: auto;
+}
+
+/* Мета-информация (Патриархат) */
+.church-meta {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 4px; /* Широкий, "дорогой" разлет букв */
+    line-height: 1.8;
+    color: #999;
+    margin: 0;
+}
+
+.church-meta span {
+    font-weight: 700;
+    color: #777;
+}
+
+/* Навигация (уточнение) */
+.main-nav {
+    border-top: 1px solid #F2EEE8;
+    border-bottom: 1px solid #F2EEE8;
+    margin-top: 10px;
+}
+
+/* Адаптив для средних экранов */
+@media (max-width: 1100px) {
+    .logo-flex-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    .title-main { font-size: 32px; }
+}
 /* --- ВЕЛИЧЕСТВЕННОЕ МЕНЮ (ИСПРАВЛЕНИЕ ОШИБОК) --- */
 .main-nav {
     border-top: 1px solid #C5A059;
