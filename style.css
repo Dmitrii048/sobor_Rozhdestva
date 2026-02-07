@@ -256,3 +256,98 @@ body {
     padding: 40px;
     border: 1px solid var(--border);
 }
+
+/* --- ТРЕХКОЛОНОЧНАЯ СЕТКА БИОГРАФИИ --- */
+.bio-details-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 50px 0;
+}
+
+.bio-column {
+    padding: 25px;
+    border: 1px solid var(--border);
+    background: #fff;
+    text-align: center;
+}
+
+.bio-column.featured {
+    border: 2px solid var(--gold);
+    background: #FDFCF8; /* Легкий акцентный фон */
+    transform: scale(1.05); /* Делает центральную колонку чуть больше */
+    z-index: 2;
+}
+
+.bio-column h4 {
+    font-family: var(--font-serif);
+    color: var(--gold);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+/* --- ФУТЕР (ТЕМНЫЙ ПРЕМИУМ) --- */
+.site-footer {
+    background: #2C2621; /* Глубокий кофейный цвет */
+    color: #EAE3D5;
+    padding: 60px 0 0 0;
+    margin-top: 100px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+.footer-block h5 {
+    font-family: var(--font-serif);
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-block a {
+    display: block;
+    color: #EAE3D5;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.footer-block a:hover { color: var(--gold); }
+
+.footer-block p { font-size: 14px; margin-bottom: 10px; }
+
+.footer-block i { color: var(--gold); margin-right: 10px; }
+
+.footer-bottom {
+    background: #211C18;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 12px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* АДАПТИВНОСТЬ */
+@media (max-width: 900px) {
+    .bio-details-grid-3, .footer-content {
+        grid-template-columns: 1fr;
+    }
+    .bio-column.featured {
+        transform: none;
+        order: -1; /* Выносит Липецкую кафедру наверх на мобилках */
+    }
+    .arch-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+}
