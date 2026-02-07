@@ -359,39 +359,15 @@ body {
     margin-bottom: 80px;
 }
 
+/* Единый стиль для всех карточек деятельности */
 .activity-card {
-    padding: 40px;
-    border: 1px solid var(--border);
     background: #fff;
-    text-align: left;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold) !important; /* Желтая линия у всех блоков */
+    padding: 40px;
+    position: relative;
     transition: 0.3s;
-}
 
-.activity-card i {
-    font-size: 24px;
-    color: var(--gold);
-    margin-bottom: 20px;
-    display: block;
-}
-
-.activity-card h4 {
-    font-family: var(--font-serif);
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.activity-card p {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #666;
-    margin: 0;
-}
-
-.activity-card.special-gold {
-    background: #fdfaf5;
-    border-color: var(--gold);
-}
 
 /* ЦЕНТРАЛЬНЫЙ БЛОК (ЛИПЕЦК) */
 .lipetsk-proclamation {
@@ -613,27 +589,21 @@ body {
 
 .t-point {
     text-align: center;
-    width: 120px;
+    width: 180px; /* Увеличили ширину для подробного текста */
+    padding: 0 10px;
 }
 
-.t-point span {
-    display: block;
-    font-family: var(--font-serif);
-    font-weight: 700;
-    color: var(--gold);
-    font-size: 20px;
-    margin-bottom: 25px;
-    background: #fff;
-    padding: 5px;
-    position: relative;
-    z-index: 2;
-}
 
 .t-point p {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #888;
+    font-size: 13px; /* Чуть крупнее */
+    line-height: 1.4;
+    color: #666;
+    text-transform: none; /* Убираем капс, чтобы влезло больше текста */
+    letter-spacing: 0;
+}
+    .t-point span {
+    font-size: 22px;
+    margin-bottom: 15px;
 }
 
 .t-point.active span {
