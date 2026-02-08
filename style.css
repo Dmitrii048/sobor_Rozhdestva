@@ -11,7 +11,7 @@
 body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: var(--text-main); line-height: 1.8; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* --- ШАПКА --- */
+/* --- ШАПКА (ОСНОВНАЯ, ПРАВИЛЬНАЯ) --- */
 .main-header { padding: 30px 0 0 0; text-align: center; }
 .logo-expansive-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
 .logo-flex-row { display: flex; align-items: center; justify-content: center; gap: 60px; }
@@ -45,127 +45,33 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
 .page-content { padding-top: 60px; }
 .section-title-gold { font-family: var(--font-serif); font-size: 32px; color: var(--gold); text-align: center; margin: 60px 0 40px; font-weight: 400; letter-spacing: 1px; }
 
-/* --- ДУХОВЕНСТВО (ИСПРАВЛЕННОЕ) --- */
-
-.clergy-order-title {
-    font-family: var(--font-serif);
-    font-size: 32px;
-    text-align: center;
-    color: var(--gold);
-    margin: 80px 0 40px;
-    font-weight: 400;
-}
-
-/* Сетка обычных карточек */
-.clergy-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    margin-bottom: 60px;
-}
-
-.clergy-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    transition: 0.4s ease;
-}
-
-.clergy-card:hover {
-    border-color: var(--gold);
-    box-shadow: 0 15px 35px rgba(197, 160, 89, 0.1);
-}
-
-.clergy-photo-box {
-    width: 100%;
-    height: 450px;
-    overflow: hidden;
-    background: #f9f9f9;
-}
-
-.clergy-photo-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top; /* Держим макушку */
-}
-
-/* Настоятель (БОЛЬШАЯ ГОРИЗОНТАЛЬНАЯ КАРТОЧКА) */
-.rector-wide {
-    display: flex;
-    align-items: stretch;
-    border: 1px solid var(--gold);
-    background: #fff;
-    margin: 40px auto 80px;
-    max-width: 1000px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-.rector-wide .clergy-photo-box {
-    width: 400px; /* Фото слева фиксированной ширины */
-    height: 550px; /* Высота для митры */
-    flex-shrink: 0;
-    border-right: 1px solid var(--border);
-    border-bottom: none;
-}
-
-.rector-wide .clergy-photo-box img {
-    object-position: center 15%; /* Фокус на митру и лицо */
-}
-
-.rector-wide .clergy-info {
-    flex: 1;
-    padding: 50px;
-    text-align: left; /* Текст настоятеля слева */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/* Текст внутри карточек */
+/* --- ДУХОВЕНСТВО --- */
+.clergy-order-title { font-family: var(--font-serif); font-size: 32px; text-align: center; color: var(--gold); margin: 80px 0 40px; font-weight: 400; }
+.clergy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 60px; }
+.clergy-card { background: #fff; border: 1px solid var(--border); display: flex; flex-direction: column; transition: 0.4s ease; }
+.clergy-card:hover { border-color: var(--gold); box-shadow: 0 15px 35px rgba(197, 160, 89, 0.1); }
+.clergy-photo-box { width: 100%; height: 450px; overflow: hidden; background: #f9f9f9; }
+.clergy-photo-box img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.rector-wide { display: flex; align-items: stretch; border: 1px solid var(--gold); background: #fff; margin: 40px auto 80px; max-width: 1000px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.rector-wide .clergy-photo-box { width: 400px; height: 550px; flex-shrink: 0; border-right: 1px solid var(--border); border-bottom: none; }
+.rector-wide .clergy-photo-box img { object-position: center 15%; }
+.rector-wide .clergy-info { flex: 1; padding: 50px; text-align: left; display: flex; flex-direction: column; justify-content: center; }
 .clergy-info { padding: 30px 25px; text-align: center; }
-
-.clergy-rank-label {
-    display: block;
-    text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: 3px;
-    color: var(--gold);
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
-.clergy-name {
-    font-family: var(--font-serif);
-    font-size: 26px;
-    margin-bottom: 25px;
-    color: var(--text-main);
-    line-height: 1.2;
-    font-weight: 700;
-}
-
+.clergy-rank-label { display: block; text-transform: uppercase; font-size: 14px; letter-spacing: 3px; color: var(--gold); font-weight: 700; margin-bottom: 12px; }
+.clergy-name { font-family: var(--font-serif); font-size: 26px; margin-bottom: 25px; color: var(--text-main); line-height: 1.2; font-weight: 700; }
 .clergy-details { text-align: left; border-top: 1px solid #f4f4f4; padding-top: 20px; }
 .clergy-details p { font-size: 16px; margin-bottom: 12px; color: #444; line-height: 1.6; }
 .clergy-details strong { color: var(--text-main); font-weight: 700; display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; opacity: 0.8; }
-
 .rector-wide .clergy-name { font-size: 34px; }
 
-/* --- СТРАНИЦА АРХИПАСТЫРЯ --- */
+/* --- АРХИПАСТЫРЬ --- */
 .arch-profile { display: flex; align-items: center; gap: 60px; margin-bottom: 60px; }
 .arch-photo { max-width: 400px; width: 100%; border: 1px solid var(--gold); padding: 10px; background: #fff; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
-
-/* Хронологические блоки */
 .bio-flow { max-width: 900px; margin: 40px auto; position: relative; padding-left: 30px; border-left: 1px solid var(--gold); }
 .bio-step { position: relative; margin-bottom: 40px; padding-left: 20px; }
 .bio-step::before { content: ''; position: absolute; left: -35px; top: 5px; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; }
-
-/* Блоки деятельности */
 .activity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 80px; }
 .activity-card { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--gold) !important; padding: 40px; transition: 0.3s; }
-
-/* Горизонтальный таймлайн */
 .horizontal-timeline-wrap { padding: 40px 0; margin-bottom: 80px; overflow-x: auto; }
 .timeline-container { position: relative; min-width: 1100px; margin: 0 auto; padding-top: 40px; }
 .t-line { position: absolute; top: 50px; left: 0; right: 0; height: 1px; background: #EAE3D5; }
@@ -174,8 +80,6 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
 .t-point span { display: block; font-family: var(--font-serif); font-weight: 700; color: var(--gold); font-size: 20px; margin-bottom: 25px; background: #fff; padding: 5px; position: relative; z-index: 2; }
 .t-point p { font-size: 12px; color: #777; line-height: 1.4; }
 .t-point.active span { color: #fff; background: var(--gold); border-radius: 50%; width: 50px; height: 50px; line-height: 40px; margin: -10px auto 15px; }
-
-/* Награды */
 .awards-grid-full { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin: 40px 0; }
 .award-block-list h4 { font-family: var(--font-serif); color: #444; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 20px; font-size: 18px; text-transform: uppercase; letter-spacing: 2px; }
 .award-block-list ul { list-style: none; padding: 0; }
@@ -199,13 +103,13 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     .t-points { flex-direction: column; align-items: center; gap: 30px; }
     .logo-brand-area { min-width: auto; }
 }
-
 @media (max-width: 850px) {
     .rector-wide { flex-direction: column; max-width: 450px; }
     .rector-wide .clergy-photo-box { width: 100%; height: 450px; border-right: none; border-bottom: 1px solid var(--border); }
     .rector-wide .clergy-info { padding: 30px; text-align: center; }
 }
-/* --- СТИЛИ ДЛЯ МОНУМЕНТАЛЬНОЙ ЛЕТОПИСИ (BEST VERSION) --- */
+
+/* --- СТИЛИ ДЛЯ ЛЕТОПИСИ (ФИНАЛЬНАЯ ВЕРСИЯ) --- */
 
 /* 1. ГЕРОЙ-БЛОК С ПАРАЛЛАКСОМ */
 .chronicle-hero {
@@ -325,7 +229,7 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     background: var(--gold);
 }
 
-/* 5. СПЕЦИАЛЬНЫЕ БЛОКИ (ИЗ ВАШЕГО ФАЙЛА + МОЙ ДИЗАЙН) */
+/* 5. СПЕЦИАЛЬНЫЕ БЛОКИ */
 
 /* Блок "Чудо" (Акцентный) */
 .miracle-box {
@@ -372,149 +276,46 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     opacity: 0.6;
 }
 
-/* Адаптив */
+/* Блок "Факт" */
+.fact-box {
+    background: #fdfaf5;
+    border-left: 4px solid var(--gold);
+    padding: 30px 40px;
+    margin: 40px 0;
+    font-size: 19px;
+    font-style: italic;
+    color: #555;
+}
+.fact-label {
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-weight: 700;
+    font-style: normal;
+    margin-bottom: 10px;
+}
+.btn-gold {
+    display: inline-block;
+    background: var(--gold);
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+.btn-gold:hover {
+    background: #b08d4a;
+}
+
+/* Адаптив для Летописи */
 @media (max-width: 900px) {
     .miracle-box { margin: 40px 0; padding: 30px; }
     .hero-title-large { font-size: 42px; }
     .history-text { font-size: 19px; }
     .emotional-quote { font-size: 20px; }
-}
-/* --- ЭКСТРЕННАЯ ПОЧИНКА ШАПКИ И МЕНЮ --- */
-
-/* 1. Основной контейнер шапки */
-.main-header {
-    background-color: #fff;
-    border-bottom: 1px solid #Eae3d5;
-    padding-top: 20px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-}
-
-/* 2. Логотип и Название (Верхняя часть) */
-.logo-expansive-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px 20px;
-}
-
-.logo-flex-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap; /* Чтобы не ломалось на мобильных */
-}
-
-.logo-visual {
-    flex-shrink: 0;
-}
-
-.logo-sketch-large {
-    height: 120px; /* Фиксируем размер картинки */
-    width: auto;
-    display: block;
-}
-
-.logo-brand-area {
-    text-align: center;
-}
-
-.title-main {
-    font-family: 'PT Serif', serif;
-    font-size: 38px;
-    color: #2c2c2c;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin: 0;
-    line-height: 1.1;
-}
-
-.title-secondary {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color: #C5A059; /* Золотой */
-    margin: 5px 0 10px;
-}
-
-.title-sub {
-    font-family: 'PT Serif', serif;
-    font-style: italic;
-    font-size: 18px;
-    color: #888;
-    margin-bottom: 10px;
-}
-
-.art-divider svg {
-    width: 200px;
-    height: 15px;
-    display: block;
-    margin: 0 auto;
-}
-
-/* 3. Навигация (Нижняя часть) */
-.main-nav {
-    border-top: 1px solid #f4f4f4;
-    background: #fff;
-}
-
-.main-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    flex-wrap: wrap;
-}
-
-.main-nav li {
-    position: relative;
-}
-
-.main-nav a {
-    display: block;
-    padding: 20px 25px;
-    text-decoration: none;
-    color: #333;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-    transition: color 0.3s;
-}
-
-.main-nav a:hover {
-    color: #C5A059;
-}
-
-/* Выпадающее меню */
-.has-dropdown:hover .dropdown-menu {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #fff;
-    min-width: 220px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    display: none; /* Скрыто по умолчанию */
-    z-index: 100;
-    border-top: 3px solid #C5A059;
-}
-
-.dropdown-menu li {
-    display: block;
-    border-bottom: 1px solid #f9f9f9;
-}
-
-.dropdown-menu a {
-    padding: 15px 20px;
-    text-transform: none; /* Обычный регистр */
-    font-size: 15px;
-    letter-spacing: 0;
 }
