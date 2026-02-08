@@ -205,3 +205,177 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     .rector-wide .clergy-photo-box { width: 100%; height: 450px; border-right: none; border-bottom: 1px solid var(--border); }
     .rector-wide .clergy-info { padding: 30px; text-align: center; }
 }
+/* --- СТИЛИ ДЛЯ МОНУМЕНТАЛЬНОЙ ЛЕТОПИСИ (BEST VERSION) --- */
+
+/* 1. ГЕРОЙ-БЛОК С ПАРАЛЛАКСОМ */
+.chronicle-hero {
+    position: relative;
+    background: url('history-bg.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; /* Эффект глубины при прокрутке */
+    height: 70vh; /* Высокий, торжественный экран */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 80px;
+    color: #fff;
+}
+
+.chronicle-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.8)); /* Затемнение */
+}
+
+.hero-content-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.hero-title-large {
+    font-family: var(--font-serif);
+    font-size: 64px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    color: var(--gold);
+}
+
+.hero-subtitle-large {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 300;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    display: inline-block;
+    padding: 15px 40px;
+    margin-top: 10px;
+}
+
+/* 2. КОНТЕЙНЕР ДЛЯ ЧТЕНИЯ */
+.longread-wrapper {
+    max-width: 860px; /* Оптимальная ширина для длинного чтения */
+    margin: 0 auto 120px;
+    padding: 0 25px;
+}
+
+/* 3. ТИПОГРАФИКА ТЕКСТА */
+.history-text {
+    font-family: 'PT Serif', serif;
+    font-size: 21px; /* Крупный, удобный шрифт */
+    line-height: 1.75;
+    color: #2c2c2c;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+
+.history-text p { margin-bottom: 28px; }
+
+/* Буквица */
+.drop-cap::first-letter {
+    float: left;
+    font-size: 95px;
+    line-height: 80px;
+    padding-right: 15px;
+    padding-top: 5px;
+    color: var(--gold);
+    font-family: var(--font-serif);
+    font-weight: 700;
+}
+
+/* 4. ОФОРМЛЕНИЕ ГЛАВ */
+.chapter-block {
+    margin-top: 100px;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.chapter-badge {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.chapter-title {
+    font-family: var(--font-serif);
+    font-size: 42px;
+    text-align: center;
+    color: var(--text-main);
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.chapter-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 60px; height: 3px;
+    background: var(--gold);
+}
+
+/* 5. СПЕЦИАЛЬНЫЕ БЛОКИ (ИЗ ВАШЕГО ФАЙЛА + МОЙ ДИЗАЙН) */
+
+/* Блок "Чудо" (Акцентный) */
+.miracle-box {
+    background: #FFFEFA;
+    border: 2px solid #EAE3D5;
+    border-top: 6px solid var(--gold); /* Золотая шапка */
+    padding: 40px 50px;
+    margin: 50px -50px; /* Выход за границы текста */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+}
+
+.miracle-title {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Цитата (Blockquote) */
+.emotional-quote {
+    position: relative;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #555;
+    text-align: center;
+    margin: 60px 0;
+    padding: 20px;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, rgba(255,255,255,0) 70%);
+}
+
+.emotional-quote::before { content: '\201C'; font-size: 80px; position: absolute; top: -40px; left: 0; color: var(--gold); opacity: 0.3; }
+.emotional-quote::after { content: '\201D'; font-size: 80px; position: absolute; bottom: -60px; right: 0; color: var(--gold); opacity: 0.3; }
+
+/* Разделитель */
+.art-separator {
+    text-align: center;
+    font-size: 20px;
+    color: var(--gold);
+    margin: 80px 0;
+    letter-spacing: 15px;
+    opacity: 0.6;
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+    .miracle-box { margin: 40px 0; padding: 30px; }
+    .hero-title-large { font-size: 42px; }
+    .history-text { font-size: 19px; }
+    .emotional-quote { font-size: 20px; }
+}
