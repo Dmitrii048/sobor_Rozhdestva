@@ -11,26 +11,72 @@
 body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: var(--text-main); line-height: 1.8; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* --- ШАПКА (ОСНОВНАЯ, ПРАВИЛЬНАЯ) --- */
-.main-header { padding: 30px 0 0 0; text-align: center; }
-.logo-expansive-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-.logo-flex-row { display: flex; align-items: center; justify-content: center; gap: 60px; }
-.logo-sketch-large { max-width: 620px; height: auto; mix-blend-mode: multiply; filter: contrast(1.05); }
+/* --- ШАПКА (ОБНОВЛЕННАЯ: КОМПАКТНАЯ И БЕЗ ГРАНИЦ) --- */
+.main-header { 
+    padding: 10px 0 0 0; /* Уменьшили верхний отступ */
+    text-align: center; 
+    border-bottom: 1px solid #EAE3D5; /* Тонкая линия снизу для аккуратности */
+}
 
-.logo-brand-area { flex: 1; text-align: center; display: flex; flex-direction: column; align-items: center; min-width: 550px; }
-.title-main { font-family: var(--font-serif); font-size: 42px; font-weight: 400; color: var(--gold); margin: 0; line-height: 1.1; }
-.title-secondary { font-family: var(--font-serif); font-size: 30px; font-weight: 400; color: var(--gold); margin: 0; letter-spacing: 3px; line-height: 1.1; }
-.title-sub { font-family: var(--font-serif); font-size: 24px; font-weight: 400; color: var(--gold); margin-top: 5px; opacity: 0.9; font-style: italic; }
+/* Расширяем контейнер почти на весь экран */
+.logo-expansive-container { 
+    width: 96%; 
+    max-width: 1800px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
 
-.art-divider { width: 100%; max-width: 380px; margin: 20px 0; }
-.church-meta { font-family: 'Open Sans', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 4px; color: #999; margin: 0; text-align: center; }
+.logo-flex-row { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 40px; 
+}
+
+.logo-sketch-large { 
+    height: 220px; /* Фиксируем высоту, чтобы шапка не раздувалась */
+    width: auto; 
+    display: block;
+    
+    /* Убираем белый фон */
+    mix-blend-mode: multiply; 
+    filter: contrast(1.05);
+    
+    /* ГЛАВНОЕ: Маска делает края прозрачными, убирая "квадрат" */
+    -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 95%);
+    mask-image: radial-gradient(circle at center, black 60%, transparent 95%);
+}
+
+.logo-brand-area { 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    /* Убрали жесткий min-width, чтобы не ломалось на планшетах */
+}
+
+.title-main { font-family: var(--font-serif); font-size: 38px; font-weight: 400; color: var(--gold); margin: 0; line-height: 1.1; }
+.title-secondary { font-family: var(--font-serif); font-size: 24px; font-weight: 400; color: #8C8C8C; margin: 5px 0; letter-spacing: 3px; line-height: 1.1; text-transform: uppercase; }
+.title-sub { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--gold); margin-top: 0; opacity: 0.9; font-style: italic; }
+
+.art-divider { width: 100%; max-width: 300px; margin: 10px 0; }
+.art-divider svg { height: 15px; width: 100%; }
+
+.church-meta { font-family: 'Open Sans', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: #999; margin: 5px 0 0; text-align: center; }
 .church-meta span { font-weight: 700; color: #777; }
 
 /* --- НАВИГАЦИЯ --- */
-.main-nav { border-top: 1px solid var(--gold); border-bottom: 3px double var(--border); background: #fff; margin-top: 25px; position: sticky; top: 0; z-index: 1000; }
-.main-nav ul { display: flex; justify-content: center; list-style: none; padding: 0; margin: 0; }
+.main-nav { 
+    border-top: 1px solid #f0f0f0; 
+    margin-top: 15px; 
+    background: #fff; 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+}
+.main-nav ul { display: flex; justify-content: center; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
 .main-nav > ul > li { position: relative; }
-.main-nav > ul > li > a { display: block; padding: 20px 25px; text-decoration: none; color: #333; font-family: var(--font-serif); text-transform: uppercase; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; transition: 0.3s; }
+.main-nav > ul > li > a { display: block; padding: 15px 25px; text-decoration: none; color: #333; font-family: var(--font-serif); text-transform: uppercase; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; transition: 0.3s; }
 .main-nav > ul > li:hover > a { color: var(--gold); }
 
 .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); background: #fff; min-width: 280px; padding: 15px 0; box-shadow: 0 15px 40px rgba(0,0,0,0.1); border: 1px solid var(--gold); display: block !important; opacity: 0; visibility: hidden; transition: 0.3s ease; }
@@ -97,11 +143,12 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
 
 /* --- АДАПТИВНОСТЬ --- */
 @media (max-width: 900px) {
-    .logo-flex-row, .arch-profile, .bio-details-grid, .awards-container, .footer-content, .activity-grid, .awards-grid-full { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
-    .logo-sketch-large { max-width: 100%; }
+    .logo-flex-row { flex-direction: column; gap: 20px; }
+    .logo-sketch-large { height: 180px; }
+    .main-nav ul { flex-direction: column; align-items: center; }
+    .arch-profile, .bio-details-grid, .awards-container, .footer-content, .activity-grid, .awards-grid-full { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
     .t-line { display: none; }
     .t-points { flex-direction: column; align-items: center; gap: 30px; }
-    .logo-brand-area { min-width: auto; }
 }
 @media (max-width: 850px) {
     .rector-wide { flex-direction: column; max-width: 450px; }
@@ -116,8 +163,8 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     position: relative;
     background: url('history-bg.jpg') no-repeat center center;
     background-size: cover;
-    background-attachment: fixed; /* Эффект глубины при прокрутке */
-    height: 70vh; /* Высокий, торжественный экран */
+    background-attachment: fixed;
+    height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,193 +177,37 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     content: '';
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    /* Мы уменьшили прозрачность с 0.6 и 0.8 до 0.2 и 0.4 */
     background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4)); 
 }
 
-.hero-content-inner {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    padding: 0 20px;
-}
-
-.hero-title-large {
-    font-family: var(--font-serif);
-    font-size: 64px;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    color: var(--gold);
-}
-
-.hero-subtitle-large {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-weight: 300;
-    border-top: 1px solid rgba(255,255,255,0.3);
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-    display: inline-block;
-    padding: 15px 40px;
-    margin-top: 10px;
-}
+.hero-content-inner { position: relative; z-index: 2; max-width: 900px; padding: 0 20px; }
+.hero-title-large { font-family: var(--font-serif); font-size: 64px; line-height: 1.1; margin-bottom: 20px; text-shadow: 0 4px 20px rgba(0,0,0,0.5); color: var(--gold); }
+.hero-subtitle-large { font-family: 'Open Sans', sans-serif; font-size: 20px; text-transform: uppercase; letter-spacing: 4px; font-weight: 300; border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 1px solid rgba(255,255,255,0.3); display: inline-block; padding: 15px 40px; margin-top: 10px; }
 
 /* 2. КОНТЕЙНЕР ДЛЯ ЧТЕНИЯ */
-.longread-wrapper {
-    max-width: 860px; /* Оптимальная ширина для длинного чтения */
-    margin: 0 auto 120px;
-    padding: 0 25px;
-}
+.longread-wrapper { max-width: 860px; margin: 0 auto 120px; padding: 0 25px; }
 
 /* 3. ТИПОГРАФИКА ТЕКСТА */
-.history-text {
-    font-family: 'PT Serif', serif;
-    font-size: 21px; /* Крупный, удобный шрифт */
-    line-height: 1.75;
-    color: #2c2c2c;
-    text-align: justify;
-    margin-bottom: 40px;
-}
-
+.history-text { font-family: 'PT Serif', serif; font-size: 21px; line-height: 1.75; color: #2c2c2c; text-align: justify; margin-bottom: 40px; }
 .history-text p { margin-bottom: 28px; }
 
 /* Буквица */
-.drop-cap::first-letter {
-    float: left;
-    font-size: 95px;
-    line-height: 80px;
-    padding-right: 15px;
-    padding-top: 5px;
-    color: var(--gold);
-    font-family: var(--font-serif);
-    font-weight: 700;
-}
+.drop-cap::first-letter { float: left; font-size: 95px; line-height: 80px; padding-right: 15px; padding-top: 5px; color: var(--gold); font-family: var(--font-serif); font-weight: 700; }
 
 /* 4. ОФОРМЛЕНИЕ ГЛАВ */
-.chapter-block {
-    margin-top: 100px;
-    margin-bottom: 60px;
-    position: relative;
-}
-
-.chapter-badge {
-    display: block;
-    text-align: center;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #999;
-    margin-bottom: 10px;
-}
-
-.chapter-title {
-    font-family: var(--font-serif);
-    font-size: 42px;
-    text-align: center;
-    color: var(--text-main);
-    margin-bottom: 50px;
-    position: relative;
-    padding-bottom: 20px;
-}
-
-.chapter-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 60px; height: 3px;
-    background: var(--gold);
-}
+.chapter-block { margin-top: 100px; margin-bottom: 60px; position: relative; }
+.chapter-badge { display: block; text-align: center; font-size: 14px; text-transform: uppercase; letter-spacing: 3px; color: #999; margin-bottom: 10px; }
+.chapter-title { font-family: var(--font-serif); font-size: 42px; text-align: center; color: var(--text-main); margin-bottom: 50px; position: relative; padding-bottom: 20px; }
+.chapter-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--gold); }
 
 /* 5. СПЕЦИАЛЬНЫЕ БЛОКИ */
-
-/* Блок "Чудо" (Акцентный) */
-.miracle-box {
-    background: #FFFEFA;
-    border: 2px solid #EAE3D5;
-    border-top: 6px solid var(--gold); /* Золотая шапка */
-    padding: 40px 50px;
-    margin: 50px -50px; /* Выход за границы текста */
-    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-}
-
-.miracle-title {
-    font-family: var(--font-serif);
-    font-size: 28px;
-    color: var(--gold);
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* Цитата (Blockquote) */
-.emotional-quote {
-    position: relative;
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 24px;
-    line-height: 1.5;
-    color: #555;
-    text-align: center;
-    margin: 60px 0;
-    padding: 20px;
-    background: radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, rgba(255,255,255,0) 70%);
-}
-
+.miracle-box { background: #FFFEFA; border: 2px solid #EAE3D5; border-top: 6px solid var(--gold); padding: 40px 50px; margin: 50px -50px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
+.miracle-title { font-family: var(--font-serif); font-size: 28px; color: var(--gold); margin-bottom: 20px; text-align: center; }
+.emotional-quote { position: relative; font-family: var(--font-serif); font-style: italic; font-size: 24px; line-height: 1.5; color: #555; text-align: center; margin: 60px 0; padding: 20px; background: radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, rgba(255,255,255,0) 70%); }
 .emotional-quote::before { content: '\201C'; font-size: 80px; position: absolute; top: -40px; left: 0; color: var(--gold); opacity: 0.3; }
 .emotional-quote::after { content: '\201D'; font-size: 80px; position: absolute; bottom: -60px; right: 0; color: var(--gold); opacity: 0.3; }
-
-/* Разделитель */
-.art-separator {
-    text-align: center;
-    font-size: 20px;
-    color: var(--gold);
-    margin: 80px 0;
-    letter-spacing: 15px;
-    opacity: 0.6;
-}
-
-/* Блок "Факт" */
-.fact-box {
-    background: #fdfaf5;
-    border-left: 4px solid var(--gold);
-    padding: 30px 40px;
-    margin: 40px 0;
-    font-size: 19px;
-    font-style: italic;
-    color: #555;
-}
-.fact-label {
-    display: block;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--gold);
-    font-weight: 700;
-    font-style: normal;
-    margin-bottom: 10px;
-}
-.btn-gold {
-    display: inline-block;
-    background: var(--gold);
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 700;
-    border-radius: 2px;
-    transition: 0.3s;
-}
-.btn-gold:hover {
-    background: #b08d4a;
-}
-
-/* Адаптив для Летописи */
-@media (max-width: 900px) {
-    .miracle-box { margin: 40px 0; padding: 30px; }
-    .hero-title-large { font-size: 42px; }
-    .history-text { font-size: 19px; }
-    .emotional-quote { font-size: 20px; }
-}
+.art-separator { text-align: center; font-size: 20px; color: var(--gold); margin: 80px 0; letter-spacing: 15px; opacity: 0.6; }
+.fact-box { background: #fdfaf5; border-left: 4px solid var(--gold); padding: 30px 40px; margin: 40px 0; font-size: 19px; font-style: italic; color: #555; }
+.fact-label { display: block; font-family: 'Open Sans', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); font-weight: 700; font-style: normal; margin-bottom: 10px; }
+.btn-gold { display: inline-block; background: var(--gold); color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; border-radius: 2px; transition: 0.3s; }
+.btn-gold:hover { background: #b08d4a; }
