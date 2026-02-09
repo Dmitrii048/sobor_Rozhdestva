@@ -12,42 +12,46 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
 /* --- ШАПКА (ВЕРСИЯ: ПРОСТОРНАЯ И МОНУМЕНТАЛЬНАЯ) --- */
-/* --- ШАПКА (ВЕРСИЯ: ШИРОКАЯ И МАСШТАБНАЯ) --- */
 
 .main-header { 
-    padding: 20px 0; /* Немного воздуха сверху и снизу */
+    padding: 10px 0 20px 0; 
     text-align: center; 
     border-bottom: 1px solid #EAE3D5;
     background: #fff;
-    overflow: hidden; /* Чтобы ничего случайно не вылезло */
+    overflow: hidden; 
 }
 
-/* 1. РАСТЯГИВАЕМ КОНТЕЙНЕР */
+/* 1. КОНТЕЙНЕР */
 .logo-expansive-container { 
-    width: 98%; /* Занимаем 98% ширины экрана */
-    max-width: 2000px; /* Ограничитель только для гигантских мониторов */
+    width: 98%; 
+    max-width: 2200px; /* Разрешаем растягиваться на очень широкие экраны */
     margin: 0 auto; 
-    padding: 0 10px;
+    padding: 0;
 }
 
 .logo-flex-row { 
     display: flex; 
     align-items: center; 
-    justify-content: center; /* Центруем всю группу */
-    gap: 80px; /* БОЛЬШОЙ отступ между рисунком и текстом */
+    justify-content: center; 
+    gap: 40px; /* Чуть уменьшим зазор, чтобы они не разлетелись слишком далеко */
 }
 
-/* 2. УВЕЛИЧИВАЕМ РИСУНОК */
+/* 2. РИСУНОК (ТЕПЕРЬ БОЛЬШОЙ) */
 .logo-sketch-large { 
     height: auto; 
-    /* Было 220px -> Стало 360px. Рисунок станет крупным! */
-    max-height: 360px; 
-    width: auto; 
-    max-width: 55vw; /* Не даем занять больше 55% ширины экрана */
+    width: auto;
+    
+    /* ГЛАВНОЕ ИЗМЕНЕНИЕ: */
+    min-width: 600px; /* Минимальная ширина на десктопе - заставляем быть большой */
+    max-width: 60vw;  /* Может занимать до 60% ширины экрана */
+    max-height: 550px; /* Разрешаем расти в высоту (было 360px) */
     
     display: block;
-    mix-blend-mode: multiply; /* Убирает белый фон (если есть) */
-    filter: contrast(1.05); /* Немного четкости */
+    mix-blend-mode: multiply; 
+    filter: contrast(1.05);
+    
+    /* Небольшой отступ слева, чтобы уравновесить композицию */
+    margin-left: -50px; 
 }
 
 .logo-brand-area { 
@@ -55,34 +59,36 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    min-width: 500px; /* Текст будет занимать солидное место */
+    /* Текст тоже должен занимать место, чтобы его не сплющило */
+    min-width: 550px; 
+    z-index: 10; /* Чтобы текст был поверх, если картинка подъедет */
 }
 
-/* 3. УВЕЛИЧИВАЕМ ШРИФТЫ (под стать большому рисунку) */
+/* 3. ШРИФТЫ (УВЕЛИЧЕНЫ ПРОПОРЦИОНАЛЬНО) */
 .title-main { 
     font-family: var(--font-serif); 
-    font-size: 54px; /* ОЧЕНЬ КРУПНО */
+    font-size: 64px; /* ОГРОМНЫЙ ЗАГОЛОВОК */
     font-weight: 400; 
     color: var(--gold); 
     margin: 0; 
-    line-height: 1.1; 
-    white-space: nowrap; /* Запрещаем перенонс строк в названии */
+    line-height: 1; 
+    white-space: nowrap; 
 }
 
 .title-secondary { 
     font-family: var(--font-serif); 
-    font-size: 28px; /* Крупнее */
+    font-size: 32px; /* Крупнее */
     font-weight: 400; 
     color: #8C8C8C; 
-    margin: 15px 0; 
-    letter-spacing: 5px; /* Широкий разлет букв */
+    margin: 10px 0 15px; 
+    letter-spacing: 6px; /* Широкий разлет */
     line-height: 1.1; 
     text-transform: uppercase; 
 }
 
 .title-sub { 
     font-family: var(--font-serif); 
-    font-size: 26px; 
+    font-size: 28px; 
     font-weight: 400; 
     color: var(--gold); 
     margin-top: 0; 
@@ -90,20 +96,39 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     font-style: italic; 
 }
 
-/* Линия под текстом */
-.art-divider { width: 100%; max-width: 400px; margin: 20px 0; }
+.art-divider { width: 100%; max-width: 450px; margin: 20px 0; }
 .art-divider svg { height: 15px; width: 100%; }
 
-/* Мелкий текст (Патриархат) */
 .church-meta { 
     font-family: 'Open Sans', sans-serif; 
-    font-size: 13px; 
+    font-size: 14px; 
     text-transform: uppercase; 
-    letter-spacing: 4px; 
+    letter-spacing: 5px; 
     color: #999; 
-    margin: 10px 0 0; 
+    margin: 15px 0 0; 
 }
 
+/* --- АДАПТИВНОСТЬ (ЧТОБЫ НЕ ЛОМАЛОСЬ НА НОУТБУКАХ) --- */
+
+/* Обычные ноутбуки (1366x768) */
+@media (max-width: 1450px) {
+    .logo-sketch-large { 
+        min-width: auto; /* Отключаем жесткий минимум */
+        max-height: 400px; /* Чуть меньше */
+        margin-left: 0;
+    }
+    .title-main { font-size: 52px; }
+    .title-secondary { font-size: 24px; }
+    .logo-brand-area { min-width: auto; }
+}
+
+/* Планшеты и телефоны */
+@media (max-width: 1024px) {
+    .logo-flex-row { flex-direction: column; gap: 20px; }
+    .logo-sketch-large { max-height: 300px; max-width: 95%; margin: 0; }
+    .title-main { font-size: 36px; white-space: normal; }
+    .title-secondary { font-size: 18px; letter-spacing: 3px; }
+}
 /* --- ВАЖНО: АДАПТИВНОСТЬ --- */
 /* На ноутбуках и планшетах (меньше 1300px) уменьшаем обратно, иначе не влезут */
 @media (max-width: 1300px) {
