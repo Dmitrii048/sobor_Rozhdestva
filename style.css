@@ -11,10 +11,7 @@
 body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: var(--text-main); line-height: 1.8; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* --- ШАПКА (ВЕРСИЯ: ПРОСТОРНАЯ И МОНУМЕНТАЛЬНАЯ) --- */
-
-/* --- ШАПКА (ФИНАЛ: МАСШТАБ + ВАШИ ЦВЕТА) --- */
-
+/* --- ШАПКА (ФИНАЛЬНАЯ ВЕРСИЯ: МАСШТАБНАЯ) --- */
 .main-header { 
     padding: 10px 0 20px 0; 
     text-align: center; 
@@ -97,39 +94,21 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
 .art-divider { width: 100%; max-width: 450px; margin: 20px 0; }
 .art-divider svg { height: 15px; width: 100%; }
 
-/* 4. ПАТРИАРХАТ (ИСПРАВЛЕНО: СДЕЛАЛ ТЕМНЕЕ) */
+/* 4. ПАТРИАРХАТ (ТЕМНЫЙ) */
 .church-meta { 
     font-family: 'Open Sans', sans-serif; 
     font-size: 14px; 
     text-transform: uppercase; 
     letter-spacing: 5px; 
-    
-    /* БЫЛО #999 (Светлый), СТАЛО #777 (Темнее, как вы просили) */
-    color: #777; 
-    
+    color: #777; /* Темный серый */
     margin: 15px 0 0; 
 }
 
-/* Для второй строчки (Липецкая митрополия) можно сделать еще чуть темнее */
 .church-meta span {
-    color: #555; /* Еще темнее для контраста */
+    color: #555;
     font-weight: 700;
 }
 
-/* АДАПТИВ */
-@media (max-width: 1450px) {
-    .logo-sketch-large { min-width: auto; max-height: 400px; margin-left: 0; }
-    .title-main { font-size: 52px; }
-    .title-secondary { font-size: 26px; }
-    .logo-brand-area { min-width: auto; }
-}
-
-@media (max-width: 1024px) {
-    .logo-flex-row { flex-direction: column; gap: 20px; }
-    .logo-sketch-large { max-height: 300px; max-width: 95%; margin: 0; }
-    .title-main { font-size: 36px; white-space: normal; }
-    .title-secondary { font-size: 18px; letter-spacing: 3px; }
-}
 /* --- НАВИГАЦИЯ --- */
 .main-nav { 
     border-top: 1px solid #f0f0f0; 
@@ -206,21 +185,6 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
 .footer-block p { font-size: 14px; margin-bottom: 10px; }
 .footer-bottom { background: #F5F2EE; padding: 20px 0; font-size: 12px; margin-top: 40px; border-top: 1px solid #EAE3D5; }
 
-/* --- АДАПТИВНОСТЬ --- */
-@media (max-width: 900px) {
-    .logo-flex-row { flex-direction: column; gap: 20px; }
-    .logo-sketch-large { height: 180px; }
-    .main-nav ul { flex-direction: column; align-items: center; }
-    .arch-profile, .bio-details-grid, .awards-container, .footer-content, .activity-grid, .awards-grid-full { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
-    .t-line { display: none; }
-    .t-points { flex-direction: column; align-items: center; gap: 30px; }
-}
-@media (max-width: 850px) {
-    .rector-wide { flex-direction: column; max-width: 450px; }
-    .rector-wide .clergy-photo-box { width: 100%; height: 450px; border-right: none; border-bottom: 1px solid var(--border); }
-    .rector-wide .clergy-info { padding: 30px; text-align: center; }
-}
-
 /* --- СТИЛИ ДЛЯ ЛЕТОПИСИ (ФИНАЛЬНАЯ ВЕРСИЯ) --- */
 
 /* 1. ГЕРОЙ-БЛОК С ПАРАЛЛАКСОМ */
@@ -276,3 +240,39 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
 .fact-label { display: block; font-family: 'Open Sans', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); font-weight: 700; font-style: normal; margin-bottom: 10px; }
 .btn-gold { display: inline-block; background: var(--gold); color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; border-radius: 2px; transition: 0.3s; }
 .btn-gold:hover { background: #b08d4a; }
+
+/* --- АДАПТИВНОСТЬ (ВСЁ ВНИЗУ, ЧТОБЫ НЕ ПЕРЕКРЫВАТЬ) --- */
+
+/* Ноутбуки */
+@media (max-width: 1450px) {
+    .logo-sketch-large { min-width: auto; max-height: 400px; margin-left: 0; }
+    .title-main { font-size: 52px; }
+    .title-secondary { font-size: 26px; }
+    .logo-brand-area { min-width: auto; }
+}
+
+/* Планшеты и телефоны */
+@media (max-width: 1024px) {
+    .logo-flex-row { flex-direction: column; gap: 20px; }
+    .logo-sketch-large { max-height: 300px; max-width: 95%; margin: 0; }
+    .title-main { font-size: 36px; white-space: normal; }
+    .title-secondary { font-size: 18px; letter-spacing: 3px; }
+}
+
+/* Мобильный адаптив для остальных блоков */
+@media (max-width: 900px) {
+    .main-nav ul { flex-direction: column; align-items: center; }
+    .arch-profile, .bio-details-grid, .awards-container, .footer-content, .activity-grid, .awards-grid-full { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
+    .t-line { display: none; }
+    .t-points { flex-direction: column; align-items: center; gap: 30px; }
+    .miracle-box { margin: 40px 0; padding: 30px; }
+    .hero-title-large { font-size: 42px; }
+    .history-text { font-size: 19px; }
+    .emotional-quote { font-size: 20px; }
+}
+
+@media (max-width: 850px) {
+    .rector-wide { flex-direction: column; max-width: 450px; }
+    .rector-wide .clergy-photo-box { width: 100%; height: 450px; border-right: none; border-bottom: 1px solid var(--border); }
+    .rector-wide .clergy-info { padding: 30px; text-align: center; }
+}
