@@ -13,44 +13,43 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
 
 /* --- ШАПКА (ВЕРСИЯ: ПРОСТОРНАЯ И МОНУМЕНТАЛЬНАЯ) --- */
 
+/* --- ШАПКА (ФИНАЛ: МАСШТАБ + ВАШИ ЦВЕТА) --- */
+
 .main-header { 
     padding: 10px 0 20px 0; 
     text-align: center; 
-    border-bottom: 1px solid #EAE3D5;
+    border-bottom: 1px solid #EAE3D5; 
     background: #fff;
     overflow: hidden; 
 }
 
-/* 1. КОНТЕЙНЕР */
+/* 1. КОНТЕЙНЕР (ШИРОКИЙ) */
 .logo-expansive-container { 
     width: 98%; 
-    max-width: 2200px; /* Разрешаем растягиваться на очень широкие экраны */
+    max-width: 2200px; 
     margin: 0 auto; 
-    padding: 0;
 }
 
 .logo-flex-row { 
     display: flex; 
     align-items: center; 
     justify-content: center; 
-    gap: 40px; /* Чуть уменьшим зазор, чтобы они не разлетелись слишком далеко */
+    gap: 40px; 
 }
 
-/* 2. РИСУНОК (ТЕПЕРЬ БОЛЬШОЙ) */
+/* 2. РИСУНОК (БОЛЬШОЙ) */
 .logo-sketch-large { 
     height: auto; 
     width: auto;
     
-    /* ГЛАВНОЕ ИЗМЕНЕНИЕ: */
-    min-width: 600px; /* Минимальная ширина на десктопе - заставляем быть большой */
-    max-width: 60vw;  /* Может занимать до 60% ширины экрана */
-    max-height: 550px; /* Разрешаем расти в высоту (было 360px) */
+    /* Масштаб */
+    min-width: 600px; 
+    max-width: 60vw;  
+    max-height: 550px; 
     
     display: block;
     mix-blend-mode: multiply; 
     filter: contrast(1.05);
-    
-    /* Небольшой отступ слева, чтобы уравновесить композицию */
     margin-left: -50px; 
 }
 
@@ -59,38 +58,37 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    /* Текст тоже должен занимать место, чтобы его не сплющило */
     min-width: 550px; 
-    z-index: 10; /* Чтобы текст был поверх, если картинка подъедет */
+    z-index: 10;
 }
 
-/* 3. ШРИФТЫ (УВЕЛИЧЕНЫ ПРОПОРЦИОНАЛЬНО) */
+/* 3. ТЕКСТ (ЗОЛОТОЙ) */
 .title-main { 
-    font-family: var(--font-serif); 
-    font-size: 64px; /* ОГРОМНЫЙ ЗАГОЛОВОК */
+    font-family: 'PT Serif', serif; 
+    font-size: 64px; 
     font-weight: 400; 
-    color: var(--gold); 
+    color: #C5A059; /* ВАШ ЗОЛОТОЙ */
     margin: 0; 
     line-height: 1; 
     white-space: nowrap; 
 }
 
 .title-secondary { 
-    font-family: var(--font-serif); 
-    font-size: 32px; /* Крупнее */
+    font-family: 'PT Serif', serif; 
+    font-size: 32px; 
     font-weight: 400; 
-    color: #8C8C8C; 
+    color: #C5A059; /* ВАШ ЗОЛОТОЙ */
     margin: 10px 0 15px; 
-    letter-spacing: 6px; /* Широкий разлет */
+    letter-spacing: 5px; 
     line-height: 1.1; 
     text-transform: uppercase; 
 }
 
 .title-sub { 
-    font-family: var(--font-serif); 
+    font-family: 'PT Serif', serif; 
     font-size: 28px; 
     font-weight: 400; 
-    color: var(--gold); 
+    color: #C5A059; /* ВАШ ЗОЛОТОЙ */
     margin-top: 0; 
     opacity: 0.9; 
     font-style: italic; 
@@ -99,65 +97,39 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
 .art-divider { width: 100%; max-width: 450px; margin: 20px 0; }
 .art-divider svg { height: 15px; width: 100%; }
 
+/* 4. ПАТРИАРХАТ (ИСПРАВЛЕНО: СДЕЛАЛ ТЕМНЕЕ) */
 .church-meta { 
     font-family: 'Open Sans', sans-serif; 
     font-size: 14px; 
     text-transform: uppercase; 
     letter-spacing: 5px; 
-    color: #999; 
+    
+    /* БЫЛО #999 (Светлый), СТАЛО #777 (Темнее, как вы просили) */
+    color: #777; 
+    
     margin: 15px 0 0; 
 }
 
-/* --- АДАПТИВНОСТЬ (ЧТОБЫ НЕ ЛОМАЛОСЬ НА НОУТБУКАХ) --- */
+/* Для второй строчки (Липецкая митрополия) можно сделать еще чуть темнее */
+.church-meta span {
+    color: #555; /* Еще темнее для контраста */
+    font-weight: 700;
+}
 
-/* Обычные ноутбуки (1366x768) */
+/* АДАПТИВ */
 @media (max-width: 1450px) {
-    .logo-sketch-large { 
-        min-width: auto; /* Отключаем жесткий минимум */
-        max-height: 400px; /* Чуть меньше */
-        margin-left: 0;
-    }
+    .logo-sketch-large { min-width: auto; max-height: 400px; margin-left: 0; }
     .title-main { font-size: 52px; }
-    .title-secondary { font-size: 24px; }
+    .title-secondary { font-size: 26px; }
     .logo-brand-area { min-width: auto; }
 }
 
-/* Планшеты и телефоны */
 @media (max-width: 1024px) {
     .logo-flex-row { flex-direction: column; gap: 20px; }
     .logo-sketch-large { max-height: 300px; max-width: 95%; margin: 0; }
     .title-main { font-size: 36px; white-space: normal; }
     .title-secondary { font-size: 18px; letter-spacing: 3px; }
 }
-/* --- ВАЖНО: АДАПТИВНОСТЬ --- */
-/* На ноутбуках и планшетах (меньше 1300px) уменьшаем обратно, иначе не влезут */
-@media (max-width: 1300px) {
-    .logo-sketch-large { max-height: 280px; }
-    .title-main { font-size: 42px; }
-    .logo-brand-area { min-width: auto; }
-    .logo-flex-row { gap: 40px; }
-}
-
-/* На телефонах и вертикальных планшетах */
-@media (max-width: 900px) {
-    .logo-flex-row { flex-direction: column; gap: 20px; }
-    .logo-sketch-large { max-height: 200px; max-width: 90%; }
-    .title-main { font-size: 32px; white-space: normal; }
-    .title-secondary { font-size: 18px; letter-spacing: 2px; }
-}
-/* АДАПТИВ (ЧТОБЫ НА ТЕЛЕФОНЕ БЫЛО АККУРАТНО) */
-@media (max-width: 1024px) {
-    .logo-flex-row { 
-        flex-direction: column; /* На планшетах и ниже - друг под другом */
-        gap: 20px; 
-    }
-    .logo-sketch-large { 
-        max-height: 250px; /* Уменьшаем на планшетах */
-        max-width: 90%;
-    }
-    .logo-brand-area { min-width: auto; }
-}
-
 /* --- НАВИГАЦИЯ --- */
 .main-nav { 
     border-top: 1px solid #f0f0f0; 
