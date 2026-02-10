@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Святыни и История | Христорождественский собор</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* Стили для блока со святыней */
+        .shrine-block {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #EAE3D5;
+        }
+        .shrine-block:last-child {
+            border-bottom: none;
+        }
+        
+        /* Стили для изображений */
+        .shrine-image-container {
+            text-align: center;
+            margin: 25px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .shrine-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            max-height: 500px;
+            border: 4px solid #fff;
+            outline: 1px solid #C5A059;
+            object-fit: contain;
+        }
+
+        /* Подпись под фото */
+        .img-caption {
+            display: block;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+            max-width: 300px;
+        }
+
+        .img-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Контейнер для кнопок */
+        .shrine-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        /* Стиль кнопок */
+        .btn-doc {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            background-color: #fcfbf8;
+            border: 1px solid #C5A059;
+            color: #5c4d3c;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-doc i {
+            margin-right: 10px;
+            color: #C5A059;
+        }
+
+        .btn-doc:hover {
+            background-color: #C5A059;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+        }
+        
+        .btn-doc:hover i {
+            color: #fff;
+        }
+
+        .btn-doc.primary {
+            background-color: #f0eadd;
+        }
+
+        /* Стиль для врезок с историей */
+        .history-note {
+            background-color: #f9f7f2;
+            border-left: 4px solid #C5A059;
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            font-family: 'PT Serif', serif;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .shrine-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-doc {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ШАПКА -->
+<header class="main-header">
+    <div class="logo-expansive-container">
+        <div class="logo-flex-row">
+            <a href="index.html" class="logo-visual"><img src="sobor-sketch.jpg" alt="Собор" class="logo-sketch-large"></a>
+            <div class="logo-brand-area">
+                <h1 class="title-main">Христорождественский</h1>
+                <h2 class="title-secondary">кафедральный собор</h2>
+                <h3 class="title-sub">г. Липецка</h3>
+                <div class="art-divider">
+                    <svg viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 10 L150 10 C170 10 180 0 200 10 C220 20 230 10 250 10 L400 10" stroke="#EAE3D5" fill="transparent" />
+                        <circle cx="200" cy="10" r="3" fill="#C5A059" />
+                    </svg>
+                </div>
+                <div class="church-meta">
+                    <p>Московский Патриархат <br> <span>Липецкая митрополия</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li class="has-dropdown">
+                <a href="#" class="active">О соборе</a>
+                <ul class="dropdown-menu">
+                    <li><a href="about.html">Летопись храма</a></li>
+                    <li><a href="shrines.html">Святыни храма</a></li>
+                    <li><a href="archpastor.html">Архипастырь</a></li>
+                    <li><a href="clergy.html">Духовенство</a></li>
+                    <li><a href="choir.html">Архиерейский хор</a></li>
+                    <li><a href="school.html">Воскресная школа</a></li>
+                    <li><a href="pilgrimage.html">Паломнические поездки</a></li>
+                </ul>
+            </li>
+            <li><a href="schedule.html">Расписание</a></li>
+            <li class="has-dropdown">
+                <a href="#">Служение</a>
+                <ul class="dropdown-menu">
+                    <li><a href="social.html">Социальное служение</a></li>
+                    <li><a href="missionary.html">Служение в других храмах</a></li>
+                </ul>
+            </li>
+            <li><a href="publications.html">Публикации</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="#" class="btn-note">Подать записку</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ГЕРОЙ-БЛОК -->
+<section class="chronicle-hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('shrines-bg.jpg');"> 
+    <div class="hero-content-inner">
+        <h1 class="hero-title-large">Святыни Собора</h1>
+        <span class="hero-subtitle-large">Духовные сокровища и историческое наследие</span>
+    </div>
+</section>
+
+<main class="longread-wrapper">
+
+    <!-- ВСТУПЛЕНИЕ -->
+    <div class="history-text">
+        <p class="drop-cap">
+            Христорождественский собор — драгоценный ларец, хранящий великие христианские святыни. Ежедневно сюда стекаются верующие, чтобы поклониться чудотворным образам и мощам угодников Божиих. Стены храма хранят память о благочестивых предках, украшавших Дом Божий на протяжении столетий.
+        </p>
+    </div>
+
+    <!-- 1. СТРАСТНАЯ -->
+    <div class="shrine-block" id="strastnaya">
+        <h2 class="chapter-title">Икона Божией Матери «Липецкая Страстная»</h2>
+        <div class="shrine-image-container">
+            <img src="icon-strastnaya.jpg" alt="Икона Божией Матери Страстная Липецкая" class="shrine-img">
+        </div>
+        <div class="history-text">
+            <p>
+                Главная святыня Липецка. Этот чудотворный образ прославился в страшный 1831 год, когда в городе свирепствовала эпидемия холеры. Благочестивой рабе Божией было явление во сне: Царица Небесная повелела поднять этот образ и обнести его вокруг города.
+            </p>
+            <p>
+                После всенародного крестного хода болезнь чудесным образом отступила и вскоре полностью прекратилась. В память об этом чуде ежегодно совершался торжественный крестный ход.
+            </p>
+            <div class="history-note">
+                В отличие от традиционного изображения, на Липецкой иконе орудия Страстей Господних изображены в увеличенном виде внизу образа, а Крест расположен наискосок за спиной Богоматери. Ныне икона находится в левом приделе в фарфоровом киоте.
+            </div>
+            <p>День празднования: <strong>13 (26) августа</strong>.</p>
+        </div>
+        <div class="shrine-actions">
+            <a href="akathist-strastnaya.html" class="btn-doc primary"><i class="fas fa-book-open"></i> Читать Акафист</a>
+            <a href="prayer-strastnaya.html" class="btn-doc"><i class="fas fa-pray"></i> Тропарь и Молитва</a>
+        </div>
+    </div>
+
+    <!-- 2. ДЕРЖАВНАЯ -->
+    <div class="shrine-block" id="derzhavnaya">
+        <h2 class="chapter-title">Икона Божией Матери «Державная»</h2>
+        <div class="shrine-image-container">
+            <img src="icon-derzhavnaya.jpg" alt="Икона Божией Матери Державная" class="shrine-img">
+        </div>
+        <div class="history-text">
+            <p>
+                Особо чтимый образ, явленный в день отречения Императора Николая II от престола (2/15 марта 1917 года). В этот трагический момент истории Сама Пресвятая Богородица взяла на Себя верховную власть и попечение о России, явившись со знаками царской власти — скипетром и державой.
+            </p>
+            <p>
+                В соборе перед этой иконой еженедельно совершаются молебны с акафистом. Верующие прибегают к ней с молитвой о мире в Отечестве и укреплении веры.
+            </p>
+        </div>
+        <div class="shrine-actions">
+            <a href="akathist-derzhavnaya.html" class="btn-doc primary"><i class="fas fa-book-open"></i> Акафист</a>
+            <a href="canon-derzhavnaya.html" class="btn-doc"><i class="fas fa-church"></i> Канон</a>
+            <a href="prayer-derzhavnaya.html" class="btn-doc"><i class="fas fa-pray"></i> Молитвы и Величания</a>
+        </div>
+    </div>
+
+    <!-- 3. КОВЧЕГ С МОЩАМИ -->
+    <div class="shrine-block" id="relics">
+        <h2 class="chapter-title">Ковчег с мощами святых угодников</h2>
+        <div class="shrine-image-container">
+            <img src="relics-raka.jpg" alt="Рака с мощами святых" class="shrine-img">
+        </div>
+        <div class="history-text">
+            <p>
+                Уникальная святыня — фарфоровая рака под сенью, где покоятся частицы мощей <strong>81 угодника Божия</strong>. Это чудотворцы Киево-Печерской Лавры (из Ближних и Дальних пещер), а также:
+            </p>
+            <ul style="list-style: none; padding-left: 20px; color: #444; margin-bottom: 20px;">
+                <li>† Святителя Тихона Задонского</li>
+                <li>† Святителя Митрофана Воронежского</li>
+                <li>† Преподобного Илариона Троекуровского</li>
+                <li>† Великомученика и целителя Пантелеимона</li>
+                <li>† Вифлеемских младенцев</li>
+            </ul>
+        </div>
+        <div class="shrine-actions">
+            <a href="files/list_relics.pdf" target="_blank" class="btn-doc"><i class="fas fa-list"></i> Полный список имен</a>
+        </div>
+    </div>
+
+    <!-- 4. СЩМЧ. УАР (С ПОДРЯСНИКОМ) -->
+    <div class="shrine-block" id="uar">
+        <h2 class="chapter-title">Священномученик Уар, епископ Липецкий</h2>
+        
+        <div class="shrine-image-container">
+            <div class="img-wrapper">
+                <img src="icon-uar.jpg" alt="Икона сщмч. Уара" class="shrine-img">
+                <span class="img-caption">Образ святого</span>
+            </div>
+            <div class="img-wrapper">
+                <img src="uar-podryasnik.jpg" alt="Подрясник сщмч. Уара" class="shrine-img">
+                <span class="img-caption">Подрясник святого, хранящийся в алтаре</span>
+            </div>
+        </div>
+
+        <div class="history-text">
+            <p>
+                Первый епископ Липецкий, пострадавший за веру в годы гонений. В соборе особо почитается его память. Он служил здесь, когда храм стал кафедральным в 1926 году.
+            </p>
+            <p>
+                Помимо иконы с частицей мощей (расположенной напротив Страстной иконы), в храме хранится великая реликвия — <strong>подлинный подрясник</strong> священномученика Уара. Эта одежда — безмолвный свидетель его архипастырского служения и исповеднического подвига.
+            </p>
+        </div>
+        <div class="shrine-actions">
+            <a href="akathist-uar.html" class="btn-doc primary"><i class="fas fa-book-open"></i> Акафист</a>
+            <a href="canon-uar.html" class="btn-doc"><i class="fas fa-church"></i> Канон</a>
+            <a href="prayer-uar.html" class="btn-doc"><i class="fas fa-pray"></i> Молитва</a>
+            <a href="files/life_uar.pdf" target="_blank" class="btn-doc"><i class="fas fa-scroll"></i> Житие</a>
+        </div>
+    </div>
+
+    <!-- 5. ФЕОДОР КУЗЬМИЧ -->
+    <div class="shrine-block" id="feodor">
+        <h2 class="chapter-title">Святой праведный Феодор Томский</h2>
+        <div class="shrine-image-container">
+            <img src="icon-feodor.jpg" alt="Феодор Кузьмич" class="shrine-img">
+        </div>
+        <div class="history-text">
+            <p>
+                Справа в храмовой части находится образ с частицей мощей таинственного сибирского старца Феодора Кузьмича. 
+            </p>
+            <div class="history-note">
+                Согласно благочестивому преданию, под именем старца скрывался <strong>Император Александр I</strong>. Инсценировав свою кончину, он взял на себя подвиг странничества и юродства во искупление грехов. После его смерти были найдены вещи, указывавшие на высокое происхождение.
+            </div>
+            <p>
+                В нашем соборе, который закладывался и строился в годы правления Александра I (освящен в 1807 г.), эта святыня имеет особое значение, связывая эпохи.
+            </p>
+        </div>
+        <div class="shrine-actions">
+            <a href="files/life_feodor.pdf" target="_blank" class="btn-doc"><i class="fas fa-scroll"></i> Житие старца</a>
+        </div>
+    </div>
+
+    <!-- 6. ВАРВАРА -->
+    <div class="shrine-block" id="varvara">
+        <h2 class="chapter-title">Великомученица Варвара</h2>
+        <div class="shrine-image-container">
+            <img src="icon-varvara.jpg" alt="Икона вмч. Варвары с частицей мощей" class="shrine-img">
+        </div>
+        <div class="history-text">
+            <p>
+                В нашем соборе пребывает икона святой великомученицы Варвары с <strong>частицей её честных мощей</strong>. 
+            </p>
+            <p>
+                Святая Варвара издревле почитается на Руси как небесная покровительница от внезапной и напрасной смерти. Ей молятся, чтобы не отойти в вечность без покаяния и Святого Причастия. Также святая является скорой помощницей в тяжелых недугах и заступницей за детей.
+            </p>
+        </div>
+    </div>
+
+    <!-- 7. СОБОР ЛИПЕЦКИХ СВЯТЫХ -->
+    <div class="shrine-block" id="saints">
+        <h2 class="chapter-title">Собор Липецких святых</h2>
+        <div class="shrine-image-container">
+            <img src="icon-lipetsk-saints.jpg" alt="Собор Липецких святых" class="shrine-img">
+        </div>
+        <div class="history-text">
+            <p>
+                Икона, объединяющая всех небесных покровителей нашего края. Здесь изображены святители, преподобные и мученики, просиявшие на Липецкой земле. День их общей памяти торжественно совершается <strong>23 сентября</strong> — в день памяти священномученика Уара.
+            </p>
+        </div>
+        <div class="shrine-actions">
+            <a href="prayer-saints.html" class="btn-doc primary"><i class="fas fa-pray"></i> Тропарь, Кондак, Молитва</a>
+        </div>
+    </div>
+
+    <!-- 8. ИСТОРИЧЕСКИЕ ФРЕСКИ (НОВЫЙ РАЗДЕЛ) -->
+    <div class="shrine-block" id="frescoes">
+        <h2 class="chapter-title">Сохранившиеся дореволюционные росписи</h2>
+        <div class="shrine-image-container">
+            <!-- Используйте фото fresco-old.jpg -->
+            <img src="fresco-old.jpg" alt="Старинные фрески итальянской работы" class="shrine-img">
+        </div>
+        <div class="history-text">
+            <p>
+                В ходе масштабной реставрации собора в 1990-х годах стены были заново расписаны художниками В.Д. Подольским и Н.И. Даньшиным в академическом стиле. Однако реставраторам удалось сберечь бесценные фрагменты первоначального убранства.
+            </p>
+            <p>
+                <strong>Подлинные фрески XIX века итальянской работы</strong> сохранились в алтарях трапезной части собора и над входом в трапезную из притвора. Эти изображения чудом уцелели в годы советского безвременья, когда собор использовался как склад и музей, и сегодня свидетельствуют о былом величии храма.
+            </p>
+            <div class="history-note">
+                Известно, что ранние росписи стен и иконы алтарной преграды выполнял выпускник Академии художеств Трофим Фёдорович Дурнов (1765–1833). Современники отмечали, что о росписях заботился лично храмоздатель Пётр Лукич Вельяминов.
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. ИСТОРИЧЕСКИЕ ИКОНЫ И ДАРЫ (НОВЫЙ РАЗДЕЛ) -->
+    <div class="shrine-block" id="historical-icons">
+        <h2 class="chapter-title">Утраченные святыни и дары благотворителей</h2>
+        <div class="shrine-image-container">
+            <!-- Используйте фото interior-historical.jpg -->
+            <img src="interior-historical.jpg" alt="Исторический интерьер собора" class="shrine-img">
+        </div>
+        <div class="history-text">
+            <p>
+                История собора богата примерами жертвенной любви прихожан к Дому Божиему. До разорения в 1920-х годах храм украшали многочисленные иконы в драгоценных окладах, пожертвованные липецкими дворянами и купцами.
+            </p>
+            <ul style="list-style: none; padding-left: 20px; color: #444; margin-top: 15px;">
+                <li><strong>Дар помещицы Зацепиной:</strong> В 1831 и 1836 годах ею были пожертвованы серебряные ризы для икон Спасителя и Божией Матери в Никольском приделе.</li>
+                <li><strong>Дар купцов Хренниковых:</strong> Братья Хренниковы украсили серебряной ризой и лампадой образ «Всех скорбящих Радость».</li>
+                <li><strong>Дар купца Крастелева:</strong> В 1899 году Гавриил Дмитриевич Крастелев устроил серебряно-вызлащенную ризу на икону Иоанна Предтечи.</li>
+            </ul>
+            <p style="margin-top: 20px;">
+                Многие иконы представляли собой настоящую картинную галерею духовного содержания: на стенах висели большие полотна (до 4 аршин) в золоченых рамах, привезенные из Италии или написанные в академическом стиле. Хотя многие из этих святынь были утрачены в годы гонений, молитвенная память о благотворителях вечно хранится в стенах собора.
+            </p>
+        </div>
+    </div>
+
+</main>
+
+<footer class="site-footer-light">
+    <div class="container footer-content">
+        <div class="footer-block">
+            <h5>Навигация</h5>
+            <a href="index.html">Главная</a>
+            <a href="about.html">О соборе</a>
+            <a href="shrines.html">Святыни</a>
+            <a href="schedule.html">Расписание</a>
+        </div>
+        <div class="footer-block">
+            <h5>Контакты</h5>
+            <p>г. Липецк, Соборная пл., 4</p>
+            <p>+7 (4742) 27-04-78</p>
+        </div>
+        <div class="footer-block">
+            <h5>Мы в соцсетях</h5>
+            <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a>
+            <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
+    </div>
+</footer>
+
+</body>
+</html>
