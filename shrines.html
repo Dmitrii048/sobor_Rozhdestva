@@ -7,15 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Подключаем стили для галереи (Fancybox) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
     <style>
-        /* --- ИСПРАВЛЕНИЕ МЕНЮ --- */
-        .main-header {
-            position: relative;
-            z-index: 1000;
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
+        /* --- ИСПРАВЛЕНИЕ МЕНЮ И ШАПКИ --- */
+        /* Основные исправления вынесены в style.css, здесь локальные доработки */
 
         /* --- ГЕРОЙ-БЛОК (Уменьшенная высота + Авторство) --- */
         .chronicle-hero {
@@ -76,7 +72,7 @@
             margin-bottom: 15px; /* Компактнее абзацы */
         }
 
-        /* --- ФОТОГРАФИИ (Увеличенные) --- */
+        /* --- ФОТОГРАФИИ (Адаптировано под Fancybox) --- */
         .shrine-image-container {
             text-align: center;
             margin: 20px 0;
@@ -87,12 +83,14 @@
             align-items: flex-start;
         }
         
+        /* Теперь это ссылка, а не div */
         .img-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
-            cursor: pointer; /* Курсор руки для клика */
+            cursor: pointer;
             transition: transform 0.2s;
+            text-decoration: none; /* Убираем подчеркивание */
         }
 
         .img-wrapper:hover {
@@ -125,66 +123,6 @@
             margin-top: 8px;
             font-style: italic;
             font-family: 'PT Serif', serif;
-        }
-
-        /* --- ГАЛЕРЕЯ (LIGHTBOX) STYLES --- */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 85vh;
-            border: 2px solid #fff;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            object-fit: contain;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: #fff;
-            font-size: 40px;
-            cursor: pointer;
-            z-index: 10000;
-        }
-
-        .lightbox-prev, .lightbox-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #fff;
-            font-size: 40px;
-            cursor: pointer;
-            padding: 20px;
-            user-select: none;
-            transition: color 0.3s;
-        }
-        
-        .lightbox-prev:hover, .lightbox-next:hover {
-            color: #C5A059;
-        }
-
-        .lightbox-prev { left: 10px; }
-        .lightbox-next { right: 10px; }
-
-        .lightbox-caption {
-            color: #fff;
-            margin-top: 15px;
-            font-family: 'PT Serif', serif;
-            font-size: 1.1rem;
-            text-align: center;
         }
 
         /* --- КНОПКИ --- */
@@ -228,20 +166,10 @@
 
         @media (max-width: 768px) {
             .chronicle-hero { background-attachment: scroll; }
-            .lightbox-prev, .lightbox-next { font-size: 30px; padding: 10px; }
         }
     </style>
 </head>
 <body>
-
-<!-- ГАЛЕРЕЯ (Скрытый блок) -->
-<div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-    <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-    <div class="lightbox-prev" onclick="changeImage(-1, event)">&#10094;</div>
-    <div class="lightbox-next" onclick="changeImage(1, event)">&#10095;</div>
-    <img id="lightbox-img" class="lightbox-content" src="" alt="">
-    <div id="lightbox-caption" class="lightbox-caption"></div>
-</div>
 
 <!-- ШАПКА -->
 <header class="main-header">
@@ -316,9 +244,9 @@
     <div class="shrine-block" id="strastnaya">
         <h2 class="chapter-title">Икона Божией Матери «Липецкая Страстная»</h2>
         <div class="shrine-image-container">
-            <div class="img-wrapper" onclick="openLightbox(0)">
-                <img src="icon-strastnaya.jpg" alt="Икона Божией Матери Страстная Липецкая" class="shrine-img gallery-item">
-            </div>
+            <a href="icon-strastnaya.jpg" class="img-wrapper" data-fancybox="gallery" data-caption="Икона Божией Матери Страстная Липецкая">
+                <img src="icon-strastnaya.jpg" alt="Икона Божией Матери Страстная Липецкая" class="shrine-img">
+            </a>
         </div>
         <div class="history-text">
             <p>
@@ -336,9 +264,9 @@
     <div class="shrine-block" id="saints">
         <h2 class="chapter-title">Собор Липецких святых</h2>
         <div class="shrine-image-container">
-            <div class="img-wrapper" onclick="openLightbox(1)">
-                <img src="icon-lipetsk-saints.jpg" alt="Собор Липецких святых" class="shrine-img gallery-item">
-            </div>
+            <a href="icon-lipetsk-saints.jpg" class="img-wrapper" data-fancybox="gallery" data-caption="Собор Липецких святых">
+                <img src="icon-lipetsk-saints.jpg" alt="Собор Липецких святых" class="shrine-img">
+            </a>
         </div>
         <div class="history-text">
             <p>
@@ -354,9 +282,9 @@
     <div class="shrine-block" id="derzhavnaya">
         <h2 class="chapter-title">Икона Божией Матери «Державная»</h2>
         <div class="shrine-image-container">
-            <div class="img-wrapper" onclick="openLightbox(2)">
-                <img src="icon-derzhavnaya.jpg" alt="Икона Божией Матери Державная" class="shrine-img gallery-item">
-            </div>
+            <a href="icon-derzhavnaya.jpg" class="img-wrapper" data-fancybox="gallery" data-caption="Икона Божией Матери Державная">
+                <img src="icon-derzhavnaya.jpg" alt="Икона Божией Матери Державная" class="shrine-img">
+            </a>
         </div>
         <div class="history-text">
             <p>
@@ -374,9 +302,9 @@
     <div class="shrine-block" id="relics">
         <h2 class="chapter-title">Ковчег с мощами святых угодников</h2>
         <div class="shrine-image-container">
-            <div class="img-wrapper" onclick="openLightbox(3)">
-                <img src="relics-raka.jpg" alt="Рака с мощами святых" class="shrine-img gallery-item">
-            </div>
+            <a href="relics-raka.jpg" class="img-wrapper" data-fancybox="gallery" data-caption="Рака с мощами святых">
+                <img src="relics-raka.jpg" alt="Рака с мощами святых" class="shrine-img">
+            </a>
         </div>
         <div class="history-text">
             <p>
@@ -393,19 +321,18 @@
         <h2 class="chapter-title">Священномученик Уар, епископ Липецкий</h2>
         
         <div class="shrine-image-container">
-            <!-- Добавляем gallery-item для скрипта -->
-            <div class="img-wrapper" onclick="openLightbox(4)">
-                <img src="icon-uar.jpg" alt="Икона сщмч. Уара в киоте" class="shrine-img gallery-item">
+            <a href="icon-uar.jpg" class="img-wrapper" data-fancybox="gallery" data-caption="Образ святого в киоте">
+                <img src="icon-uar.jpg" alt="Икона сщмч. Уара в киоте" class="shrine-img">
                 <span class="img-caption">Образ святого в киоте</span>
-            </div>
-            <div class="img-wrapper" onclick="openLightbox(5)">
-                <img src="icon-uar2.jpg" alt="Лик сщмч. Уара" class="shrine-img gallery-item">
+            </a>
+            <a href="icon-uar2.jpg" class="img-wrapper" data-fancybox="gallery" data-caption="Икона святого (крупно)">
+                <img src="icon-uar2.jpg" alt="Лик сщмч. Уара" class="shrine-img">
                 <span class="img-caption">Икона святого (крупно)</span>
-            </div>
-            <div class="img-wrapper" onclick="openLightbox(6)">
-                <img src="uar-podryasnik.jpg" alt="Подрясник сщмч. Уара" class="shrine-img gallery-item">
+            </a>
+            <a href="uar-podryasnik.jpg" class="img-wrapper" data-fancybox="gallery" data-caption="Подрясник святого">
+                <img src="uar-podryasnik.jpg" alt="Подрясник сщмч. Уара" class="shrine-img">
                 <span class="img-caption">Подрясник святого</span>
-            </div>
+            </a>
         </div>
 
         <div class="history-text">
@@ -425,9 +352,9 @@
     <div class="shrine-block" id="feodor">
         <h2 class="chapter-title">Святой праведный Феодор Томский</h2>
         <div class="shrine-image-container">
-            <div class="img-wrapper" onclick="openLightbox(7)">
-                <img src="icon-feodor.jpg" alt="Феодор Кузьмич" class="shrine-img gallery-item">
-            </div>
+            <a href="icon-feodor.jpg" class="img-wrapper" data-fancybox="gallery" data-caption="Феодор Кузьмич">
+                <img src="icon-feodor.jpg" alt="Феодор Кузьмич" class="shrine-img">
+            </a>
         </div>
         <div class="history-text">
             <p>
@@ -443,9 +370,9 @@
     <div class="shrine-block" id="varvara">
         <h2 class="chapter-title">Великомученица Варвара</h2>
         <div class="shrine-image-container">
-            <div class="img-wrapper" onclick="openLightbox(8)">
-                <img src="icon-varvara.jpg" alt="Икона вмч. Варвары" class="shrine-img gallery-item">
-            </div>
+            <a href="icon-varvara.jpg" class="img-wrapper" data-fancybox="gallery" data-caption="Икона вмч. Варвары">
+                <img src="icon-varvara.jpg" alt="Икона вмч. Варвары" class="shrine-img">
+            </a>
         </div>
         <div class="history-text">
             <p>
@@ -458,18 +385,18 @@
     <div class="shrine-block" id="frescoes" style="border: none;">
         <h2 class="chapter-title">Сохранившиеся дореволюционные росписи</h2>
         <div class="shrine-image-container">
-            <div class="img-wrapper" onclick="openLightbox(9)">
-                <img src="fresco-old.jpg" alt="Роспись над входом" class="shrine-img horizontal gallery-item">
+            <a href="fresco-old.jpg" class="img-wrapper" data-fancybox="gallery" data-caption="Роспись над входом">
+                <img src="fresco-old.jpg" alt="Роспись над входом" class="shrine-img horizontal">
                 <span class="img-caption">Роспись над входом</span>
-            </div>
-            <div class="img-wrapper" onclick="openLightbox(10)">
-                <img src="fresco-old1.jpg" alt="Фрагмент росписи" class="shrine-img gallery-item">
+            </a>
+            <a href="fresco-old1.jpg" class="img-wrapper" data-fancybox="gallery" data-caption="Фрагмент (XIX в.)">
+                <img src="fresco-old1.jpg" alt="Фрагмент росписи" class="shrine-img">
                 <span class="img-caption">Фрагмент (XIX в.)</span>
-            </div>
-            <div class="img-wrapper" onclick="openLightbox(11)">
-                <img src="fresco-old2.jpg" alt="Лик святого" class="shrine-img gallery-item">
+            </a>
+            <a href="fresco-old2.jpg" class="img-wrapper" data-fancybox="gallery" data-caption="Лик святого">
+                <img src="fresco-old2.jpg" alt="Лик святого" class="shrine-img">
                 <span class="img-caption">Лик святого</span>
-            </div>
+            </a>
         </div>
         <div class="history-text">
             <p>
@@ -504,55 +431,22 @@
         <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
          <div style="margin-top: 15px; font-size: 11px; opacity: 0.6; color: #444;">
             Использовано фото: <a href="https://commons.wikimedia.org/wiki/File:%D0%9B%D0%B8%D0%BF%D0%B5%D1%86%D0%BA_%D0%A1%D0%BE%D0%B1%D0%BE%D1%80%D0%BD%D0%B0%D1%8F_4.jpg" target="_blank" style="color: inherit; text-decoration: underline;">Andre Percon</a> / Лицензия CC BY-SA 4.0
-           <!-- Ссылка на авторство фото -->
     </a>
          </div>
     </div>
 </footer>
 
-<!-- СКРИПТ ГАЛЕРЕИ -->
+<!-- Подключаем скрипт галереи -->
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 <script>
-    let currentIndex = 0;
-    // Собираем все картинки, у которых есть класс gallery-item
-    const images = document.querySelectorAll('.gallery-item');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxCaption = document.getElementById('lightbox-caption');
-
-    function openLightbox(index) {
-        currentIndex = index;
-        updateLightbox();
-        lightbox.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Запрет прокрутки сайта
-    }
-
-    function closeLightbox(e) {
-        if (e.target !== lightboxImg && e.target.className !== 'lightbox-prev' && e.target.className !== 'lightbox-next') {
-            lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Возврат прокрутки
-        }
-    }
-
-    function changeImage(direction, e) {
-        e.stopPropagation(); // Чтобы не закрывалось окно при клике на стрелки
-        currentIndex += direction;
-        if (currentIndex < 0) currentIndex = images.length - 1;
-        if (currentIndex >= images.length) currentIndex = 0;
-        updateLightbox();
-    }
-
-    function updateLightbox() {
-        const img = images[currentIndex];
-        lightboxImg.src = img.src;
-        lightboxCaption.textContent = img.alt;
-    }
-
-    // Управление клавишами
-    document.addEventListener('keydown', function(e) {
-        if (lightbox.style.display === 'flex') {
-            if (e.key === 'ArrowLeft') changeImage(-1, e);
-            if (e.key === 'ArrowRight') changeImage(1, e);
-            if (e.key === 'Escape') closeLightbox({target: lightbox});
+    // Запуск галереи, аналогично примеру
+    Fancybox.bind("[data-fancybox]", {
+        hideScrollbar: false,
+        on: {
+            close: () => {
+                document.body.style.overflow = "visible";
+                document.body.style.overflowY = "auto";
+            }
         }
     });
 </script>
