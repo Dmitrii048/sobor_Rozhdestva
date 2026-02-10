@@ -11,13 +11,16 @@
 body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: var(--text-main); line-height: 1.8; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* --- ШАПКА (ФИНАЛЬНАЯ ВЕРСИЯ: МАСШТАБНАЯ) --- */
+/* --- ШАПКА (ИСПРАВЛЕННАЯ) --- */
 .main-header { 
     padding: 10px 0 20px 0; 
     text-align: center; 
     border-bottom: 1px solid #EAE3D5; 
     background: #fff;
-    overflow: hidden; 
+    /* БЫЛО: overflow: hidden; - ЭТО СКРЫВАЛО МЕНЮ */
+    overflow: visible; 
+    position: relative;
+    z-index: 1001; /* Подняли уровень шапки */
 }
 
 /* 1. КОНТЕЙНЕР (ШИРОКИЙ) */
@@ -38,12 +41,9 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
 .logo-sketch-large { 
     height: auto; 
     width: auto;
-    
-    /* Масштаб */
     min-width: 600px; 
     max-width: 60vw;  
     max-height: 550px; 
-    
     display: block;
     mix-blend-mode: multiply; 
     filter: contrast(1.05);
@@ -64,7 +64,7 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     font-family: 'PT Serif', serif; 
     font-size: 64px; 
     font-weight: 400; 
-    color: #C5A059; /* ВАШ ЗОЛОТОЙ */
+    color: #C5A059; 
     margin: 0; 
     line-height: 1; 
     white-space: nowrap; 
@@ -74,7 +74,7 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     font-family: 'PT Serif', serif; 
     font-size: 32px; 
     font-weight: 400; 
-    color: #C5A059; /* ВАШ ЗОЛОТОЙ */
+    color: #C5A059; 
     margin: 10px 0 15px; 
     letter-spacing: 5px; 
     line-height: 1.1; 
@@ -85,7 +85,7 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     font-family: 'PT Serif', serif; 
     font-size: 28px; 
     font-weight: 400; 
-    color: #C5A059; /* ВАШ ЗОЛОТОЙ */
+    color: #C5A059; 
     margin-top: 0; 
     opacity: 0.9; 
     font-style: italic; 
@@ -100,7 +100,7 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     font-size: 14px; 
     text-transform: uppercase; 
     letter-spacing: 5px; 
-    color: #777; /* Темный серый */
+    color: #777; 
     margin: 15px 0 0; 
 }
 
@@ -116,14 +116,30 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     background: #fff; 
     position: sticky; 
     top: 0; 
-    z-index: 1000; 
+    z-index: 1000; /* Высокий z-index чтобы быть поверх всего */
 }
 .main-nav ul { display: flex; justify-content: center; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
 .main-nav > ul > li { position: relative; }
 .main-nav > ul > li > a { display: block; padding: 15px 25px; text-decoration: none; color: #333; font-family: var(--font-serif); text-transform: uppercase; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; transition: 0.3s; }
 .main-nav > ul > li:hover > a { color: var(--gold); }
 
-.dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); background: #fff; min-width: 280px; padding: 15px 0; box-shadow: 0 15px 40px rgba(0,0,0,0.1); border: 1px solid var(--gold); display: block !important; opacity: 0; visibility: hidden; transition: 0.3s ease; }
+/* Выпадающее меню */
+.dropdown-menu { 
+    position: absolute; 
+    top: 100%; 
+    left: 50%; 
+    transform: translateX(-50%) translateY(10px); 
+    background: #fff; 
+    min-width: 280px; 
+    padding: 15px 0; 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15); /* Чуть усилил тень */
+    border: 1px solid var(--gold); 
+    display: block !important; 
+    opacity: 0; 
+    visibility: hidden; 
+    transition: 0.3s ease; 
+    z-index: 1100; /* Очень высокий индекс */
+}
 .dropdown-menu li { display: block !important; width: 100%; }
 .dropdown-menu a { display: block; padding: 12px 20px; text-align: center; text-transform: uppercase; font-family: var(--font-serif); font-size: 11px; letter-spacing: 1px; color: #444; text-decoration: none; border-bottom: 1px solid #f9f9f9; }
 .dropdown-menu a:hover { color: var(--gold); background-color: #fdfaf5; }
@@ -200,6 +216,7 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     text-align: center;
     margin-bottom: 80px;
     color: #fff;
+    z-index: 1; /* Опустили чуть ниже шапки */
 }
 
 .chronicle-hero::before {
@@ -214,7 +231,7 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
 .hero-subtitle-large { font-family: 'Open Sans', sans-serif; font-size: 20px; text-transform: uppercase; letter-spacing: 4px; font-weight: 300; border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 1px solid rgba(255,255,255,0.3); display: inline-block; padding: 15px 40px; margin-top: 10px; }
 
 /* 2. КОНТЕЙНЕР ДЛЯ ЧТЕНИЯ */
-.longread-wrapper { max-width: 860px; margin: 0 auto 120px; padding: 0 25px; }
+.longread-wrapper { max-width: 860px; margin: 0 auto 120px; padding: 0 25px; position: relative; z-index: 1;}
 
 /* 3. ТИПОГРАФИКА ТЕКСТА */
 .history-text { font-family: 'PT Serif', serif; font-size: 21px; line-height: 1.75; color: #2c2c2c; text-align: justify; margin-bottom: 40px; }
