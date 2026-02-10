@@ -12,15 +12,14 @@
         /* ИСПРАВЛЕНИЕ МЕНЮ И ШАПКИ */
         .main-header {
             position: relative;
-            z-index: 1000; /* Меню всегда поверх всего */
+            z-index: 1000;
             background-color: #fff;
         }
 
         /* ЭФФЕКТ ПАРАЛЛАКСА ДЛЯ ФОНА */
         .chronicle-hero {
-            /* Замените shrines-bg.jpg на то же фото, что в about.html, если хотите одинаковые */
             background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('shrines-bg.jpg'); 
-            background-attachment: fixed; /* Эффект параллакса */
+            background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -50,6 +49,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 30px;
+            align-items: flex-end; /* Выравнивание по нижнему краю, чтобы подписи были на одной линии */
         }
         
         .shrine-img {
@@ -57,10 +57,16 @@
             height: auto;
             border-radius: 4px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            max-height: 550px;
+            max-height: 500px; /* Максимальная высота для вертикальных фото */
             border: 5px solid #fff;
             outline: 1px solid #C5A059;
             object-fit: contain;
+        }
+
+        /* Спец. стиль для горизонтальной фрески, чтобы она не была слишком мелкой */
+        .shrine-img.horizontal {
+            max-height: 400px;
+            width: auto;
         }
 
         /* Подпись под фото */
@@ -68,6 +74,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            max-width: 400px; /* Ограничение ширины для подписи */
         }
         
         .img-caption {
@@ -75,9 +82,8 @@
             text-align: center;
             font-size: 0.95rem;
             color: #555;
-            margin-top: 10px;
+            margin-top: 15px;
             font-style: italic;
-            max-width: 300px;
             font-family: 'PT Serif', serif;
         }
 
@@ -149,7 +155,7 @@
                 justify-content: center;
             }
             .chronicle-hero {
-                background-attachment: scroll; /* На мобильных параллакс отключаем для производительности */
+                background-attachment: scroll;
             }
         }
     </style>
@@ -178,7 +184,6 @@
         </div>
     </div>
     
-    <!-- МЕНЮ (Обновленное название и порядок) -->
     <nav class="main-nav">
         <ul>
             <li><a href="index.html">Главная</a></li>
@@ -187,7 +192,7 @@
                 <a href="#" class="active">О соборе</a>
                 <ul class="dropdown-menu">
                     <li><a href="about.html">Летопись храма</a></li>
-                    <li><a href="shrines.html">Святыни и молитвословия</a></li> <!-- НОВОЕ НАЗВАНИЕ -->
+                    <li><a href="shrines.html">Святыни и молитвословия</a></li>
                     <li><a href="archpastor.html">Архипастырь</a></li>
                     <li><a href="clergy.html">Духовенство</a></li>
                     <li><a href="choir.html">Архиерейский хор</a></li>
@@ -214,7 +219,7 @@
     </nav>
 </header>
 
-<!-- ГЕРОЙ-БЛОК (С ПАРАЛЛАКСОМ) -->
+<!-- ГЕРОЙ-БЛОК -->
 <section class="chronicle-hero">
     <div class="hero-content-inner">
         <h1 class="hero-title-large">Святыни Собора</h1>
@@ -235,7 +240,9 @@
     <div class="shrine-block" id="strastnaya">
         <h2 class="chapter-title">Икона Божией Матери «Липецкая Страстная»</h2>
         <div class="shrine-image-container">
-            <img src="icon-strastnaya.jpg" alt="Икона Божией Матери Страстная Липецкая" class="shrine-img">
+            <div class="img-wrapper">
+                <img src="icon-strastnaya.jpg" alt="Икона Божией Матери Страстная Липецкая" class="shrine-img">
+            </div>
         </div>
         <div class="history-text">
             <p>
@@ -251,16 +258,17 @@
         </div>
         <div class="shrine-actions">
             <a href="akathist-strastnaya.html" class="btn-doc primary"><i class="fas fa-book-open"></i> Читать Акафист</a>
-            <!-- Убрали иконку человечка, оставили текст -->
             <a href="prayer-strastnaya.html" class="btn-doc">Тропарь и Молитва</a>
         </div>
     </div>
 
-    <!-- 2. СОБОР ЛИПЕЦКИХ СВЯТЫХ (ПЕРЕНЕСЕНО СЮДА) -->
+    <!-- 2. СОБОР ЛИПЕЦКИХ СВЯТЫХ -->
     <div class="shrine-block" id="saints">
         <h2 class="chapter-title">Собор Липецких святых</h2>
         <div class="shrine-image-container">
-            <img src="icon-lipetsk-saints.jpg" alt="Собор Липецких святых" class="shrine-img">
+            <div class="img-wrapper">
+                <img src="icon-lipetsk-saints.jpg" alt="Собор Липецких святых" class="shrine-img">
+            </div>
         </div>
         <div class="history-text">
             <p>
@@ -271,7 +279,6 @@
             </p>
         </div>
         <div class="shrine-actions">
-            <!-- Без иконки человечка -->
             <a href="prayer-saints.html" class="btn-doc primary">Молитвословия празднику</a>
         </div>
     </div>
@@ -280,7 +287,9 @@
     <div class="shrine-block" id="derzhavnaya">
         <h2 class="chapter-title">Икона Божией Матери «Державная»</h2>
         <div class="shrine-image-container">
-            <img src="icon-derzhavnaya.jpg" alt="Икона Божией Матери Державная" class="shrine-img">
+            <div class="img-wrapper">
+                <img src="icon-derzhavnaya.jpg" alt="Икона Божией Матери Державная" class="shrine-img">
+            </div>
         </div>
         <div class="history-text">
             <p>
@@ -301,7 +310,9 @@
     <div class="shrine-block" id="relics">
         <h2 class="chapter-title">Ковчег с мощами святых угодников</h2>
         <div class="shrine-image-container">
-            <img src="relics-raka.jpg" alt="Рака с мощами святых" class="shrine-img">
+            <div class="img-wrapper">
+                <img src="relics-raka.jpg" alt="Рака с мощами святых" class="shrine-img">
+            </div>
         </div>
         <div class="history-text">
             <p>
@@ -325,13 +336,20 @@
         <h2 class="chapter-title">Священномученик Уар, епископ Липецкий</h2>
         
         <div class="shrine-image-container">
+            <!-- 1. Икона в киоте -->
             <div class="img-wrapper">
-                <img src="icon-uar.jpg" alt="Икона сщмч. Уара" class="shrine-img">
+                <img src="icon-uar.jpg" alt="Икона сщмч. Уара в киоте" class="shrine-img">
                 <span class="img-caption">Образ святого в фарфоровом киоте</span>
             </div>
+            <!-- 2. Икона крупно -->
+            <div class="img-wrapper">
+                <img src="icon-uar2.jpg" alt="Лик сщмч. Уара" class="shrine-img">
+                <span class="img-caption">Икона святого (крупно)</span>
+            </div>
+            <!-- 3. Подрясник -->
             <div class="img-wrapper">
                 <img src="uar-podryasnik.jpg" alt="Подрясник сщмч. Уара" class="shrine-img">
-                <span class="img-caption">Подрясник святого</span>
+                <span class="img-caption">Подрясник святого, хранящийся в алтаре</span>
             </div>
         </div>
 
@@ -355,7 +373,9 @@
     <div class="shrine-block" id="feodor">
         <h2 class="chapter-title">Святой праведный Феодор Томский</h2>
         <div class="shrine-image-container">
-            <img src="icon-feodor.jpg" alt="Феодор Кузьмич" class="shrine-img">
+            <div class="img-wrapper">
+                <img src="icon-feodor.jpg" alt="Феодор Кузьмич" class="shrine-img">
+            </div>
         </div>
         <div class="history-text">
             <p>
@@ -377,7 +397,9 @@
     <div class="shrine-block" id="varvara">
         <h2 class="chapter-title">Великомученица Варвара</h2>
         <div class="shrine-image-container">
-            <img src="icon-varvara.jpg" alt="Икона вмч. Варвары с частицей мощей" class="shrine-img">
+            <div class="img-wrapper">
+                <img src="icon-varvara.jpg" alt="Икона вмч. Варвары с частицей мощей" class="shrine-img">
+            </div>
         </div>
         <div class="history-text">
             <p>
@@ -389,13 +411,28 @@
         </div>
     </div>
 
-    <!-- 8. ИСТОРИЧЕСКИЕ ФРЕСКИ (НОВЫЙ РАЗДЕЛ) -->
+    <!-- 8. ИСТОРИЧЕСКИЕ ФРЕСКИ -->
     <div class="shrine-block" id="frescoes" style="border: none;">
         <h2 class="chapter-title">Сохранившиеся дореволюционные росписи</h2>
+        
         <div class="shrine-image-container">
-            <!-- Используйте фото fresco-old.jpg -->
-            <img src="fresco-old.jpg" alt="Старинные фрески" class="shrine-img">
+            <!-- 1. Горизонтальная фреска -->
+            <div class="img-wrapper">
+                <img src="fresco-old.jpg" alt="Старинные фрески (горизонтальная)" class="shrine-img horizontal">
+                <span class="img-caption">Роспись над входом в трапезную</span>
+            </div>
+            <!-- 2. Вертикальная 1 -->
+            <div class="img-wrapper">
+                <img src="fresco-old1.jpg" alt="Фрагмент росписи" class="shrine-img">
+                <span class="img-caption">Фрагмент алтарной росписи</span>
+            </div>
+            <!-- 3. Вертикальная 2 -->
+            <div class="img-wrapper">
+                <img src="fresco-old2.jpg" alt="Лик святого" class="shrine-img">
+                <span class="img-caption">Лик святого (XIX в.)</span>
+            </div>
         </div>
+
         <div class="history-text">
             <p>
                 В ходе масштабной реставрации собора в 1990-х годах стены были заново расписаны в академическом стиле. Однако реставраторам удалось сберечь бесценные фрагменты первоначального убранства.
