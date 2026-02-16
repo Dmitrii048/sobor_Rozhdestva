@@ -369,3 +369,116 @@ body { margin: 0; font-family: var(--font-sans); background-color: #fff; color: 
     padding-top: 30px;
     border-top: 1px solid #EAE3D5;
 }
+/* --- МОБИЛЬНАЯ АДАПТАЦИЯ (ФИНАЛЬНЫЕ ПРАВКИ) --- */
+
+@media (max-width: 768px) {
+    /* 1. Усмиряем огромный логотип */
+    .logo-sketch-large {
+        min-width: 0 !important; /* Отменяем жесткий минимум */
+        width: 100%;             /* Растягиваем по ширине экрана */
+        max-width: 280px;        /* Но не больше этого размера */
+        height: auto;
+        margin: 0 auto;          /* Центрируем */
+    }
+
+    .logo-flex-row {
+        gap: 10px; /* Меньше отступ между лого и текстом */
+    }
+
+    /* 2. Уменьшаем гигантские заголовки */
+    .title-main {
+        font-size: 32px; /* Было 64px */
+    }
+    
+    .title-secondary {
+        font-size: 16px; /* Было 32px */
+        letter-spacing: 2px;
+    }
+    
+    .title-sub {
+        font-size: 14px;
+    }
+
+    /* 3. Компактная шапка "Герой" (фоновая картинка) */
+    .chronicle-hero {
+        height: auto;          /* Убираем высоту на весь экран */
+        min-height: 250px;     /* Делаем компактной */
+        background-attachment: scroll; /* На айфонах fixed глючит, лучше scroll */
+        padding: 40px 0;
+    }
+
+    .hero-title-large {
+        font-size: 36px;       /* Уменьшаем заголовок на фото */
+    }
+
+    .hero-subtitle-large {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    /* 4. Отступы текста */
+    .longread-wrapper {
+        padding: 20px 15px; /* Меньше поля по бокам */
+    }
+    
+    .history-text {
+        font-size: 18px; /* Чуть меньше шрифт для чтения с телефона */
+    }
+    
+    /* 5. Кнопки на всю ширину */
+    .btn-doc {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+}
+/* --- ЭКРАН ЗАГРУЗКИ --- */
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff; /* Белый фон */
+    z-index: 9999; /* Поверх всего */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader.done {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-circle {
+    width: 60px;
+    height: 60px;
+    border: 3px solid #EAE3D5; /* Светлый круг */
+    border-top: 3px solid #C5A059; /* Золотая часть */
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+    margin-bottom: 15px;
+}
+
+.loader-text {
+    font-family: 'PT Serif', serif;
+    color: #C5A059;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
