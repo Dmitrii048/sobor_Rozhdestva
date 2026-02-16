@@ -260,13 +260,18 @@ ul { list-style: none; padding: 0; margin: 0; }
 /* =========================================
    5. ГЕРОЙ-БЛОКИ (ФОНЫ СТРАНИЦ)
    ========================================= */
+/* --- ГЕРОЙ-БЛОКИ (ФОНЫ СТРАНИЦ С ПАРАЛЛАКСОМ) --- */
 .chronicle-hero {
     position: relative;
-    background-size: cover;
+    /* Убедись, что путь к картинке правильный */
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('shrines-bg.jpg'); 
     background-position: center top;
     background-repeat: no-repeat;
-    /* На мобильных лучше scroll, на десктопе fixed */
-    background-attachment: scroll; 
+    background-size: cover;
+    
+    /* ВОТ ЭТА СТРОКА ВКЛЮЧАЕТ ЭФФЕКТ "ЕЗДЫ" ФОНА: */
+    background-attachment: fixed; 
+    
     min-height: 350px;
     display: flex;
     align-items: center;
@@ -274,8 +279,24 @@ ul { list-style: none; padding: 0; margin: 0; }
     text-align: center;
     color: #fff;
     margin-bottom: 50px;
+    z-index: 1;
 }
 
+/* Затемнение фона (чтобы текст читался) */
+.chronicle-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.35);
+}
+
+/* ВАЖНО: Отключаем эффект только на телефонах (там он тормозит) */
+@media (max-width: 900px) {
+    .chronicle-hero {
+        background-attachment: scroll !important; /* Фон просто прокручивается */
+        min-height: 250px;
+    }
+}
 /* Затемнение фона */
 .chronicle-hero::before {
     content: '';
