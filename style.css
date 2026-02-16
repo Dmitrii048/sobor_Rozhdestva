@@ -2,18 +2,17 @@
    1. ПЕРЕМЕННЫЕ И БАЗОВЫЕ НАСТРОЙКИ
    ========================================= */
 :root {
-    --gold: #C5A059;           /* Основной золотой цвет */
-    --gold-dark: #b08d4a;      /* Темное золото для наведения */
-    --text-main: #2C2C2C;      /* Основной текст (темно-серый) */
-    --text-light: #777777;     /* Второстепенный текст */
-    --bg-light: #FDFCFB;       /* Светлый фон */
-    --border: #EAE3D5;         /* Цвет рамок и линий */
+    --gold: #C5A059;
+    --gold-dark: #b08d4a;
+    --text-main: #2C2C2C;
+    --text-light: #777777;
+    --bg-light: #FDFCFB;
+    --border: #EAE3D5;
     
-    --font-serif: 'PT Serif', serif;       /* Шрифт для заголовков и молитв */
-    --font-sans: 'Open Sans', sans-serif;  /* Шрифт для интерфейса */
+    --font-serif: 'PT Serif', serif;
+    --font-sans: 'Open Sans', sans-serif;
 }
 
-/* Подключение шрифта для Буквицы */
 @import url('https://fonts.googleapis.com/css2?family=Ruslan+Display&display=swap');
 
 body { 
@@ -23,11 +22,12 @@ body {
     background-color: #fff; 
     color: var(--text-main); 
     line-height: 1.8; 
-    overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
+    overflow-x: hidden;
 }
 
 a { text-decoration: none; color: inherit; transition: 0.3s; }
 ul { list-style: none; padding: 0; margin: 0; }
+button { outline: none; border: none; background: none; cursor: pointer; }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
@@ -46,10 +46,10 @@ ul { list-style: none; padding: 0; margin: 0; }
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
-.preloader.done { opacity: 0; visibility: hidden; }
+.preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
 
 .loader-circle {
     width: 60px;
@@ -57,7 +57,7 @@ ul { list-style: none; padding: 0; margin: 0; }
     border: 3px solid var(--border);
     border-top: 3px solid var(--gold);
     border-radius: 50%;
-    animation: spin 1.5s linear infinite;
+    animation: spin 1s linear infinite; /* Чуть быстрее */
     margin-bottom: 15px;
 }
 
@@ -77,7 +77,7 @@ ul { list-style: none; padding: 0; margin: 0; }
    3. ШАПКА САЙТА (HEADER)
    ========================================= */
 .main-header { 
-    padding: 20px 0 10px 0; 
+    padding: 20px 0 0 0; 
     text-align: center; 
     border-bottom: 1px solid var(--border); 
     background: #fff;
@@ -89,6 +89,7 @@ ul { list-style: none; padding: 0; margin: 0; }
     width: 96%; 
     max-width: 1400px; 
     margin: 0 auto; 
+    padding-bottom: 15px;
 }
 
 .logo-flex-row { 
@@ -97,18 +98,14 @@ ul { list-style: none; padding: 0; margin: 0; }
     justify-content: center; 
     gap: 40px; 
     flex-wrap: wrap;
-    padding-bottom: 15px;
 }
 
-/* Логотип (Скетч) */
 .logo-sketch-large { 
     height: auto; 
-    width: auto;
-    max-height: 280px; /* Оптимальная высота */
+    max-height: 200px; /* Немного уменьшил для аккуратности */
     max-width: 100%;
     display: block;
     mix-blend-mode: multiply; 
-    filter: contrast(1.05);
 }
 
 .logo-brand-area { 
@@ -119,10 +116,9 @@ ul { list-style: none; padding: 0; margin: 0; }
     max-width: 700px;
 }
 
-/* Типографика шапки (Гармонизированная) */
 .title-main { 
     font-family: var(--font-serif); 
-    font-size: 52px; 
+    font-size: 48px; 
     font-weight: 400; 
     color: var(--gold); 
     margin: 0 0 5px 0; 
@@ -131,26 +127,24 @@ ul { list-style: none; padding: 0; margin: 0; }
 
 .title-secondary { 
     font-family: var(--font-serif); 
-    font-size: 24px; 
+    font-size: 22px; 
     font-weight: 400; 
     color: var(--gold); 
     margin: 0 0 10px 0; 
-    letter-spacing: 3px; /* Оптимальный интервал */
+    letter-spacing: 3px; 
     line-height: 1.3; 
     text-transform: uppercase; 
 }
 
 .title-sub { 
     font-family: var(--font-serif); 
-    font-size: 22px; 
+    font-size: 20px; 
     font-weight: 400; 
-    color: #8c7b68; /* Чуть темнее золота для иерархии */
+    color: #8c7b68; 
     margin-top: 0; 
     font-style: italic; 
 }
 
-/* --- РАЗДЕЛИТЕЛЬ (ВАРИАНТ 1: Золотой луч) --- */
-/* В HTML нужно вставить: <div class="art-divider simple-line"></div> */
 .art-divider {
     width: 100%;
     max-width: 250px;
@@ -160,28 +154,21 @@ ul { list-style: none; padding: 0; margin: 0; }
     background: linear-gradient(90deg, rgba(255,255,255,0) 0%, var(--gold) 50%, rgba(255,255,255,0) 100%);
     opacity: 0.7;
 }
-/* Удаляем старые стили SVG, если они остались */
 .art-divider svg { display: none; } 
 
 .church-meta { 
     font-family: var(--font-sans); 
-    font-size: 12px; 
+    font-size: 11px; 
     text-transform: uppercase; 
     letter-spacing: 2px; 
     color: var(--text-light); 
     margin: 10px 0 0; 
     line-height: 1.6;
 }
-
-.church-meta span {
-    color: #555;
-    font-weight: 700;
-    display: block;
-    margin-top: 4px;
-}
+.church-meta span { color: #555; font-weight: 700; display: block; margin-top: 4px; }
 
 /* =========================================
-   4. МЕНЮ НАВИГАЦИИ
+   4. МЕНЮ НАВИГАЦИИ (DESKTOP)
    ========================================= */
 .main-nav { 
     border-top: 1px solid #f9f9f9; 
@@ -203,7 +190,7 @@ ul { list-style: none; padding: 0; margin: 0; }
 
 .main-nav > ul > li > a { 
     display: block; 
-    padding: 15px 25px; 
+    padding: 15px 20px; 
     color: #333; 
     font-family: var(--font-serif); 
     text-transform: uppercase; 
@@ -236,40 +223,44 @@ ul { list-style: none; padding: 0; margin: 0; }
 .dropdown-menu a { 
     display: block; 
     padding: 10px 20px; 
-    text-align: center; 
-    text-transform: none; /* Обычный регистр для подменю */
+    text-align: left; /* Важно для читаемости */
+    text-transform: none; 
     font-family: var(--font-sans); 
-    font-size: 13px; 
+    font-size: 14px; 
     font-weight: 600;
     letter-spacing: 0.5px; 
     border-bottom: 1px solid #f9f9f9; 
 }
 
 .dropdown-menu a:hover { color: var(--gold); background-color: #fcfcfc; }
-.has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+/* Показываем подменю при наведении на десктопе */
+@media (min-width: 901px) {
+    .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+}
 
-/* Кнопка "Подать записку" */
 .btn-note { 
     background: var(--gold) !important; 
     color: #fff !important; 
     border-radius: 4px; 
-    margin-left: 10px;
 }
 .btn-note:hover { background: var(--gold-dark) !important; }
 
+/* Кнопка открытия меню (скрыта на ПК) */
+.mobile-menu-toggle { display: none; }
+
+
 /* =========================================
-   5. ГЕРОЙ-БЛОКИ (ФОНЫ СТРАНИЦ)
+   5. ГЕРОЙ-БЛОКИ (ПАРАЛЛАКС)
    ========================================= */
-/* --- ГЕРОЙ-БЛОКИ (ФОНЫ СТРАНИЦ С ПАРАЛЛАКСОМ) --- */
 .chronicle-hero {
     position: relative;
-    /* Убедись, что путь к картинке правильный */
+    /* Убедись что путь правильный */
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('shrines-bg.jpg'); 
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
     
-    /* ВОТ ЭТА СТРОКА ВКЛЮЧАЕТ ЭФФЕКТ "ЕЗДЫ" ФОНА: */
+    /* ВКЛЮЧАЕМ ПАРАЛЛАКС ДЛЯ ПК */
     background-attachment: fixed; 
     
     min-height: 350px;
@@ -280,29 +271,6 @@ ul { list-style: none; padding: 0; margin: 0; }
     color: #fff;
     margin-bottom: 50px;
     z-index: 1;
-}
-
-/* Затемнение фона (чтобы текст читался) */
-.chronicle-hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.35);
-}
-
-/* ВАЖНО: Отключаем эффект только на телефонах (там он тормозит) */
-@media (max-width: 900px) {
-    .chronicle-hero {
-        background-attachment: scroll !important; /* Фон просто прокручивается */
-        min-height: 250px;
-    }
-}
-/* Затемнение фона */
-.chronicle-hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.35);
 }
 
 .hero-content-inner { position: relative; z-index: 2; padding: 0 20px; }
@@ -325,14 +293,14 @@ ul { list-style: none; padding: 0; margin: 0; }
     border-bottom: 1px solid rgba(255,255,255,0.5); 
     display: inline-block; 
     padding: 10px 30px; 
+    background: rgba(0,0,0,0.2);
 }
 
 /* =========================================
-   6. КОНТЕНТ (СВЯТЫНИ, ИСТОРИЯ)
+   6. КОНТЕНТ
    ========================================= */
 .longread-wrapper { max-width: 900px; margin: 0 auto 100px; padding: 0 20px; }
 
-/* Тексты */
 .history-text { 
     font-family: var(--font-serif); 
     font-size: 19px; 
@@ -343,7 +311,6 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 .history-text p { margin-bottom: 20px; }
 
-/* Буквица */
 .drop-cap::first-letter { 
     float: left; 
     font-size: 80px; 
@@ -354,14 +321,23 @@ ul { list-style: none; padding: 0; margin: 0; }
     font-weight: 700; 
 }
 
-/* Заголовки разделов */
 .chapter-title { 
     font-family: var(--font-serif); 
     font-size: 32px; 
     text-align: center; 
     color: #4a4a4a; 
     margin-bottom: 30px; 
-    position: relative; 
+    margin-top: 50px;
+}
+
+.chapter-badge {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 5px;
 }
 
 /* Блоки святынь */
@@ -372,7 +348,6 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 .shrine-block:last-child { border-bottom: none; }
 
-/* Галерея изображений */
 .shrine-image-container { 
     display: flex; 
     justify-content: center; 
@@ -395,7 +370,7 @@ ul { list-style: none; padding: 0; margin: 0; }
     box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
     border: 4px solid #fff; 
     outline: 1px solid var(--border); 
-    max-height: 500px;
+    max-height: 450px;
     object-fit: cover;
 }
 
@@ -409,12 +384,13 @@ ul { list-style: none; padding: 0; margin: 0; }
     font-family: var(--font-serif);
 }
 
-/* Кнопки действий */
+/* Кнопки */
 .shrine-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
 
 .btn-doc { 
     display: inline-flex; 
     align-items: center; 
+    justify-content: center;
     padding: 12px 25px; 
     background: #fff; 
     border: 1px solid var(--gold); 
@@ -431,70 +407,51 @@ ul { list-style: none; padding: 0; margin: 0; }
 .btn-doc i { margin-right: 10px; color: var(--gold); }
 .btn-doc:hover { background: var(--gold); color: #fff; }
 .btn-doc:hover i { color: #fff; }
-.btn-doc.primary { background: #f9f6f1; } /* Легкий бежевый фон для важных кнопок */
+.btn-doc.primary { background: #f9f6f1; } 
 
-/* =========================================
-   7. СТРАНИЦЫ МОЛИТВОСЛОВИЙ (PRAYER PAGES)
-   ========================================= */
-.prayer-page-wrapper { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+.btn-gold {
+    background: var(--gold);
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+.btn-gold:hover { background: var(--gold-dark); }
 
-.prayer-title { 
-    font-family: var(--font-serif); 
-    color: var(--gold); 
-    text-align: center; 
-    font-size: 36px; 
-    margin-bottom: 40px; 
-    line-height: 1.3; 
+/* Цитаты и факты */
+.emotional-quote {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-style: italic;
+    text-align: center;
+    color: #555;
+    border-left: 3px solid var(--gold);
+    border-right: 3px solid var(--gold);
+    padding: 20px 40px;
+    margin: 40px 0;
+    background: #fafafa;
 }
 
-.stanza-block { margin-bottom: 40px; }
-
-.stanza-title { 
-    font-family: var(--font-sans); 
-    color: #8c7b68; 
-    text-transform: uppercase; 
-    letter-spacing: 2px; 
-    font-size: 14px; 
-    font-weight: 700; 
-    text-align: center; 
-    margin-bottom: 20px; 
-    border-bottom: 1px solid var(--border); 
-    display: inline-block; 
-    padding-bottom: 5px; 
-    position: relative; 
-    left: 50%; transform: translateX(-50%); 
+.fact-box, .miracle-box {
+    background: #fdfbf7;
+    border: 1px solid var(--border);
+    padding: 30px;
+    margin: 30px 0;
+    border-radius: 4px;
 }
-
-.prayer-text { 
-    font-family: var(--font-serif); 
-    font-size: 20px; 
-    line-height: 1.6; 
-    color: #333; 
-    text-align: justify; 
-}
-
-/* Старославянская буквица */
-.bukvitsa { 
-    float: left; 
-    font-family: 'Ruslan Display', cursive; 
-    font-size: 4em; 
-    line-height: 0.8; 
-    color: #b52b2b; /* Церковный красный */
-    padding-right: 10px; 
-    margin-top: 5px;
-}
-
-.refrain { 
-    display: block; 
-    margin-top: 15px; 
-    margin-left: 20px; 
-    font-style: italic; 
-    color: #555; 
-    font-size: 18px;
+.miracle-title {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    color: var(--gold);
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 /* =========================================
-   8. ФУТЕР
+   7. ФУТЕР
    ========================================= */
 .site-footer-light { 
     background: var(--bg-light); 
@@ -535,93 +492,84 @@ ul { list-style: none; padding: 0; margin: 0; }
 }
 
 /* =========================================
-   9. МОБИЛЬНАЯ АДАПТАЦИЯ (ФИНАЛЬНАЯ)
+   8. МОБИЛЬНАЯ АДАПТАЦИЯ (ИСПРАВЛЕНО)
    ========================================= */
 @media (max-width: 900px) {
-    /* Шапка */
-    .logo-flex-row { flex-direction: column; gap: 15px; }
-    .logo-sketch-large { max-height: 200px; margin-left: 0; }
-    .title-main { font-size: 36px; white-space: normal; }
-    .title-secondary { font-size: 18px; letter-spacing: 2px; }
-    .title-sub { font-size: 18px; }
+    /* 1. Отключаем параллакс (фон будет прокручиваться) */
+    .chronicle-hero {
+        background-attachment: scroll !important; 
+        min-height: 220px;
+    }
     
-    /* Меню */
-    .main-nav ul { flex-direction: column; align-items: center; }
+    /* 2. Шапка */
+    .logo-flex-row { gap: 10px; padding-bottom: 5px; }
+    .logo-sketch-large { max-height: 120px; }
+    .title-main { font-size: 32px; white-space: normal; }
+    .title-secondary { font-size: 16px; letter-spacing: 1px; }
+    .title-sub { font-size: 16px; margin-bottom: 5px; }
+    .church-meta { display: none; } /* Скрываем мелкий текст на телефоне */
+
+    /* 3. Кнопка "Гамбургер" */
+    .mobile-menu-toggle {
+        display: block;
+        margin: 10px auto;
+        padding: 10px 20px;
+        background: var(--gold);
+        color: #fff;
+        border-radius: 4px;
+        font-family: var(--font-serif);
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+    
+    /* 4. Скрытое Меню */
+    .main-nav { position: relative; }
+    .main-nav > ul {
+        display: none; /* Скрыто по умолчанию */
+        flex-direction: column;
+        width: 100%;
+        background: #fff;
+        border-top: 1px solid var(--border);
+    }
+    
+    /* Класс .open добавляется JS-ом */
+    .main-nav.open > ul { display: flex; animation: slideDown 0.3s ease; }
+    
     .main-nav > ul > li { width: 100%; text-align: center; }
-    .main-nav > ul > li > a { padding: 12px; border-bottom: 1px solid #f0f0f0; }
-    .dropdown-menu { position: static; transform: none; box-shadow: none; border: none; display: none; opacity: 1; visibility: visible; }
-    .has-dropdown:hover .dropdown-menu { display: block; } /* Простое раскрытие */
-    .btn-note { margin: 10px auto; width: 80%; display: inline-block; }
+    .main-nav > ul > li > a { 
+        padding: 15px; 
+        border-bottom: 1px solid #f0f0f0; 
+        font-size: 15px;
+    }
 
-    /* Герой-блок */
-    .chronicle-hero { min-height: 220px; }
-    .hero-title-large { font-size: 32px; }
+    /* Выпадающие меню на мобильном всегда открыты внутри родителя, если меню открыто */
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        background: #f9f9f9;
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        min-width: 100%;
+        padding: 0;
+    }
+    .dropdown-menu a { padding-left: 0; font-weight: 400; font-size: 14px; }
+    .has-dropdown > a::after { content: ' ▼'; font-size: 10px; color: var(--gold); }
+
+    /* Остальное */
+    .hero-title-large { font-size: 28px; }
     .hero-subtitle-large { font-size: 12px; padding: 5px 15px; }
-
-    /* Контент */
-    .longread-wrapper { padding: 20px 15px; }
-    .history-text, .prayer-text { font-size: 18px; }
-    .chapter-title { font-size: 24px; }
+    .history-text { font-size: 17px; padding: 0 5px; }
+    .emotional-quote { padding: 15px; font-size: 18px; }
     
-    /* Кнопки на всю ширину */
     .shrine-actions { flex-direction: column; width: 100%; }
-    .btn-doc { width: 100%; justify-content: center; box-sizing: border-box; }
-    
-    /* Скрываем буквицу, если мешает, или уменьшаем */
-    .bukvitsa { font-size: 3em; }
-}
-/* --- ЭКРАН ЗАГРУЗКИ --- */
-.preloader {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: #fff; /* Белый фон перекрывает всё */
-    z-index: 9999;    /* Самый высокий слой */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.5s ease, visibility 0.5s ease; /* Плавное исчезновение */
+    .btn-doc { width: 100%; }
 }
 
-/* Класс, который скрывает загрузку */
-.preloader.done {
-    opacity: 0;
-    visibility: hidden;
-}
-
-/* Вращающееся кольцо */
-.loader-circle {
-    width: 60px;
-    height: 60px;
-    border: 3px solid #EAE3D5;      /* Светлый круг */
-    border-top: 3px solid #C5A059;  /* Золотая часть */
-    border-radius: 50%;
-    animation: spin 1.5s linear infinite;
-    margin-bottom: 15px;
-}
-
-/* Пульсирующий текст */
-.loader-text {
-    font-family: 'PT Serif', serif;
-    color: #C5A059;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 14px;
-    animation: pulse 2s infinite;
-}
-
-/* Анимация вращения */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Анимация пульсации текста */
-@keyframes pulse {
-    0% { opacity: 0.5; }
-    50% { opacity: 1; }
-    100% { opacity: 0.5; }
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
