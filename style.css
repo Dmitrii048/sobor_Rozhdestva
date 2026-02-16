@@ -570,3 +570,58 @@ ul { list-style: none; padding: 0; margin: 0; }
     /* Скрываем буквицу, если мешает, или уменьшаем */
     .bukvitsa { font-size: 3em; }
 }
+/* --- ЭКРАН ЗАГРУЗКИ --- */
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff; /* Белый фон перекрывает всё */
+    z-index: 9999;    /* Самый высокий слой */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Плавное исчезновение */
+}
+
+/* Класс, который скрывает загрузку */
+.preloader.done {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Вращающееся кольцо */
+.loader-circle {
+    width: 60px;
+    height: 60px;
+    border: 3px solid #EAE3D5;      /* Светлый круг */
+    border-top: 3px solid #C5A059;  /* Золотая часть */
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+    margin-bottom: 15px;
+}
+
+/* Пульсирующий текст */
+.loader-text {
+    font-family: 'PT Serif', serif;
+    color: #C5A059;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    animation: pulse 2s infinite;
+}
+
+/* Анимация вращения */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Анимация пульсации текста */
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
