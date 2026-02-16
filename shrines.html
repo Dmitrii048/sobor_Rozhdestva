@@ -15,61 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
-    
-    <style>
-        /* ЛОКАЛЬНЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ СВЯТЫНЬ */
-        
-        /* Preloader */
-        .preloader { position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: #fff; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
-        .preloader.done { opacity: 0; visibility: hidden; }
-        .loader-circle { width: 60px; height: 60px; border: 3px solid #EAE3D5; border-top: 3px solid #C5A059; border-radius: 50%; animation: spin 1.5s linear infinite; margin-bottom: 15px; }
-        .loader-text { font-family: 'PT Serif', serif; color: #C5A059; text-transform: uppercase; letter-spacing: 2px; font-size: 14px; animation: pulse 2s infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
-
-        /* Герой-блок */
-        .chronicle-hero {
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('shrines-bg.jpg'); 
-            background-attachment: scroll; /* Scroll лучше для мобильных */
-            background-position: center top;
-            background-repeat: no-repeat;
-            background-size: cover;
-            min-height: 300px; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-        }
-
-        .longread-wrapper { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-        .shrine-block { margin-bottom: 60px; padding-bottom: 40px; border-bottom: 1px solid #EAE3D5; }
-        .shrine-block:last-child { border-bottom: none; }
-        .chapter-title { margin-bottom: 25px; color: #2c241b; font-family: 'PT Serif', serif; font-size: 2rem; text-align: center; }
-        .history-text p { margin-bottom: 15px; line-height: 1.7; font-family: 'PT Serif', serif; font-size: 1.15rem; text-align: justify; }
-
-        .shrine-image-container { text-align: center; margin: 25px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
-        .img-wrapper { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.2s; text-decoration: none; }
-        .img-wrapper:hover { transform: scale(1.02); }
-        .shrine-img { max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); max-height: 500px; border: 4px solid #fff; outline: 1px solid #C5A059; object-fit: cover; }
-        .shrine-img.horizontal { width: 100%; max-width: 800px; height: auto; }
-        .img-caption { display: block; text-align: center; font-size: 0.9rem; color: #666; margin-top: 8px; font-style: italic; font-family: 'PT Serif', serif; }
-
-        .shrine-actions { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 35px; }
-        .btn-doc { display: inline-flex; align-items: center; padding: 12px 25px; background-color: #fff; border: 1px solid #C5A059; color: #5c4d3c; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 4px; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px; }
-        .btn-doc i { margin-right: 10px; color: #C5A059; }
-        .btn-doc:hover { background-color: #C5A059; color: #fff; }
-        .btn-doc:hover i { color: #fff; }
-        .btn-doc.primary { background-color: #f7f4ed; }
-
-        @media (max-width: 768px) {
-            .chronicle-hero { min-height: 200px; }
-            .chapter-title { font-size: 1.6rem; }
-            .history-text { font-size: 1.05rem; }
-            .shrine-actions { flex-direction: column; }
-            .btn-doc { width: 100%; justify-content: center; }
-        }
-    </style>
 </head>
 <body>
 
@@ -79,7 +24,7 @@
     <div class="loader-text">Загрузка...</div>
 </div>
 
-<!-- ШАПКА (С ПОЛНЫМ МЕНЮ) -->
+<!-- ШАПКА -->
 <header class="main-header">
     <div class="logo-expansive-container">
         <div class="logo-flex-row">
@@ -90,13 +35,7 @@
                 <h1 class="title-main">Христорождественский</h1>
                 <h2 class="title-secondary">кафедральный собор</h2>
                 <h3 class="title-sub">г. Липецка</h3>
-                <div class="art-divider">
-                    <!-- Маленький разделитель -->
-                    <svg viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 10 L150 10 C170 10 180 0 200 10 C220 20 230 10 250 10 L400 10" stroke="#EAE3D5" fill="transparent" />
-                        <circle cx="200" cy="10" r="3" fill="#C5A059" />
-                    </svg>
-                </div>
+                <div class="art-divider"></div>
                 <div class="church-meta">
                     <p>Московский Патриархат <br> <span>Липецкая митрополия</span></p>
                 </div>
@@ -104,13 +43,16 @@
         </div>
     </div>
     
-    <!-- ПОЛНОЕ МЕНЮ (КАК В ABOUT.HTML) -->
-    <nav class="main-nav">
+    <!-- КНОПКА МЕНЮ (ВИДНА ТОЛЬКО НА ТЕЛЕФОНЕ) -->
+    <button id="menu-toggle" class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i> Меню
+    </button>
+    
+    <!-- МЕНЮ -->
+    <nav class="main-nav" id="main-nav">
         <ul>
-            <!-- 1. ГЛАВНАЯ -->
             <li><a href="index.html">Главная</a></li>
             
-            <!-- 2. О СОБОРЕ (Выпадающее) -->
             <li class="has-dropdown">
                 <a href="#" class="active">О соборе</a>
                 <ul class="dropdown-menu">
@@ -124,10 +66,8 @@
                 </ul>
             </li>
 
-            <!-- 3. РАСПИСАНИЕ -->
             <li><a href="schedule.html">Расписание</a></li>
 
-            <!-- 4. СЛУЖЕНИЕ (Выпадающее) -->
             <li class="has-dropdown">
                 <a href="#">Служение</a>
                 <ul class="dropdown-menu">
@@ -136,13 +76,9 @@
                 </ul>
             </li>
 
-            <!-- 5. ПУБЛИКАЦИИ -->
             <li><a href="publications.html">Публикации</a></li>
-            
-            <!-- 6. КОНТАКТЫ -->
             <li><a href="contacts.html">Контакты</a></li>
             
-            <!-- 7. КНОПКА ЗАПИСКИ -->
             <li><a href="#" class="btn-note">Подать записку</a></li>
         </ul>
     </nav>
@@ -364,7 +300,6 @@
     </div>
 </footer>
 
-<!-- Подключаем скрипт галереи и прелоадера -->
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 <script>
     Fancybox.bind("[data-fancybox]", {
@@ -377,11 +312,33 @@
         }
     });
 
-    // Скрываем загрузку, когда страница полностью прогрузилась
+    // Оптимизированный скрипт загрузки
     window.addEventListener('load', function () {
+        hidePreloader();
+    });
+    // Страховка: если картинки грузятся слишком долго, показать сайт через 2 сек
+    setTimeout(hidePreloader, 2000);
+
+    function hidePreloader() {
         var preloader = document.getElementById('page-preloader');
-        if (preloader) {
+        if (preloader && !preloader.classList.contains('done')) {
             preloader.classList.add('done');
+        }
+    }
+
+    // Скрипт Мобильного Меню
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+
+    menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('open');
+        const icon = menuToggle.querySelector('i');
+        if (mainNav.classList.contains('open')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
         }
     });
 </script>
