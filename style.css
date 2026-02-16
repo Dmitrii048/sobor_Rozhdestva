@@ -13,8 +13,6 @@
     --font-sans: 'Open Sans', sans-serif;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Ruslan+Display&display=swap');
-
 body { 
     margin: 0; 
     padding: 0;
@@ -46,7 +44,7 @@ button { outline: none; border: none; background: none; cursor: pointer; }
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 .preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
@@ -57,7 +55,7 @@ button { outline: none; border: none; background: none; cursor: pointer; }
     border: 3px solid var(--border);
     border-top: 3px solid var(--gold);
     border-radius: 50%;
-    animation: spin 1s linear infinite; /* Чуть быстрее */
+    animation: spin 1.2s linear infinite;
     margin-bottom: 15px;
 }
 
@@ -102,7 +100,7 @@ button { outline: none; border: none; background: none; cursor: pointer; }
 
 .logo-sketch-large { 
     height: auto; 
-    max-height: 200px; /* Немного уменьшил для аккуратности */
+    max-height: 220px; 
     max-width: 100%;
     display: block;
     mix-blend-mode: multiply; 
@@ -223,7 +221,7 @@ button { outline: none; border: none; background: none; cursor: pointer; }
 .dropdown-menu a { 
     display: block; 
     padding: 10px 20px; 
-    text-align: left; /* Важно для читаемости */
+    text-align: left;
     text-transform: none; 
     font-family: var(--font-sans); 
     font-size: 14px; 
@@ -233,7 +231,7 @@ button { outline: none; border: none; background: none; cursor: pointer; }
 }
 
 .dropdown-menu a:hover { color: var(--gold); background-color: #fcfcfc; }
-/* Показываем подменю при наведении на десктопе */
+
 @media (min-width: 901px) {
     .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 }
@@ -245,22 +243,19 @@ button { outline: none; border: none; background: none; cursor: pointer; }
 }
 .btn-note:hover { background: var(--gold-dark) !important; }
 
-/* Кнопка открытия меню (скрыта на ПК) */
 .mobile-menu-toggle { display: none; }
-
 
 /* =========================================
    5. ГЕРОЙ-БЛОКИ (ПАРАЛЛАКС)
    ========================================= */
 .chronicle-hero {
     position: relative;
-    /* Убедись что путь правильный */
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('shrines-bg.jpg'); 
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
     
-    /* ВКЛЮЧАЕМ ПАРАЛЛАКС ДЛЯ ПК */
+    /* ФИКС ДЛЯ ПК: */
     background-attachment: fixed; 
     
     min-height: 350px;
@@ -293,13 +288,12 @@ button { outline: none; border: none; background: none; cursor: pointer; }
     border-bottom: 1px solid rgba(255,255,255,0.5); 
     display: inline-block; 
     padding: 10px 30px; 
-    background: rgba(0,0,0,0.2);
 }
 
 /* =========================================
    6. КОНТЕНТ
    ========================================= */
-.longread-wrapper { max-width: 900px; margin: 0 auto 100px; padding: 0 20px; }
+.longread-wrapper { max-width: 1000px; margin: 0 auto 100px; padding: 0 20px; }
 
 .history-text { 
     font-family: var(--font-serif); 
@@ -329,7 +323,6 @@ button { outline: none; border: none; background: none; cursor: pointer; }
     margin-bottom: 30px; 
     margin-top: 50px;
 }
-
 .chapter-badge {
     display: block;
     text-align: center;
@@ -340,7 +333,6 @@ button { outline: none; border: none; background: none; cursor: pointer; }
     margin-bottom: 5px;
 }
 
-/* Блоки святынь */
 .shrine-block { 
     margin-bottom: 60px; 
     padding-bottom: 40px; 
@@ -354,12 +346,16 @@ button { outline: none; border: none; background: none; cursor: pointer; }
     flex-wrap: wrap; 
     gap: 20px; 
     margin: 30px 0; 
+    align-items: flex-start;
 }
 
 .img-wrapper { 
-    display: block; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-decoration: none; 
     transition: transform 0.3s ease; 
+    cursor: pointer;
 }
 .img-wrapper:hover { transform: translateY(-5px); }
 
@@ -373,6 +369,7 @@ button { outline: none; border: none; background: none; cursor: pointer; }
     max-height: 450px;
     object-fit: cover;
 }
+.shrine-img.horizontal { width: 100%; max-width: 800px; }
 
 .img-caption { 
     display: block; 
@@ -384,7 +381,6 @@ button { outline: none; border: none; background: none; cursor: pointer; }
     font-family: var(--font-serif);
 }
 
-/* Кнопки */
 .shrine-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
 
 .btn-doc { 
@@ -403,7 +399,6 @@ button { outline: none; border: none; background: none; cursor: pointer; }
     border-radius: 4px; 
     transition: all 0.3s; 
 }
-
 .btn-doc i { margin-right: 10px; color: var(--gold); }
 .btn-doc:hover { background: var(--gold); color: #fff; }
 .btn-doc:hover i { color: #fff; }
@@ -417,10 +412,11 @@ button { outline: none; border: none; background: none; cursor: pointer; }
     letter-spacing: 1px;
     border-radius: 4px;
     transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
 }
 .btn-gold:hover { background: var(--gold-dark); }
 
-/* Цитаты и факты */
 .emotional-quote {
     font-family: var(--font-serif);
     font-size: 22px;
@@ -492,10 +488,10 @@ button { outline: none; border: none; background: none; cursor: pointer; }
 }
 
 /* =========================================
-   8. МОБИЛЬНАЯ АДАПТАЦИЯ (ИСПРАВЛЕНО)
+   8. МОБИЛЬНАЯ АДАПТАЦИЯ (ИСПРАВЛЕНА)
    ========================================= */
 @media (max-width: 900px) {
-    /* 1. Отключаем параллакс (фон будет прокручиваться) */
+    /* 1. Отключаем фиксированный параллакс для производительности */
     .chronicle-hero {
         background-attachment: scroll !important; 
         min-height: 220px;
@@ -507,13 +503,13 @@ button { outline: none; border: none; background: none; cursor: pointer; }
     .title-main { font-size: 32px; white-space: normal; }
     .title-secondary { font-size: 16px; letter-spacing: 1px; }
     .title-sub { font-size: 16px; margin-bottom: 5px; }
-    .church-meta { display: none; } /* Скрываем мелкий текст на телефоне */
+    .church-meta { display: none; }
 
-    /* 3. Кнопка "Гамбургер" */
+    /* 3. Кнопка "Меню" */
     .mobile-menu-toggle {
         display: block;
         margin: 10px auto;
-        padding: 10px 20px;
+        padding: 10px 25px;
         background: var(--gold);
         color: #fff;
         border-radius: 4px;
@@ -526,24 +522,23 @@ button { outline: none; border: none; background: none; cursor: pointer; }
     /* 4. Скрытое Меню */
     .main-nav { position: relative; }
     .main-nav > ul {
-        display: none; /* Скрыто по умолчанию */
+        display: none; 
         flex-direction: column;
         width: 100%;
         background: #fff;
         border-top: 1px solid var(--border);
     }
     
-    /* Класс .open добавляется JS-ом */
     .main-nav.open > ul { display: flex; animation: slideDown 0.3s ease; }
     
     .main-nav > ul > li { width: 100%; text-align: center; }
     .main-nav > ul > li > a { 
         padding: 15px; 
         border-bottom: 1px solid #f0f0f0; 
-        font-size: 15px;
+        font-size: 16px;
     }
 
-    /* Выпадающие меню на мобильном всегда открыты внутри родителя, если меню открыто */
+    /* Выпадающее меню открыто сразу, если открыто главное */
     .dropdown-menu {
         position: static;
         transform: none;
@@ -556,15 +551,13 @@ button { outline: none; border: none; background: none; cursor: pointer; }
         min-width: 100%;
         padding: 0;
     }
-    .dropdown-menu a { padding-left: 0; font-weight: 400; font-size: 14px; }
-    .has-dropdown > a::after { content: ' ▼'; font-size: 10px; color: var(--gold); }
-
-    /* Остальное */
+    .dropdown-menu a { padding-left: 0; font-weight: 400; font-size: 14px; color: #555; }
+    
+    /* Контент */
     .hero-title-large { font-size: 28px; }
     .hero-subtitle-large { font-size: 12px; padding: 5px 15px; }
     .history-text { font-size: 17px; padding: 0 5px; }
     .emotional-quote { padding: 15px; font-size: 18px; }
-    
     .shrine-actions { flex-direction: column; width: 100%; }
     .btn-doc { width: 100%; }
 }
