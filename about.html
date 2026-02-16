@@ -210,6 +210,25 @@
         </div>
     </div>
 </footer>
+<script>
+    // 1. Запуск галереи
+    Fancybox.bind("[data-fancybox]", {
+        hideScrollbar: false,
+        on: {
+            close: () => {
+                document.body.style.overflow = "visible";
+                document.body.style.overflowY = "auto";
+            }
+        }
+    });
 
+    // 2. Скрипт для исчезновения Экрана загрузки
+    window.addEventListener('load', function () {
+        var preloader = document.getElementById('page-preloader');
+        if (preloader) {
+            preloader.classList.add('done');
+        }
+    });
+</script>
 </body>
 </html>
