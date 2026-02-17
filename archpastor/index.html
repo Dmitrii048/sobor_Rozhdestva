@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Архипастырь | Христорождественский собор</title>
+    
+    <!-- Подключаем стили (путь ../style.css) -->
+    <link rel="stylesheet" href="../style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Специфичные стили для этой страницы (можно вынести в style.css) -->
+    <style>
+        /* Стили для страницы Архипастыря */
+        .arch-hero-section {
+            background-color: #fdfbf7; /* Светлый "церковный" фон */
+            padding: 60px 0;
+            border-bottom: 1px solid #EAE3D5;
+        }
+        
+        .arch-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .arch-portrait-wrapper {
+            position: relative;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid #EAE3D5;
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15); /* Золотистая тень */
+        }
+        
+        .arch-portrait-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 1px solid #C5A059;
+            pointer-events: none;
+        }
+
+        .arch-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .arch-info .rank {
+            font-family: 'Open Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #C5A059;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .arch-info h1 {
+            font-family: 'PT Serif', serif;
+            font-size: 36px;
+            line-height: 1.2;
+            color: #2C2C2C;
+            margin: 0 0 10px 0;
+        }
+
+        .arch-secular-name {
+            font-family: 'PT Serif', serif;
+            font-style: italic;
+            color: #777;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .arch-intro-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #444;
+            border-left: 3px solid #C5A059;
+            padding-left: 20px;
+        }
+
+        /* TIMELINE (Летопись жизни) */
+        .timeline-section {
+            padding: 60px 0;
+            background: #fff;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Вертикальная линия */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: #EAE3D5;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item.left { left: 0; text-align: right; }
+        .timeline-item.right { left: 50%; text-align: left; }
+
+        /* Точки на линии */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: -8px;
+            background-color: #fff;
+            border: 4px solid #C5A059;
+            top: 22px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item.right::after { left: -8px; }
+
+        .timeline-content {
+            padding: 20px 25px;
+            background-color: #fff;
+            border: 1px solid #EAE3D5;
+            border-radius: 4px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            transition: 0.3s;
+        }
+        .timeline-content:hover {
+            box-shadow: 0 8px 20px rgba(197, 160, 89, 0.2);
+            border-color: #C5A059;
+        }
+
+        .t-date {
+            color: #C5A059;
+            font-weight: 700;
+            font-family: 'PT Serif', serif;
+            font-size: 18px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .t-text {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Секция наград и образования */
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .credential-box {
+            background: #f9f9f9;
+            padding: 30px;
+            border-top: 4px solid #C5A059;
+        }
+
+        .credential-box h3 {
+            font-family: 'PT Serif', serif;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .awards-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .awards-list li::before {
+            content: '❖';
+            color: #C5A059;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        /* Адаптив */
+        @media screen and (max-width: 900px) {
+            .arch-hero-grid { grid-template-columns: 1fr; }
+            .arch-portrait-wrapper { max-width: 300px; margin: 0 auto; }
+            .arch-info { text-align: center; }
+            .arch-intro-text { text-align: left; }
+            
+            /* Адаптив таймлайна */
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item.left, .timeline-item.right { text-align: left; left: 0; }
+            .timeline-item::after { left: 23px; } /* Точка слева */
+            
+            .credentials-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="page-preloader" class="preloader">
+    <div class="loader-circle"></div>
+    <div class="loader-text">Загрузка...</div>
+</div>
+
+<header class="main-header">
+    <div class="logo-expansive-container">
+        <div class="logo-flex-row">
+            <!-- Обратите внимание на путь ../ -->
+            <a href="../index.html" class="logo-visual">
+                <img src="../sobor-sketch.jpg" alt="Собор" class="logo-sketch-large">
+            </a>
+            <div class="logo-brand-area">
+                <h1 class="title-main">Христорождественский</h1>
+                <h2 class="title-secondary">кафедральный собор</h2>
+                <h3 class="title-sub">г. Липецка</h3>
+                <div class="art-divider"></div>
+                <div class="church-meta">
+                    <p>Московский Патриархат <br> <span>Липецкая митрополия</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button id="menu-toggle" class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i> Меню
+    </button>
+    
+    <!-- Обновленное меню с путями ../ -->
+    <nav class="main-nav" id="main-nav">
+        <ul>
+            <li><a href="../index.html">Главная</a></li>
+            <li class="has-dropdown">
+                <a href="#" class="active">О соборе</a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.html">Летопись храма</a></li>
+                    <li><a href="archpastor.html" class="active">Архипастырь</a></li>
+                    <li><a href="../clergy.html">Духовенство</a></li>
+                    <li><a href="../choir.html">Архиерейский хор</a></li>
+                    <li><a href="../school.html">Воскресная школа</a></li>
+                    <li><a href="../pilgrimage.html">Паломнические поездки</a></li>
+                </ul>
+            </li>
+            <li><a href="../schedule.html">Расписание</a></li>
+            <li class="has-dropdown">
+                <a href="#">Служение</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../social.html">Социальное служение</a></li>
+                    <li><a href="../missionary.html">Служение в других храмах</a></li>
+                </ul>
+            </li>
+            <li><a href="../publications.html">Публикации</a></li>
+            <li><a href="../contacts.html">Контакты</a></li>
+            <li><a href="#" class="btn-note">Подать записку</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <!-- ВСТУПЛЕНИЕ -->
+    <section class="arch-hero-section">
+        <div class="container">
+            <div class="arch-hero-grid">
+                <!-- Фото слева -->
+                <div class="arch-portrait-wrapper">
+                    <!-- Замените src на актуальное фото -->
+                    <img src="../images/archierey.jpg" alt="Митрополит Арсений" class="arch-photo">
+                </div>
+                
+                <!-- Информация справа -->
+                <div class="arch-info">
+                    <span class="rank">Глава Липецкой митрополии</span>
+                    <h1>Высокопреосвященнейший Арсений, <br>Митрополит Липецкий и Задонский</h1>
+                    <div class="arch-secular-name">в миру Епифанов Юрий Александрович</div>
+                    
+                    <div class="arch-intro-text">
+                        <p>Назначен Преосвященным Липецким и Задонским, главой Липецкой митрополии решением Священного Синода от 9 июля 2019 года (журнал № 72). Постоянный член Высшего Церковного Совета Русской Православной Церкви.</p>
+                        <p>Известен своим многолетним служением в Москве в качестве первого викария Святейшего Патриарха и трудами по восстановлению церковной жизни столицы.</p>
+                    </div>
+
+                    <!-- Блок образования вверху -->
+                    <div style="margin-top: 30px; font-size: 14px; color: #555;">
+                        <strong>Образование:</strong><br>
+                        1979 г. — Московская духовная семинария.<br>
+                        1983 г. — Московская духовная академия.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ТАЙМЛАЙН БИОГРАФИИ -->
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="chapter-title">Биография</h2>
+            
+            <div class="timeline">
+                <!-- 1955 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="t-date">3 марта 1955 года</span>
+                        <p class="t-text">Родился в поселке Востряково Домодедовского района Московской области.</p>
+                    </div>
+                </div>
+
+                <!-- 1976-1983 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="t-date">1976 — 1983 гг.</span>
+                        <p class="t-text">Учеба в Московской духовной семинарии (окончил в 1979) и Московской духовной академии (окончил в 1983).</p>
+                    </div>
+                </div>
+
+                <!-- 1983-1989 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="t-date">1983 — 1989 гг.</span>
+                        <p class="t-text">Референтом и личный секретарь митрополита Ленинградского Алексия (впоследствии Патриарха Московского и всея Руси).</p>
+                    </div>
+                </div>
+
+                <!-- 1984-1986 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="t-date">1984 — 1986 гг.</span>
+                        <p class="t-text">28 августа 1984 г. рукоположен во диакона. <br>28 августа 1986 г. – во иерея. <br>С 1988 г. служил в Свято-Троицком соборе Александро-Невской лавры.</p>
+                    </div>
+                </div>
+
+                <!-- 1989 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="t-date">1989 год</span>
+                        <p class="t-text">30 сентября — пострижен в монашество.<br>5 октября — хиротонисан во епископа Ладожского в Свято-Троицком соборе Александро-Невской лавры.</p>
+                    </div>
+                </div>
+
+                <!-- 1990 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="t-date">20 июля 1990 года</span>
+                        <p class="t-text">Назначен епископом Истринским, викарием Московской епархии.</p>
+                    </div>
+                </div>
+
+                <!-- Комиссии по мощам -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="t-date">1988 — 1998 гг.</span>
+                        <p class="t-text">Участвовал в работе комиссий по освидетельствованию святых мощей: св. блгв. кн. Александра Невского, прпп. Зосимы, Савватия и Германа Соловецких, прп. Серафима Саровского, свт. Иоасафа Белгородского, свт. Тихона, Патриарха Московского, блж. Матроны Московской.</p>
+                    </div>
+                </div>
+
+                <!-- 1997 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="t-date">1997 год</span>
+                        <p class="t-text">25 февраля возведен в сан архиепископа.</p>
+                    </div>
+                </div>
+
+                <!-- Энциклопедия -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="t-date">Научная деятельность</span>
+                        <p class="t-text">1994-1997 гг. — председатель совета по изданию «Истории Русской Церкви» митр. Макария.<br>С 1998 г. возглавляет Научно-редакционный совет по изданию «Православной энциклопедии».</p>
+                    </div>
+                </div>
+
+                <!-- 2009 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="t-date">1 апреля 2009 года</span>
+                        <p class="t-text">Назначен первым викарием Патриарха Московского и всея Руси по г. Москве.</p>
+                    </div>
+                </div>
+
+                <!-- 2014 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="t-date">1 февраля 2014 года</span>
+                        <p class="t-text">За Литургией в Храме Христа Спасителя Святейшим Патриархом Кириллом возведен в сан митрополита.</p>
+                    </div>
+                </div>
+
+                <!-- 2015 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="t-date">24 декабря 2015 года</span>
+                        <p class="t-text">Включен в состав Высшего Церковного Совета Русской Православной Церкви.</p>
+                    </div>
+                </div>
+
+                <!-- 2019 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="t-date">9 июля 2019 года</span>
+                        <p class="t-text">Назначен Преосвященным Липецким и Задонским, главой Липецкой митрополии.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- НАГРАДЫ -->
+    <section class="container" style="margin-bottom: 80px;">
+        <h2 class="chapter-title">Награды</h2>
+        <div class="credentials-grid">
+            <div class="credential-box">
+                <h3>Церковные награды</h3>
+                <ul class="awards-list">
+                    <li>Орден прп. Серафима Саровского II ст. (2015)</li>
+                    <li>Орден св. блгв. кн. Даниила Московского II ст.</li>
+                    <li>Орден св. блгв. кн. Даниила Московского III ст. (2019)</li>
+                    <li>Орден св. равноап. кн. Владимира III ст.</li>
+                    <li>Медаль прп. Сергия Радонежского II ст.</li>
+                    <li>Ордена и медали Поместных Православных Церквей</li>
+                </ul>
+            </div>
+            
+            <div class="credential-box">
+                <h3>Светские награды</h3>
+                <ul class="awards-list">
+                    <li>Государственный орден Дружбы</li>
+                    <li>Медаль «За заслуги перед Отечеством» II ст.</li>
+                    <li>Медаль «В память 850-летия Москвы»</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer-light">
+    <div class="container footer-content">
+        <div class="footer-block">
+            <h5>Навигация</h5>
+            <a href="../index.html">Главная</a>
+            <a href="index.html">О соборе</a>
+            <a href="archpastor.html">Архипастырь</a>
+            <a href="../schedule.html">Расписание</a>
+        </div>
+        <div class="footer-block">
+            <h5>Контакты</h5>
+            <p>г. Липецк, Соборная пл., 4</p>
+            <p>+7 (4742) 27-04-78</p>
+        </div>
+        <div class="footer-block">
+            <h5>Мы в соцсетях</h5>
+            <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a>
+            <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
+    </div>
+</footer>
+
+<script>
+    // Скрипт прелоадера и меню (общий)
+    window.addEventListener('load', function () {
+        var preloader = document.getElementById('page-preloader');
+        if (preloader) preloader.classList.add('done');
+    });
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+    if(menuToggle && mainNav){
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    }
+</script>
+
+</body>
+</html>
