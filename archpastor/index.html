@@ -5,24 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Архипастырь | Христорождественский собор</title>
     
-    <!-- Подключаем стили (путь ../style.css) -->
+    <!-- Выходим из папки archpastor на уровень вверх к style.css -->
     <link rel="stylesheet" href="../style.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- Специфичные стили для этой страницы (можно вынести в style.css) -->
     <style>
-        /* Стили для страницы Архипастыря */
+        /* Внутренние стили для страницы Архипастыря */
         .arch-hero-section {
-            background-color: #fdfbf7; /* Светлый "церковный" фон */
+            background-color: #fdfbf7;
             padding: 60px 0;
             border-bottom: 1px solid #EAE3D5;
         }
         
         .arch-hero-grid {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
+            grid-template-columns: 350px 1fr;
             gap: 50px;
             align-items: start;
         }
@@ -32,7 +31,7 @@
             padding: 15px;
             background: #fff;
             border: 1px solid #EAE3D5;
-            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15); /* Золотистая тень */
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
         }
         
         .arch-portrait-wrapper::before {
@@ -82,122 +81,63 @@
             color: #444;
             border-left: 3px solid #C5A059;
             padding-left: 20px;
+            font-family: 'PT Serif', serif;
         }
 
-        /* TIMELINE (Летопись жизни) */
-        .timeline-section {
-            padding: 60px 0;
-            background: #fff;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* Вертикальная линия */
+        /* TIMELINE */
+        .timeline-section { padding: 60px 0; background: #fff; }
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        
         .timeline::after {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background-color: #EAE3D5;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1px;
+            content: ''; position: absolute; width: 2px; background-color: #EAE3D5;
+            top: 0; bottom: 0; left: 50%; margin-left: -1px;
         }
 
         .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            background-color: inherit;
-            width: 50%;
-            box-sizing: border-box;
+            padding: 10px 40px; position: relative;
+            background-color: inherit; width: 50%; box-sizing: border-box;
         }
 
         .timeline-item.left { left: 0; text-align: right; }
         .timeline-item.right { left: 50%; text-align: left; }
 
-        /* Точки на линии */
         .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            right: -8px;
-            background-color: #fff;
-            border: 4px solid #C5A059;
-            top: 22px;
-            border-radius: 50%;
-            z-index: 1;
+            content: ''; position: absolute; width: 16px; height: 16px;
+            right: -8px; background-color: #fff; border: 4px solid #C5A059;
+            top: 22px; border-radius: 50%; z-index: 1;
         }
         .timeline-item.right::after { left: -8px; }
 
         .timeline-content {
-            padding: 20px 25px;
-            background-color: #fff;
-            border: 1px solid #EAE3D5;
-            border-radius: 4px;
-            position: relative;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            transition: 0.3s;
+            padding: 20px 25px; background-color: #fff;
+            border: 1px solid #EAE3D5; border-radius: 4px; position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: 0.3s;
         }
         .timeline-content:hover {
-            box-shadow: 0 8px 20px rgba(197, 160, 89, 0.2);
-            border-color: #C5A059;
+            box-shadow: 0 8px 20px rgba(197, 160, 89, 0.2); border-color: #C5A059;
         }
 
         .t-date {
-            color: #C5A059;
-            font-weight: 700;
-            font-family: 'PT Serif', serif;
-            font-size: 18px;
-            margin-bottom: 8px;
-            display: block;
+            color: #C5A059; font-weight: 700; font-family: 'PT Serif', serif;
+            font-size: 18px; margin-bottom: 8px; display: block;
         }
+        .t-text { font-size: 15px; color: #444; line-height: 1.6; margin: 0; }
 
-        .t-text {
-            font-size: 15px;
-            color: #444;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* Секция наград и образования */
+        /* Награды */
         .credentials-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 60px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px;
         }
-
         .credential-box {
-            background: #f9f9f9;
-            padding: 30px;
-            border-top: 4px solid #C5A059;
+            background: #f9f9f9; padding: 30px; border-top: 4px solid #C5A059;
         }
-
         .credential-box h3 {
-            font-family: 'PT Serif', serif;
-            margin-top: 0;
-            margin-bottom: 20px;
-            font-size: 22px;
+            font-family: 'PT Serif', serif; margin-top: 0; margin-bottom: 20px; font-size: 22px;
         }
-
         .awards-list li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 10px;
-            font-size: 14px;
-            line-height: 1.5;
+            position: relative; padding-left: 25px; margin-bottom: 10px; font-size: 14px; line-height: 1.5;
         }
         .awards-list li::before {
-            content: '❖';
-            color: #C5A059;
-            position: absolute;
-            left: 0;
-            top: 2px;
+            content: '❖'; color: #C5A059; position: absolute; left: 0; top: 2px;
         }
 
         /* Адаптив */
@@ -206,13 +146,10 @@
             .arch-portrait-wrapper { max-width: 300px; margin: 0 auto; }
             .arch-info { text-align: center; }
             .arch-intro-text { text-align: left; }
-            
-            /* Адаптив таймлайна */
             .timeline::after { left: 31px; }
             .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
             .timeline-item.left, .timeline-item.right { text-align: left; left: 0; }
-            .timeline-item::after { left: 23px; } /* Точка слева */
-            
+            .timeline-item::after { left: 23px; }
             .credentials-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -227,8 +164,9 @@
 <header class="main-header">
     <div class="logo-expansive-container">
         <div class="logo-flex-row">
-            <!-- Обратите внимание на путь ../ -->
+            <!-- Ссылка на главную (на уровень вверх) -->
             <a href="../index.html" class="logo-visual">
+                <!-- Картинка (на уровень вверх) -->
                 <img src="../sobor-sketch.jpg" alt="Собор" class="logo-sketch-large">
             </a>
             <div class="logo-brand-area">
@@ -247,22 +185,31 @@
         <i class="fas fa-bars"></i> Меню
     </button>
     
-    <!-- Обновленное меню с путями ../ -->
+    <!-- МЕНЮ (ПУТИ АДАПТИРОВАНЫ ПОД ПАПКУ archpastor) -->
     <nav class="main-nav" id="main-nav">
         <ul>
+            <!-- Главная: выйти вверх -->
             <li><a href="../index.html">Главная</a></li>
+            
             <li class="has-dropdown">
                 <a href="#" class="active">О соборе</a>
                 <ul class="dropdown-menu">
-                    <li><a href="index.html">Летопись храма</a></li>
-                    <li><a href="archpastor.html" class="active">Архипастырь</a></li>
+                    <!-- Летопись: выйти вверх, зайти в about (предполагаем так) -->
+                    <li><a href="../about/index.html">Летопись храма</a></li>
+                    
+                    <!-- Архипастырь: текущая папка (просто имя файла) -->
+                    <li><a href="index.html" class="active">Архипастырь</a></li>
+                    
+                    <!-- Остальные: выйти вверх -->
                     <li><a href="../clergy.html">Духовенство</a></li>
                     <li><a href="../choir.html">Архиерейский хор</a></li>
                     <li><a href="../school.html">Воскресная школа</a></li>
                     <li><a href="../pilgrimage.html">Паломнические поездки</a></li>
                 </ul>
             </li>
+            
             <li><a href="../schedule.html">Расписание</a></li>
+            
             <li class="has-dropdown">
                 <a href="#">Служение</a>
                 <ul class="dropdown-menu">
@@ -270,6 +217,7 @@
                     <li><a href="../missionary.html">Служение в других храмах</a></li>
                 </ul>
             </li>
+            
             <li><a href="../publications.html">Публикации</a></li>
             <li><a href="../contacts.html">Контакты</a></li>
             <li><a href="#" class="btn-note">Подать записку</a></li>
@@ -282,24 +230,27 @@
     <section class="arch-hero-section">
         <div class="container">
             <div class="arch-hero-grid">
-                <!-- Фото слева -->
+                <!-- Фото: выйти вверх в images -->
                 <div class="arch-portrait-wrapper">
-                    <!-- Замените src на актуальное фото -->
                     <img src="../images/archierey.jpg" alt="Митрополит Арсений" class="arch-photo">
                 </div>
                 
-                <!-- Информация справа -->
                 <div class="arch-info">
                     <span class="rank">Глава Липецкой митрополии</span>
                     <h1>Высокопреосвященнейший Арсений, <br>Митрополит Липецкий и Задонский</h1>
                     <div class="arch-secular-name">в миру Епифанов Юрий Александрович</div>
                     
                     <div class="arch-intro-text">
-                        <p>Назначен Преосвященным Липецким и Задонским, главой Липецкой митрополии решением Священного Синода от 9 июля 2019 года (журнал № 72). Постоянный член Высшего Церковного Совета Русской Православной Церкви.</p>
-                        <p>Известен своим многолетним служением в Москве в качестве первого викария Святейшего Патриарха и трудами по восстановлению церковной жизни столицы.</p>
+                        <p>
+                            Назначен Преосвященным Липецким и Задонским, главой Липецкой митрополии решением Священного Синода от 9 июля 2019 года (журнал № 72). 
+                            Является постоянным членом Высшего Церковного Совета Русской Православной Церкви.
+                        </p>
+                        <p>
+                            На протяжении многих лет Владыка с кротостью и усердием нес ответственное послушание первого викария Святейшего Патриарха в Первопрестольном граде, 
+                            положив немало трудов на ниве возрождения церковной жизни и благоукрашения московских святынь.
+                        </p>
                     </div>
 
-                    <!-- Блок образования вверху -->
                     <div style="margin-top: 30px; font-size: 14px; color: #555;">
                         <strong>Образование:</strong><br>
                         1979 г. — Московская духовная семинария.<br>
@@ -316,7 +267,6 @@
             <h2 class="chapter-title">Биография</h2>
             
             <div class="timeline">
-                <!-- 1955 -->
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <span class="t-date">3 марта 1955 года</span>
@@ -324,7 +274,6 @@
                     </div>
                 </div>
 
-                <!-- 1976-1983 -->
                 <div class="timeline-item right">
                     <div class="timeline-content">
                         <span class="t-date">1976 — 1983 гг.</span>
@@ -332,15 +281,13 @@
                     </div>
                 </div>
 
-                <!-- 1983-1989 -->
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <span class="t-date">1983 — 1989 гг.</span>
-                        <p class="t-text">Референтом и личный секретарь митрополита Ленинградского Алексия (впоследствии Патриарха Московского и всея Руси).</p>
+                        <p class="t-text">Нес послушание референта и личного секретаря митрополита Ленинградского Алексия (впоследствии Патриарха Московского и всея Руси).</p>
                     </div>
                 </div>
 
-                <!-- 1984-1986 -->
                 <div class="timeline-item right">
                     <div class="timeline-content">
                         <span class="t-date">1984 — 1986 гг.</span>
@@ -348,7 +295,6 @@
                     </div>
                 </div>
 
-                <!-- 1989 -->
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <span class="t-date">1989 год</span>
@@ -356,7 +302,6 @@
                     </div>
                 </div>
 
-                <!-- 1990 -->
                 <div class="timeline-item right">
                     <div class="timeline-content">
                         <span class="t-date">20 июля 1990 года</span>
@@ -364,7 +309,6 @@
                     </div>
                 </div>
 
-                <!-- Комиссии по мощам -->
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <span class="t-date">1988 — 1998 гг.</span>
@@ -372,7 +316,6 @@
                     </div>
                 </div>
 
-                <!-- 1997 -->
                 <div class="timeline-item right">
                     <div class="timeline-content">
                         <span class="t-date">1997 год</span>
@@ -380,7 +323,6 @@
                     </div>
                 </div>
 
-                <!-- Энциклопедия -->
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <span class="t-date">Научная деятельность</span>
@@ -388,7 +330,6 @@
                     </div>
                 </div>
 
-                <!-- 2009 -->
                 <div class="timeline-item right">
                     <div class="timeline-content">
                         <span class="t-date">1 апреля 2009 года</span>
@@ -396,7 +337,6 @@
                     </div>
                 </div>
 
-                <!-- 2014 -->
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <span class="t-date">1 февраля 2014 года</span>
@@ -404,7 +344,6 @@
                     </div>
                 </div>
 
-                <!-- 2015 -->
                 <div class="timeline-item right">
                     <div class="timeline-content">
                         <span class="t-date">24 декабря 2015 года</span>
@@ -412,7 +351,6 @@
                     </div>
                 </div>
 
-                <!-- 2019 -->
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <span class="t-date">9 июля 2019 года</span>
@@ -457,8 +395,8 @@
         <div class="footer-block">
             <h5>Навигация</h5>
             <a href="../index.html">Главная</a>
-            <a href="index.html">О соборе</a>
-            <a href="archpastor.html">Архипастырь</a>
+            <a href="../about/index.html">Летопись</a>
+            <a href="index.html">Архипастырь</a>
             <a href="../schedule.html">Расписание</a>
         </div>
         <div class="footer-block">
@@ -478,7 +416,6 @@
 </footer>
 
 <script>
-    // Скрипт прелоадера и меню (общий)
     window.addEventListener('load', function () {
         var preloader = document.getElementById('page-preloader');
         if (preloader) preloader.classList.add('done');
