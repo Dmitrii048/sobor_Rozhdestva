@@ -60,7 +60,83 @@
             font-family: 'Open Sans', sans-serif;
             line-height: 1.6;
         }
+/* Стили для галереи духовенства */
+.clergy-modern-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Автоматическая сетка */
+    gap: 15px;
+    margin-bottom: 40px;
+}
 
+.clergy-card-mini {
+    background: #fff;
+    border: 1px solid #EAE3D5;
+    border-radius: 6px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clergy-card-mini:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(197, 160, 89, 0.15);
+    border-color: #C5A059;
+}
+
+.clergy-avatar {
+    width: 60px;  /* Реально маленькие иконки */
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #C5A059;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.clergy-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.clergy-rank {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #888;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.clergy-name {
+    font-family: 'PT Serif', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.clergy-year {
+    font-size: 11px;
+    color: #C5A059;
+    margin-top: 2px;
+}
+
+/* Выделение настоятеля */
+.rector-block {
+    margin-bottom: 20px;
+    background: #fdfbf7;
+    border: 1px solid #C5A059;
+}
+.rector-block .clergy-avatar {
+    width: 80px;
+    height: 80px;
+}
+.rector-block .clergy-name {
+    font-size: 18px;
+}
         /* Выравнивание подписей к фото как в статье */
         .img-caption {
             font-size: 15px;
