@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+<style>
+    .single-news-header {
+        background-color: #fdfbf7;
+        padding: 60px 0;
+        text-align: center;
+        border-bottom: 1px solid #EAE3D5;
+    }
+    .single-news-container {
+        max-width: 800px;
+        margin: 60px auto;
+        padding: 0 20px;
+    }
+    .news-meta {
+        color: #C5A059;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 14px;
+        margin-bottom: 15px;
+        display: block;
+    }
+    .news-body {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #333;
+        font-family: 'PT Serif', serif;
+    }
+    .news-body img {
+        max-width: 100%;
+        height: auto;
+        margin: 20px 0;
+        border-radius: 4px;
+    }
+    .news-body p {
+        margin-bottom: 25px;
+    }
+    .back-link {
+        display: inline-block;
+        margin-top: 40px;
+        color: #777;
+        text-decoration: none;
+        border-bottom: 1px dashed #999;
+    }
+</style>
+
+<div class="single-news-header">
+    <div class="container">
+        <span class="news-meta">{{ page.date | date: "%d.%m.%Y" }}</span>
+        <h1 class="chapter-title" style="margin-bottom: 0;">{{ page.title }}</h1>
+    </div>
+</div>
+
+<article class="single-news-container">
+    {% if page.image %}
+    <img src="{{ page.image }}" alt="{{ page.title }}" style="width: 100%; height: auto; margin-bottom: 40px; border-radius: 4px;">
+    {% endif %}
+
+    <div class="news-body">
+        {{ content }}
+    </div>
+
+    <a href="/news/" class="back-link">← Вернуться ко всем новостям</a>
+</article>
