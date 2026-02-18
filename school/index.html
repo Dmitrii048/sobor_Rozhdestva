@@ -5,38 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Воскресная школа «Ковчег» | Христорождественский собор</title>
     
-    <!-- СТИЛИ (выходим на уровень вверх) -->
+    <!-- СТИЛИ (уровень вверх) -->
     <link rel="stylesheet" href="../style.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-     
+    
     <style>
-        /* --- Специфичные стили для Школы --- */
+        /* --- СТИЛИ ДЛЯ ШКОЛЫ (БЕЗ ФОТО В ШАПКЕ) --- */
         
-        /* Герой-блок */
-        .school-hero {
-            /* Замените school-bg.jpg на фото детей или класса */
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/school-bg.jpg') center/cover no-repeat;
-            padding: 100px 0;
+        /* Декоративная шапка с "вензелями" (CSS узор) */
+        .ornament-hero {
+            background-color: #fdfbf7;
+            /* Паттерн в виде точек/ромбов */
+            background-image: radial-gradient(#EAE3D5 15%, transparent 16%), radial-gradient(#EAE3D5 15%, transparent 16%);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            padding: 80px 20px;
             text-align: center;
-            color: #fff;
-            margin-bottom: 60px;
+            border-bottom: 1px solid #C5A059;
+            position: relative;
         }
+        
+        /* Рамка внутри шапки */
+        .ornament-frame {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid #C5A059;
+            padding: 40px;
+            background: #fff; /* Белая подложка под текст */
+            position: relative;
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.1);
+        }
+        
+        /* Декоративные уголки (псевдоэлементы) */
+        .ornament-frame::before, .ornament-frame::after {
+            content: '❖'; /* Символ ромба/креста */
+            position: absolute;
+            font-size: 24px;
+            color: #C5A059;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .ornament-frame::before { top: -14px; background: #fff; padding: 0 10px; }
+        .ornament-frame::after { bottom: -14px; background: #fff; padding: 0 10px; }
+
         .school-title {
             font-family: 'PT Serif', serif;
-            font-size: 48px;
-            margin-bottom: 10px;
+            font-size: 42px;
+            color: #2C2C2C;
+            margin: 10px 0;
+            line-height: 1.2;
         }
         .school-subtitle {
             font-family: 'Open Sans', sans-serif;
-            font-size: 18px;
-            letter-spacing: 1px;
+            font-size: 14px;
             text-transform: uppercase;
-            opacity: 0.9;
+            letter-spacing: 2px;
+            color: #888;
+            margin-top: 10px;
         }
 
-        /* Блок с возрастными группами */
+        /* Основной текст */
+        .school-text {
+            font-family: 'PT Serif', serif;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #333;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+        
+        /* Блок Методики */
+        .methodology-box {
+            background: #fff;
+            border-left: 4px solid #C5A059;
+            padding: 25px 30px;
+            margin: 40px 0;
+            font-style: italic;
+            color: #555;
+            background-color: #f9f9f9;
+        }
+
+        /* Сетка групп */
         .groups-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -46,29 +97,30 @@
         .group-card {
             background: #fff;
             border: 1px solid #EAE3D5;
-            border-top: 4px solid #C5A059; /* Золотая шапка */
             padding: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            position: relative;
             transition: 0.3s;
         }
         .group-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+            border-color: #C5A059;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
         }
         .group-age {
-            font-family: 'Open Sans', sans-serif;
-            color: #C5A059;
-            font-weight: 700;
-            font-size: 14px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            display: block;
+            background: #C5A059;
+            color: #fff;
+            display: inline-block;
+            padding: 5px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 2px;
+            margin-bottom: 15px;
         }
         .group-title {
             font-family: 'PT Serif', serif;
-            font-size: 24px;
+            font-size: 22px;
             margin: 0 0 20px 0;
-            color: #2C2C2C;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
         }
         .subjects-list {
             list-style: none;
@@ -78,121 +130,61 @@
         .subjects-list li {
             position: relative;
             padding-left: 20px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-size: 15px;
-            color: #555;
             line-height: 1.4;
+            color: #444;
         }
         .subjects-list li::before {
             content: '•';
             color: #C5A059;
             position: absolute;
             left: 0;
-            font-size: 18px;
-            line-height: 1;
+            font-weight: bold;
         }
 
-        /* Методика (серый блок) */
-        .methodology-section {
-            background-color: #fdfbf7;
-            padding: 50px 40px;
-            border-left: 3px solid #C5A059;
-            margin: 60px 0;
-            font-family: 'PT Serif', serif;
-            color: #444;
-            font-style: italic;
+        /* Список видов деятельности */
+        .activities-list {
+            columns: 2;
+            -webkit-columns: 2;
+            gap: 40px;
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+        .activities-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
             font-size: 17px;
-            line-height: 1.6;
-        }
-
-        /* Виды деятельности (иконки) */
-        .activities-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-bottom: 80px;
-            text-align: center;
-        }
-        .activity-item i {
-            font-size: 36px;
-            color: #C5A059;
-            margin-bottom: 15px;
-            background: #fff;
-            width: 80px;
-            height: 80px;
-            line-height: 80px;
-            border-radius: 50%;
-            border: 1px solid #EAE3D5;
-        }
-        .activity-item p {
-            font-weight: 600;
-            color: #333;
-        }
-
-        /* Сетка мероприятий (Плейсхолдеры) */
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .event-card {
-            background: #fff;
-            border: 1px solid #eee;
-            overflow: hidden;
-        }
-        .event-img {
-            width: 100%;
-            height: 200px;
-            background-color: #ccc; /* Заглушка цвета */
-            object-fit: cover;
-        }
-        .event-content {
-            padding: 20px;
-        }
-        .event-date {
-            font-size: 12px;
-            color: #999;
-            margin-bottom: 5px;
-        }
-        .event-title {
             font-family: 'PT Serif', serif;
-            font-size: 18px;
-            margin: 0 0 10px 0;
-            color: #222;
         }
-        .event-link {
+        .activities-list li::before {
+            content: '\f00c'; /* FontAwesome check */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
             color: #C5A059;
-            text-decoration: none;
-            font-weight: 600;
+            position: absolute;
+            left: 0;
+            top: 2px;
             font-size: 14px;
         }
 
-        /* Блок записи */
-        .enroll-box {
-            text-align: center;
-            background: #C5A059;
-            color: #fff;
+        /* Мероприятия (Заглушка) */
+        .events-placeholder {
+            border: 2px dashed #EAE3D5;
             padding: 40px;
-            border-radius: 4px;
-            margin-top: 60px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 40px;
+            color: #888;
         }
-        .enroll-box h3 { margin: 0 0 10px 0; font-family: 'PT Serif'; font-size: 26px; }
-        .enroll-box p { font-size: 16px; opacity: 0.9; margin-bottom: 25px; }
-        .btn-white {
-            background: #fff;
-            color: #C5A059;
-            padding: 12px 30px;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 4px;
-            transition: 0.3s;
-        }
-        .btn-white:hover { background: #f0f0f0; }
-
-        @media (max-width: 900px) {
-            .activities-grid { grid-template-columns: 1fr 1fr; }
-            .school-hero { padding: 60px 0; }
-            .school-title { font-size: 32px; }
+        
+        /* Адаптив */
+        @media (max-width: 768px) {
+            .ornament-frame { padding: 20px; }
+            .school-title { font-size: 28px; }
+            .activities-list { columns: 1; }
         }
     </style>
 </head>
@@ -226,7 +218,6 @@
     <nav class="main-nav" id="main-nav">
         <ul>
             <li><a href="../index.html">Главная</a></li>
-            
             <li class="has-dropdown">
                 <a href="#" class="active">О соборе</a>
                 <ul class="dropdown-menu">
@@ -239,9 +230,7 @@
                     <li><a href="../pilgrimage/">Паломнические поездки</a></li>
                 </ul>
             </li>
-
             <li><a href="../schedule.html">Расписание</a></li>
-
             <li class="has-dropdown">
                 <a href="#">Служение</a>
                 <ul class="dropdown-menu">
@@ -249,143 +238,113 @@
                     <li><a href="../missionary.html">Служение в других храмах</a></li>
                 </ul>
             </li>
-
             <li><a href="../publications.html">Публикации</a></li>
             <li><a href="../contacts/">Контакты</a></li>
-            
             <li><a href="#" class="btn-note">Подать записку</a></li>
         </ul>
     </nav>
 </header>
 
-<!-- ГЕРОЙ-БЛОК -->
-<section class="school-hero">
+<!-- ДЕКОРАТИВНАЯ ШАПКА (ВМЕСТО ФОТО) -->
+<section class="ornament-hero">
     <div class="container">
-        <h1 class="school-title">Воскресная школа «Ковчег»</h1>
-        <div class="school-subtitle">Духовное воспитание и радость общения</div>
+        <div class="ornament-frame">
+            <h1 class="school-title">Воскресная школа «Ковчег»</h1>
+            <div class="school-subtitle">Духовное просвещение и воспитание</div>
+            <div style="margin-top: 20px; font-size: 20px; color: #C5A059;">
+                <i class="fas fa-dove"></i>
+            </div>
+        </div>
     </div>
 </section>
 
 <main class="container page-content">
     
-    <!-- Описание школы -->
-    <div style="max-width: 900px; margin: 0 auto 50px; text-align: justify; font-size: 17px; line-height: 1.6; color: #333;">
-        <p><span style="float: left; color: #C5A059; font-size: 50px; line-height: 40px; padding-top: 4px; padding-right: 8px; font-family: 'PT Serif';">В</span>оскресная школа «Ковчег» является составной и неотъемлемой частью прихода Христо-Рождественского собора и действует с 2001 года по благословению Высокопреосвященнейшего Никона, митрополита Липецкого и Задонского.</p>
-        <p>Школа призвана осуществлять православное духовное просвещение и воспитание детей, содействовать их воцерковлению и формированию образа жизни православного христианина.</p>
+    <!-- ТЕКСТ В ТОЧНОСТИ КАК В ЗАДАНИИ -->
+    <div class="school-text">
+        <p>
+            Воскресная школа «Ковчег» является составной и неотъемлемой частью прихода Христо-Рождественского собора и действует с 2001 года по благословению Высокопреосвященнейшего Никона, митрополита Липецкого и Задонского.
+        </p>
+        <p>
+            Школа призвана осуществлять православное духовное просвещение и воспитание детей, содействовать их воцерковлению и формированию образа жизни православного христианина.
+        </p>
+        <p style="border-left: 3px solid #C5A059; padding-left: 15px; background: #fdfbf7; padding: 10px 15px; margin: 20px 0;">
+            <strong>Набор детей в воскресную школу осуществляется в сентябре.</strong><br>
+            Но и детям, которые приходят в школу в середине учебного года, рады.
+        </p>
     </div>
 
-    <!-- Блок Методика -->
-    <div class="methodology-section">
-        Учебно-воспитательный процесс проводится в соответствии со «Стандартом учебно-воспитательной деятельности воскресных школ РПЦ».<br><br>
-        Используются материалы курса ЕУМК <strong>«Бог и человек: движение навстречу»</strong> (под ред. иеромонаха Геннадия Войтишко) и учебно-методического комплекта <strong>«Вертоград»</strong>.
+    <!-- МЕТОДИКА -->
+    <div class="methodology-box">
+        <h3 style="margin-top: 0; font-family: 'PT Serif'; font-size: 20px;">Учебно-воспитательный процесс</h3>
+        <p>
+            Проводится в соответствии со "Стандартом учебно-воспитательной деятельности, реализуемой воскресными школами (для детей) Русской Православной Церкви", с учетом рекомендаций Отдела религиозного образования и катехизации Липецкой епархии Русской Православной Церкви.
+        </p>
+        <p>
+            В данный момент в рамках духовного образования для детей ВШ "Ковчег" на уроках используются материалы курса ЕУМК <strong>"БОГ И ЧЕЛОВЕК: ДВИЖЕНИЕ НАВСТРЕЧУ"</strong> под редакцией иеромонаха Геннадия (Войтишко) и учебно-методического комплекта <strong>"Вертоград"</strong>.
+        </p>
     </div>
 
-    <h2 class="chapter-title">Учебные группы</h2>
+    <h2 class="chapter-title">В Воскресной школе действуют 3 группы</h2>
     
-    <!-- Карточки групп -->
     <div class="groups-grid">
-        <!-- Начальная -->
+        
+        <!-- НАЧАЛЬНАЯ -->
         <div class="group-card">
-            <span class="group-age">4-6 лет</span>
-            <h3 class="group-title">Начальная группа</h3>
+            <span class="group-age">Начальная группа: 4-6 лет</span>
             <ul class="subjects-list">
-                <li>«Православие для малышей» (ЕУМК «Бог и человек»)</li>
-                <li>Творческие занятия</li>
-                <li>Основы молитвы</li>
+                <li>"Православие для малышей" (ЕУМК «Бог и человек: движение навстречу»)</li>
             </ul>
         </div>
 
-        <!-- Младшая -->
+        <!-- МЛАДШАЯ -->
         <div class="group-card">
-            <span class="group-age">7-11 лет</span>
-            <h3 class="group-title">Младшая группа</h3>
+            <span class="group-age">Младшая группа: 7-11 лет</span>
             <ul class="subjects-list">
-                <li>«Путешествие навстречу Христу»</li>
-                <li>Храмоведение (УМК «Вертоград»)</li>
-                <li>ИЗО и творчество</li>
+                <li>"Путешествие навстречу Христу" (ЕУМК «Бог и человек: движение навстречу»)</li>
+                <li>"Храмоведение" (УМК "Вертоград")</li>
+                <li>ИЗО</li>
                 <li>Церковное пение</li>
                 <li>Хоровое пение</li>
             </ul>
         </div>
 
-        <!-- Старшая -->
+        <!-- СТАРШАЯ -->
         <div class="group-card">
-            <span class="group-age">12-16 лет</span>
-            <h3 class="group-title">Старшая группа</h3>
+            <span class="group-age">Старшая группа: 12-16 лет</span>
             <ul class="subjects-list">
-                <li>Литургия (УМК «Вертоград»)</li>
-                <li>История Русской Церкви</li>
-                <li>Православие и современность</li>
-                <li>Церковно-славянское чтение</li>
-                <li>Церковное и хоровое пение</li>
+                <li>"Литургия" (УМК "Вертоград")</li>
+                <li>"История русской церкви" (УМК "Вертоград")</li>
+                <li>"Православие и современность"</li>
+                <li>"Церковно-славянское чтение"</li>
+                <li>Церковное пение</li>
+                <li>Хоровое пение</li>
             </ul>
         </div>
     </div>
 
-    <!-- Виды деятельности -->
-    <h2 class="chapter-title" style="margin-top: 80px;">Жизнь школы</h2>
-    <div class="activities-grid">
-        <div class="activity-item">
-            <i class="fas fa-church"></i>
-            <p>Участие в Богослужениях</p>
-        </div>
-        <div class="activity-item">
-            <i class="fas fa-bus-alt"></i>
-            <p>Паломнические поездки</p>
-        </div>
-        <div class="activity-item">
-            <i class="fas fa-music"></i>
-            <p>Праздничные концерты</p>
-        </div>
-        <div class="activity-item">
-            <i class="fas fa-hand-holding-heart"></i>
-            <p>Благотворительные ярмарки</p>
-        </div>
+    <!-- ВИДЫ ДЕЯТЕЛЬНОСТИ -->
+    <h2 class="chapter-title">Виды деятельности</h2>
+    <div style="background: #fdfbf7; padding: 30px; border: 1px solid #EAE3D5;">
+        <p class="school-text" style="margin-bottom: 0;">Учебно-воспитательный процесс включает в себя следующие виды деятельности:</p>
+        <ul class="activities-list">
+            <li>Уроки, лекции, практические занятия</li>
+            <li>Участие в богослужениях и Святых Таинствах Православной Церкви</li>
+            <li>Экскурсии, поездки</li>
+            <li>Проведение концертов</li>
+            <li>Приходские праздники на духовно-нравственную тематику</li>
+            <li>Общешкольные благотворительные ярмарки для прихожан собора</li>
+        </ul>
     </div>
 
-    <!-- Мероприятия (Заглушки) -->
-    <div style="margin-bottom: 60px;">
-        <h3 style="font-family: 'PT Serif'; font-size: 24px; border-bottom: 2px solid #EAE3D5; padding-bottom: 10px; margin-bottom: 30px;">События и мероприятия</h3>
-        
-        <div class="events-grid">
-            <!-- Событие 1 -->
-            <div class="event-card">
-                <!-- Картинка заглушка, можно заменить на реальное фото -->
-                <div class="event-img" style="background: url('../images/event1.jpg') center/cover #eee;"></div> 
-                <div class="event-content">
-                    <div class="event-date">7 января 2026</div>
-                    <h4 class="event-title">Рождественский утренник</h4>
-                    <p style="font-size: 14px; color: #666;">Традиционный праздник для воспитанников школы. Спектакль, подарки и чаепитие.</p>
-                </div>
-            </div>
-
-            <!-- Событие 2 -->
-            <div class="event-card">
-                <div class="event-img" style="background: url('../images/event2.jpg') center/cover #eee;"></div>
-                <div class="event-content">
-                    <div class="event-date">Октябрь 2025</div>
-                    <h4 class="event-title">Поездка в Задонск</h4>
-                    <p style="font-size: 14px; color: #666;">Паломническая поездка старшей группы к мощам святителя Тихона Задонского.</p>
-                </div>
-            </div>
-
-            <!-- Событие 3 -->
-            <div class="event-card">
-                <div class="event-img" style="background: url('../images/event3.jpg') center/cover #eee;"></div>
-                <div class="event-content">
-                    <div class="event-date">Сентябрь 2025</div>
-                    <h4 class="event-title">Начало учебного года</h4>
-                    <p style="font-size: 14px; color: #666;">Молебен на начало учения и первое организационное собрание.</p>
-                </div>
-            </div>
+    <!-- МЕРОПРИЯТИЯ (ПУСТОЙ БЛОК ДЛЯ БУДУЩЕГО) -->
+    <div style="margin-top: 60px;">
+        <h2 class="chapter-title">Мероприятия школы</h2>
+        <!-- Если мероприятий пока нет, этот блок служит заглушкой или шаблоном -->
+        <div class="events-placeholder">
+            <i class="far fa-calendar-alt" style="font-size: 40px; color: #C5A059; margin-bottom: 20px;"></i>
+            <p>Здесь будут анонсы предстоящих праздников, утренников и паломнических поездок.</p>
         </div>
-    </div>
-
-    <!-- Блок записи -->
-    <div class="enroll-box">
-        <h3>Хотите записать ребенка?</h3>
-        <p>Основной набор осуществляется в сентябре. <br>Но мы рады детям, которые приходят в школу и в середине учебного года.</p>
-        <a href="../contacts/" class="btn-white">Связаться с нами</a>
     </div>
 
 </main>
@@ -417,13 +376,11 @@
 </footer>
 
 <script>
-    /* Прелоадер */
     window.addEventListener('load', function () {
         var preloader = document.getElementById('page-preloader');
         if (preloader) preloader.classList.add('done');
     });
 
-    /* Мобильное меню */
     const menuToggle = document.getElementById('menu-toggle');
     const mainNav = document.getElementById('main-nav');
     
