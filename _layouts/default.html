@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} | Христорождественский собор</title>
     
-    <!-- Используем абсолютный путь к стилям, чтобы не ломалось в папках -->
-    <link rel="stylesheet" href="/style.css">
+    <!-- ИСПРАВЛЕН ПУТЬ К СТИЛЯМ -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- Сюда вставятся стили конкретной страницы -->
     {% if page.style %}
     <style>
         {{ page.style }}
@@ -23,8 +22,9 @@
 <header class="main-header">
     <div class="logo-expansive-container">
         <div class="logo-flex-row">
-            <a href="/" class="logo-visual">
-                <img src="/sobor-sketch.jpg" alt="Собор" class="logo-sketch-large">
+            <!-- ИСПРАВЛЕН ПУТЬ К ЛОГО -->
+            <a href="{{ site.baseurl }}/" class="logo-visual">
+                <img src="{{ site.baseurl }}/sobor-sketch.jpg" alt="Собор" class="logo-sketch-large">
             </a>
             <div class="logo-brand-area">
                 <h1 class="title-main">Христорождественский</h1>
@@ -41,28 +41,28 @@
     
     <nav class="main-nav" id="main-nav">
         <ul>
-            <li><a href="/">Главная</a></li>
+            <!-- ИСПРАВЛЕНЫ ВСЕ ССЫЛКИ -->
+            <li><a href="{{ site.baseurl }}/">Главная</a></li>
             <li class="has-dropdown">
                 <a href="#">О соборе</a>
                 <ul class="dropdown-menu">
-                    <li><a href="/about/">Летопись храма</a></li>
-                    <li><a href="/archpastor/">Архипастырь</a></li>
-                    <li><a href="/clergy/">Духовенство</a></li>
-                    <li><a href="/choir/">Архиерейский хор</a></li>
-                    <li><a href="/school/">Воскресная школа</a></li>
-                    <li><a href="/pilgrimage/">Паломнические поездки</a></li>
+                    <li><a href="{{ site.baseurl }}/about/">Летопись храма</a></li>
+                    <li><a href="{{ site.baseurl }}/archpastor/">Архипастырь</a></li>
+                    <li><a href="{{ site.baseurl }}/clergy/">Духовенство</a></li>
+                    <li><a href="{{ site.baseurl }}/choir/">Архиерейский хор</a></li>
+                    <li><a href="{{ site.baseurl }}/school/">Воскресная школа</a></li>
+                    <li><a href="{{ site.baseurl }}/pilgrimage/">Паломнические поездки</a></li>
                 </ul>
             </li>
-            <li><a href="/schedule/">Расписание</a></li>
-            <li><a href="/news/">Новости</a></li> <!-- Ссылка на новости -->
-            <li><a href="/contacts/">Контакты</a></li>
+            <li><a href="{{ site.baseurl }}/schedule/">Расписание</a></li>
+            <li><a href="{{ site.baseurl }}/news/">Новости</a></li>
+            <li><a href="{{ site.baseurl }}/contacts/">Контакты</a></li>
             <li><a href="#" class="btn-note">Подать записку</a></li>
         </ul>
     </nav>
 </header>
 
 <main>
-    <!-- Сюда будет вставляться контент каждой страницы -->
     {{ content }}
 </main>
 
@@ -70,10 +70,10 @@
     <div class="container footer-content">
         <div class="footer-block">
             <h5>Навигация</h5>
-            <a href="/">Главная</a>
-            <a href="/about/">Летопись</a>
-            <a href="/news/">Новости</a>
-            <a href="/schedule/">Расписание</a>
+            <a href="{{ site.baseurl }}/">Главная</a>
+            <a href="{{ site.baseurl }}/about/">Летопись</a>
+            <a href="{{ site.baseurl }}/news/">Новости</a>
+            <a href="{{ site.baseurl }}/schedule/">Расписание</a>
         </div>
         <div class="footer-block">
             <h5>Контакты</h5>
