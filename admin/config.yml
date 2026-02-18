@@ -1,0 +1,25 @@
+backend:
+  name: github
+  repo: Dmitrii048/sobor_Rozhdestva # Твой репозиторий
+  branch: main # Основная ветка
+
+# --- НАСТРОЙКА КАРТИНОК ---
+# Куда физически сохранять файлы в репозитории:
+media_folder: "images/uploads"
+# Как сайт должен искать эти картинки (ВАЖНО для твоего сайта в папке):
+public_folder: "/sobor_Rozhdestva/images/uploads"
+
+# --- НАСТРОЙКА РАЗДЕЛОВ ---
+collections:
+  - name: "news" # Техническое имя
+    label: "Новости Собора" # Красивое имя в админке
+    folder: "_posts" # Папка, куда Jekyll складывает посты
+    create: true # Разрешить создавать новые
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Имя файла: 2026-02-18-news.md
+    fields:
+      # Поля, которые ты будешь заполнять:
+      - {label: "Заголовок новости", name: "title", widget: "string"}
+      - {label: "Дата публикации", name: "date", widget: "datetime"}
+      - {label: "Обложка (Картинка)", name: "image", widget: "image"}
+      - {label: "Краткое описание", name: "excerpt", widget: "text", hint: "Текст, который виден в общем списке новостей"}
+      - {label: "Полный текст", name: "body", widget: "markdown", hint: "Основной текст новости"}
