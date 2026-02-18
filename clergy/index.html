@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Духовенство | Христорождественский собор</title>
+    
+    <!-- Подключаем основной стиль (уровень вверх) -->
+    <link rel="stylesheet" href="../style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- СТИЛИ ДЛЯ РАЗДЕЛА ДУХОВЕНСТВА --- */
+        
+        .clergy-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 40px auto 60px;
+            font-family: 'PT Serif', serif;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Секция Настоятеля */
+        .rector-section {
+            background-color: #fdfbf7;
+            border: 1px solid #EAE3D5;
+            padding: 40px;
+            margin-bottom: 60px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.1);
+        }
+
+        /* Фото священников (оформление как у Архипастыря) */
+        .clergy-photo-wrapper {
+            position: relative;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #EAE3D5;
+        }
+        .clergy-photo-wrapper::before {
+            content: ''; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 1px solid #C5A059; pointer-events: none;
+        }
+        .clergy-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Текстовая часть */
+        .clergy-info h2, .clergy-info h3 {
+            font-family: 'PT Serif', serif;
+            color: #2C2C2C;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .rank-label {
+            display: inline-block;
+            font-family: 'Open Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #C5A059;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #C5A059;
+            padding-bottom: 2px;
+        }
+
+        .clergy-details {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.6;
+            margin-top: 15px;
+        }
+        .clergy-details p { margin: 5px 0; }
+        .clergy-details strong { color: #8B7D6B; }
+
+        /* Сетка для остальных клириков */
+        .clergy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .clergy-card {
+            background: #fff;
+            padding: 25px;
+            border: 1px solid #eee;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column; /* Чтобы контент растягивался */
+        }
+        .clergy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: #C5A059;
+        }
+        
+        /* Заголовки групп (Священники, Диаконы) */
+        .group-title {
+            text-align: center;
+            font-family: 'PT Serif', serif;
+            font-size: 28px;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .group-title::after {
+            content: '❖';
+            display: block;
+            font-size: 14px;
+            color: #C5A059;
+            margin-top: 10px;
+        }
+
+        /* Адаптив */
+        @media screen and (max-width: 900px) {
+            .rector-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 20px;
+            }
+            .clergy-photo-wrapper {
+                max-width: 280px;
+                margin: 0 auto 20px;
+            }
+            .rank-label { justify-content: center; }
+            .clergy-info h2 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="page-preloader" class="preloader">
+    <div class="loader-circle"></div>
+    <div class="loader-text">Загрузка...</div>
+</div>
+
+<header class="main-header">
+    <div class="logo-expansive-container">
+        <div class="logo-flex-row">
+            <!-- Путь к логотипу на уровень вверх -->
+            <a href="../index.html" class="logo-visual">
+                <img src="../sobor-sketch.jpg" alt="Собор" class="logo-sketch-large">
+            </a>
+            <div class="logo-brand-area">
+                <h1 class="title-main">Христорождественский</h1>
+                <h2 class="title-secondary">кафедральный собор</h2>
+                <h3 class="title-sub">г. Липецка</h3>
+                <div class="art-divider"></div>
+            </div>
+        </div>
+    </div>
+    
+    <button id="menu-toggle" class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i> Меню
+    </button>
+    
+    <!-- НАВИГАЦИЯ (Все пути ведут в папки или файлы через ../) -->
+    <nav class="main-nav" id="main-nav">
+        <ul>
+            <li><a href="../index.html">Главная</a></li>
+            <li class="has-dropdown">
+                <a href="#" class="active">О соборе</a>
+                <ul class="dropdown-menu">
+                    <!-- Все разделы "О соборе" лежат в своих папках -->
+                    <li><a href="../about/">Летопись храма</a></li>
+                    <li><a href="../archpastor/">Архипастырь</a></li>
+                    <li><a href="./" class="active">Духовенство</a></li> <!-- Текущая -->
+                    <li><a href="../choir/">Архиерейский хор</a></li>
+                    <li><a href="../school/">Воскресная школа</a></li>
+                    <li><a href="../pilgrimage/">Паломнические поездки</a></li>
+                </ul>
+            </li>
+            <li><a href="../schedule.html">Расписание</a></li>
+            <li class="has-dropdown">
+                <a href="#">Служение</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../social.html">Социальное служение</a></li>
+                    <li><a href="../missionary.html">Служение в других храмах</a></li>
+                </ul>
+            </li>
+            <li><a href="../publications.html">Публикации</a></li>
+            <li><a href="../contacts.html">Контакты</a></li>
+            <li><a href="#" class="btn-note">Подать записку</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    
+    <!-- Вступление -->
+    <div class="clergy-intro">
+        <h1 class="chapter-title">Духовенство собора</h1>
+        <p>
+            Служение священника — это непрестанный труд молитвы и попечения о душах человеческих. 
+            Клир Христорождественского кафедрального собора ежедневно совершает Богослужения, 
+            несет слово Божие пастве и заботится о благолепии главного храма Липецкой митрополии.
+        </p>
+    </div>
+
+    <!-- НАСТОЯТЕЛЬ (Выделенный блок) -->
+    <section class="rector-section">
+        <div class="clergy-photo-wrapper">
+            <!-- ВАЖНО: Картинки должны лежать в папке images на уровень выше. 
+                 Если они просто в корне, путь будет ../bilchuk.jpg. 
+                 Рекомендую сложить их в ../images/ -->
+            <img src="../images/bilchuk.jpg" alt="Протоиерей Василий Бильчук" class="clergy-photo">
+        </div>
+        <div class="clergy-info">
+            <span class="rank-label">Настоятель собора</span>
+            <h2>Протоиерей Василий Бильчук</h2>
+            <div class="clergy-details">
+                <p>Несет послушание настоятеля, с любовью и мудростью управляя жизнью прихода. Под его руководством собор был возрожден из руин и обрел свое нынешнее благолепие.</p>
+                <br>
+                <p><strong>Дата рождения:</strong> 1957 г.</p>
+                <p><strong>Духовное образование:</strong> Одесская духовная семинария, Московская духовная академия.</p>
+                <p><strong>Хиротония (рукоположение):</strong> 1983 г.</p>
+                <p><strong>Награды:</strong> Митра, право служения с отверстыми Царскими вратами до «Отче наш».</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- СВЯЩЕННИКИ -->
+    <h3 class="group-title">Священники</h3>
+    <div class="clergy-grid">
+        
+        <!-- Максимчук -->
+        <div class="clergy-card">
+            <div class="clergy-photo-wrapper">
+                <img src="../images/maksimchuk.jpg" alt="Владимир Максимчук" class="clergy-photo">
+            </div>
+            <div class="clergy-info">
+                <div style="margin-top: 20px;">
+                    <span class="rank-label">Протоиерей</span>
+                    <h3>Владимир Максимчук</h3>
+                    <div class="clergy-details">
+                        <p><strong>Дата рождения:</strong> 1978 г.</p>
+                        <p><strong>Образование:</strong> Одесская ДС, Санкт-Петербургская ДА.</p>
+                        <p><strong>Хиротония:</strong> 2002 г.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Носач -->
+        <div class="clergy-card">
+            <div class="clergy-photo-wrapper">
+                <img src="../images/nosach.jpg" alt="Алексий Носач" class="clergy-photo">
+            </div>
+            <div class="clergy-info">
+                <div style="margin-top: 20px;">
+                    <span class="rank-label">Протоиерей</span>
+                    <h3>Алексий Носач</h3>
+                    <div class="clergy-details">
+                        <p><strong>Дата рождения:</strong> 1975 г.</p>
+                        <p><strong>Образование:</strong> Одесская ДС, Московская ДА.</p>
+                        <p><strong>Хиротония:</strong> 1999 г.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Гришанов -->
+        <div class="clergy-card">
+            <div class="clergy-photo-wrapper">
+                <img src="../images/grishanov.jpg" alt="Сергий Гришанов" class="clergy-photo">
+            </div>
+            <div class="clergy-info">
+                <div style="margin-top: 20px;">
+                    <span class="rank-label">Иерей</span>
+                    <h3>Сергий Гришанов</h3>
+                    <div class="clergy-details">
+                        <p><strong>Дата рождения:</strong> 1977 г.</p>
+                        <p><strong>Образование:</strong> Московская ДС, Московская ДА.</p>
+                        <p><strong>Хиротония:</strong> 2008 г.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Архипкин -->
+        <div class="clergy-card">
+            <div class="clergy-photo-wrapper">
+                <img src="../images/arkhypkin.jpg" alt="Виктор Архипкин" class="clergy-photo">
+            </div>
+            <div class="clergy-info">
+                <div style="margin-top: 20px;">
+                    <span class="rank-label">Иерей</span>
+                    <h3>Виктор Архипкин</h3>
+                    <div class="clergy-details">
+                        <p><strong>Дата рождения:</strong> 1984 г.</p>
+                        <p><strong>Образование:</strong> ПСТГУ.</p>
+                        <p><strong>Хиротония:</strong> 2008 г.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Алешин -->
+        <div class="clergy-card">
+            <div class="clergy-photo-wrapper">
+                <img src="../images/aleshin.jpg" alt="Александр Алешин" class="clergy-photo">
+            </div>
+            <div class="clergy-info">
+                <div style="margin-top: 20px;">
+                    <span class="rank-label">Иерей</span>
+                    <h3>Александр Алешин</h3>
+                    <div class="clergy-details">
+                        <p><strong>Дата рождения:</strong> 1985 г.</p>
+                        <p><strong>Образование:</strong> Воронежская ПДС.</p>
+                        <p><strong>Хиротония:</strong> 2017 г.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Лихошерст -->
+        <div class="clergy-card">
+            <div class="clergy-photo-wrapper">
+                <img src="../images/likhosherst.jpg" alt="Александр Лихошерст" class="clergy-photo">
+            </div>
+            <div class="clergy-info">
+                <div style="margin-top: 20px;">
+                    <span class="rank-label">Иерей</span>
+                    <h3>Александр Лихошерст</h3>
+                    <div class="clergy-details">
+                        <p><strong>Дата рождения:</strong> 1992 г.</p>
+                        <p><strong>Образование:</strong> Воронежская ДС.</p>
+                        <p><strong>Хиротония:</strong> 2018 г.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Пигелев П. -->
+        <div class="clergy-card">
+            <div class="clergy-photo-wrapper">
+                <img src="../images/pigelev_p.jpg" alt="Павел Пигелев" class="clergy-photo">
+            </div>
+            <div class="clergy-info">
+                <div style="margin-top: 20px;">
+                    <span class="rank-label">Иерей</span>
+                    <h3>Павел Пигелев</h3>
+                    <div class="clergy-details">
+                        <p><strong>Дата рождения:</strong> 1994 г.</p>
+                        <p><strong>Образование:</strong> Санкт-Петербургская ДА.</p>
+                        <p><strong>Хиротония:</strong> 2020 г.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Мальцев -->
+        <div class="clergy-card">
+            <div class="clergy-photo-wrapper">
+                <img src="../images/maltsev.jpg" alt="Олег Мальцев" class="clergy-photo">
+            </div>
+            <div class="clergy-info">
+                <div style="margin-top: 20px;">
+                    <span class="rank-label">Иерей</span>
+                    <h3>Олег Мальцев</h3>
+                    <div class="clergy-details">
+                        <p><strong>Дата рождения:</strong> 1978 г.</p>
+                        <p><strong>Образование:</strong> Перервинская ДС, ЛГПУ.</p>
+                        <p><strong>Хиротония:</strong> 2025 г.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ДИАКОНЫ -->
+    <h3 class="group-title">Диаконы</h3>
+    <div class="clergy-grid">
+        
+        <!-- Кантарюк -->
+        <div class="clergy-card">
+            <div class="clergy-photo-wrapper">
+                <img src="../images/kantaryuk.jpg" alt="Андрей Кантарюк" class="clergy-photo">
+            </div>
+            <div class="clergy-info">
+                <div style="margin-top: 20px;">
+                    <span class="rank-label">Диакон</span>
+                    <h3>Андрей Кантарюк</h3>
+                    <div class="clergy-details">
+                        <p><strong>Дата рождения:</strong> 1995 г.</p>
+                        <p><strong>Образование:</strong> Одесская ДС.</p>
+                        <p><strong>Хиротония:</strong> 2017 г.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Пигелев Д. -->
+        <div class="clergy-card">
+            <div class="clergy-photo-wrapper">
+                <img src="../images/pigelev_d.jpg" alt="Диомид Пигелев" class="clergy-photo">
+            </div>
+            <div class="clergy-info">
+                <div style="margin-top: 20px;">
+                    <span class="rank-label">Диакон</span>
+                    <h3>Диомид Пигелев</h3>
+                    <div class="clergy-details">
+                        <p><strong>Дата рождения:</strong> 2000 г.</p>
+                        <p><strong>Образование:</strong> Санкт-Петербургская ДА.</p>
+                        <p><strong>Хиротония:</strong> 2023 г.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="site-footer-light">
+    <div class="container footer-content">
+        <div class="footer-block">
+            <h5>Навигация</h5>
+            <a href="../index.html">Главная</a>
+            <a href="../about/">Летопись</a>
+            <a href="../archpastor/">Архипастырь</a>
+            <a href="../schedule.html">Расписание</a>
+        </div>
+        <div class="footer-block">
+            <h5>Контакты</h5>
+            <p>г. Липецк, Соборная пл., 4</p>
+            <p>+7 (4742) 27-04-78</p>
+        </div>
+        <div class="footer-block">
+            <h5>Мы в соцсетях</h5>
+            <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a>
+            <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
+    </div>
+</footer>
+
+<script>
+    /* Прелоадер */
+    window.addEventListener('load', function () {
+        var preloader = document.getElementById('page-preloader');
+        if (preloader) preloader.classList.add('done');
+    });
+
+    /* Мобильное меню */
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+    
+    if(menuToggle && mainNav){
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+            const icon = menuToggle.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
