@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Служение в других храмах | Христорождественский собор</title>
+    
+    <!-- Подключаем основной стиль (уровень вверх) -->
+    <link rel="stylesheet" href="../style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- СТИЛИ ДЛЯ РАЗДЕЛА СЛУЖЕНИЯ --- */
+        
+        .page-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 40px auto 60px;
+            font-family: 'PT Serif', serif;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Общий контейнер храма */
+        .church-section {
+            background-color: #fdfbf7;
+            border: 1px solid #EAE3D5;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.05);
+        }
+
+        .church-section.secondary {
+            background-color: #fff; /* Немного другой фон для второго храма */
+        }
+
+        .church-title {
+            font-family: 'PT Serif', serif;
+            font-size: 28px;
+            color: #2C2C2C;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .church-title::after {
+            content: '❖';
+            display: block;
+            font-size: 14px;
+            color: #C5A059;
+            margin-top: 10px;
+        }
+
+        /* Сетка: Текст + Фото */
+        .church-grid {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Оформление фотографий храмов (сделаны небольшими) */
+        .church-photo-wrapper {
+            position: relative;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #EAE3D5;
+            max-width: 320px; /* Ограничение ширины */
+            margin: 0 auto;
+        }
+        .church-photo-wrapper::before {
+            content: ''; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 1px solid #C5A059; pointer-events: none;
+        }
+        .church-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .church-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #444;
+            text-align: justify;
+        }
+        .church-text p { margin-bottom: 15px; }
+
+        /* Выделенный блок (расписание / инфо) */
+        .info-panel {
+            background: #fff;
+            border-left: 3px solid #C5A059;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+        .info-panel h4 {
+            font-family: 'PT Serif', serif;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #2C2C2C;
+        }
+        .info-panel ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .info-panel ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+        .info-panel ul li::before {
+            content: '•';
+            color: #C5A059;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Компактный таймлайн для Иверского храма */
+        .compact-timeline {
+            margin-top: 30px;
+            border-left: 2px solid #EAE3D5;
+            padding-left: 20px;
+        }
+        .ct-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .ct-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border: 2px solid #C5A059;
+            border-radius: 50%;
+        }
+        .ct-year {
+            font-family: 'PT Serif', serif;
+            font-weight: 700;
+            color: #C5A059;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .ct-desc {
+            font-size: 15px;
+            color: #555;
+            margin: 0;
+        }
+
+        /* Сетка для клириков (переиспользуем из Духовенства) */
+        .clergy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Чуть меньше карточки */
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .clergy-card {
+            background: #fff; padding: 20px; border: 1px solid #eee;
+            transition: transform 0.3s, box-shadow 0.3s; text-align: center;
+        }
+        .clergy-card:hover {
+            transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: #C5A059;
+        }
+        .clergy-card .church-photo-wrapper { padding: 5px; max-width: 200px; }
+        .rank-label {
+            display: inline-block; font-family: 'Open Sans', sans-serif; text-transform: uppercase;
+            letter-spacing: 1.5px; font-size: 11px; font-weight: 700; color: #C5A059;
+            margin: 15px 0 5px; border-bottom: 1px solid #C5A059; padding-bottom: 2px;
+        }
+        .clergy-card h3 { font-family: 'PT Serif', serif; font-size: 18px; margin: 0 0 10px; }
+        .clergy-details { font-size: 13px; color: #666; line-height: 1.5; }
+
+        /* Источник фото под футером */
+        .photo-attribution {
+            text-align: center;
+            padding: 15px;
+            background: #1a1a1a;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 12px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .photo-attribution a { color: rgba(255, 255, 255, 0.4); text-decoration: none; }
+        .photo-attribution a:hover { color: rgba(255, 255, 255, 0.7); }
+
+        /* Адаптив */
+        @media screen and (max-width: 900px) {
+            .church-grid { grid-template-columns: 1fr; }
+            .church-grid .church-photo-wrapper { order: -1; margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="page-preloader" class="preloader">
+    <div class="loader-circle"></div>
+    <div class="loader-text">Загрузка...</div>
+</div>
+
+<header class="main-header">
+    <div class="logo-expansive-container">
+        <div class="logo-flex-row">
+            <a href="../index.html" class="logo-visual">
+                <img src="../sobor-sketch.jpg" alt="Собор" class="logo-sketch-large">
+            </a>
+            <div class="logo-brand-area">
+                <h1 class="title-main">Христорождественский</h1>
+                <h2 class="title-secondary">кафедральный собор</h2>
+                <h3 class="title-sub">г. Липецка</h3>
+                <div class="art-divider"></div>
+            </div>
+        </div>
+    </div>
+    
+    <button id="menu-toggle" class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i> Меню
+    </button>
+    
+    <!-- НАВИГАЦИЯ -->
+    <nav class="main-nav" id="main-nav">
+        <ul>
+            <li><a href="../index.html">Главная</a></li>
+            <li class="has-dropdown">
+                <a href="#">О соборе</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../about/">Летопись храма</a></li>
+                    <li><a href="../archpastor/">Архипастырь</a></li>
+                    <li><a href="../clergy/">Духовенство</a></li>
+                    <li><a href="../choir/">Архиерейский хор</a></li>
+                    <li><a href="../school/">Воскресная школа</a></li>
+                    <li><a href="../pilgrimage/">Паломнические поездки</a></li>
+                </ul>
+            </li>
+            <li><a href="../schedule.html">Расписание</a></li>
+            <li class="has-dropdown">
+                <a href="#" class="active">Служение</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../social/">Социальное служение</a></li>
+                    <li><a href="./" class="active">Служение в других храмах</a></li>
+                </ul>
+            </li>
+            <li><a href="../publications/">Публикации</a></li>
+            <li><a href="../contacts/">Контакты</a></li>
+            <li><a href="#" class="btn-note">Подать записку</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    
+    <div class="page-intro">
+        <h1 class="chapter-title">Служение в других храмах</h1>
+        <p>
+            Помимо попечения о главном храме Липецкой митрополии, духовенство Христорождественского собора 
+            несет пастырское служение и окормляет приходы в других районах города, созидая новые общины 
+            и оказывая духовную поддержку верующим.
+        </p>
+    </div>
+
+    <!-- ХРАМ КНЯЗЯ ВЛАДИМИРА -->
+    <section class="church-section">
+        <h2 class="church-title">Храм-часовня святого равноапостольного великого князя Владимира <br><span style="font-size:18px; color:#777; font-family:'Open Sans', sans-serif; text-transform:none;">при УМВД РФ по Липецкой области</span></h2>
+        
+        <div class="church-grid">
+            <div class="church-text">
+                <p>Храм-часовня была построена стараниями начальника УМВД РФ по Липецкой области генерал-майора полиции Юрия Декасова. Чин освящения состоялся 14 января 2013 года, а уже 26 января здесь впервые была совершена Божественная литургия.</p>
+                
+                <div class="info-panel">
+                    <h4>Расписание и требы</h4>
+                    <ul>
+                        <li><strong>Каждую субботу в 9:00:</strong> Божественная литургия, по завершении — молебен и панихида.</li>
+                        <li><strong>В дни Великого Поста:</strong> совершается Таинство Соборования.</li>
+                        <li><strong>Таинства:</strong> Крещение и венчание совершаются индивидуально по предварительной договоренности.</li>
+                    </ul>
+                </div>
+
+                <div class="info-panel" style="background: transparent; border:none; border-left: 3px solid #8B7D6B; padding-top:10px; padding-bottom:10px;">
+                    <h4>Пастырское окормление</h4>
+                    <p style="margin-bottom: 10px; font-size: 15px;">С 2013 года духовенством Липецкой епархии ведется ответственное служение в храме-часовне, а также осуществляется сотрудничество с УМВД России по Липецкой области.</p>
+                    <ul style="font-size: 14px;">
+                        <li>С 2019 г. — пастырское попечение в молитвенной комнате при госпитале МСЧ УМВД.</li>
+                        <li>Участие в общественных мероприятиях, направленных на повышение гражданской и социальной ответственности посредством христианского вероучения.</li>
+                        <li>Труды священнослужителей отмечены государственными и церковными наградами.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="church-photo-wrapper">
+                    <img src="../images/chasovnya_knyazya.jpg" alt="Храм-часовня св. князя Владимира" class="church-photo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ИВЕРСКИЙ ХРАМ -->
+    <section class="church-section secondary">
+        <h2 class="church-title">Храм Иверской иконы Божией Матери <br><span style="font-size:18px; color:#777; font-family:'Open Sans', sans-serif; text-transform:none;">микрорайон «Елецкий»</span></h2>
+        
+        <div class="church-grid">
+            <div class="church-text">
+                <p>Выбор Иверской иконы (Вратарницы) в качестве храмовой не случаен. В новом микрорайоне, который является своеобразными «вратами» Липецка, такой храм выступает в роли духовного стража. Сочетание древней византийской традиции и самобытных черт русского зодчества создает уникальный культурный облик.</p>
+                
+                <p>Сегодня храмовый комплекс объединяет:</p>
+                <ul style="margin-bottom: 20px; padding-left: 20px; color:#444;">
+                    <li><strong>Нижний храм</strong> (в честь Почаевской иконы) — действующий, совершаются все церковные таинства.</li>
+                    <li><strong>Верхний храм</strong> (в честь Иверской иконы) — завершаются работы перед великим освящением.</li>
+                    <li><strong>Храм-часовня</strong> (в честь Елецкой иконы) — историческое сердце прихода.</li>
+                    <li><strong>Воскресная школа</strong> — объединяет детей и взрослых.</li>
+                </ul>
+
+                <h4 style="font-family:'PT Serif', serif; font-size: 20px; margin-top: 30px; border-bottom: 1px solid #EAE3D5; padding-bottom: 10px;">Летопись храма</h4>
+                <div class="compact-timeline">
+                    <div class="ct-item">
+                        <span class="ct-year">14 октября 2014 г.</span>
+                        <p class="ct-desc">Торжественная закладка камня в основание будущего храма.</p>
+                    </div>
+                    <div class="ct-item">
+                        <span class="ct-year">2015 г.</span>
+                        <p class="ct-desc">Первое богослужение в храме-часовне Елецкой иконы. Назначение настоятелем протоиерея Василия Бильчука.</p>
+                    </div>
+                    <div class="ct-item">
+                        <span class="ct-year">2019 — 2020 гг.</span>
+                        <p class="ct-desc">Освящение малого и главного куполов храма, а также освящение звонницы (7 колоколов).</p>
+                    </div>
+                    <div class="ct-item">
+                        <span class="ct-year">3 января 2023 г.</span>
+                        <p class="ct-desc">Митрополит Арсений совершил малое освящение нижнего храма в честь Почаевской иконы.</p>
+                    </div>
+                    <div class="ct-item">
+                        <span class="ct-year">Сентябрь 2024 г.</span>
+                        <p class="ct-desc">Открытие Воскресной школы при храме.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="church-photo-wrapper">
+                    <img src="../images/iversky.jpg" alt="Иверский храм" class="church-photo">
+                </div>
+                <div style="text-align: center; margin-top: 15px;">
+                    <a href="https://иверский-храм.рф" target="_blank" style="color:#C5A059; text-decoration:none; font-family:'Open Sans', sans-serif; font-size:14px; font-weight:600;"><i class="fas fa-globe"></i> Официальный сайт храма</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- КЛИРИКИ ИВЕРСКОГО ХРАМА -->
+        <h4 style="font-family:'PT Serif', serif; font-size: 24px; text-align:center; margin-top: 50px;">Духовенство, несущее служение в храме</h4>
+        
+        <div class="clergy-grid">
+            <!-- Лихошерст -->
+            <div class="clergy-card">
+                <div class="church-photo-wrapper">
+                    <img src="../images/likhosherst.jpg" alt="Александр Лихошерст" class="church-photo">
+                </div>
+                <span class="rank-label">Иерей</span>
+                <h3>Александр Лихошерст</h3>
+                <div class="clergy-details">
+                    <p>1992 года рождения.<br>Окончил Воронежскую ДС (2015).<br>Клирик Христорождественского собора.</p>
+                </div>
+            </div>
+
+            <!-- Пигелев П. -->
+            <div class="clergy-card">
+                <div class="church-photo-wrapper">
+                    <img src="../images/pigelev_p.jpg" alt="Павел Пигелев" class="church-photo">
+                </div>
+                <span class="rank-label">Иерей</span>
+                <h3>Павел Пигелев</h3>
+                <div class="clergy-details">
+                    <p>1994 года рождения.<br>Окончил Санкт-Петербургскую ДА (2016).<br>Клирик Христорождественского собора.</p>
+                </div>
+            </div>
+
+            <!-- Мальцев -->
+            <div class="clergy-card">
+                <div class="church-photo-wrapper">
+                    <img src="../images/maltsev.jpg" alt="Олег Мальцев" class="church-photo">
+                </div>
+                <span class="rank-label">Иерей</span>
+                <h3>Олег Мальцев</h3>
+                <div class="clergy-details">
+                    <p>1978 года рождения.<br>Окончил Перервинскую ДС (2010).<br>Клирик Христорождественского собора.</p>
+                </div>
+            </div>
+
+            <!-- Пигелев Д. -->
+            <div class="clergy-card">
+                <div class="church-photo-wrapper">
+                    <img src="../images/pigelev_d.jpg" alt="Диомид Пигелев" class="church-photo">
+                </div>
+                <span class="rank-label">Диакон</span>
+                <h3>Диомид Пигелев</h3>
+                <div class="clergy-details">
+                    <p>2000 года рождения.<br>Окончил Санкт-Петербургскую ДА.<br>Клирик Христорождественского собора.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer-light">
+    <div class="container footer-content">
+        <div class="footer-block">
+            <h5>Навигация</h5>
+            <a href="../index.html">Главная</a>
+            <a href="../about/index.html">Летопись</a>
+            <a href="../archpastor/">Архипастырь</a>
+            <a href="../schedule.html">Расписание</a>
+        </div>
+        <div class="footer-block">
+            <h5>Контакты</h5>
+            <p>г. Липецк, Соборная пл., 4</p>
+            <p>+7 (4742) 27-04-78</p>
+        </div>
+        <div class="footer-block">
+            <h5>Мы в соцсетях</h5>
+            <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a>
+            <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
+    </div>
+</footer>
+
+<!-- Источник фото (полупрозрачный) -->
+<div class="photo-attribution">
+    Фотография храма св. кн. Владимира заимствована с сайта: <a href="http://blagochinie48.ru/index.php/39-2011-10-18-21-09-58/743-2013-01-26-11-01-43" target="_blank">blagochinie48.ru</a>
+</div>
+
+<script>
+    /* Прелоадер */
+    window.addEventListener('load', function () {
+        var preloader = document.getElementById('page-preloader');
+        if (preloader) preloader.classList.add('done');
+    });
+
+    /* Мобильное меню */
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+    
+    if(menuToggle && mainNav){
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+            const icon = menuToggle.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
