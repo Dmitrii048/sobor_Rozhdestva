@@ -122,7 +122,7 @@
             font-weight: bold;
         }
 
-        /* Компактный таймлайн для Иверского храма */
+        /* Компактный таймлайн для храмов */
         .compact-timeline {
             margin-top: 30px;
             border-left: 2px solid #EAE3D5;
@@ -160,7 +160,7 @@
         /* Сетка для клириков (переиспользуем из Духовенства) */
         .clergy-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Чуть меньше карточки */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
             margin-top: 40px;
         }
@@ -244,12 +244,12 @@
             <li class="has-dropdown">
                 <a href="#" class="active">Служение</a>
                 <ul class="dropdown-menu">
-                    <li><a href="../social/">Социальное служение</a></li>
+                    <li><a href="../social.html">Социальное служение</a></li>
                     <li><a href="./" class="active">Служение в других храмах</a></li>
                 </ul>
             </li>
-            <li><a href="../publications/">Публикации</a></li>
-            <li><a href="../contacts/">Контакты</a></li>
+            <li><a href="../publications.html">Публикации</a></li>
+            <li><a href="../contacts.html">Контакты</a></li>
             <li><a href="#" class="btn-note">Подать записку</a></li>
         </ul>
     </nav>
@@ -272,8 +272,24 @@
         
         <div class="church-grid">
             <div class="church-text">
-                <p>Храм-часовня была построена стараниями начальника УМВД РФ по Липецкой области генерал-майора полиции Юрия Декасова. Чин освящения состоялся 14 января 2013 года, а уже 26 января здесь впервые была совершена Божественная литургия.</p>
+                <p>Храм-часовня возведен на территории УМВД РФ по Липецкой области при содействии руководства управления с целью духовного окормления сотрудников правоохранительных органов.</p>
                 
+                <h4 style="font-family:'PT Serif', serif; font-size: 20px; margin-top: 25px; border-bottom: 1px solid #EAE3D5; padding-bottom: 10px;">Летопись храма</h4>
+                <div class="compact-timeline" style="margin-top: 20px; margin-bottom: 30px;">
+                    <div class="ct-item">
+                        <span class="ct-year">6 марта 2006 г.</span>
+                        <p class="ct-desc">Около здания областного УВД был освящен закладной крест и место под строительство будущего храма-часовни.</p>
+                    </div>
+                    <div class="ct-item">
+                        <span class="ct-year">14 января 2013 г.</span>
+                        <p class="ct-desc">Чин освящения возведенного храма совершил Высокопреосвященнейший Никон, архиепископ Липецкий и Елецкий.</p>
+                    </div>
+                    <div class="ct-item">
+                        <span class="ct-year">26 января 2013 г.</span>
+                        <p class="ct-desc">В храме-часовне впервые состоялась Божественная литургия.</p>
+                    </div>
+                </div>
+
                 <div class="info-panel">
                     <h4>Расписание и требы</h4>
                     <ul>
@@ -285,18 +301,32 @@
 
                 <div class="info-panel" style="background: transparent; border:none; border-left: 3px solid #8B7D6B; padding-top:10px; padding-bottom:10px;">
                     <h4>Пастырское окормление</h4>
-                    <p style="margin-bottom: 10px; font-size: 15px;">С 2013 года духовенством Липецкой епархии ведется ответственное служение в храме-часовне, а также осуществляется сотрудничество с УМВД России по Липецкой области.</p>
+                    <p style="margin-bottom: 10px; font-size: 15px;">С 2013 года ответственным за служение в храме-часовне, а также за сотрудничество Липецкой епархии с УМВД России по Липецкой области является <strong>протоиерей Владимир Максимчук</strong>.</p>
                     <ul style="font-size: 14px;">
-                        <li>С 2019 г. — пастырское попечение в молитвенной комнате при госпитале МСЧ УМВД.</li>
-                        <li>Участие в общественных мероприятиях, направленных на повышение гражданской и социальной ответственности посредством христианского вероучения.</li>
-                        <li>Труды священнослужителей отмечены государственными и церковными наградами.</li>
+                        <li>С 2019 г. — несет пастырское попечение в молитвенной комнате при госпитале МСЧ УМВД.</li>
+                        <li>Принимает участие в общественных мероприятиях, направленных на повышение гражданской и социальной ответственности посредством христианского вероучения.</li>
+                        <li>Труды отца Владимира отмечены государственными и церковными медалями и грамотами.</li>
                     </ul>
                 </div>
             </div>
             
             <div>
                 <div class="church-photo-wrapper">
+                    <!-- Проверь точное название картинки (возможно .JPG или .jpeg) -->
                     <img src="../images/chasovnya_knyazya.jpg" alt="Храм-часовня св. князя Владимира" class="church-photo">
+                </div>
+                
+                <!-- КАРТОЧКА СВЯЩЕННИКА ДЛЯ ЭТОГО ХРАМА -->
+                <h4 style="font-family:'PT Serif', serif; font-size: 18px; text-align:center; margin-top: 30px; margin-bottom: 15px;">Ответственный за служение</h4>
+                <div class="clergy-card" style="max-width: 250px; margin: 0 auto;">
+                    <div class="church-photo-wrapper" style="padding: 5px;">
+                        <img src="../images/maksimchuk.jpg" alt="Владимир Максимчук" class="church-photo">
+                    </div>
+                    <span class="rank-label">Протоиерей</span>
+                    <h3 style="font-size: 16px;">Владимир Максимчук</h3>
+                    <div class="clergy-details" style="font-size: 12px;">
+                        <p>Клирик Христорождественского собора. Отвечает за взаимодействие епархии с УМВД.</p>
+                    </div>
                 </div>
             </div>
         </div>
