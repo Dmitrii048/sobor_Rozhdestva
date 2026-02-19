@@ -61,13 +61,13 @@
             align-items: start;
         }
 
-        /* Оформление фотографий храмов (сделаны небольшими) */
+        /* Оформление фотографий храмов */
         .church-photo-wrapper {
             position: relative;
             padding: 10px;
             background: #fff;
             border: 1px solid #EAE3D5;
-            max-width: 320px; /* Ограничение ширины */
+            max-width: 320px; 
             margin: 0 auto;
         }
         .church-photo-wrapper::before {
@@ -113,6 +113,7 @@
             position: relative;
             padding-left: 20px;
             margin-bottom: 8px;
+            line-height: 1.5;
         }
         .info-panel ul li::before {
             content: '•';
@@ -130,7 +131,7 @@
         }
         .ct-item {
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .ct-item::before {
             content: '';
@@ -147,17 +148,41 @@
             font-family: 'PT Serif', serif;
             font-weight: 700;
             color: #C5A059;
-            font-size: 16px;
+            font-size: 17px;
             display: block;
             margin-bottom: 5px;
         }
         .ct-desc {
             font-size: 15px;
-            color: #555;
+            color: #444;
             margin: 0;
+            line-height: 1.5;
+            text-align: left;
         }
 
-        /* Сетка для клириков (переиспользуем из Духовенства) */
+        /* Золотая кнопка */
+        .btn-gold {
+            display: inline-block;
+            background-color: #C5A059;
+            color: #fff !important;
+            text-decoration: none;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px 25px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+            text-align: center;
+        }
+        .btn-gold:hover {
+            background-color: #A38243;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
+        }
+        .btn-gold i { margin-right: 8px; }
+
+        /* Сетка для клириков */
         .clergy-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -196,6 +221,7 @@
         @media screen and (max-width: 900px) {
             .church-grid { grid-template-columns: 1fr; }
             .church-grid .church-photo-wrapper { order: -1; margin-bottom: 20px; }
+            .btn-gold { width: 100%; box-sizing: border-box; }
         }
     </style>
 </head>
@@ -312,11 +338,9 @@
             
             <div>
                 <div class="church-photo-wrapper">
-                    <!-- Проверь точное название картинки (возможно .JPG или .jpeg) -->
                     <img src="../images/chasovnya_knyazya.jpg" alt="Храм-часовня св. князя Владимира" class="church-photo">
                 </div>
                 
-                <!-- КАРТОЧКА СВЯЩЕННИКА ДЛЯ ЭТОГО ХРАМА -->
                 <h4 style="font-family:'PT Serif', serif; font-size: 18px; text-align:center; margin-top: 30px; margin-bottom: 15px;">Ответственный за служение</h4>
                 <div class="clergy-card" style="max-width: 250px; margin: 0 auto;">
                     <div class="church-photo-wrapper" style="padding: 5px;">
@@ -340,51 +364,63 @@
             <div class="church-text">
                 <p>Выбор Иверской иконы (Вратарницы) в качестве храмовой не случаен. В новом микрорайоне, который является своеобразными «вратами» Липецка, такой храм выступает в роли духовного стража. Сочетание древней византийской традиции и самобытных черт русского зодчества создает уникальный культурный облик.</p>
                 
-                <p>Сегодня храмовый комплекс объединяет:</p>
-                <ul style="margin-bottom: 20px; padding-left: 20px; color:#444;">
-                    <li><strong>Нижний храм</strong> (в честь Почаевской иконы) — действующий, совершаются все церковные таинства.</li>
-                    <li><strong>Верхний храм</strong> (в честь Иверской иконы) — завершаются работы перед великим освящением.</li>
-                    <li><strong>Храм-часовня</strong> (в честь Елецкой иконы) — историческое сердце прихода.</li>
-                    <li><strong>Воскресная школа</strong> — объединяет детей и взрослых.</li>
+                <p>Сегодня строящийся храмовый комплекс объединяет:</p>
+                <ul style="margin-bottom: 25px; padding-left: 20px; color:#444; line-height: 1.6;">
+                    <li><strong>Нижний храм</strong> (в честь Почаевской иконы) — действующий, место совершения Литургий.</li>
+                    <li><strong>Верхний храм</strong> (в честь Иверской иконы) — завершаются подготовительные работы перед великим освящением.</li>
+                    <li><strong>Храм-часовня</strong> (в честь Елецкой иконы) — историческое сердце прихода, открытое в 2015 году.</li>
                 </ul>
 
-                <h4 style="font-family:'PT Serif', serif; font-size: 20px; margin-top: 30px; border-bottom: 1px solid #EAE3D5; padding-bottom: 10px;">Летопись храма</h4>
+                <div class="info-panel" style="border-left-color: #8B7D6B;">
+                    <h4>Богослужения и приходская жизнь</h4>
+                    <ul>
+                        <li><strong>Регулярные богослужения:</strong> в храме на постоянной основе совершаются Божественная литургия, Всенощное бдение, служатся молебны и панихиды.</li>
+                        <li><strong>Таинства:</strong> проводятся Таинства Крещения, Венчания, Соборования и Исповеди.</li>
+                        <li><strong>Духовное просвещение:</strong> при храме активно действует Воскресная школа, объединяющая детей и взрослых в изучении православной веры.</li>
+                    </ul>
+                </div>
+
+                <h4 style="font-family:'PT Serif', serif; font-size: 20px; margin-top: 35px; border-bottom: 1px solid #EAE3D5; padding-bottom: 10px;">Летопись строительства</h4>
                 <div class="compact-timeline">
                     <div class="ct-item">
                         <span class="ct-year">14 октября 2014 г.</span>
-                        <p class="ct-desc">Торжественная закладка камня в основание будущего храма.</p>
+                        <p class="ct-desc">В праздник Покрова Пресвятой Богородицы состоялся торжественный чин закладки камня в основание будущего храмового комплекса.</p>
                     </div>
                     <div class="ct-item">
                         <span class="ct-year">2015 г.</span>
-                        <p class="ct-desc">Первое богослужение в храме-часовне Елецкой иконы. Назначение настоятелем протоиерея Василия Бильчука.</p>
+                        <p class="ct-desc">В рождественскую ночь прошло первое богослужение в храме-часовне Елецкой иконы. Назначение настоятелем прихода протоиерея Василия Бильчука.</p>
                     </div>
                     <div class="ct-item">
                         <span class="ct-year">2019 — 2020 гг.</span>
-                        <p class="ct-desc">Освящение малого и главного куполов храма, а также освящение звонницы (7 колоколов).</p>
+                        <p class="ct-desc">Архитектурное становление: освящение малого и главного куполов, увенчавших храм крестами, а также освящение звонницы из 7 колоколов.</p>
                     </div>
                     <div class="ct-item">
                         <span class="ct-year">3 января 2023 г.</span>
-                        <p class="ct-desc">Митрополит Арсений совершил малое освящение нижнего храма в честь Почаевской иконы.</p>
+                        <p class="ct-desc">Высокопреосвященнейший Арсений, митрополит Липецкий и Задонский, совершил малое освящение нижнего храма в честь Почаевской иконы Божией Матери.</p>
                     </div>
                     <div class="ct-item">
                         <span class="ct-year">Сентябрь 2024 г.</span>
-                        <p class="ct-desc">Открытие Воскресной школы при храме.</p>
+                        <p class="ct-desc">Открытие Воскресной школы, ставшей важным центром просвещения прихожан.</p>
                     </div>
                 </div>
             </div>
 
-            <div>
+            <div style="text-align: center;">
                 <div class="church-photo-wrapper">
                     <img src="../images/iversky.jpg" alt="Иверский храм" class="church-photo">
                 </div>
-                <div style="text-align: center; margin-top: 15px;">
-                    <a href="https://иверский-храм.рф" target="_blank" style="color:#C5A059; text-decoration:none; font-family:'Open Sans', sans-serif; font-size:14px; font-weight:600;"><i class="fas fa-globe"></i> Официальный сайт храма</a>
+                
+                <!-- Новая красивая золотая кнопка -->
+                <div style="margin-top: 25px;">
+                    <a href="https://иверский-храм.рф" target="_blank" class="btn-gold">
+                        <i class="fas fa-globe"></i> Официальный сайт храма
+                    </a>
                 </div>
             </div>
         </div>
 
         <!-- КЛИРИКИ ИВЕРСКОГО ХРАМА -->
-        <h4 style="font-family:'PT Serif', serif; font-size: 24px; text-align:center; margin-top: 50px;">Духовенство, несущее служение в храме</h4>
+        <h4 style="font-family:'PT Serif', serif; font-size: 24px; text-align:center; margin-top: 60px;">Духовенство, несущее служение в храме</h4>
         
         <div class="clergy-grid">
             <!-- Лихошерст -->
