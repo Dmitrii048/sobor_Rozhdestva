@@ -1,25 +1,22 @@
 backend:
-  name: github
-  repo: Dmitrii048/sobor_Rozhdestva # Твой репозиторий
-  branch: main # Основная ветка
+  name: git-gateway
+  branch: main
 
-# --- НАСТРОЙКА КАРТИНОК ---
-# Куда физически сохранять файлы в репозитории:
-media_folder: "images/uploads"
-# Как сайт должен искать эти картинки (ВАЖНО для твоего сайта в папке):
-public_folder: "/sobor_Rozhdestva/images/uploads"
+media_folder: "images/news"
+public_folder: "/images/news"
 
-# --- НАСТРОЙКА РАЗДЕЛОВ ---
 collections:
-  - name: "news" # Техническое имя
-    label: "Новости Собора" # Красивое имя в админке
-    folder: "_posts" # Папка, куда Jekyll складывает посты
-    create: true # Разрешить создавать новые
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Имя файла: 2026-02-18-news.md
+  - name: "news"
+    label: "📰 Новости собора"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
     fields:
-      # Поля, которые ты будешь заполнять:
-      - {label: "Заголовок новости", name: "title", widget: "string"}
-      - {label: "Дата публикации", name: "date", widget: "datetime"}
-      - {label: "Обложка (Картинка)", name: "image", widget: "image"}
-      - {label: "Краткое описание", name: "excerpt", widget: "text", hint: "Текст, который виден в общем списке новостей"}
-      - {label: "Полный текст", name: "body", widget: "markdown", hint: "Основной текст новости"}
+      - {label: "🔖 Категория", name: "category", widget: "select", options: ["Главная", "Воскресная школа", "Социальное служение", "Паломничество"], required: true}
+      - {label: "📝 Заголовок", name: "title", widget: "string", required: true}
+      - {label: "📅 Дата публикации", name: "date", widget: "datetime", required: true}
+      - {label: "🖼️ Изображение (рекомендуется 1200x600px)", name: "image", widget: "image", required: true}
+      - {label: "📌 Краткое описание", name: "excerpt", widget: "text", hint: "Текст, который будет отображаться в списке новостей"}
+      - {label: "📄 Полный текст", name: "body", widget: "markdown", required: true}
