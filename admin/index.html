@@ -1,14 +1,82 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Управление сайтом</title>
-  <!-- Важная строка для работы с GitHub -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <title>Админ-панель — Христорождественский собор</title>
+  <!-- Подключаем стили, чтобы админка выглядела как ваш сайт -->
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    body {
+      background: #fff;
+      font-family: 'Open Sans', sans-serif;
+      color: #2C2C2C;
+    }
+    .cms-container {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .cms-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .cms-header h1 {
+      font-family: 'PT Serif', serif;
+      font-size: 36px;
+      color: #C5A059;
+      margin-bottom: 10px;
+    }
+    .cms-header p {
+      color: #666;
+      font-size: 16px;
+    }
+    .cms-content {
+      background: #fdfbf7;
+      border: 1px solid #EAE3D5;
+      border-radius: 8px;
+      padding: 40px;
+      text-align: center;
+    }
+    .cms-logo {
+      max-width: 100%;
+      height: auto;
+      max-height: 120px;
+      margin-bottom: 30px;
+    }
+    .login-button {
+      background: #C5A059;
+      color: #fff;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .login-button:hover {
+      background: #b08d4a;
+    }
+  </style>
 </head>
 <body>
-  <!-- Подключаем CMS -->
+  <div class="cms-container">
+    <div class="cms-header">
+      <h1>Админ-панель Христорождественского собора</h1>
+      <p>Управление контентом сайта</p>
+    </div>
+    
+    <div class="cms-content">
+      <img src="/sobor-sketch.jpg" alt="Христорождественский собор" class="cms-logo">
+      <h2>Войти в систему</h2>
+      <p>Для управления контентом сайта войдите через GitHub</p>
+      <a href="#" class="login-button">Войти через GitHub</a>
+    </div>
+  </div>
+
+  <!-- Подключаем саму CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
