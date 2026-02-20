@@ -1,5 +1,5 @@
-// Массив событий воскресной школы
-const schoolEvents = [
+const schoolEvents =
+    },
     {
         id: "sept25",
         date: "21 сентября 2025 года",
@@ -63,28 +63,3 @@ const schoolEvents = [
         gallery:[]
     }
 ];
-
-// Функция для отображения событий
-function renderEvents() {
-    const eventsContainer = document.getElementById('events-container');
-    if (!eventsContainer) return;
-    
-    let html = '';
-    schoolEvents.forEach(event => {
-        html += `
-            <div class="event-card" id="event-${event.id}">
-                <div class="event-date">${event.date}</div>
-                <h3 class="event-title">${event.title}</h3>
-                <div class="event-image">
-                    <img src="${event.cover}" alt="${event.title}">
-                </div>
-                <div class="event-content">${event.text}</div>
-            </div>
-        `;
-    });
-    
-    eventsContainer.innerHTML = html;
-}
-
-// Запускаем после полной загрузки страницы
-document.addEventListener('DOMContentLoaded', renderEvents);
