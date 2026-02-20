@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Воскресная школа «Ковчег» | Христорождественский собор</title>
     
-    <!-- Подключаем основной стиль -->
     <link rel="stylesheet" href="../style.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -13,7 +12,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
     
     <style>
-        /* Уникальные стили для контента школы */
         .school-wrapper { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
         
         .school-intro-box { background-color: #fdfbf7; border-left: 4px solid #C5A059; padding: 30px; margin: 40px 0; }
@@ -32,9 +30,7 @@
         .group-card h3 { font-family: 'PT Serif', serif; color: #2C2C2C; margin-top: 0; margin-bottom: 5px; font-size: 24px; }
         .group-age { font-family: 'Open Sans', sans-serif; color: #C5A059; font-weight: 600; font-size: 14px; display: block; margin-bottom: 20px; text-transform: uppercase; }
 
-        /* =========================================
-           НОВОСТИ КАК В СРЕТЕНСКОЙ АКАДЕМИИ
-           ========================================= */
+        /* Стиль Сретенской академии */
         .sretensky-list { display: flex; flex-direction: column; gap: 40px; margin-top: 40px; }
         .sretensky-item { display: flex; gap: 30px; padding-bottom: 40px; border-bottom: 2px dotted #EAE3D5; }
         .sretensky-item:last-child { border-bottom: none; }
@@ -49,6 +45,11 @@
         .sretensky-date { font-family: 'Open Sans', sans-serif; font-size: 13px; color: #C5A059; font-weight: bold; text-transform: uppercase; margin-bottom: 8px; display: block; }
         .sretensky-title { font-family: 'PT Serif', serif; font-size: 22px; font-weight: 700; color: #2C2C2C; margin: 0 0 10px 0; line-height: 1.3; }
         .sretensky-text { font-family: 'PT Serif', serif; font-size: 16px; color: #555; line-height: 1.6; margin: 0; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+
+        /* Кнопки под событиями */
+        .events-actions { display: flex; justify-content: center; gap: 15px; margin-top: 40px; flex-wrap: wrap; }
+        .btn-outline-gold { border: 1px solid #C5A059; color: #C5A059; padding: 12px 30px; font-size: 14px; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; border-radius: 4px; transition: 0.3s; background: transparent; display: inline-block; text-decoration: none; }
+        .btn-outline-gold:hover { background: #C5A059; color: #fff; }
 
         @media (max-width: 768px) {
             .sretensky-item { flex-direction: column; gap: 20px; }
@@ -102,12 +103,12 @@
             <li class="has-dropdown">
                 <a href="#">Служение</a>
                 <ul class="dropdown-menu">
-                    <li><a href="../social/">Социальное служение</a></li>
-                    <li><a href="../missionary/">Служение в других храмах</a></li>
+                    <li><a href="../social.html">Социальное служение</a></li>
+                    <li><a href="../missionary.html">Служение в других храмах</a></li>
                 </ul>
             </li>
-            <li><a href="../publications/">Публикации</a></li>
-            <li><a href="../contacts/">Контакты</a></li>
+            <li><a href="../publications.html">Публикации</a></li>
+            <li><a href="../contacts.html">Контакты</a></li>
             <li><a href="#" class="btn-note">Подать записку</a></li>
         </ul>
     </nav>
@@ -136,7 +137,7 @@
         </p>
     </div>
 
-    <!-- МЕТОДИКА (В красивой рамке) -->
+    <!-- МЕТОДИКА -->
     <div class="methodology-box">
         <p>
             <strong>Учебно-воспитательный процесс</strong> проводится в соответствии со "Стандартом учебно-воспитательной деятельности, реализуемой воскресными школами (для детей) Русской Православной Церкви", с учетом рекомендаций Отдела религиозного образования и катехизации Липецкой епархии Русской Православной Церкви.
@@ -227,14 +228,18 @@
     <!-- РАЗДЕЛ МЕРОПРИЯТИЙ (СТИЛЬ СРЕТЕНСКОЙ АКАДЕМИИ) -->
     <h2 class="chapter-title" style="margin-top: 80px;">События и мероприятия</h2>
     
-    <div id="events-container">
-        <!-- Карточки генерируются скриптом events.js -->
-    </div>
+    <!-- Контейнер для скрипта -->
+    <div id="events-container"></div>
 
-    <div style="text-align: center; margin-top: 40px;">
-        <button id="load-more-btn" class="btn-gold" style="padding: 12px 30px; font-size: 14px; display: none; border-radius: 4px;">
+    <!-- КНОПКИ УПРАВЛЕНИЯ НОВОСТЯМИ -->
+    <div class="events-actions">
+        <button id="load-more-btn" class="btn-gold" style="padding: 12px 30px; font-size: 14px; border-radius: 4px; display: none;">
             Показать следующие
         </button>
+        <!-- Ссылка на все новости школы (создадим позже) -->
+        <a href="#" class="btn-outline-gold">
+            Перейти ко всем новостям
+        </a>
     </div>
 
 </main>
@@ -257,6 +262,8 @@
             <h5>Мы в соцсетях</h5>
             <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a>
             <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            <!-- ССЫЛКА НА MAX ДОБАВЛЕНА -->
+            <a href="https://max.ru/join/refQw8YZh7RC1z9hr72iKjy8rI9Kjvi7250J9GkV35Y" target="_blank"><i class="fas fa-users"></i> MAX</a>
         </div>
     </div>
     <div class="footer-bottom">
@@ -287,7 +294,7 @@
         });
     }
 
-    // СКРИПТ ГЕНЕРАЦИИ НОВОСТЕЙ
+    // СКРИПТ ГЕНЕРАЦИИ НОВОСТЕЙ С ПРАВИЛЬНОЙ ОЧИСТКОЙ ТЕГОВ
     document.addEventListener("DOMContentLoaded", () => {
         const container = document.getElementById("events-container");
         const loadMoreBtn = document.getElementById("load-more-btn");
@@ -310,8 +317,8 @@
                     });
                 }
 
-                // Очищаем текст от HTML тегов для короткого анонса
-                let cleanText = event.text.replace(/<*>?/gm, ' ');
+                // ПРАВИЛЬНАЯ очистка от тегов (заменяем теги на пробелы, убираем лишние пробелы)
+                let cleanText = event.text.replace(/<\/?+(>|$)/g, " ").replace(/\s+/g, " ").trim();
 
                 html += `
                     <div class="sretensky-item">
@@ -348,15 +355,6 @@
         }
     });
 </script>
-<!-- Подключаем данные событий -->
-<script src="events.js"></script>
 
-<!-- Контейнер для отображения событий -->
-<div class="events-section">
-  <h2>События и мероприятия</h2>
-  <div id="events-container" class="events-grid">
-    <!-- Сюда будут загружены события -->
-  </div>
-</div>
 </body>
 </html>
