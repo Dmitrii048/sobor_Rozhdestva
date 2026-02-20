@@ -1,17 +1,4 @@
-const schoolEvents =[
-    {
-        id: "xmas26",
-        date: "07 января 2026 года",
-        title: "Рождественский детский концерт",
-        text: `
-            <p>В престольный праздник состоялся детский праздничный рождественский концерт, организованный дружным коллективом педагогов Воскресной школы "Ковчег" Христо-Рождественского кафедрального собора г. Липецка.</p>
-            <p>Поддержать юных артистов и разделить радость Рождества Христова собралось много гостей, среди которых были прихожане собора. Многие пришли на детский праздник целыми семьями.</p>
-            <p>По благочестивой традиции в начале праздничной программы сводный хор Воскресной школы торжественно исполнил тропарь Рождества Христова. Воспитанники подготовили для дорогих гостей самые добрые и самые трогательные песни о Рождестве Христовом, о дружбе, о мире и любви к Богу и ближним, сценки о смысле Праздника, стихи, праздничные песнопения в исполнении детского церковного хора собора.</p>
-            <p>В завершение концерта с поздравительным словом обратился духовник Воскресной школы - протоиерей Владимир Максимчук. От настоятеля собора протоиерея Василия Бильчук участники получили сладкие подарки и памятные книги.</p>
-            <p>После концерта дети встретили Высокопреосвященнейшего Арсения, митрополита Липецкого и Задонского исполнением Рождественского тропаря и кондака. Правящий архиерей поздравил детей и вручил им подарки.</p>
-        `,
-        cover: "../images/event-xmas26-1.jpg",
-        gallery:
+const schoolEvents =
     },
     {
         id: "sept25",
@@ -48,7 +35,7 @@ const schoolEvents =[
             <p>В этот памятный день воспитанники встретили пасхальными приветствиями Высокопреосвященнейшего Арсения, митрополита Липецкого и Задонского. Владыка вручил детям пасхальные подарки.</p>
         `,
         cover: "../images/event-easter25-1.jpg",
-        gallery:
+        gallery:[]
     },
     {
         id: "maslenitsa25",
@@ -61,7 +48,7 @@ const schoolEvents =[
             <p>«Масленичная ярмарка стала традиционным мероприятием, к которому дети и родители воскресной школы готовятся с нескрываемой радостью, - рассказывает директор школы Ирина Викторовна Заярина. – Это время, когда мы чувствуем себя единой, дружной семьей; ведь наше усердие приносит радость прихожанам храма».</p>
         `,
         cover: "../images/event-maslenitsa25-1.jpg",
-        gallery:
+        gallery:[]
     },
     {
         id: "occnt25",
@@ -74,65 +61,3 @@ const schoolEvents =[
         `,
         cover: "../images/event-occnt25-1.jpg",
         gallery:
-    }
-];
-
-// --- ЛОГИКА ОТОБРАЖЕНИЯ И ПАГИНАЦИИ ---
-document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById("events-container");
-    const loadMoreBtn = document.getElementById("load-more-btn");
-    
-    if (!container) return;
-
-    let itemsPerPage = 5; // Показываем сначала 5 новостей
-    let currentPage = 1;
-
-    function renderEvents() {
-        let html = "";
-        let endIndex = currentPage * itemsPerPage;
-        
-        let eventsToShow = schoolEvents.slice(0, endIndex);
-
-        eventsToShow.forEach(event => {
-            let galleryHtml = "";
-            // Рисуем невидимые ссылки для Fancybox
-            if (event.gallery && event.gallery.length > 0) {
-                event.gallery.forEach(imgUrl => {
-                    galleryHtml += `<a href="${imgUrl}" data-fancybox="gallery-${event.id}" style="display:none;"></a>`;
-                });
-            }
-
-            html += `
-                <div class="event-card">
-                    <a href="${event.cover}" class="event-img-wrap" data-fancybox="gallery-${event.id}" data-caption="${event.title}">
-                        <img src="${event.cover}" alt="${event.title}" onerror="this.src='../images/event-placeholder.jpg'; this.onerror=null;">
-                    </a>
-                    ${galleryHtml}
-                    <div class="event-info">
-                        <span class="event-date">${event.date}</span>
-                        <h4 class="event-title">${event.title}</h4>
-                        <div class="event-text">${event.text}</div>
-                    </div>
-                </div>
-            `;
-        });
-
-        container.innerHTML = html;
-
-        // Показываем кнопку "Загрузить еще", если есть невыведенные посты
-        if (schoolEvents.length > endIndex) {
-            loadMoreBtn.style.display = "inline-block";
-        } else {
-            loadMoreBtn.style.display = "none";
-        }
-    }
-
-    renderEvents();
-
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener("click", () => {
-            currentPage++;
-            renderEvents();
-        });
-    }
-});
