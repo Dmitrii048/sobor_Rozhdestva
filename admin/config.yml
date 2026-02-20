@@ -20,3 +20,14 @@ collections:
       - {label: "🖼️ Изображение (рекомендуется 1200x600px)", name: "image", widget: "image", required: true}
       - {label: "📌 Краткое описание", name: "excerpt", widget: "text", hint: "Текст, который будет отображаться в списке новостей"}
       - {label: "📄 Полный текст", name: "body", widget: "markdown", required: true}
+
+      # Настройки для работы с Decap CMS
+permalink: /news/:year/:month/:day/:title/
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Для работы без домена
+baseurl: "/sobor_Rozhdestva"
+url: "https://dmitrii048.github.io"
