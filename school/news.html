@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все события Воскресной школы | Христорождественский собор</title>
+    
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+    
+    <style>
+        .page-wrapper { max-width: 900px; margin: 60px auto 100px; padding: 0 20px; }
+        
+        .sretensky-list { display: flex; flex-direction: column; gap: 40px; }
+        .sretensky-item { display: flex; gap: 30px; padding-bottom: 40px; border-bottom: 2px dotted #EAE3D5; }
+        .sretensky-item:last-child { border-bottom: none; }
+        
+        .sretensky-img-box { flex-shrink: 0; width: 300px; height: 200px; position: relative; cursor: pointer; border-radius: 2px; overflow: hidden; }
+        .sretensky-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .sretensky-img-box:hover img { transform: scale(1.05); }
+        .sretensky-img-box::after { content: '\f03e'; font-family: 'Font Awesome 6 Free'; font-weight: 400; position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); color: #fff; padding: 5px 10px; border-radius: 4px; font-size: 14px; opacity: 0; transition: 0.3s; }
+        .sretensky-img-box:hover::after { opacity: 1; }
+        
+        .sretensky-content { display: flex; flex-direction: column; justify-content: flex-start; }
+        .sretensky-date { font-family: 'Open Sans', sans-serif; font-size: 13px; color: #C5A059; font-weight: bold; text-transform: uppercase; margin-bottom: 8px; display: block; }
+        .sretensky-title { font-family: 'PT Serif', serif; font-size: 22px; font-weight: 700; color: #2C2C2C; margin: 0 0 10px 0; line-height: 1.3; }
+        
+        /* Здесь текст НЕ обрезается, показываем полностью */
+        .sretensky-text { font-family: 'PT Serif', serif; font-size: 16px; color: #444; line-height: 1.6; margin: 0; text-align: justify; }
+
+        @media (max-width: 768px) {
+            .sretensky-item { flex-direction: column; gap: 20px; }
+            .sretensky-img-box { width: 100%; height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="main-header">
+    <div class="logo-expansive-container">
+        <div class="logo-flex-row">
+            <a href="../index.html" class="logo-visual"><img src="../sobor-sketch.jpg" alt="Собор" class="logo-sketch-large"></a>
+            <div class="logo-brand-area">
+                <h1 class="title-main">Христорождественский</h1>
+                <h2 class="title-secondary">кафедральный собор</h2>
+                <h3 class="title-sub">г. Липецка</h3>
+                <div class="art-divider"></div>
+            </div>
+        </div>
+    </div>
+    <button id="menu-toggle" class="mobile-menu-toggle"><i class="fas fa-bars"></i> Меню</button>
+    <nav class="main-nav" id="main-nav">
+        <ul>
+            <li><a href="../index.html">Главная</a></li>
+            <li class="has-dropdown"><a href="#" class="active">О соборе</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../about/index.html">Летопись храма</a></li>
+                    <li><a href="../shrines/">Святыни и молитвословия</a></li>
+                    <li><a href="../archpastor/index.html">Архипастырь</a></li>
+                    <li><a href="../clergy/">Духовенство</a></li>
+                    <li><a href="../choir/">Архиерейский хор</a></li>
+                    <li><a href="index.html" class="active">Воскресная школа</a></li>
+                    <li><a href="../pilgrimage/">Паломнические поездки</a></li>
+                </ul>
+            </li>
+            <li><a href="../schedule.html">Расписание</a></li>
+            <li><a href="../contacts.html">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="page-wrapper">
+    <h1 style="font-family: 'PT Serif'; text-align: center; font-size: 36px; margin-bottom: 10px; color: #2C2C2C;">Летопись событий</h1>
+    <p style="text-align: center; color: #777; margin-bottom: 50px;">Все мероприятия Воскресной школы «Ковчег»</p>
+    
+    <div id="all-events-container">
+        <!-- Сюда вставляются все новости из events.js -->
+    </div>
+</main>
+
+<footer class="site-footer-light">
+    <div class="container footer-content">
+        <div class="footer-block">
+            <h5>Контакты</h5>
+            <p>г. Липецк, Соборная пл., 4</p>
+            <p>+7 (4742) 27-04-78</p>
+        </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p></div>
+</footer>
+
+<!-- ПОДКЛЮЧАЕМ ТОТ ЖЕ САМЫЙ ФАЙЛ БАЗЫ ДАННЫХ -->
+<script src="events.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script>
+    Fancybox.bind("", {});
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+    if(menuToggle && mainNav){
+        menuToggle.addEventListener('click', () => mainNav.classList.toggle('open'));
+    }
+
+    // СКРИПТ ГЕНЕРАЦИИ ВСЕХ НОВОСТЕЙ
+    document.addEventListener("DOMContentLoaded", () => {
+        const container = document.getElementById("all-events-container");
+        if (!container || typeof schoolEvents === 'undefined') return;
+
+        let html = '<div class="sretensky-list">';
+
+        schoolEvents.forEach(event => {
+            let galleryHtml = "";
+            if (event.gallery && event.gallery.length > 0) {
+                event.gallery.forEach(imgUrl => {
+                    galleryHtml += `<a href="${imgUrl}" data-fancybox="gallery-${event.id}" style="display:none;"></a>`;
+                });
+            }
+
+            // На странице всех новостей мы выводим текст ПОЛНОСТЬЮ (вместе с абзацами <p>)
+            html += `
+                <div class="sretensky-item">
+                    <div class="sretensky-img-box" data-fancybox="gallery-${event.id}" data-src="${event.cover}" data-caption="${event.title}">
+                        <img src="${event.cover}" alt="${event.title}" onerror="this.src='../images/placeholder.jpg';">
+                    </div>
+                    ${galleryHtml}
+                    <div class="sretensky-content">
+                        <span class="sretensky-date">${event.date}</span>
+                        <h4 class="sretensky-title">${event.title}</h4>
+                        <div class="sretensky-text">${event.text}</div>
+                    </div>
+                </div>
+            `;
+        });
+
+        html += '</div>';
+        container.innerHTML = html;
+    });
+</script>
+
+</body>
+</html>
