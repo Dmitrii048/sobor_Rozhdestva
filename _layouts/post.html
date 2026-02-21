@@ -4,64 +4,109 @@ layout: default
 
 <style>
     .single-news-header {
-        background-color: #fdfbf7;
+        background-color: #fcfbf9;
         padding: 60px 0;
         text-align: center;
         border-bottom: 1px solid #EAE3D5;
+        margin-bottom: 40px;
     }
-    .single-news-container {
-        max-width: 800px;
-        margin: 60px auto;
-        padding: 0 20px;
-    }
-    .news-meta {
+    .news-meta-date {
         color: #C5A059;
+        font-family: 'Open Sans', sans-serif;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 1px;
         font-size: 14px;
-        margin-bottom: 15px;
         display: block;
+        margin-bottom: 15px;
     }
-    .news-body {
-        font-size: 18px;
-        line-height: 1.8;
-        color: #333;
-        font-family: 'PT Serif', serif;
+    .article-content {
+        max-width: 800px;
+        margin: 0 auto 60px;
+        padding: 0 20px;
     }
-    .news-body img {
-        max-width: 100%;
+    .article-image {
+        width: 100%;
         height: auto;
-        margin: 20px 0;
         border-radius: 4px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
-    .news-body p {
-        margin-bottom: 25px;
+    .article-text {
+        font-family: 'PT Serif', serif;
+        font-size: 1.15rem;
+        line-height: 1.7;
+        color: #2C2C2C;
     }
-    .back-link {
-        display: inline-block;
-        margin-top: 40px;
+    .article-text p { margin-bottom: 20px; text-align: justify; }
+    
+    /* Галерея внизу новости */
+    .article-gallery {
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 1px solid #EAE3D5;
+    }
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+    }
+    .gallery-item {
+        height: 180px;
+        overflow: hidden;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: transform 0.3s;
+        border: 1px solid #EAE3D5;
+    }
+    .gallery-item:hover { transform: scale(1.02); }
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .back-btn-container { text-align: center; margin: 60px 0; }
+    .btn-back {
         color: #777;
         text-decoration: none;
         border-bottom: 1px dashed #999;
+        transition: 0.3s;
     }
+    .btn-back:hover { color: #C5A059; border-color: #C5A059; }
 </style>
 
 <div class="single-news-header">
     <div class="container">
-        <span class="news-meta">{{ page.date | date: "%d.%m.%Y" }}</span>
-        <h1 class="chapter-title" style="margin-bottom: 0;">{{ page.title }}</h1>
+        <span class="news-meta-date">{{ page.date | date: "%d.%m.%Y" }}</span>
+        <h1 class="hero-title-large" style="color: #2C2C2C; font-size: 2.5rem;">{{ page.title }}</h1>
     </div>
 </div>
 
-<article class="single-news-container">
+<article class="article-content">
     {% if page.image %}
-    <img src="{{ page.image }}" alt="{{ page.title }}" style="width: 100%; height: auto; margin-bottom: 40px; border-radius: 4px;">
+    <img src="{{ site.baseurl }}{{ page.image }}" alt="{{ page.title }}" class="article-image">
     {% endif %}
 
-    <div class="news-body">
+    <div class="article-text">
         {{ content }}
     </div>
 
-    <a href="/news/" class="back-link">← Вернуться ко всем новостям</a>
+    <!-- Автоматическая галерея -->
+    {% if page.gallery %}
+    <div class="article-gallery">
+        <h3 class="chapter-title" style="font-size: 1.5rem; text-align: center;">Фотолетопись события</h3>
+        <div class="gallery-grid">
+            {% for photo in page.gallery %}
+            <a href="{{ site.baseurl }}{{ photo.image }}" class="gallery-item" data-fancybox="post-gallery">
+                <img src="{{ site.baseurl }}{{ photo.image }}" alt="Фото события">
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="back-btn-container">
+        <a href="{{ site.baseurl }}/school/" class="btn-back">← Вернуться на страницу школы</a>
+    </div>
 </article>
