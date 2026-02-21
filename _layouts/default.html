@@ -5,24 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} | Христорождественский собор</title>
     
-    <!-- ИСПРАВЛЕН ПУТЬ К СТИЛЯМ -->
+    <!-- Стили и шрифты -->
     <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    {% if page.style %}
     <style>
-        {{ page.style }}
+        /* Доп. стили для корректной работы */
+        body { display: flex; flex-direction: column; min-height: 100vh; }
+        main { flex: 1; }
     </style>
-    {% endif %}
 </head>
 <body>
 
+<!-- ПРЕЛОАДЕР -->
+<div id="page-preloader" class="preloader">
+    <div class="loader-circle"></div>
+    <div class="loader-text">Загрузка...</div>
+</div>
+
+<!-- ШАПКА -->
 <header class="main-header">
     <div class="logo-expansive-container">
         <div class="logo-flex-row">
-            <!-- ИСПРАВЛЕН ПУТЬ К ЛОГО -->
             <a href="{{ site.baseurl }}/" class="logo-visual">
                 <img src="{{ site.baseurl }}/sobor-sketch.jpg" alt="Собор" class="logo-sketch-large">
             </a>
@@ -35,27 +41,28 @@
         </div>
     </div>
     
-    <button id="menu-toggle" class="mobile-menu-toggle">
-        <i class="fas fa-bars"></i> Меню
-    </button>
+    <button id="menu-toggle" class="mobile-menu-toggle"><i class="fas fa-bars"></i> Меню</button>
     
     <nav class="main-nav" id="main-nav">
         <ul>
-            <!-- ИСПРАВЛЕНЫ ВСЕ ССЫЛКИ -->
             <li><a href="{{ site.baseurl }}/">Главная</a></li>
             <li class="has-dropdown">
-                <a href="#">О соборе</a>
+                <a href="#" class="{{ page.nav_active_about }}">О соборе</a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ site.baseurl }}/about/">Летопись храма</a></li>
+                    <li><a href="{{ site.baseurl }}/shrines/">Святыни</a></li>
                     <li><a href="{{ site.baseurl }}/archpastor/">Архипастырь</a></li>
                     <li><a href="{{ site.baseurl }}/clergy/">Духовенство</a></li>
-                    <li><a href="{{ site.baseurl }}/choir/">Архиерейский хор</a></li>
                     <li><a href="{{ site.baseurl }}/school/">Воскресная школа</a></li>
-                    <li><a href="{{ site.baseurl }}/pilgrimage/">Паломнические поездки</a></li>
                 </ul>
             </li>
             <li><a href="{{ site.baseurl }}/schedule/">Расписание</a></li>
-            <li><a href="{{ site.baseurl }}/news/">Новости</a></li>
+            <li class="has-dropdown">
+                <a href="#">Служение</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ site.baseurl }}/social/">Социальное служение</a></li>
+                </ul>
+            </li>
             <li><a href="{{ site.baseurl }}/contacts/">Контакты</a></li>
             <li><a href="#" class="btn-note">Подать записку</a></li>
         </ul>
@@ -66,13 +73,14 @@
     {{ content }}
 </main>
 
+<!-- ФУТЕР -->
 <footer class="site-footer-light">
     <div class="container footer-content">
         <div class="footer-block">
             <h5>Навигация</h5>
             <a href="{{ site.baseurl }}/">Главная</a>
-            <a href="{{ site.baseurl }}/about/">Летопись</a>
-            <a href="{{ site.baseurl }}/news/">Новости</a>
+            <a href="{{ site.baseurl }}/about/">О соборе</a>
+            <a href="{{ site.baseurl }}/school/">Воскресная школа</a>
             <a href="{{ site.baseurl }}/schedule/">Расписание</a>
         </div>
         <div class="footer-block">
@@ -84,6 +92,9 @@
             <h5>Мы в соцсетях</h5>
             <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a>
             <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            <a href="https://max.ru/join/refQw8YZh7RC1z9hr72iKjy8rI9Kjvi7250J9GkV35Y" target="_blank" style="margin-top: 10px; display: inline-block;">
+                <i class="fas fa-users"></i> MAX
+            </a>
         </div>
     </div>
     <div class="footer-bottom">
@@ -91,18 +102,26 @@
     </div>
 </footer>
 
+<!-- СКРИПТЫ -->
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 <script>
+    // Инициализация галереи
+    Fancybox.bind("[data-fancybox]", {});
+
+    // Прелоадер
+    window.addEventListener('load', function () {
+        setTimeout(function() {
+            var preloader = document.getElementById('page-preloader');
+            if (preloader) preloader.classList.add('done');
+        }, 300);
+    });
+
+    // Мобильное меню
     const menuToggle = document.getElementById('menu-toggle');
     const mainNav = document.getElementById('main-nav');
-    
     if(menuToggle && mainNav){
         menuToggle.addEventListener('click', () => {
             mainNav.classList.toggle('open');
-            const icon = menuToggle.querySelector('i');
-            if (icon) {
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
-            }
         });
     }
 </script>
