@@ -6,8 +6,7 @@ title: Воскресная школа «Ковчег»
 <style>
     /* Параллакс */
     .school-hero {
-        /* ВАЖНО: Путь через site.baseurl */
-        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ site.baseurl }}/images/school-bg.jpg');
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('{{ site.baseurl }}/images/history-bg.jpg');
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
@@ -61,13 +60,7 @@ title: Воскресная школа «Ковчег»
         position: relative;
         font-size: 0.95rem;
     }
-    .subject-list li::before {
-        content: "•";
-        color: #C5A059;
-        position: absolute;
-        left: 0;
-        font-weight: bold;
-    }
+    .subject-list li::before { content: "•"; color: #C5A059; position: absolute; left: 0; font-weight: bold; }
 
     /* Новости */
     .news-grid-3 {
@@ -92,12 +85,7 @@ title: Воскресная школа «Ковчег»
         position: relative;
         display: block;
     }
-    .news-thumb img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: 0.5s;
-    }
+    .news-thumb img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
     .news-item:hover .news-thumb img { transform: scale(1.05); }
     .news-body-card { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
     .news-date { color: #999; font-size: 0.85rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
@@ -110,14 +98,6 @@ title: Воскресная школа «Ковчег»
         border-radius: 4px; transition: 0.3s; display: inline-block;
     }
     .btn-gold:hover { background: #b08d4a; color: #fff; }
-
-    .btn-vk {
-        display: inline-flex; align-items: center; justify-content: center;
-        background: #0077FF; color: #fff; padding: 12px 30px; border-radius: 4px;
-        text-decoration: none; font-weight: 600; margin-top: 20px; transition: 0.3s;
-    }
-    .btn-vk:hover { background: #0055cc; color: #fff; }
-    .btn-vk i { margin-right: 10px; }
 </style>
 
 <!-- ГЕРОЙ-БЛОК -->
@@ -129,13 +109,15 @@ title: Воскресная школа «Ковчег»
 </section>
 
 <div class="longread-wrapper">
-    <!-- ОПИСАНИЕ -->
     <div class="history-text">
         <p class="drop-cap">
-            Воскресная школа «Ковчег» — сердце прихода Христорождественского собора, действующее с 2001 года по благословению Высокопреосвященнейшего Никона, митрополита Липецкого и Задонского.
+            Воскресная школа «Ковчег» является составной и неотъемлемой частью прихода Христо-Рождественского собора и действует с 2001 года по благословению Высокопреосвященнейшего Никона, митрополита Липецкого и Задонского.
         </p>
         <p>
-            Школа призвана осуществлять православное духовное просвещение и воспитание детей, содействовать их воцерковлению и формированию образа жизни православного христианина. Набор учащихся традиционно осуществляется в сентябре, но мы с радостью примем новых учеников и в середине учебного года.
+            Школа призвана осуществлять православное духовное просвещение и воспитание детей, содействовать их воцерковлению и формированию образа жизни православного христианина.
+        </p>
+        <p>
+            Набор детей в воскресную школу осуществляется в сентябре. Но и детям, которые приходят в школу в середине учебного года, рады.
         </p>
         
         <div class="emotional-quote">
@@ -143,10 +125,10 @@ title: Воскресная школа «Ковчег»
         </div>
 
         <p>
-            Учебно-воспитательный процесс строится в строгом соответствии со Стандартом деятельности воскресных школ Русской Православной Церкви.
+            Учебно-воспитательный процесс проводится в соответствии со "Стандартом учебно-воспитательной деятельности, реализуемой воскресными школами (для детей) Русской Православной Церкви", с учетом рекомендаций Отдела религиозного образования и катехизации Липецкой епархии Русской Православной Церкви.
         </p>
         <p>
-            В настоящий момент обучение ведется по материалам курса <strong>ЕУМК «БОГ И ЧЕЛОВЕК: ДВИЖЕНИЕ НАВСТРЕЧУ»</strong> (под ред. иеромонаха Геннадия Войтишко) и учебно-методического комплекта <strong>«Вертоград»</strong>.
+            В данный момент в рамках духовного образования для детей ВШ "Ковчег" на уроках используются материалы курса <strong>ЕУМК «БОГ И ЧЕЛОВЕК: ДВИЖЕНИЕ НАВСТРЕЧУ»</strong> под редакцией иеромонаха Геннадия (Войтишко) и учебно-методического комплекта <strong>«Вертоград»</strong>.
         </p>
         <p>
             <strong>Директор школы:</strong> Ирина Викторовна Заярина.<br>
@@ -154,8 +136,8 @@ title: Воскресная школа «Ковчег»
             Все клирики собора принимают активное участие в преподавании дисциплин.
         </p>
         
-        <div style="text-align: center;">
-            <a href="https://vk.com/kovcheg_lipetsk" target="_blank" class="btn-vk">
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="https://vk.com/kovcheg_lipetsk" target="_blank" class="btn-gold">
                 <i class="fab fa-vk"></i> Группа ВКонтакте
             </a>
         </div>
@@ -166,50 +148,50 @@ title: Воскресная школа «Ковчег»
     <div class="groups-container">
         <!-- Группа 1 -->
         <div class="group-card">
-            <div class="group-title">Начальная группа</div>
+            <div class="group-title">Начальная</div>
             <span class="group-age">4 – 6 лет</span>
             <ul class="subject-list">
-                <li>Православие для малышей</li>
-                <li>Творческие занятия</li>
+                <li>«Православие для малышей» (ЕУМК «Бог и человек: движение навстречу»)</li>
             </ul>
         </div>
         <!-- Группа 2 -->
         <div class="group-card">
-            <div class="group-title">Младшая группа</div>
+            <div class="group-title">Младшая</div>
             <span class="group-age">7 – 11 лет</span>
             <ul class="subject-list">
-                <li>Путешествие навстречу Христу</li>
-                <li>Храмоведение</li>
+                <li>«Путешествие навстречу Христу» (ЕУМК «Бог и человек: движение навстречу»)</li>
+                <li>«Храмоведение» (УМК «Вертоград»)</li>
                 <li>ИЗО</li>
-                <li>Церковное и хоровое пение</li>
+                <li>Церковное пение</li>
+                <li>Хоровое пение</li>
             </ul>
         </div>
         <!-- Группа 3 -->
         <div class="group-card">
-            <div class="group-title">Старшая группа</div>
+            <div class="group-title">Старшая</div>
             <span class="group-age">12 – 16 лет</span>
             <ul class="subject-list">
-                <li>Литургия</li>
-                <li>История Русской Церкви</li>
-                <li>Православие и современность</li>
-                <li>Церковно-славянское чтение</li>
-                <li>Церковное и хоровое пение</li>
+                <li>«Литургия» (УМК «Вертоград»)</li>
+                <li>«История русской церкви» (УМК «Вертоград»)</li>
+                <li>«Православие и современность»</li>
+                <li>«Церковно-славянское чтение»</li>
+                <li>Церковное пение</li>
+                <li>Хоровое пение</li>
             </ul>
         </div>
     </div>
     
     <div class="history-text">
         <p>
-            Учебно-воспитательный процесс включает в себя: уроки, лекции, практические занятия, участие в богослужениях и Святых Таинствах, экскурсии, паломнические поездки, проведение концертов и благотворительных ярмарок.
+            Учебно-воспитательный процесс включает в себя следующие виды деятельности: уроки, лекции, практические занятия, участие в богослужениях и Святых Таинствах Православной Церкви, экскурсии, поездки, проведение концертов, приходских праздников на духовно-нравственную тематику, общешкольные благотворительные ярмарки для прихожан собора.
         </p>
     </div>
 
-    <!-- НОВОСТИ (АВТОМАТИЧЕСКИЕ) -->
+    <!-- НОВОСТИ -->
     <div style="margin-top: 80px; padding-top: 40px; border-top: 1px solid #EAE3D5;">
         <h2 class="chapter-title" style="text-align: center;">Жизнь школы</h2>
         
         <div class="news-grid-3">
-            <!-- Выводим последние 3 новости категории school -->
             {% assign school_posts = site.posts | where: "category", "school" %}
             {% for post in school_posts limit:3 %}
             <article class="news-item">
@@ -231,7 +213,6 @@ title: Воскресная школа «Ковчег»
         </div>
 
         <div style="text-align: center; margin-top: 50px;">
-            <!-- ВЕДЕТ НА АРХИВ НОВОСТЕЙ -->
             <a href="{{ site.baseurl }}/school/news/" class="btn-gold">Все новости воскресной школы</a>
         </div>
     </div>
