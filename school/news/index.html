@@ -1,113 +1,62 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новости школы «Ковчег» | Христорождественский собор</title>
-    <link rel="stylesheet" href="/sobor_Rozhdestva/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
-        .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; margin-top: 30px; }
-        .event-card { background: #fff; border: 1px solid #EAE3D5; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s; }
-        .event-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .event-date { padding: 15px 20px 5px; color: #999; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
-        .event-title { padding: 0 20px 10px; font-family: 'PT Serif', serif; font-size: 20px; color: #2C2C2C; line-height: 1.3; }
-        .event-image { height: 220px; overflow: hidden; }
-        .event-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .event-card:hover .event-image img { transform: scale(1.05); }
-        .event-content { padding: 20px; font-size: 15px; color: #555; flex-grow: 1; }
-        .event-footer { padding: 0 20px 20px; }
-        .btn-gold-sm { display: inline-block; padding: 10px 20px; background: #C5A059; color: #fff; text-decoration: none; border-radius: 2px; font-size: 14px; text-transform: uppercase; transition: 0.3s; }
-        .btn-gold-sm:hover { background: #b08d4a; }
-    </style>
-</head>
-<body>
+---
+layout: default
+title: Новости школы «Ковчег»
+---
 
-<div id="page-preloader" class="preloader">
-    <div class="loader-circle"></div>
-    <div class="loader-text">Загрузка...</div>
+<style>
+    .archive-header {
+        background-color: #fcfbf9;
+        padding: 60px 0;
+        text-align: center;
+        border-bottom: 1px solid #EAE3D5;
+        margin-bottom: 50px;
+    }
+    .news-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto 80px;
+        padding: 0 20px;
+    }
+    /* Стили карточки дублируются для надежности */
+    .news-item { background: #fff; border: 1px solid #EAE3D5; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; }
+    .news-thumb { height: 220px; overflow: hidden; position: relative; display: block; }
+    .news-thumb img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+    .news-item:hover .news-thumb img { transform: scale(1.05); }
+    .news-body-card { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+    .news-date { color: #999; font-size: 0.85rem; margin-bottom: 10px; text-transform: uppercase; }
+    .news-head { font-family: 'PT Serif', serif; font-size: 1.3rem; margin-bottom: 15px; color: #2C2C2C; }
+</style>
+
+<div class="archive-header">
+    <div class="hero-content-inner">
+        <h1 class="chapter-title" style="margin-bottom: 10px;">Летопись событий</h1>
+        <p style="color: #666; font-family: 'PT Serif', serif; font-style: italic;">Воскресная школа «Ковчег»</p>
+    </div>
 </div>
 
-<header class="main-header">
-    <div class="logo-expansive-container">
-        <div class="logo-flex-row">
-            <a href="/sobor_Rozhdestva/index.html" class="logo-visual">
-                <img src="/sobor-sketch.jpg" alt="Собор" class="logo-sketch-large">
-            </a>
-            <div class="logo-brand-area">
-                <h1 class="title-main">Христорождественский</h1>
-                <h2 class="title-secondary">кафедральный собор</h2>
-                <h3 class="title-sub">г. Липецка</h3>
-                <div class="art-divider"></div>
+<div class="news-grid">
+    {% assign school_posts = site.posts | where: "category", "school" %}
+    {% for post in school_posts %}
+    <article class="news-item">
+        <a href="{{ site.baseurl }}{{ post.url }}" class="news-thumb">
+            <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}">
+        </a>
+        <div class="news-body-card">
+            <span class="news-date">{{ post.date | date: "%d.%m.%Y" }}</span>
+            <h3 class="news-head">
+                <a href="{{ site.baseurl }}{{ post.url }}" style="color: inherit; text-decoration: none;">{{ post.title }}</a>
+            </h3>
+            <div style="font-size: 0.95rem; color: #555; margin-bottom: 20px; flex-grow: 1;">
+                {{ post.excerpt | strip_html | truncatewords: 25 }}
             </div>
+            <a href="{{ site.baseurl }}{{ post.url }}" style="color: #C5A059; font-weight: 700; text-decoration: none; font-size: 13px;">ЧИТАТЬ ДАЛЕЕ →</a>
         </div>
-    </div>
-    <!-- МЕНЮ ТО ЖЕ САМОЕ -->
-    <nav class="main-nav">
-        <ul>
-            <li><a href="/sobor_Rozhdestva/index.html">Главная</a></li>
-            <li class="has-dropdown">
-                <a href="#" class="active">О соборе</a>
-                <ul class="dropdown-menu">
-                    <li><a href="/sobor_Rozhdestva/about/index.html">Летопись храма</a></li>
-                    <li><a href="/sobor_Rozhdestva/shrines/index.html">Святыни</a></li>
-                    <li><a href="/sobor_Rozhdestva/archpastor/index.html">Архипастырь</a></li>
-                    <li><a href="/sobor_Rozhdestva/clergy/index.html">Духовенство</a></li>
-                    <li><a href="/sobor_Rozhdestva/school/index.html">Воскресная школа</a></li>
-                </ul>
-            </li>
-            <li><a href="/sobor_Rozhdestva/schedule/index.html">Расписание</a></li>
-            <li class="has-dropdown">
-                <a href="#">Служение</a>
-                <ul class="dropdown-menu">
-                    <li><a href="/sobor_Rozhdestva/social/index.html">Социальное служение</a></li>
-                </ul>
-            </li>
-            <li><a href="/sobor_Rozhdestva/contacts/index.html">Контакты</a></li>
-            <li><a href="#" class="btn-note">Подать записку</a></li>
-        </ul>
-    </nav>
-</header>
+    </article>
+    {% endfor %}
+</div>
 
-<main class="longread-wrapper">
-    <h2 class="chapter-title">Летопись событий школы «Ковчег»</h2>
-    
-    <!-- КОНТЕЙНЕР ДЛЯ ВСЕХ НОВОСТЕЙ -->
-    <div id="all-news-container" class="events-grid"></div>
-    
-    <div style="text-align: center; margin-top: 40px;">
-        <a href="/sobor_Rozhdestva/school/index.html" class="btn-doc">← Вернуться на страницу школы</a>
-    </div>
-</main>
-
-<footer class="site-footer-light">
-    <!-- ФУТЕР ТОТ ЖЕ -->
-    <div class="container footer-content">
-        <div class="footer-block">
-            <h5>Контакты</h5>
-            <p>г. Липецк, Соборная пл., 4</p>
-        </div>
-        <div class="footer-block">
-            <h5>Мы в соцсетях</h5>
-            <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a>
-            <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
-            <a href="https://max.ru/join/refQw8YZh7RC1z9hr72iKjy8rI9Kjvi7250J9GkV35Y" target="_blank">
-                <i class="fas fa-users"></i> MAX
-            </a>
-        </div>
-    </div>
-</footer>
-
-<script src="/sobor_Rozhdestva/school/events.js"></script>
-<script>
-    window.onload = function() {
-        setTimeout(function() {
-            document.getElementById('page-preloader').classList.add('done');
-        }, 500);
-    }
-</script>
-
-</body>
-</html>
+<div style="text-align: center; margin-bottom: 60px;">
+    <a href="{{ site.baseurl }}/school/" class="btn-doc" style="border: 1px solid #C5A059; color: #C5A059;">← Вернуться назад</a>
+</div>
