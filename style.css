@@ -620,3 +620,57 @@ button { outline: none; border: none; background: none; cursor: pointer; }
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+/* СТИЛИ ДЛЯ ГАЛЕРЕИ */
+.event-gallery {
+    padding: 15px 20px;
+    text-align: center;
+}
+.gallery-btn {
+    background: #C5A059;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: inline-block;
+    text-decoration: none;
+}
+.gallery-btn:hover {
+    background: #a88645;
+}
+.gallery-btn i {
+    margin-right: 5px;
+}
+
+/* СТИЛИ ДЛЯ FANCYBOX */
+.fancybox__toolbar {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.fancybox__infobar {
+    color: #fff !important;
+}
+.fancybox__counter {
+    color: #fff !important;
+}
+.fancybox__button--zoom {
+    color: #fff !important;
+}
+.fancybox__button--slideshow {
+    color: #fff !important;
+}
+.fancybox__button--fullscreen {
+    color: #fff !important;
+}
+.fancybox__button--thumbs {
+    color: #fff !important;
+}
+.fancybox__button--close {
+    color: #fff !important;
+}
+.fancybox__carousel__track {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+}
+.fancybox__caption {
+    color: #fff !important;
+}
