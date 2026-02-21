@@ -1,0 +1,23 @@
+title: "Христорождественский собор"
+email: sobor@example.com
+description: "Официальный сайт Кафедрального собора Рождества Христова г. Липецка"
+baseurl: "/sobor_Rozhdestva" # ВАЖНО для работы в папке
+url: "https://dmitrii048.github.io"
+
+# Настройки ссылок (будет: /news/2025/05/11/nazvanie/)
+permalink: /news/:year/:month/:day/:title/
+
+# Плагины
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Исключения
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
