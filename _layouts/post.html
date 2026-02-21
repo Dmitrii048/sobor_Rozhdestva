@@ -3,48 +3,52 @@ layout: default
 ---
 
 <style>
+    /* Шапка новости */
     .single-news-header {
         background-color: #fcfbf9;
         padding: 60px 0;
         text-align: center;
         border-bottom: 1px solid #EAE3D5;
-        margin-bottom: 40px;
+        margin-bottom: 50px;
     }
     .news-meta-date {
         color: #C5A059;
         font-family: 'Open Sans', sans-serif;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
         font-size: 14px;
         display: block;
         margin-bottom: 15px;
     }
-    .article-content {
+    /* Контейнер текста (как на других страницах) */
+    .article-container {
         max-width: 800px;
-        margin: 0 auto 60px;
-        padding: 0 20px;
+        margin: 0 auto;
+        padding: 0 20px 60px;
     }
-    .article-image {
+    .main-image {
         width: 100%;
         height: auto;
         border-radius: 4px;
-        margin-bottom: 30px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        margin-bottom: 40px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
+    /* Текст новости - стили Longread */
     .article-text {
         font-family: 'PT Serif', serif;
-        font-size: 1.15rem;
-        line-height: 1.7;
+        font-size: 1.2rem;
+        line-height: 1.8;
         color: #2C2C2C;
+        text-align: justify;
     }
-    .article-text p { margin-bottom: 20px; text-align: justify; }
+    .article-text p { margin-bottom: 20px; }
     
-    /* Галерея внизу новости */
-    .article-gallery {
-        margin-top: 50px;
-        padding-top: 30px;
+    /* Галерея внизу */
+    .gallery-section {
+        margin-top: 60px;
         border-top: 1px solid #EAE3D5;
+        padding-top: 40px;
     }
     .gallery-grid {
         display: grid;
@@ -57,49 +61,55 @@ layout: default
         overflow: hidden;
         border-radius: 4px;
         cursor: pointer;
-        transition: transform 0.3s;
-        border: 1px solid #EAE3D5;
+        border: 1px solid #fff;
+        outline: 1px solid #EAE3D5;
     }
-    .gallery-item:hover { transform: scale(1.02); }
     .gallery-item img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: 0.3s;
     }
-    .back-btn-container { text-align: center; margin: 60px 0; }
+    .gallery-item:hover img { transform: scale(1.05); }
+    
+    .back-btn-container { text-align: center; margin-top: 60px; }
     .btn-back {
-        color: #777;
+        color: #888;
         text-decoration: none;
-        border-bottom: 1px dashed #999;
+        border-bottom: 1px dashed #ccc;
+        font-size: 14px;
         transition: 0.3s;
     }
     .btn-back:hover { color: #C5A059; border-color: #C5A059; }
 </style>
 
+<!-- ЗАГОЛОВОК -->
 <div class="single-news-header">
     <div class="container">
         <span class="news-meta-date">{{ page.date | date: "%d.%m.%Y" }}</span>
-        <h1 class="hero-title-large" style="color: #2C2C2C; font-size: 2.5rem;">{{ page.title }}</h1>
+        <h1 class="chapter-title" style="margin-bottom: 0;">{{ page.title }}</h1>
     </div>
 </div>
 
-<article class="article-content">
+<article class="article-container">
+    <!-- Главное фото -->
     {% if page.image %}
-    <img src="{{ site.baseurl }}{{ page.image }}" alt="{{ page.title }}" class="article-image">
+    <img src="{{ site.baseurl }}{{ page.image }}" alt="{{ page.title }}" class="main-image">
     {% endif %}
 
+    <!-- Текст -->
     <div class="article-text">
         {{ content }}
     </div>
 
-    <!-- Автоматическая галерея -->
+    <!-- Галерея (если есть) -->
     {% if page.gallery %}
-    <div class="article-gallery">
-        <h3 class="chapter-title" style="font-size: 1.5rem; text-align: center;">Фотолетопись события</h3>
+    <div class="gallery-section">
+        <h3 class="chapter-title" style="text-align: center; font-size: 1.5rem;">Фотолетопись</h3>
         <div class="gallery-grid">
             {% for photo in page.gallery %}
-            <a href="{{ site.baseurl }}{{ photo.image }}" class="gallery-item" data-fancybox="post-gallery">
-                <img src="{{ site.baseurl }}{{ photo.image }}" alt="Фото события">
+            <a href="{{ site.baseurl }}{{ photo.image }}" class="gallery-item" data-fancybox="gallery">
+                <img src="{{ site.baseurl }}{{ photo.image }}" alt="Фото">
             </a>
             {% endfor %}
         </div>
@@ -107,6 +117,6 @@ layout: default
     {% endif %}
 
     <div class="back-btn-container">
-        <a href="{{ site.baseurl }}/school/" class="btn-back">← Вернуться на страницу школы</a>
+        <a href="{{ site.baseurl }}/school/news/" class="btn-back">← Вернуться ко всем новостям</a>
     </div>
 </article>
