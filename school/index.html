@@ -108,6 +108,20 @@
         .btn-gold:hover {
             background: #a88645;
         }
+        .btn-read-more {
+            display: inline-block;
+            color: #8b4513;
+            font-weight: 600;
+            text-decoration: none;
+            font-family: 'PT Serif', serif;
+            font-style: italic;
+            padding-bottom: 2px;
+            border-bottom: 1px dashed #C5A059;
+            transition: color 0.3s;
+        }
+        .btn-read-more:hover {
+            color: #C5A059;
+        }
     </style>
 </head>
 <body>
@@ -241,7 +255,7 @@
             </div>
             
             <div class="all-news-link">
-                <a href="/sobor_Rozhdestva/news/" class="btn-gold">Перейти ко всем новостям</a>
+                <a href="/sobor_Rozhdestva/school/news/" class="btn-gold">Перейти ко всем новостям</a>
             </div>
         </div>
     </main>
@@ -275,62 +289,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.umd.js"></script>
-    <script>
-        // Инициализация Fancybox после загрузки страницы
-        document.addEventListener('DOMContentLoaded', () => {
-            // Находим все кнопки галереи
-            const galleryButtons = document.querySelectorAll('.gallery-btn');
-            
-            galleryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const eventId = this.getAttribute('data-event-id');
-                    const event = schoolEvents.find(e => e.id === eventId);
-                    
-                    if (event && event.gallery && event.gallery.length > 0) {
-                        // Создаем массив объектов для Fancybox
-                        const fancyboxItems = event.gallery.map(imgObj => ({
-                            src: imgObj.src,
-                            caption: imgObj.caption
-                        }));
-                        
-                        // Инициализируем Fancybox
-                        Fancybox.show(fancyboxItems, {
-                            Toolbar: {
-                                display: {
-                                    left: ['infobar'],
-                                    right: ['zoom', 'slideShow', 'fullScreen', 'thumbs', 'close']
-                                }
-                            },
-                            Carousel: {
-                                infinite: true
-                            }
-                        });
-                    }
-                });
-            });
-            
-            // Инициализация прелоадера
-            setTimeout(() => {
-                document.querySelector('.preloader').classList.add('done');
-            }, 500);
-        });
-        
-        // Мобильное меню
-        const menuToggle = document.getElementById('menu-toggle');
-        const mainNav = document.getElementById('main-nav');
-        
-        if(menuToggle && mainNav){
-            menuToggle.addEventListener('click', () => {
-                mainNav.classList.toggle('open');
-                const icon = menuToggle.querySelector('i');
-                if (icon) {
-                    icon.classList.toggle('fa-bars');
-                    icon.classList.toggle('fa-times');
-                }
-            });
-        }
-    </script>
-    
     <script>
         // Массив событий воскресной школы "Ковчег"
         const schoolEvents = [
