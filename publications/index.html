@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <!-- SEO -->
     <title>Публикации и новости | Христорождественский кафедральный собор г. Липецка</title>
@@ -19,6 +19,12 @@
     <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
 
     <style>
+        /* ГЛОБАЛЬНЫЙ ПРЕДОХРАНИТЕЛЬ */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         .page-header-simple {
             padding-top: 50px;
             padding-bottom: 20px;
@@ -55,6 +61,7 @@
             max-width: 1200px;
             margin: 0 auto 80px auto;
             padding: 0 20px;
+            box-sizing: border-box;
         }
 
         .main-feed {
@@ -67,49 +74,51 @@
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0,0,0,0.03);
             min-height: 800px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        /* ФИКС ДЛЯ ВИДЖЕТА ВК (чтобы тянулся на 100% и не оставлял пустот) */
+        #vk_groups, #vk_groups iframe {
+            width: 100% !important;
         }
 
         .sidebar {
-            width: 350px; /* Фиксированная ширина для правой колонки */
+            width: 350px; /* Фиксированная ширина для правой колонки на ПК */
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
             gap: 30px;
+            box-sizing: border-box;
         }
 
         /* ==========================================================
-           СТИЛИ ПРАВОСЛАВНОГО КАЛЕНДАРЯ (Адаптированы под Собор)
+           СТИЛИ ПРАВОСЛАВНОГО КАЛЕНДАРЯ (Компактная версия)
            ========================================================== */
         .sidebar-calendar {
-            background: rgba(253, 251, 247, 0.85); /* Светлый благородный фон */
+            background: rgba(253, 251, 247, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            padding: 30px 25px;
+            padding: 20px 15px; /* Компактные отступы */
             border: 1px solid rgba(234, 227, 213, 0.6);
             border-top: 3px solid var(--gold, #C5A059);
             border-radius: 4px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .sidebar-calendar:hover {
-            box-shadow: 0 8px 30px rgba(197, 160, 89, 0.1), 0 1px 0 rgba(255, 255, 255, 0.55) inset;
         }
 
         .sidebar-calendar-title {
             font-family: var(--font-serif, 'PT Serif', serif);
-            margin: 0 0 20px 0;
-            font-size: 22px;
+            margin: 0 0 15px 0;
+            font-size: 18px; /* Компактный заголовок */
             font-weight: 700;
             color: var(--gold, #C5A059);
             text-align: center;
             letter-spacing: 1px;
             text-transform: uppercase;
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: 10px;
         }
 
-        /* Золотая градиентная черта под заголовком */
         .sidebar-calendar-title::after {
             content: '';
             position: absolute;
@@ -124,12 +133,11 @@
 
         .pravoslavie-calendar-widget {
             font-family: var(--font-sans, 'Open Sans', sans-serif);
-            font-size: 15px;
-            line-height: 1.6;
+            font-size: 13.5px; /* Компактный шрифт */
+            line-height: 1.4;
             color: #444;
         }
 
-        /* Нормализация вложенных стилей скрипта */
         .pravoslavie-calendar-widget sup,
         .pravoslavie-calendar-widget sub,
         .pravoslavie-calendar-widget small,
@@ -143,15 +151,14 @@
             position: static !important;
         }
 
-        /* Красивое оформление иконы дня */
         .pravoslavie-calendar-widget img {
-            max-width: 100%;
+            max-width: 110px; /* Уменьшенная икона */
             height: auto;
-            margin: 15px auto 20px auto;
+            margin: 8px auto 12px auto;
             display: block;
             border-radius: 4px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Тень для иконы */
-            border: 2px solid #fff; /* Белая рамочка */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            border: 2px solid #fff; 
         }
 
         .pravoslavie-calendar-widget a {
@@ -169,17 +176,17 @@
 
         .pravoslavie-calendar-center b {
             display: inline-block;
-            margin-top: 10px;
+            margin-top: 6px;
             color: #2c241b;
             font-family: var(--font-serif, 'PT Serif', serif);
-            font-size: 17px;
+            font-size: 15px;
         }
 
         .pravoslavie-calendar-center i {
-            color: #8c2b2b; /* Цвет для указания поста (бордовый) */
+            color: #8c2b2b; 
             font-style: italic;
             display: block;
-            margin: 5px 0;
+            margin: 2px 0;
         }
 
         /* ==========================================================
@@ -234,13 +241,17 @@
 
         /* АДАПТИВНОСТЬ */
         @media (max-width: 900px) {
-            .publications-layout { flex-direction: column; gap: 30px; }
+            .publications-layout { 
+                flex-direction: column; /* Ставит колонки друг под друга на планшетах и телефонах */
+                gap: 30px; 
+            }
             .sidebar { width: 100%; }
             .main-feed { width: 100%; }
         }
         @media (max-width: 768px) {
             .page-title { font-size: 32px; }
             .publications-layout { padding: 0 15px; }
+            .sidebar-calendar { padding: 15px; }
         }
     </style>
 </head>
@@ -358,7 +369,7 @@
                 </a>
                 
                 <a href="https://max.ru/join/refQw8YZh7RC1z9hr72iKjy8rI9Kjvi7250J9GkV35Y" target="_blank" class="social-btn btn-max">
-                    <i class="fas fa-users"></i> Группа в MAX
+                    <i class="fas fa-users"></i> Профиль в MAX
                 </a>
             </div>
 
@@ -369,7 +380,7 @@
 </main>
 
 <footer class="site-footer-light">
-    <!-- Футер остался без изменений -->
+    <!-- Футер -->
     <div class="container footer-content">
         <div class="footer-block">
             <h5>Навигация</h5>
@@ -397,7 +408,6 @@
 
 <script>
     // --- ИНИЦИАЛИЗАЦИЯ ВИДЖЕТА ВКОНТАКТЕ ---
-// --- ИНИЦИАЛИЗАЦИЯ ВИДЖЕТА ВКОНТАКТЕ ---
     setTimeout(function() {
         if(typeof VK !== 'undefined') {
             VK.Widgets.Group("vk_groups", {
@@ -407,7 +417,7 @@
                 color1: "FFFFFF",      
                 color2: "2c241b",      
                 color3: "C5A059"       // Золотой цвет ссылок
-            }, 189863747);             // <--- ВОТ ЗДЕСЬ ИСПРАВЛЕННЫЙ ID СОБОРА!
+            }, 189863747);             // ИСПРАВЛЕННЫЙ ID ГРУППЫ СОБОРА
         }
     }, 500);
 
