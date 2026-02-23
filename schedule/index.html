@@ -186,26 +186,25 @@
             100% { opacity: 0.6; transform: translateX(0); }
         }
 
-        .doc-inner-border {
-            width: 100%;
-            border: 2px solid var(--gold, #C5A059);
-            border-radius: 2px;
-            /* ПРИНУДИТЕЛЬНЫЙ СКРОЛЛ ВНУТРИ РАМКИ */
-            overflow-x: auto !important; 
-            overflow-y: hidden;
-            -webkit-overflow-scrolling: touch; 
-            position: relative;
-            background: #fcfbf8;
-            box-sizing: border-box;
+    .doc-inner-border { 
+            border: none; 
+            border-top: 2px solid var(--gold, #C5A059); 
+            border-bottom: 2px solid var(--gold, #C5A059); 
+            border-radius: 0; 
+            
+            /* ФИКСИРУЕМ ВЫСОТУ КОНТЕЙНЕРА НА ТЕЛЕФОНЕ */
+            height: 350px; 
+            overflow: hidden !important; /* Убираем скролл, так как теперь всё влезет в экран */
         }
 
-        .doc-frame {
-            width: 100%;
-            min-width: 600px; /* Оптимальный масштаб */
-            height: 1100px;
+        .doc-frame { 
+            /* МАГИЯ МАСШТАБИРОВАНИЯ */
+            width: 250% !important; /* Заставляем Google думать, что это широкий компьютер */
+            height: 900px !important; /* Высота с запасом */
+            transform: scale(0.4); /* Жестко уменьшаем масштаб (отдаляем) до 40% ! */
+            transform-origin: 0 0; /* Точка сжатия - левый верхний угол */
             border: none;
             display: block;
-            background: #fcfbf8;
         }
 
         .mobile-link-box { display: none; text-align: center; margin-bottom: 25px; width: 100%; box-sizing: border-box;}
