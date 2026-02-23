@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты | Христорождественский собор</title>
+    <title>Контакты | Христорождественский кафедральный собор</title>
     
     <!-- Подключаем основной стиль (на уровень выше) -->
     <link rel="stylesheet" href="../style.css">
@@ -31,7 +31,7 @@
 
         /* Блок с информацией */
         .contact-info-box h3 {
-            font-family: 'PT Serif', serif;
+            font-family: var(--font-serif, 'PT Serif', serif);
             font-size: 24px;
             color: #2C2C2C;
             margin-bottom: 25px;
@@ -49,7 +49,7 @@
             width: 40px;
             height: 40px;
             background-color: #fdfbf7;
-            color: #C5A059;
+            color: var(--gold, #C5A059);
             border: 1px solid #EAE3D5;
             border-radius: 50%;
             display: flex;
@@ -60,15 +60,16 @@
             flex-shrink: 0;
         }
         .contact-text h4 {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 14px;
+            font-family: var(--font-sans, 'Open Sans', sans-serif);
+            font-size: 13px;
+            font-weight: 700;
             text-transform: uppercase;
             color: #888;
             margin: 0 0 5px 0;
             letter-spacing: 1px;
         }
         .contact-text p, .contact-text a {
-            font-family: 'PT Serif', serif;
+            font-family: var(--font-serif, 'PT Serif', serif);
             font-size: 18px;
             color: #333;
             margin: 0;
@@ -76,7 +77,7 @@
             text-decoration: none;
             transition: 0.3s;
         }
-        .contact-text a:hover { color: #C5A059; }
+        .contact-text a:hover { color: var(--gold, #C5A059); }
 
         /* Кнопки соцсетей на странице */
         .social-buttons {
@@ -92,7 +93,7 @@
             border-radius: 4px;
             text-decoration: none;
             color: #fff;
-            font-family: 'Open Sans', sans-serif;
+            font-family: var(--font-sans, 'Open Sans', sans-serif);
             font-size: 14px;
             font-weight: 600;
             transition: 0.3s;
@@ -102,16 +103,18 @@
         .btn-max { 
             background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); 
         }
-        .btn-social:hover { opacity: 0.9; transform: translateY(-2px); }
-        .btn-social i { margin-right: 8px; }
+        .btn-social:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .btn-social i { margin-right: 8px; font-size: 16px; }
 
         /* Карта */
         .map-wrapper {
             position: relative;
-            height: 450px;
+            height: 480px;
             background: #eee;
             border: 1px solid #EAE3D5;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            overflow: hidden;
         }
         .map-wrapper iframe {
             width: 100%;
@@ -122,22 +125,60 @@
         /* Реквизиты */
         .requisites-section {
             background-color: #fdfbf7;
-            border: 1px solid #C5A059;
+            border: 1px solid var(--gold, #C5A059);
             padding: 40px;
             position: relative;
             margin-bottom: 60px;
+            border-radius: 4px;
         }
         .requisites-section::before {
             content: '❖';
             position: absolute;
-            top: -14px;
+            top: -16px;
             left: 50%;
             transform: translateX(-50%);
             background: #fff;
-            padding: 0 10px;
-            color: #C5A059;
-            font-size: 20px;
+            padding: 0 15px;
+            color: var(--gold, #C5A059);
+            font-size: 22px;
         }
+
+        /* ВАЖНОЕ УВЕДОМЛЕНИЕ О НАЗНАЧЕНИИ ПЛАТЕЖА */
+        .payment-purpose-alert {
+            background-color: #fffdf5;
+            border: 1px solid #eed39a;
+            border-left: 5px solid var(--gold, #C5A059);
+            padding: 20px 25px;
+            margin: 0 auto 35px auto;
+            max-width: 800px;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.1);
+        }
+        .payment-purpose-alert strong {
+            color: #a8813a;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--font-sans, 'Open Sans', sans-serif);
+            display: block;
+            margin-bottom: 5px;
+        }
+        .payment-purpose-alert span {
+            display: block;
+            font-family: var(--font-serif, 'PT Serif', serif);
+            font-size: 22px;
+            color: #2c241b;
+            font-weight: 700;
+        }
+        .payment-purpose-alert p {
+            font-size: 13px;
+            color: #666;
+            font-family: var(--font-sans, 'Open Sans', sans-serif);
+            margin: 8px 0 0 0;
+            line-height: 1.4;
+        }
+
         .req-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -145,21 +186,27 @@
         }
         .req-item strong {
             display: block;
-            color: #555;
-            font-size: 14px;
+            color: #666;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             margin-bottom: 5px;
+            font-family: var(--font-sans, 'Open Sans', sans-serif);
         }
         .req-item span {
-            font-family: 'PT Serif', serif;
-            font-size: 18px;
+            font-family: var(--font-serif, 'PT Serif', serif);
+            font-size: 19px;
             color: #222;
+            font-weight: 700;
         }
 
         /* Адаптив */
         @media screen and (max-width: 900px) {
-            .contacts-grid { grid-template-columns: 1fr; gap: 30px; }
-            .map-wrapper { height: 300px; order: -1; /* Карта сверху на мобильном */ }
-            .req-grid { grid-template-columns: 1fr; }
+            .contacts-grid { grid-template-columns: 1fr; gap: 40px; }
+            .map-wrapper { height: 350px; order: -1; /* Карта сверху на мобильном */ }
+            .req-grid { grid-template-columns: 1fr; gap: 20px; }
+            .payment-purpose-alert span { font-size: 18px; }
+            .requisites-section { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -182,6 +229,9 @@
                 <h2 class="title-secondary">кафедральный собор</h2>
                 <h3 class="title-sub">г. Липецка</h3>
                 <div class="art-divider"></div>
+                <div class="church-meta">
+                    <p>Московский Патриархат <br> <span>Липецкая митрополия</span></p>
+                </div>
             </div>
         </div>
     </div>
@@ -190,7 +240,7 @@
         <i class="fas fa-bars"></i> Меню
     </button>
     
-    <!-- НАВИГАЦИЯ (Все пути через ../) -->
+    <!-- ИСПРАВЛЕННАЯ НАВИГАЦИЯ (Все пути ведут в правильные папки) -->
     <nav class="main-nav" id="main-nav">
         <ul>
             <li><a href="../index.html">Главная</a></li>
@@ -204,15 +254,15 @@
                     <li><a href="../school/">Воскресная школа</a></li>
                 </ul>
             </li>
-            <li><a href="../schedule.html">Расписание богослужений</a></li>
+            <li><a href="../schedule/">Расписание богослужений</a></li>
             <li class="has-dropdown">
                 <a href="#">Служение</a>
                 <ul class="dropdown-menu">
-                    <li><a href="../social.html">Социальное служение</a></li>
-                    <li><a href="../missionary.html">Служение в других храмах</a></li>
+                    <li><a href="../social/">Социальное служение</a></li>
+                    <li><a href="../missionary/">Служение в других храмах</a></li>
                 </ul>
             </li>
-            <li><a href="../publications.html">Публикации</a></li>
+            <li><a href="../publications/">Публикации</a></li>
             <li><a href="./" class="active">Контакты</a></li> <!-- Текущая -->
             <li><a href="#" class="btn-note">Подать записку</a></li>
         </ul>
@@ -223,8 +273,8 @@
     
     <div class="contacts-intro">
         <h1 class="chapter-title">Контактная информация</h1>
-        <p style="font-family: 'PT Serif', serif; font-size: 18px; color: #555;">
-            Мы всегда рады видеть вас в Доме Божьем. Храм открыт ежедневно.
+        <p style="font-family: var(--font-serif, 'PT Serif', serif); font-size: 19px; color: #555;">
+            Мы всегда рады видеть вас в Доме Божием!
         </p>
     </div>
 
@@ -238,6 +288,15 @@
                 <div class="contact-text">
                     <h4>Адрес</h4>
                     <p>398019, г. Липецк, Соборная площадь, дом 4</p>
+                </div>
+            </div>
+
+            <!-- Добавлено время работы -->
+            <div class="contact-item">
+                <div class="contact-icon"><i class="far fa-clock"></i></div>
+                <div class="contact-text">
+                    <h4>Время работы</h4>
+                    <p>Ежедневно с 7:00 до 20:00</p>
                 </div>
             </div>
 
@@ -273,53 +332,56 @@
                 <a href="https://t.me/Lsobor" target="_blank" class="btn-social btn-tg">
                     <i class="fab fa-telegram-plane"></i> Telegram
                 </a>
-                <!-- Кнопка MAX -->
                 <a href="https://max.ru/join/refQw8YZh7RC1z9hr72iKjy8rI9Kjvi7250J9GkV35Y" target="_blank" class="btn-social btn-max">
                     <i class="fas fa-users"></i> MAX
                 </a>
             </div>
         </div>
 
-        <!-- Правая колонка: Карта -->
+        <!-- Правая колонка: ИСПРАВЛЕННАЯ КАРТА (Теперь строго по центру Собора) -->
         <div class="map-wrapper">
-            <!-- Вставлена карта Липецка (Соборная площадь 4) -->
             <iframe 
-                src="https://yandex.ru/map-widget/v1/?ll=39.599709%2C52.608339&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NjU1MzQ1MRJK0KDQvtGB0YHQuNGPLCDQm9C40L_QtdGG0LosINCh0L7QsdC-0YDQvdCw0Y8g0L_Qu9C-0YnQsNC00YwsIDQgK9CR0YvRgtC-0LLQsNGHKCIsCg30QlRCFf5cSUIB&z=17.09" 
-                allowfullscreen="true" style="position:relative;">
+                src="https://yandex.ru/map-widget/v1/?ll=39.599216%2C52.605655&mode=whatshere&whatshere%5Bpoint%5D=39.599216%2C52.605655&whatshere%5Bzoom%5D=17&z=17" 
+                allowfullscreen="true">
             </iframe>
         </div>
     </div>
 
-    <!-- Блок реквизитов -->
+    <!-- ИСПРАВЛЕННЫЙ БЛОК РЕКВИЗИТОВ -->
     <section class="requisites-section">
-        <h3 style="text-align: center; font-family: 'PT Serif'; margin-top: 0; margin-bottom: 30px;">Реквизиты для пожертвований</h3>
+        <h3 style="text-align: center; font-family: var(--font-serif, 'PT Serif', serif); margin-top: 0; margin-bottom: 25px; font-size: 26px;">Реквизиты для пожертвований</h3>
         
-        <p style="margin-bottom: 20px; color: #555; text-align: center;">
-            Местная религиозная организация православный Приход Христо-Рождественского кафедрального собора г. Липецка
+        <!-- Специальный блок для защиты от налогов -->
+        <div class="payment-purpose-alert">
+            <strong>Важно! Укажите правильное назначение платежа:</strong>
+            <span>Добровольное пожертвование на уставную деятельность. НДС не облагается.</span>
+            <p>(В противном случае, согласно законодательству, с вашего пожертвования будет удержан налог)</p>
+        </div>
+
+        <p style="margin-bottom: 30px; color: #333; text-align: center; font-family: var(--font-serif, 'PT Serif', serif); font-size: 16px; font-weight: 700; line-height: 1.6;">
+            Местная Православная Религиозная Организация Приход Христо-Рождественского Собора Г. Липецка Липецкой Епархии Русской Православной Церкви (Московский Патриархат)
         </p>
 
         <div class="req-grid">
             <div class="req-item">
                 <strong>ИНН / КПП</strong>
-                <span>4826014457 / 482601001</span>
+                <span>4826016611 / 482601001</span>
             </div>
             <div class="req-item">
-                <strong>БИК</strong>
-                <span>044206604</span>
+                <strong>ОГРН</strong>
+                <span>1024800005009</span>
             </div>
             <div class="req-item">
                 <strong>Расчетный счет</strong>
                 <span>40703810235000000123</span>
-                <div style="font-size: 13px; color: #777;">(Липецкое отделение №8593 ПАО Сбербанк)</div>
+                <div style="font-size: 13px; color: #777; margin-top: 5px;">(Липецкое отделение №8593 ПАО Сбербанк)</div>
             </div>
             <div class="req-item">
-                <strong>Корреспондентский счет</strong>
+                <strong>БИК</strong>
+                <span>044206604</span><br>
+                <strong style="margin-top: 10px;">Корреспондентский счет</strong>
                 <span>30101810800000000604</span>
             </div>
-        </div>
-        
-        <div style="margin-top: 25px; text-align: center; font-size: 14px; color: #777; border-top: 1px dashed #ccc; padding-top: 15px;">
-            Назначение платежа: Добровольное пожертвование на уставную деятельность. НДС не облагается.
         </div>
     </section>
 
@@ -331,7 +393,7 @@
             <h5>Навигация</h5>
             <a href="../index.html">Главная</a>
             <a href="../about/">О соборе</a>
-            <a href="../schedule.html">Расписание</a>
+            <a href="../schedule/">Расписание</a>
             <a href="./">Контакты</a>
         </div>
         <div class="footer-block">
@@ -343,8 +405,7 @@
             <h5>Мы в соцсетях</h5>
             <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a>
             <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
-            <!-- Добавлена ссылка MAX в футер -->
-            <a href="https://max.ru/join/refQw8YZh7RC1z9hr72iKjy8rI9Kjvi7250J9GkV35Y" target="_blank">
+            <a href="https://max.ru/join/refQw8YZh7RC1z9hr72iKjy8rI9Kjvi7250J9GkV35Y" target="_blank" style="margin-top: 5px; display:inline-block;">
                 <i class="fas fa-users"></i> MAX
             </a>
         </div>
