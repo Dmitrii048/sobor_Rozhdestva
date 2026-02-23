@@ -27,195 +27,128 @@
         }
         .preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
 
-        /* ЛОКАЛЬНЫЕ СТИЛИ */
+        /* ЛОКАЛЬНЫЕ СТИЛИ (Баланс высоты и красоты) */
         .page-header-simple {
-            padding-top: 50px;
-            padding-bottom: 30px;
+            padding-top: 40px;
+            padding-bottom: 25px;
             text-align: center;
         }
 
         .schedule-title {
             font-family: var(--font-serif, 'PT Serif', serif);
-            font-size: 46px;
+            font-size: 42px;
             color: var(--gold, #C5A059);
-            margin-bottom: 15px;
+            margin: 0 0 15px 0;
             font-weight: 700;
         }
 
-        /* БАННЕР "ХРАМ ОТКРЫТ" */
-        .open-hours-banner {
-            background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);
-            border: 1px solid var(--border, #EAE3D5);
-            border-top: 4px solid var(--gold, #C5A059);
-            padding: 25px;
-            max-width: 650px;
-            margin: 0 auto 40px auto;
-            text-align: center;
-            border-radius: 6px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
-        }
-        .open-hours-title {
-            font-family: var(--font-serif, 'PT Serif', serif);
-            font-size: 22px;
-            color: #2c241b;
-            margin-bottom: 8px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-        .open-hours-text {
+        /* КОМПАКТНЫЙ БАННЕР ВРЕМЕНИ РАБОТЫ */
+        .open-hours-pill {
+            display: inline-block;
+            background: #fdfbf7;
+            border: 1px solid var(--gold, #C5A059);
+            padding: 8px 25px;
+            border-radius: 30px;
             font-family: var(--font-sans, 'Open Sans', sans-serif);
-            color: #555;
-            font-size: 19px;
-        }
-        .open-hours-text strong {
-            color: var(--gold, #C5A059);
-            font-size: 22px;
+            font-size: 16px;
+            color: #2c241b;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(197, 160, 89, 0.1);
         }
 
-        /* ВСТУПИТЕЛЬНЫЙ ТЕКСТ С ЦИТАТОЙ */
+        /* ТЕКСТОВОЕ ВСТУПЛЕНИЕ */
         .intro-text-block {
             max-width: 900px;
-            margin: 0 auto 50px;
+            margin: 0 auto 30px;
             text-align: center;
             padding: 0 20px;
         }
         
         .intro-text-block p {
             font-family: var(--font-serif, 'PT Serif', serif); 
-            font-size: 20px;
-            line-height: 1.8;
+            font-size: 19px;
+            line-height: 1.6;
             color: #444;
-            margin-bottom: 20px;
+            margin: 0;
         }
 
-        .orthodox-quote {
-            font-family: var(--font-serif, 'PT Serif', serif);
-            font-size: 24px;
-            font-style: italic;
-            color: var(--gold, #C5A059);
-            margin: 35px auto;
-            padding: 0 20px;
-            line-height: 1.5;
-            max-width: 750px;
-        }
-
-        .quote-ref {
-            display: block;
-            font-size: 16px;
-            color: #888;
-            font-style: normal;
-            margin-top: 10px;
-            font-family: var(--font-sans, 'Open Sans', sans-serif);
-        }
-
-        /* НОВЫЙ СТРОГИЙ ДИЗАЙН КАРТОЧЕК (Без иконок, элегантная типографика) */
-        .service-times-grid {
+        /* ==========================================================
+           ЗОЛОТАЯ СЕРЕДИНА: ГОРИЗОНТАЛЬНОЕ ТАБЛО РАСПИСАНИЯ 
+           ========================================================== */
+        .schedule-summary-board {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
             max-width: 1050px;
             margin: 0 auto 40px auto;
-            padding: 0 20px;
-        }
-
-        .service-card {
             background: #fff;
             border: 1px solid var(--border, #EAE3D5);
-            border-top: 4px solid var(--gold, #C5A059);
-            padding: 40px 30px; /* Увеличили "воздух" внутри карточек */
-            text-align: left; /* Строгое выравнивание по левому краю */
+            border-top: 3px solid var(--gold, #C5A059);
             border-radius: 4px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.03);
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(197, 160, 89, 0.1);
+        .board-col {
+            padding: 25px;
+            border-right: 1px solid var(--border, #EAE3D5);
+            text-align: left;
+        }
+        .board-col:last-child {
+            border-right: none;
         }
 
-        .service-card h4 {
+        .board-col h4 {
             font-family: var(--font-serif, 'PT Serif', serif);
-            font-size: 24px;
+            font-size: 20px;
             color: #2c241b;
-            margin: 0 0 25px 0;
-            padding-bottom: 15px;
-            position: relative;
+            margin: 0 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f0eae1;
         }
 
-        /* Элегантная золотая окантовка (черта) под заголовком */
-        .service-card h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--gold, #C5A059);
-        }
-
-        .schedule-details {
+        .board-text-group {
+            margin-bottom: 12px;
             font-family: var(--font-sans, 'Open Sans', sans-serif);
-            font-size: 15px;
+            font-size: 14px;
             color: #444;
-            line-height: 1.7;
+            line-height: 1.5;
         }
+        .board-text-group:last-child { margin-bottom: 0; }
 
-        .schedule-details p {
-            margin: 0 0 18px 0;
-        }
-        .schedule-details p:last-child {
-            margin-bottom: 0;
-        }
-
-        .schedule-details strong {
-            color: #2c241b;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 13px;
-            letter-spacing: 0.5px;
+        .board-label {
             display: block;
-            margin-bottom: 4px;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #888;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
         }
 
-        .time-gold {
-            display: inline-block;
-            font-size: 22px;
+        .board-time {
+            font-family: var(--font-serif, 'PT Serif', serif);
+            font-size: 20px;
             font-weight: 700;
             color: var(--gold, #C5A059);
-            font-family: var(--font-serif, 'PT Serif', serif);
         }
 
         /* УВЕДОМЛЕНИЕ О ВЕЛИКОМ ПОСТЕ */
-        .lent-notice {
-            max-width: 800px;
-            margin: 0 auto 50px auto;
+        .lent-notice-compact {
+            max-width: 1000px;
+            margin: 0 auto 40px auto;
             background: #faf8f5;
             border: 1px dashed var(--gold, #C5A059);
-            padding: 30px 40px;
-            border-radius: 4px;
+            padding: 15px 25px;
             text-align: center;
-        }
-
-        .lent-title {
-            font-family: var(--font-serif, 'PT Serif', serif);
-            color: #8c2b2b;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .lent-notice p {
             font-family: var(--font-sans, 'Open Sans', sans-serif);
-            font-size: 16px;
+            font-size: 15px;
+            line-height: 1.6;
             color: #555;
-            margin: 0;
-            line-height: 1.7;
+            border-radius: 4px;
+        }
+        .lent-notice-compact strong { 
+            color: #8c2b2b; 
+            font-family: var(--font-serif, 'PT Serif', serif);
+            font-size: 17px;
         }
 
         /* ЗОЛОТАЯ РАМА ДЛЯ ДОКУМЕНТА */
@@ -225,9 +158,9 @@
             margin: 0 auto 80px;
             background: #fff;
             border: 1px solid var(--border, #EAE3D5);
-            padding: 12px; 
-            border-radius: 6px;
-            box-shadow: 0 15px 50px rgba(197, 160, 89, 0.12); 
+            padding: 10px; 
+            border-radius: 4px;
+            box-shadow: 0 10px 40px rgba(197, 160, 89, 0.1); 
             position: relative;
         }
 
@@ -250,7 +183,7 @@
 
         .doc-inner-border {
             border: 2px solid var(--gold, #C5A059);
-            border-radius: 4px;
+            border-radius: 2px;
             overflow-x: auto; 
             overflow-y: hidden;
             -webkit-overflow-scrolling: touch; 
@@ -267,13 +200,13 @@
             background: #fcfbf8;
         }
 
-        .mobile-link-box { display: none; text-align: center; margin-bottom: 30px; }
+        .mobile-link-box { display: none; text-align: center; margin-bottom: 25px; }
         
         .btn-open-doc {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 14px 28px;
+            padding: 14px 25px;
             background-color: var(--gold, #C5A059);
             color: #fff;
             text-decoration: none;
@@ -283,18 +216,25 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: background 0.3s;
-            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
         }
 
-        .btn-open-doc:hover {
-            background-color: #b08d4a;
-            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
-        }
+        .btn-open-doc:hover { background-color: #b08d4a; }
 
         /* АДАПТИВНОСТЬ */
+        @media (max-width: 850px) {
+            .schedule-summary-board {
+                grid-template-columns: 1fr;
+                margin: 0 15px 30px;
+            }
+            .board-col {
+                border-right: none;
+                border-bottom: 1px solid var(--border, #EAE3D5);
+            }
+            .board-col:last-child { border-bottom: none; }
+        }
+
         @media (max-width: 768px) {
-            .schedule-title { font-size: 32px; }
-            .orthodox-quote { font-size: 20px; margin: 25px auto; }
+            .schedule-title { font-size: 30px; }
             
             .swipe-hint { display: block; }
             .doc-frame { height: 650px; }
@@ -311,12 +251,9 @@
                 pointer-events: none;
             }
 
-            .intro-text-block p { font-size: 18px; text-align: left; }
+            .intro-text-block p { font-size: 17px; text-align: left; }
             .mobile-link-box { display: block; }
-            .service-times-grid { gap: 15px; }
-            .service-card { padding: 25px 20px; }
-            .open-hours-banner { margin: 0 15px 30px 15px; }
-            .lent-notice { margin: 0 15px 40px 15px; padding: 20px 15px; }
+            .lent-notice-compact { margin: 0 15px 30px; font-size: 14px; text-align: left;}
         }
     </style>
 </head>
@@ -382,85 +319,57 @@
     
     <div class="page-header-simple">
         <h1 class="schedule-title">Расписание богослужений</h1>
+        <div class="open-hours-pill">Храм открыт ежедневно с 7:00 до 20:00</div>
     </div>
 
-    <!-- ИНФОБЛОК: ЧАСЫ РАБОТЫ -->
-    <div class="open-hours-banner">
-        <div class="open-hours-title">Храм открыт ежедневно</div>
-        <div class="open-hours-text">
-            с <strong>7:00</strong> до <strong>20:00</strong>
-        </div>
-    </div>
-
-    <!-- ТЕКСТОВОЕ ОПИСАНИЕ С ЦИТАТОЙ ИЗ ЕВАНГЕЛИЯ И ЛИТУРГИИ -->
+    <!-- ДУШЕВНЫЙ И ЛАКОНИЧНЫЙ ТЕКСТ -->
     <div class="intro-text-block">
-        <p>
-            Возлюбленные о Господе братья и сестры! Представляем вашему вниманию актуальное расписание богослужений Христорождественского кафедрального собора города Липецка. Расписание обновляется еженедельно.
-        </p>
-        
-        <blockquote class="orthodox-quote">
-            «Где двое или трое собраны во имя Мое, там Я посреди них»
-            <span class="quote-ref">(Мф. 18:20)</span>
-        </blockquote>
-        
-        <p>
-            Мы с радостью ждем каждого из вас под сводами нашего величественного храма на Соборной горе, чтобы «единым сердцем и едиными устами» вознести соборную молитву ко Господу.
-        </p>
+        <p>Возлюбленные о Господе братья и сестры! Представляем вам актуальное расписание богослужений. Мы с радостью ждем каждого из вас под сводами нашего величественного храма на Соборной горе, чтобы единым сердцем вознести соборную молитву ко Господу.</p>
     </div>
 
-    <!-- КАРТОЧКИ ВРЕМЕНИ СЛУЖБ (Элегантный, строгий дизайн) -->
-    <div class="service-times-grid">
+    <!-- ЗОЛОТАЯ СЕРЕДИНА: ЭЛЕГАНТНОЕ ТАБЛО РАСПИСАНИЯ -->
+    <div class="schedule-summary-board">
         
-        <!-- Карточка 1: Литургия -->
-        <div class="service-card">
+        <!-- Колонка 1 -->
+        <div class="board-col">
             <h4>Божественная Литургия</h4>
-            <div class="schedule-details">
-                <p>
-                    <strong>Будничные дни:</strong>
-                    <span class="time-gold">8:00</span>
-                </p>
-                <p>
-                    <strong>Воскресенье и великие праздники:</strong>
-                    Ранняя Литургия — <span class="time-gold">6:30</span><br>
-                    Поздняя Литургия — <span class="time-gold">8:30</span>
-                </p>
+            <div class="board-text-group">
+                <span class="board-label">Будничные дни</span>
+                <span class="board-time">8:00</span>
             </div>
-        </div>
-        
-        <!-- Карточка 2: Вечернее богослужение -->
-        <div class="service-card">
-            <h4>Вечернее богослужение</h4>
-            <div class="schedule-details">
-                <p>
-                    <strong>Начало ежедневно:</strong>
-                    <span class="time-gold">17:00</span>
-                </p>
-                <p>
-                    <strong>Будничные дни:</strong>
-                    Вечерня с утреней
-                </p>
-                <p>
-                    <strong>Суббота и кануны праздников:</strong>
-                    Всенощное бдение
-                </p>
+            <div class="board-text-group">
+                <span class="board-label">Воскресенье и праздники</span>
+                Ранняя — <span class="board-time">6:30</span><br>
+                Поздняя — <span class="board-time">8:30</span>
             </div>
         </div>
 
-        <!-- Карточка 3: Исповедь -->
-        <div class="service-card">
-            <h4>Таинство Исповеди</h4>
-            <div class="schedule-details">
-                <p>
-                    Таинство Исповеди в кафедральном соборе совершается <strong>только во время Всенощного бдения</strong> (в субботу вечером и накануне праздничных дней).
-                </p>
+        <!-- Колонка 2 -->
+        <div class="board-col">
+            <h4>Вечернее богослужение</h4>
+            <div class="board-text-group">
+                <span class="board-label">Начало ежедневно</span>
+                <span class="board-time">17:00</span>
+            </div>
+            <div class="board-text-group">
+                <strong>Будни:</strong> вечерня с утреней<br>
+                <strong>Суббота и кануны праздников:</strong> Всенощное бдение
             </div>
         </div>
+
+        <!-- Колонка 3 -->
+        <div class="board-col">
+            <h4>Таинство Исповеди</h4>
+            <div class="board-text-group">
+                В кафедральном соборе Таинство Исповеди совершается <strong>только во время Всенощного бдения</strong> (в субботу вечером и накануне праздничных дней).
+            </div>
+        </div>
+
     </div>
 
     <!-- УВЕДОМЛЕНИЕ О ВЕЛИКОМ ПОСТЕ -->
-    <div class="lent-notice">
-        <div class="lent-title">Особенности богослужений Великого поста</div>
-        <p>В период Святой Четыредесятницы строй служб меняется согласно великопостному уставу: совершаются Литургии Преждеосвященных Даров, читается Великий покаянный канон прп. Андрея Критского, совершается Таинство Елеосвящения (Соборование). Пожалуйста, сверяйтесь с подробным расписанием ниже.</p>
+    <div class="lent-notice-compact">
+        <strong>Особенности Великого поста:</strong> совершаются Литургии Преждеосвященных Даров, читается Великий покаянный канон прп. Андрея Критского. Пожалуйста, сверяйтесь с подробным расписанием ниже.
     </div>
 
     <!-- КНОПКА ДЛЯ ТЕЛЕФОНОВ -->
@@ -510,7 +419,6 @@
 </footer>
 
 <script>
-    // Скрипт скрытия прелоадера
     function forceHidePreloader() {
         var preloader = document.getElementById('page-preloader');
         if (preloader) {
@@ -523,13 +431,9 @@
         }
     }
 
-    // 1. При полной загрузке
     window.addEventListener('load', forceHidePreloader);
-
-    // 2. СТРАХОВКА (Таймер 2 сек)
     setTimeout(forceHidePreloader, 2000);
 
-    // Скрипт мобильного меню
     const menuToggle = document.getElementById('menu-toggle');
     const mainNav = document.getElementById('main-nav');
     if(menuToggle) {
