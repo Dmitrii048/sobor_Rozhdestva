@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO -->
-    <title>Расписание богослужений Липецк | Христорождественский собор</title>
+    <!-- SEO ОПТИМИЗАЦИЯ -->
+    <title>Расписание богослужений Липецк | Христорождественский кафедральный собор</title>
     
-    <meta name="description" content="Полное расписание богослужений в Христорождественском соборе Липецка. Храм открыт ежедневно с 7:00 до 20:00. Узнайте время Литургии, Исповеди, Вечерней службы.">
+    <meta name="description" content="Подробное и актуальное расписание богослужений в Христорождественском кафедральном соборе города Липецка. Узнайте точное время Божественной Литургии, Всенощного бдения и Таинства Исповеди. Храм открыт ежедневно с 7:00 до 20:00.">
     
-    <meta name="keywords" content="расписание собор липецк, храм открыт до скольки, когда служба в соборе, расписание богослужений липецк, христорождественский собор службы, исповедь время, литургия во сколько в Липецке, собор липецк когда открывается, расписание служб на сегодня">
+    <meta name="keywords" content="расписание собор липецк, храм открыт до скольки, когда служба в соборе, расписание богослужений липецк, христорождественский кафедральный собор службы, исповедь время липецк, литургия во сколько в Липецке, собор липецк расписание, расписание служб на сегодня, православный храм липецк расписание">
     
-    <!-- Подключаем стили (выходим из папки schedule) -->
+    <!-- Подключаем стили -->
     <link rel="stylesheet" href="../style.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* СТИЛИ ПРЕЛОАДЕРА (ВСТРОЕНЫ ДЛЯ НАДЕЖНОСТИ) */
+        /* СТИЛИ ПРЕЛОАДЕРА */
         .preloader {
             position: fixed; left: 0; top: 0; width: 100%; height: 100%;
             background: #fff; z-index: 9999;
@@ -29,107 +29,222 @@
 
         /* ЛОКАЛЬНЫЕ СТИЛИ */
         .page-header-simple {
-            padding-top: 40px;
-            padding-bottom: 20px;
+            padding-top: 50px;
+            padding-bottom: 30px;
             text-align: center;
         }
 
         .schedule-title {
-            font-family: 'PT Serif', serif;
-            font-size: 42px;
-            color: #C5A059;
-            margin-bottom: 10px;
+            font-family: var(--font-serif, 'PT Serif', serif);
+            font-size: 46px;
+            color: var(--gold, #C5A059);
+            margin-bottom: 15px;
+            font-weight: 700;
         }
 
         /* БАННЕР "ХРАМ ОТКРЫТ" */
         .open-hours-banner {
-            background-color: #fcfbf8;
-            border: 1px solid #EAE3D5;
-            border-left: 5px solid #C5A059;
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto 20px auto;
+            background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);
+            border: 1px solid var(--border, #EAE3D5);
+            border-top: 4px solid var(--gold, #C5A059);
+            padding: 25px;
+            max-width: 650px;
+            margin: 0 auto 40px auto;
             text-align: center;
-            border-radius: 4px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-radius: 6px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
         }
         .open-hours-title {
-            font-family: 'PT Serif', serif;
-            font-size: 20px;
+            font-family: var(--font-serif, 'PT Serif', serif);
+            font-size: 22px;
             color: #2c241b;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
         .open-hours-text {
-            font-family: 'Open Sans', sans-serif;
-            color: #444;
-            font-size: 18px;
+            font-family: var(--font-sans, 'Open Sans', sans-serif);
+            color: #555;
+            font-size: 19px;
+        }
+        .open-hours-text strong {
+            color: var(--gold, #C5A059);
+            font-size: 22px;
         }
 
-        /* ТЕКСТОВОЕ ВСТУПЛЕНИЕ (Над таблицей) */
+        /* ВСТУПИТЕЛЬНЫЙ ТЕКСТ */
         .intro-text-block {
-            max-width: 800px;
-            margin: 0 auto 30px;
+            max-width: 900px;
+            margin: 0 auto 40px;
             text-align: center;
             padding: 0 20px;
         }
         
         .intro-text-block p {
-            /* Шрифт как в книгах, красивый и читаемый */
-            font-family: 'PT Serif', serif; 
-            font-size: 19px;
-            line-height: 1.6;
-            color: #333;
+            font-family: var(--font-serif, 'PT Serif', serif); 
+            font-size: 20px;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 20px;
         }
 
-        /* ЗОЛОТАЯ РАМА */
+        /* СТРУКТУРИРОВАННАЯ СЕТКА ВРЕМЕНИ СЛУЖБ */
+        .service-times-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
+        }
+
+        .service-card {
+            background: #fff;
+            border: 1px solid var(--border, #EAE3D5);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 6px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(197, 160, 89, 0.1);
+        }
+
+        .service-icon {
+            font-size: 30px;
+            color: var(--gold, #C5A059);
+            margin-bottom: 15px;
+        }
+
+        .service-card h4 {
+            font-family: var(--font-serif, 'PT Serif', serif);
+            font-size: 22px;
+            color: #2c241b;
+            margin: 0 0 10px 0;
+        }
+
+        .service-card p {
+            font-family: var(--font-sans, 'Open Sans', sans-serif);
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .service-time-highlight {
+            display: block;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--gold, #C5A059);
+            margin: 10px 0;
+            font-family: var(--font-serif, 'PT Serif', serif);
+        }
+
+        /* ЗОЛОТАЯ РАМА ДЛЯ ДОКУМЕНТА (Адаптирована для телефона) */
         .doc-gold-wrapper {
             width: 100%;
             max-width: 1000px;
-            margin: 0 auto 60px;
+            margin: 0 auto 80px;
             background: #fff;
-            border: 1px solid #EAE3D5;
-            padding: 10px; 
-            border-radius: 4px;
-            box-shadow: 0 10px 40px rgba(197, 160, 89, 0.15); 
+            border: 1px solid var(--border, #EAE3D5);
+            padding: 12px; 
+            border-radius: 6px;
+            box-shadow: 0 15px 50px rgba(197, 160, 89, 0.12); 
+            position: relative;
         }
 
+        /* Подсказка для телефона "Листать вправо" */
+        .swipe-hint {
+            display: none;
+            text-align: center;
+            font-family: var(--font-sans, 'Open Sans', sans-serif);
+            font-size: 14px;
+            color: var(--gold, #C5A059);
+            margin-bottom: 10px;
+            font-weight: 600;
+            animation: pulseHint 2s infinite;
+        }
+
+        @keyframes pulseHint {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; transform: translateX(5px); }
+            100% { opacity: 0.6; transform: translateX(0); }
+        }
+
+        /* Обёртка, которая позволяет скроллить таблицу пальцем */
         .doc-inner-border {
-            border: 2px solid #C5A059;
-            border-radius: 2px;
-            overflow: hidden;
+            border: 2px solid var(--gold, #C5A059);
+            border-radius: 4px;
+            overflow-x: auto; /* Позволяет листать по горизонтали */
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch; /* Плавный скролл на iPhone */
             position: relative;
+            background: #fcfbf8;
         }
 
         .doc-frame {
             width: 100%;
+            min-width: 800px; /* Гарантирует, что таблица не сожмется и текст будет крупным */
             height: 1100px;
             border: none;
             display: block;
+            background: #fcfbf8;
         }
 
-        .mobile-link-box { display: none; text-align: center; margin-bottom: 20px; }
+        .mobile-link-box { display: none; text-align: center; margin-bottom: 30px; }
         
         .btn-open-doc {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #C5A059;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background-color: var(--gold, #C5A059);
             color: #fff;
             text-decoration: none;
             border-radius: 4px;
             font-weight: 600;
-            font-family: 'Open Sans', sans-serif;
+            font-family: var(--font-sans, 'Open Sans', sans-serif);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
         }
 
+        .btn-open-doc:hover {
+            background-color: #b08d4a;
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
+        }
+
+        /* АДАПТИВНОСТЬ */
         @media (max-width: 768px) {
-            .schedule-title { font-size: 30px; }
-            .doc-frame { height: 600px; }
-            .doc-gold-wrapper { padding: 0; border: none; box-shadow: none; }
-            .doc-inner-border { border: none; border-top: 2px solid #C5A059; border-bottom: 2px solid #C5A059; }
-            .intro-text-block p { font-size: 17px; }
+            .schedule-title { font-size: 32px; }
+            
+            /* Включаем подсказку для телефонов */
+            .swipe-hint { display: block; }
+            
+            /* На мобильных делаем высоту меньше, чтобы было удобно */
+            .doc-frame { height: 650px; }
+            
+            .doc-gold-wrapper { padding: 0; border: none; box-shadow: none; margin-bottom: 40px;}
+            .doc-inner-border { border: none; border-top: 2px solid var(--gold, #C5A059); border-bottom: 2px solid var(--gold, #C5A059); border-radius: 0; }
+            
+            /* Добавляем тень по бокам, чтобы визуально показать, что можно листать */
+            .doc-inner-border::after {
+                content: '';
+                position: absolute;
+                top: 0; right: 0; bottom: 0;
+                width: 20px;
+                background: linear-gradient(to right, rgba(255,255,255,0), rgba(0,0,0,0.05));
+                pointer-events: none;
+            }
+
+            .intro-text-block p { font-size: 18px; text-align: left; }
             .mobile-link-box { display: block; }
+            .service-times-grid { gap: 15px; }
+            .open-hours-banner { margin: 0 15px 30px 15px; }
         }
     </style>
 </head>
@@ -137,167 +252,4 @@
 
 <!-- ЭКРАН ЗАГРУЗКИ -->
 <div id="page-preloader" class="preloader">
-    <div class="loader-circle"></div>
-    <div class="loader-text">Загрузка расписания...</div>
-</div>
-
-<header class="main-header">
-    <div class="logo-expansive-container">
-        <div class="logo-flex-row">
-            <a href="../index.html" class="logo-visual">
-                <img src="../sobor-sketch.jpg" alt="Собор" class="logo-sketch-large">
-            </a>
-            <div class="logo-brand-area">
-                <h1 class="title-main">Христорождественский</h1>
-                <h2 class="title-secondary">кафедральный собор</h2>
-                <h3 class="title-sub">г. Липецка</h3>
-                <div class="art-divider"></div>
-                <div class="church-meta">
-                    <p>Московский Патриархат <br> <span>Липецкая митрополия</span></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <button id="menu-toggle" class="mobile-menu-toggle">
-        <i class="fas fa-bars"></i> Меню
-    </button>
-    
-    <!-- МЕНЮ С ПРАВИЛЬНЫМИ ССЫЛКАМИ (ПАПКИ) -->
-    <nav class="main-nav" id="main-nav">
-        <ul>
-            <li><a href="../index.html">Главная</a></li>
-            <li class="has-dropdown">
-                <a href="#">О соборе</a>
-                <ul class="dropdown-menu">
-                    <li><a href="../about/">Летопись храма</a></li>
-                    <li><a href="../shrines/">Святыни и молитвословия</a></li> <!-- Ссылка в соседнюю папку -->
-                    <li><a href="../archpastor/">Архипастырь</a></li>
-                    <li><a href="../clergy/">Духовенство</a></li>
-                    <li><a href="../school/">Воскресная школа</a></li>
-                </ul>
-            </li>
-            <li><a href="./">Расписание богослужений</a></li>
-            <li class="has-dropdown">
-                <a href="#" class="active">Служение</a>
-                <ul class="dropdown-menu">
-                    <li><a href="../social/">Социальное служение</a></li>
-                    <li><a href="../missionary/" class="active">Служение в других храмах</a></li>
-                </ul>
-            </li>
-            <li><a href="../publications/">Публикации</a></li>
-            <li><a href="../contacts/">Контакты</a></li>
-            <li><a href="#" class="btn-note">Подать записку</a></li>
-        </ul>
-    </nav>
-</header>
-
-<main class="container">
-    
-    <div class="page-header-simple">
-        <h1 class="schedule-title">Расписание богослужений</h1>
-    </div>
-
-    <!-- 1. ИНФОБЛОК: ЧАСЫ РАБОТЫ -->
-    <div class="open-hours-banner">
-        <div class="open-hours-title">Храм открыт ежедневно</div>
-        <div class="open-hours-text">
-            с <strong>7:00</strong> до <strong>20:00</strong>
-        </div>
-    </div>
-
-    <!-- 2. ТЕКСТОВОЕ ОПИСАНИЕ (ТЕПЕРЬ СВЕРХУ) -->
-    <div class="intro-text-block">
-        <p>
-            Дорогие братья и сестры! Расписание богослужений обновляется еженедельно. <br>
-            <strong>Божественная Литургия</strong> совершается ежедневно в <strong>8:00</strong> (в воскресные и праздничные дни — ранняя в 6:30, поздняя в 8:30). 
-            <strong>Вечернее богослужение</strong> начинается в <strong>17:00</strong>. 
-            Таинство Исповеди проходит перед началом Литургии и во время Всенощного бдения.
-            Ждем вас на совместную молитву на Соборной горе!
-        </p>
-    </div>
-
-    <!-- 3. КНОПКА ДЛЯ ТЕЛЕФОНОВ -->
-    <div class="mobile-link-box">
-        <a href="https://docs.google.com/document/d/1p5CvOlTQRwtTprxWQkiFdZUmnj-3nW-5TGTKr7Njsaw/view" target="_blank" class="btn-open-doc">
-            <i class="fas fa-file-alt"></i> Открыть файл расписания
-        </a>
-    </div>
-
-    <!-- 4. ДОКУМЕНТ В ЗОЛОТОЙ РАМКЕ -->
-    <div class="doc-gold-wrapper">
-        <div class="doc-inner-border">
-            <iframe class="doc-frame" src="https://docs.google.com/document/d/1p5CvOlTQRwtTprxWQkiFdZUmnj-3nW-5TGTKr7Njsaw/preview"></iframe>
-        </div>
-    </div>
-
-</main>
-
-<footer class="site-footer-light">
-    <div class="container footer-content">
-        <div class="footer-block">
-            <h5>Навигация</h5>
-            <a href="../index.html">Главная</a>
-            <a href="../about/">О соборе</a>
-            <a href="./">Расписание</a>
-            <a href="../shrines/">Святыни</a>
-        </div>
-        <div class="footer-block">
-            <h5>Контакты</h5>
-            <p>г. Липецк, Соборная пл., 4</p>
-            <p>+7 (4742) 27-04-78</p>
-        </div>
-        <div class="footer-block">
-            <h5>Мы в соцсетях</h5>
-            <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a>
-            <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
-            <!-- ССЫЛКА НА MAX -->
-            <a href="https://max.ru/join/refQw8YZh7RC1z9hr72iKjy8rI9Kjvi7250J9GkV35Y" target="_blank" style="margin-top: 5px; display:inline-block;"><i class="fas fa-users"></i> MAX</a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
-    </div>
-</footer>
-
-<script>
-    // --- ИСПРАВЛЕННЫЙ СКРИПТ ЗАГРУЗКИ ---
-    
-    function forceHidePreloader() {
-        var preloader = document.getElementById('page-preloader');
-        if (preloader) {
-            preloader.classList.add('done');
-            preloader.style.opacity = '0';
-            preloader.style.visibility = 'hidden';
-            setTimeout(function() {
-                preloader.style.display = 'none';
-            }, 500);
-        }
-    }
-
-    // 1. При полной загрузке
-    window.addEventListener('load', forceHidePreloader);
-
-    // 2. СТРАХОВКА (Таймер 2 сек)
-    setTimeout(forceHidePreloader, 2000);
-
-    // Скрипт меню
-    const menuToggle = document.getElementById('menu-toggle');
-    const mainNav = document.getElementById('main-nav');
-    if(menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('open');
-            const icon = menuToggle.querySelector('i');
-            if (mainNav.classList.contains('open')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-    }
-</script>
-
-</body>
-</html>
+    <div class="loader-
