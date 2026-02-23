@@ -252,4 +252,194 @@
 
 <!-- ЭКРАН ЗАГРУЗКИ -->
 <div id="page-preloader" class="preloader">
-    <div class="loader-
+    <div class="loader-circle"></div>
+    <div class="loader-text">Загрузка расписания...</div>
+</div>
+
+<header class="main-header">
+    <div class="logo-expansive-container">
+        <div class="logo-flex-row">
+            <a href="../index.html" class="logo-visual">
+                <img src="../sobor-sketch.jpg" alt="Христорождественский собор Липецка" class="logo-sketch-large">
+            </a>
+            <div class="logo-brand-area">
+                <h1 class="title-main">Христорождественский</h1>
+                <h2 class="title-secondary">кафедральный собор</h2>
+                <h3 class="title-sub">г. Липецка</h3>
+                <div class="art-divider"></div>
+                <div class="church-meta">
+                    <p>Московский Патриархат <br> <span>Липецкая митрополия</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button id="menu-toggle" class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i> Меню
+    </button>
+    
+    <!-- ИСПРАВЛЕННОЕ МЕНЮ -->
+    <nav class="main-nav" id="main-nav">
+        <ul>
+            <li><a href="../index.html">Главная</a></li>
+            <li class="has-dropdown">
+                <a href="#">О соборе</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../about/">Летопись храма</a></li>
+                    <li><a href="../shrines/">Святыни и молитвословия</a></li>
+                    <li><a href="../archpastor/">Архипастырь</a></li>
+                    <li><a href="../clergy/">Духовенство</a></li>
+                    <li><a href="../school/">Воскресная школа</a></li>
+                </ul>
+            </li>
+            <li><a href="./" class="active">Расписание богослужений</a></li>
+            <li class="has-dropdown">
+                <a href="#">Служение</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../social/">Социальное служение</a></li>
+                    <li><a href="../missionary/">Служение в других храмах</a></li>
+                </ul>
+            </li>
+            <li><a href="../publications/">Публикации</a></li>
+            <li><a href="../contacts/">Контакты</a></li>
+            <li><a href="#" class="btn-note">Подать записку</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    
+    <div class="page-header-simple">
+        <h1 class="schedule-title">Расписание богослужений</h1>
+    </div>
+
+    <!-- ИНФОБЛОК: ЧАСЫ РАБОТЫ -->
+    <div class="open-hours-banner">
+        <div class="open-hours-title">Храм открыт ежедневно</div>
+        <div class="open-hours-text">
+            с <strong>7:00</strong> до <strong>20:00</strong>
+        </div>
+    </div>
+
+    <!-- ТЕКСТОВОЕ ОПИСАНИЕ -->
+    <div class="intro-text-block">
+        <p>
+            Возлюбленные о Господе братья и сестры! Представляем вашему вниманию актуальное расписание богослужений Христорождественского кафедрального собора города Липецка. Расписание обновляется еженедельно.
+        </p>
+        <p>
+            Совместная соборная молитва — это духовное дыхание нашей жизни. Мы с радостью ждем каждого из вас под сводами нашего величественного храма на Соборной горе, чтобы единым сердцем вознести молитвы ко Господу.
+        </p>
+    </div>
+
+    <!-- КАРТОЧКИ ВРЕМЕНИ СЛУЖБ -->
+    <div class="service-times-grid">
+        <div class="service-card">
+            <i class="fas fa-sun service-icon"></i>
+            <h4>Божественная Литургия</h4>
+            <span class="service-time-highlight">8:00</span>
+            <p>Совершается ежедневно. <br>В воскресные и праздничные дни: ранняя в <strong>6:30</strong>, поздняя в <strong>8:30</strong>.</p>
+        </div>
+        
+        <div class="service-card">
+            <i class="fas fa-moon service-icon"></i>
+            <h4>Вечернее богослужение</h4>
+            <span class="service-time-highlight">17:00</span>
+            <p>Начинается ежедневно в вечернее время. Включает в себя вечерню и утреню (или Всенощное бдение).</p>
+        </div>
+
+        <div class="service-card">
+            <i class="fas fa-book-open service-icon"></i>
+            <h4>Таинство Исповеди</h4>
+            <span class="service-time-highlight">Ежедневно</span>
+            <p>Исповедь совершается перед началом Божественной Литургии, а также во время Всенощного бдения.</p>
+        </div>
+    </div>
+
+    <!-- КНОПКА ДЛЯ ТЕЛЕФОНОВ (ИСПРАВЛЕНА: Открывает чистый режим просмотра, который можно приближать) -->
+    <div class="mobile-link-box">
+        <!-- Ссылка изменена с /view на /preview. Это убирает весь интерфейс редактора! -->
+        <a href="https://docs.google.com/document/d/1p5CvOlTQRwtTprxWQkiFdZUmnj-3nW-5TGTKr7Njsaw/preview" target="_blank" class="btn-open-doc">
+            <i class="fas fa-search-plus"></i> Открыть расписание на весь экран
+        </a>
+    </div>
+
+    <!-- ДОКУМЕНТ В ЗОЛОТОЙ РАМКЕ -->
+    <div class="doc-gold-wrapper">
+        <!-- Анимационная подсказка, которая видна только на телефонах -->
+        <div class="swipe-hint">
+            <i class="fas fa-hand-point-right"></i> Таблицу можно листать вправо и влево
+        </div>
+        
+        <div class="doc-inner-border">
+            <iframe class="doc-frame" src="https://docs.google.com/document/d/1p5CvOlTQRwtTprxWQkiFdZUmnj-3nW-5TGTKr7Njsaw/preview" title="Подробное расписание служб по дням недели"></iframe>
+        </div>
+    </div>
+
+</main>
+
+<footer class="site-footer-light">
+    <div class="container footer-content">
+        <div class="footer-block">
+            <h5>Навигация</h5>
+            <a href="../index.html">Главная</a>
+            <a href="../about/">О соборе</a>
+            <a href="./">Расписание</a>
+            <a href="../shrines/">Святыни</a>
+        </div>
+        <div class="footer-block">
+            <h5>Контакты</h5>
+            <p>г. Липецк, Соборная пл., 4</p>
+            <p>+7 (4742) 27-04-78</p>
+        </div>
+        <div class="footer-block">
+            <h5>Мы в соцсетях</h5>
+            <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a>
+            <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            <a href="https://max.ru/join/refQw8YZh7RC1z9hr72iKjy8rI9Kjvi7250J9GkV35Y" target="_blank" style="margin-top: 5px; display:inline-block;"><i class="fas fa-users"></i> MAX</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
+    </div>
+</footer>
+
+<script>
+    // Скрипт скрытия прелоадера
+    function forceHidePreloader() {
+        var preloader = document.getElementById('page-preloader');
+        if (preloader) {
+            preloader.classList.add('done');
+            preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+            setTimeout(function() {
+                preloader.style.display = 'none';
+            }, 500);
+        }
+    }
+
+    // 1. При полной загрузке
+    window.addEventListener('load', forceHidePreloader);
+
+    // 2. СТРАХОВКА (Таймер 2 сек)
+    setTimeout(forceHidePreloader, 2000);
+
+    // Скрипт мобильного меню
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+    if(menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+            const icon = menuToggle.querySelector('i');
+            if (mainNav.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
