@@ -1,8 +1,9 @@
----
-layout: default
-title: Расписание богослужений
----
-
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <!-- SEO -->
     <title>Расписание богослужений Липецк | Христорождественский собор</title>
     
@@ -140,8 +141,58 @@ title: Расписание богослужений
     <div class="loader-text">Загрузка расписания...</div>
 </div>
 
-            
+<header class="main-header">
+    <div class="logo-expansive-container">
+        <div class="logo-flex-row">
+            <a href="../index.html" class="logo-visual">
+                <img src="../sobor-sketch.jpg" alt="Собор" class="logo-sketch-large">
+            </a>
+            <div class="logo-brand-area">
+                <h1 class="title-main">Христорождественский</h1>
+                <h2 class="title-secondary">кафедральный собор</h2>
+                <h3 class="title-sub">г. Липецка</h3>
+                <div class="art-divider"></div>
+                <div class="church-meta">
+                    <p>Московский Патриархат <br> <span>Липецкая митрополия</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button id="menu-toggle" class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i> Меню
+    </button>
+    
+    <!-- МЕНЮ С ПРАВИЛЬНЫМИ ССЫЛКАМИ (ПАПКИ) -->
+    <nav class="main-nav" id="main-nav">
+        <ul>
+            <li><a href="../index.html">Главная</a></li>
+            <li class="has-dropdown">
+                <a href="#">О соборе</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../about/">Летопись храма</a></li>
+                    <li><a href="../shrines/">Святыни и молитвословия</a></li> <!-- Ссылка в соседнюю папку -->
+                    <li><a href="../archpastor/">Архипастырь</a></li>
+                    <li><a href="../clergy/">Духовенство</a></li>
+                    <li><a href="../school/">Воскресная школа</a></li>
+                </ul>
+            </li>
+            <li><a href="./">Расписание богослужений</a></li>
+            <li class="has-dropdown">
+                <a href="#" class="active">Служение</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../social/">Социальное служение</a></li>
+                    <li><a href="../missionary/" class="active">Служение в других храмах</a></li>
+                </ul>
+            </li>
+            <li><a href="../publications/">Публикации</a></li>
+            <li><a href="../contacts/">Контакты</a></li>
+            <li><a href="#" class="btn-note">Подать записку</a></li>
+        </ul>
+    </nav>
+</header>
 
+<main class="container">
     
     <div class="page-header-simple">
         <h1 class="schedule-title">Расписание богослужений</h1>
