@@ -65,7 +65,7 @@
         }
 
         .main-feed {
-            flex: 1; /* Занимает левую часть */
+            flex: 1; /* Занимает всю левую часть */
             background: #fff;
             border: 1px solid var(--border, #EAE3D5);
             border-top: 3px solid var(--gold, #C5A059);
@@ -73,33 +73,32 @@
             padding: 0; 
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0,0,0,0.03);
-            min-height: 800px;
             box-sizing: border-box;
             width: 100%;
         }
 
-        /* ФИКС ДЛЯ ВИДЖЕТА ВК (чтобы тянулся на 100% и не оставлял пустот) */
+        /* ФИКС ДЛЯ ВИДЖЕТА ВК (ЖЕСТКОЕ РАСТЯГИВАНИЕ) */
         #vk_groups, #vk_groups iframe {
             width: 100% !important;
+            max-width: 100% !important;
+            min-width: 100% !important;
+            display: block;
         }
 
         .sidebar {
-            width: 350px; /* Фиксированная ширина для правой колонки на ПК */
+            width: 350px; /* Фиксированная ширина для календаря на ПК */
             flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
             box-sizing: border-box;
         }
 
         /* ==========================================================
-           СТИЛИ ПРАВОСЛАВНОГО КАЛЕНДАРЯ (Компактная версия)
+           СТИЛИ ПРАВОСЛАВНОГО КАЛЕНДАРЯ
            ========================================================== */
         .sidebar-calendar {
             background: rgba(253, 251, 247, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            padding: 20px 15px; /* Компактные отступы */
+            padding: 20px 15px; 
             border: 1px solid rgba(234, 227, 213, 0.6);
             border-top: 3px solid var(--gold, #C5A059);
             border-radius: 4px;
@@ -109,7 +108,7 @@
         .sidebar-calendar-title {
             font-family: var(--font-serif, 'PT Serif', serif);
             margin: 0 0 15px 0;
-            font-size: 18px; /* Компактный заголовок */
+            font-size: 18px; 
             font-weight: 700;
             color: var(--gold, #C5A059);
             text-align: center;
@@ -133,7 +132,7 @@
 
         .pravoslavie-calendar-widget {
             font-family: var(--font-sans, 'Open Sans', sans-serif);
-            font-size: 13.5px; /* Компактный шрифт */
+            font-size: 13.5px; 
             line-height: 1.4;
             color: #444;
         }
@@ -152,7 +151,7 @@
         }
 
         .pravoslavie-calendar-widget img {
-            max-width: 110px; /* Уменьшенная икона */
+            max-width: 110px; 
             height: auto;
             margin: 8px auto 12px auto;
             display: block;
@@ -189,64 +188,13 @@
             margin: 2px 0;
         }
 
-        /* ==========================================================
-           БЛОК СОЦСЕТЕЙ
-           ========================================================== */
-        .sidebar-widget {
-            background: #fdfbf7;
-            border: 1px solid var(--border, #EAE3D5);
-            padding: 25px;
-            border-radius: 4px;
-            text-align: center;
-        }
-
-        .sidebar-title-simple {
-            font-family: var(--font-serif, 'PT Serif', serif);
-            font-size: 20px;
-            color: #2c241b;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin: 0 0 15px 0;
-            border-bottom: 1px solid #EAE3D5;
-            padding-bottom: 15px;
-        }
-
-        .social-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-family: var(--font-sans, 'Open Sans', sans-serif);
-            font-weight: 600;
-            font-size: 15px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-sizing: border-box;
-        }
-        .social-btn:last-child { margin-bottom: 0; }
-        .social-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .btn-tg { background-color: #0088cc; color: #fff; }
-        .btn-vk { background-color: #0077FF; color: #fff; }
-        .btn-max { background-color: #2c241b; color: var(--gold, #C5A059); border: 1px solid var(--gold, #C5A059); }
-
-        .social-btn i { font-size: 20px; }
-
         /* АДАПТИВНОСТЬ */
         @media (max-width: 900px) {
             .publications-layout { 
-                flex-direction: column; /* Ставит колонки друг под друга на планшетах и телефонах */
+                flex-direction: column; 
                 gap: 30px; 
             }
             .sidebar { width: 100%; }
-            .main-feed { width: 100%; }
         }
         @media (max-width: 768px) {
             .page-title { font-size: 32px; }
@@ -300,7 +248,6 @@
                     <li><a href="../missionary/">Служение в других храмах</a></li>
                 </ul>
             </li>
-            <!-- Раздел Публикации теперь активен -->
             <li><a href="./" class="active">Публикации</a></li>
             <li><a href="../contacts/">Контакты</a></li>
             <li><a href="#" class="btn-note">Подать записку</a></li>
@@ -326,15 +273,13 @@
             <div id="vk_groups"></div>
         </div>
 
-        <!-- ПРАВАЯ КОЛОНКА (САЙДБАР) -->
+        <!-- ПРАВАЯ КОЛОНКА (САЙДБАР С КАЛЕНДАРЕМ) -->
         <aside class="sidebar">
             
-            <!-- РЕАЛЬНЫЙ ВИДЖЕТ ПРАВОСЛАВНОГО КАЛЕНДАРЯ -->
             <div class="sidebar-calendar">
                 <h5 class="sidebar-calendar-title">Православный календарь</h5>
                 
                 <div class="pravoslavie-calendar-widget">
-                    <!-- Загрузка скрипта Православие.Ru -->
                     <script src="https://script.pravoslavie.ru/calendar.php?advanced=1&dayicon=1&bold=1&tipikon=1&para=1&icon=1&target=1&name=1"></script>
                     
                     <div class="pravoslavie-calendar-center">
@@ -353,24 +298,6 @@
                         <script>print_chten()</script>
                     </div>
                 </div>
-            </div>
-
-            <!-- Блок с другими соцсетями -->
-            <div class="sidebar-widget">
-                <h3 class="sidebar-title-simple">Мы в соцсетях</h3>
-                <p style="font-size: 14px; color: #666; margin-bottom: 20px;">Подписывайтесь на нас там, где вам удобнее:</p>
-                
-                <a href="https://t.me/Lsobor" target="_blank" class="social-btn btn-tg">
-                    <i class="fab fa-telegram-plane"></i> Читать в Telegram
-                </a>
-                
-                <a href="https://vk.com/sobor48" target="_blank" class="social-btn btn-vk">
-                    <i class="fab fa-vk"></i> Группа ВКонтакте
-                </a>
-                
-                <a href="https://max.ru/join/refQw8YZh7RC1z9hr72iKjy8rI9Kjvi7250J9GkV35Y" target="_blank" class="social-btn btn-max">
-                    <i class="fas fa-users"></i> Профиль в MAX
-                </a>
             </div>
 
         </aside>
@@ -411,13 +338,13 @@
     setTimeout(function() {
         if(typeof VK !== 'undefined') {
             VK.Widgets.Group("vk_groups", {
-                mode: 4,               // Лента
-                wide: 1,               // Адаптивная ширина
-                height: "800",         // Одинаковая высота с календарем
+                mode: 4,               
+                width: "auto",         // <--- ВОТ ГЛАВНЫЙ СЕКРЕТ! Это заставит ВК занять 100% ширины.
+                height: "800",         
                 color1: "FFFFFF",      
                 color2: "2c241b",      
-                color3: "C5A059"       // Золотой цвет ссылок
-            }, 189863747);             // ИСПРАВЛЕННЫЙ ID ГРУППЫ СОБОРА
+                color3: "C5A059"       
+            }, 189863747);             
         }
     }, 500);
 
