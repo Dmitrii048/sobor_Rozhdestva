@@ -14,7 +14,7 @@
     <!-- Подключаем стили -->
     <link rel="stylesheet" href="../style.css">
     
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -73,10 +73,10 @@
             font-size: 22px;
         }
 
-        /* ВСТУПИТЕЛЬНЫЙ ТЕКСТ */
+        /* ВСТУПИТЕЛЬНЫЙ ТЕКСТ С ЦИТАТОЙ */
         .intro-text-block {
             max-width: 900px;
-            margin: 0 auto 40px;
+            margin: 0 auto 50px;
             text-align: center;
             padding: 0 20px;
         }
@@ -89,61 +89,136 @@
             margin-bottom: 20px;
         }
 
-        /* СТРУКТУРИРОВАННАЯ СЕТКА ВРЕМЕНИ СЛУЖБ */
+        .orthodox-quote {
+            font-family: var(--font-serif, 'PT Serif', serif);
+            font-size: 24px;
+            font-style: italic;
+            color: var(--gold, #C5A059);
+            margin: 35px auto;
+            padding: 0 20px;
+            line-height: 1.5;
+            max-width: 750px;
+        }
+
+        .quote-ref {
+            display: block;
+            font-size: 16px;
+            color: #888;
+            font-style: normal;
+            margin-top: 10px;
+            font-family: var(--font-sans, 'Open Sans', sans-serif);
+        }
+
+        /* НОВЫЙ СТРОГИЙ ДИЗАЙН КАРТОЧЕК (Без иконок, элегантная типографика) */
         .service-times-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1000px;
-            margin: 0 auto 50px auto;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1050px;
+            margin: 0 auto 40px auto;
             padding: 0 20px;
         }
 
         .service-card {
             background: #fff;
             border: 1px solid var(--border, #EAE3D5);
-            padding: 30px 20px;
-            text-align: center;
-            border-radius: 6px;
+            border-top: 4px solid var(--gold, #C5A059);
+            padding: 40px 30px; /* Увеличили "воздух" внутри карточек */
+            text-align: left; /* Строгое выравнивание по левому краю */
+            border-radius: 4px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(197, 160, 89, 0.1);
-        }
-
-        .service-icon {
-            font-size: 30px;
-            color: var(--gold, #C5A059);
-            margin-bottom: 15px;
+            box-shadow: 0 15px 35px rgba(197, 160, 89, 0.1);
         }
 
         .service-card h4 {
             font-family: var(--font-serif, 'PT Serif', serif);
-            font-size: 22px;
+            font-size: 24px;
             color: #2c241b;
-            margin: 0 0 10px 0;
+            margin: 0 0 25px 0;
+            padding-bottom: 15px;
+            position: relative;
         }
 
-        .service-card p {
+        /* Элегантная золотая окантовка (черта) под заголовком */
+        .service-card h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--gold, #C5A059);
+        }
+
+        .schedule-details {
             font-family: var(--font-sans, 'Open Sans', sans-serif);
             font-size: 15px;
-            color: #666;
-            line-height: 1.6;
-            margin: 0;
+            color: #444;
+            line-height: 1.7;
         }
 
-        .service-time-highlight {
+        .schedule-details p {
+            margin: 0 0 18px 0;
+        }
+        .schedule-details p:last-child {
+            margin-bottom: 0;
+        }
+
+        .schedule-details strong {
+            color: #2c241b;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
             display: block;
-            font-size: 26px;
+            margin-bottom: 4px;
+        }
+
+        .time-gold {
+            display: inline-block;
+            font-size: 22px;
             font-weight: 700;
             color: var(--gold, #C5A059);
-            margin: 10px 0;
             font-family: var(--font-serif, 'PT Serif', serif);
         }
 
-        /* ЗОЛОТАЯ РАМА ДЛЯ ДОКУМЕНТА (Адаптирована для телефона) */
+        /* УВЕДОМЛЕНИЕ О ВЕЛИКОМ ПОСТЕ */
+        .lent-notice {
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            background: #faf8f5;
+            border: 1px dashed var(--gold, #C5A059);
+            padding: 30px 40px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .lent-title {
+            font-family: var(--font-serif, 'PT Serif', serif);
+            color: #8c2b2b;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .lent-notice p {
+            font-family: var(--font-sans, 'Open Sans', sans-serif);
+            font-size: 16px;
+            color: #555;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        /* ЗОЛОТАЯ РАМА ДЛЯ ДОКУМЕНТА */
         .doc-gold-wrapper {
             width: 100%;
             max-width: 1000px;
@@ -156,7 +231,6 @@
             position: relative;
         }
 
-        /* Подсказка для телефона "Листать вправо" */
         .swipe-hint {
             display: none;
             text-align: center;
@@ -174,20 +248,19 @@
             100% { opacity: 0.6; transform: translateX(0); }
         }
 
-        /* Обёртка, которая позволяет скроллить таблицу пальцем */
         .doc-inner-border {
             border: 2px solid var(--gold, #C5A059);
             border-radius: 4px;
-            overflow-x: auto; /* Позволяет листать по горизонтали */
+            overflow-x: auto; 
             overflow-y: hidden;
-            -webkit-overflow-scrolling: touch; /* Плавный скролл на iPhone */
+            -webkit-overflow-scrolling: touch; 
             position: relative;
             background: #fcfbf8;
         }
 
         .doc-frame {
             width: 100%;
-            min-width: 800px; /* Гарантирует, что таблица не сожмется и текст будет крупным */
+            min-width: 800px; 
             height: 1100px;
             border: none;
             display: block;
@@ -221,17 +294,14 @@
         /* АДАПТИВНОСТЬ */
         @media (max-width: 768px) {
             .schedule-title { font-size: 32px; }
+            .orthodox-quote { font-size: 20px; margin: 25px auto; }
             
-            /* Включаем подсказку для телефонов */
             .swipe-hint { display: block; }
-            
-            /* На мобильных делаем высоту меньше, чтобы было удобно */
             .doc-frame { height: 650px; }
             
             .doc-gold-wrapper { padding: 0; border: none; box-shadow: none; margin-bottom: 40px;}
             .doc-inner-border { border: none; border-top: 2px solid var(--gold, #C5A059); border-bottom: 2px solid var(--gold, #C5A059); border-radius: 0; }
             
-            /* Добавляем тень по бокам, чтобы визуально показать, что можно листать */
             .doc-inner-border::after {
                 content: '';
                 position: absolute;
@@ -244,7 +314,9 @@
             .intro-text-block p { font-size: 18px; text-align: left; }
             .mobile-link-box { display: block; }
             .service-times-grid { gap: 15px; }
+            .service-card { padding: 25px 20px; }
             .open-hours-banner { margin: 0 15px 30px 15px; }
+            .lent-notice { margin: 0 15px 40px 15px; padding: 20px 15px; }
         }
     </style>
 </head>
@@ -278,7 +350,6 @@
         <i class="fas fa-bars"></i> Меню
     </button>
     
-    <!-- ИСПРАВЛЕННОЕ МЕНЮ -->
     <nav class="main-nav" id="main-nav">
         <ul>
             <li><a href="../index.html">Главная</a></li>
@@ -321,43 +392,79 @@
         </div>
     </div>
 
-    <!-- ТЕКСТОВОЕ ОПИСАНИЕ -->
+    <!-- ТЕКСТОВОЕ ОПИСАНИЕ С ЦИТАТОЙ ИЗ ЕВАНГЕЛИЯ И ЛИТУРГИИ -->
     <div class="intro-text-block">
         <p>
             Возлюбленные о Господе братья и сестры! Представляем вашему вниманию актуальное расписание богослужений Христорождественского кафедрального собора города Липецка. Расписание обновляется еженедельно.
         </p>
+        
+        <blockquote class="orthodox-quote">
+            «Где двое или трое собраны во имя Мое, там Я посреди них»
+            <span class="quote-ref">(Мф. 18:20)</span>
+        </blockquote>
+        
         <p>
-            Совместная соборная молитва — это духовное дыхание нашей жизни. Мы с радостью ждем каждого из вас под сводами нашего величественного храма на Соборной горе, чтобы единым сердцем вознести молитвы ко Господу.
+            Мы с радостью ждем каждого из вас под сводами нашего величественного храма на Соборной горе, чтобы «единым сердцем и едиными устами» вознести соборную молитву ко Господу.
         </p>
     </div>
 
-    <!-- КАРТОЧКИ ВРЕМЕНИ СЛУЖБ -->
+    <!-- КАРТОЧКИ ВРЕМЕНИ СЛУЖБ (Элегантный, строгий дизайн) -->
     <div class="service-times-grid">
+        
+        <!-- Карточка 1: Литургия -->
         <div class="service-card">
-            <i class="fas fa-sun service-icon"></i>
             <h4>Божественная Литургия</h4>
-            <span class="service-time-highlight">8:00</span>
-            <p>Совершается ежедневно. <br>В воскресные и праздничные дни: ранняя в <strong>6:30</strong>, поздняя в <strong>8:30</strong>.</p>
+            <div class="schedule-details">
+                <p>
+                    <strong>Будничные дни:</strong>
+                    <span class="time-gold">8:00</span>
+                </p>
+                <p>
+                    <strong>Воскресенье и великие праздники:</strong>
+                    Ранняя Литургия — <span class="time-gold">6:30</span><br>
+                    Поздняя Литургия — <span class="time-gold">8:30</span>
+                </p>
+            </div>
         </div>
         
+        <!-- Карточка 2: Вечернее богослужение -->
         <div class="service-card">
-            <i class="fas fa-moon service-icon"></i>
             <h4>Вечернее богослужение</h4>
-            <span class="service-time-highlight">17:00</span>
-            <p>Начинается ежедневно в вечернее время. Включает в себя вечерню и утреню (или Всенощное бдение).</p>
+            <div class="schedule-details">
+                <p>
+                    <strong>Начало ежедневно:</strong>
+                    <span class="time-gold">17:00</span>
+                </p>
+                <p>
+                    <strong>Будничные дни:</strong>
+                    Вечерня с утреней
+                </p>
+                <p>
+                    <strong>Суббота и кануны праздников:</strong>
+                    Всенощное бдение
+                </p>
+            </div>
         </div>
 
+        <!-- Карточка 3: Исповедь -->
         <div class="service-card">
-            <i class="fas fa-book-open service-icon"></i>
             <h4>Таинство Исповеди</h4>
-            <span class="service-time-highlight">Ежедневно</span>
-            <p>Исповедь совершается перед началом Божественной Литургии, а также во время Всенощного бдения.</p>
+            <div class="schedule-details">
+                <p>
+                    Таинство Исповеди в кафедральном соборе совершается <strong>только во время Всенощного бдения</strong> (в субботу вечером и накануне праздничных дней).
+                </p>
+            </div>
         </div>
     </div>
 
-    <!-- КНОПКА ДЛЯ ТЕЛЕФОНОВ (ИСПРАВЛЕНА: Открывает чистый режим просмотра, который можно приближать) -->
+    <!-- УВЕДОМЛЕНИЕ О ВЕЛИКОМ ПОСТЕ -->
+    <div class="lent-notice">
+        <div class="lent-title">Особенности богослужений Великого поста</div>
+        <p>В период Святой Четыредесятницы строй служб меняется согласно великопостному уставу: совершаются Литургии Преждеосвященных Даров, читается Великий покаянный канон прп. Андрея Критского, совершается Таинство Елеосвящения (Соборование). Пожалуйста, сверяйтесь с подробным расписанием ниже.</p>
+    </div>
+
+    <!-- КНОПКА ДЛЯ ТЕЛЕФОНОВ -->
     <div class="mobile-link-box">
-        <!-- Ссылка изменена с /view на /preview. Это убирает весь интерфейс редактора! -->
         <a href="https://docs.google.com/document/d/1p5CvOlTQRwtTprxWQkiFdZUmnj-3nW-5TGTKr7Njsaw/preview" target="_blank" class="btn-open-doc">
             <i class="fas fa-search-plus"></i> Открыть расписание на весь экран
         </a>
@@ -365,7 +472,6 @@
 
     <!-- ДОКУМЕНТ В ЗОЛОТОЙ РАМКЕ -->
     <div class="doc-gold-wrapper">
-        <!-- Анимационная подсказка, которая видна только на телефонах -->
         <div class="swipe-hint">
             <i class="fas fa-hand-point-right"></i> Таблицу можно листать вправо и влево
         </div>
