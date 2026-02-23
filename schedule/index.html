@@ -186,25 +186,26 @@
             100% { opacity: 0.6; transform: translateX(0); }
         }
 
-    .doc-inner-border { 
-            border: none; 
-            border-top: 2px solid var(--gold, #C5A059); 
-            border-bottom: 2px solid var(--gold, #C5A059); 
-            border-radius: 0; 
-            
-            /* ФИКСИРУЕМ ВЫСОТУ КОНТЕЙНЕРА НА ТЕЛЕФОНЕ */
-            height: 350px; 
-            overflow: hidden !important; /* Убираем скролл, так как теперь всё влезет в экран */
+  .doc-inner-border {
+            width: 100%;
+            border: 2px solid var(--gold, #C5A059);
+            border-radius: 2px;
+            overflow-x: auto !important; 
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch; 
+            position: relative;
+            background: #fcfbf8;
+            box-sizing: border-box;
         }
 
-        .doc-frame { 
-            /* МАГИЯ МАСШТАБИРОВАНИЯ */
-            width: 250% !important; /* Заставляем Google думать, что это широкий компьютер */
-            height: 900px !important; /* Высота с запасом */
-            transform: scale(0.4); /* Жестко уменьшаем масштаб (отдаляем) до 40% ! */
-            transform-origin: 0 0; /* Точка сжатия - левый верхний угол */
+        .doc-frame {
+            width: 100%;
+            min-width: 600px; 
+            height: 1100px; /* На ПК таблица длинная и удобная */
             border: none;
             display: block;
+            background: #fcfbf8;
+            transform: none !important; /* ЖЕСТКО ЗАПРЕЩАЕМ СЖАТИЕ НА ПК */
         }
 
         .mobile-link-box { display: none; text-align: center; margin-bottom: 25px; width: 100%; box-sizing: border-box;}
@@ -249,12 +250,27 @@
             main.container { padding: 0 15px; } /* Безопасные отступы по краям */
         }
 
-        @media (max-width: 768px) {
-            .schedule-title { font-size: 30px; }
-            .swipe-hint { display: block; }
+@media (max-width: 768px) {
             
-            /* Уменьшаем высоту iframe, чтобы палец не застревал в нем */
-            .doc-frame { height: 450px; }
+            /* ... тут ваши остальные настройки для телефона ... */
+
+            /* И вот тут мы включаем магию сжатия только для телефона */
+            .doc-inner-border { 
+                border: none; 
+                border-top: 2px solid var(--gold, #C5A059); 
+                border-bottom: 2px solid var(--gold, #C5A059); 
+                border-radius: 0; 
+                height: 350px !important; /* Ограничиваем высоту на телефоне */
+                overflow: hidden !important; 
+            }
+
+            .doc-frame { 
+                width: 250% !important; 
+                height: 900px !important; 
+                transform: scale(0.4) !important; /* Уменьшаем до 40% ТОЛЬКО на телефоне */
+                transform-origin: 0 0; 
+            }
+        }
             
             .doc-gold-wrapper { padding: 0; border: none; box-shadow: none; margin-bottom: 40px;}
             .doc-inner-border { border: none; border-top: 2px solid var(--gold, #C5A059); border-bottom: 2px solid var(--gold, #C5A059); border-radius: 0; }
