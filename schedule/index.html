@@ -221,26 +221,29 @@
         .btn-open-doc:hover { background-color: #b08d4a; }
 
         /* АДАПТИВНОСТЬ */
-        @media (max-width: 850px) {
-            .schedule-summary-board {
-                grid-template-columns: 1fr;
-                margin: 0 15px 30px;
-            }
-            .board-col {
-                border-right: none;
-                border-bottom: 1px solid var(--border, #EAE3D5);
-            }
-            .board-col:last-child { border-bottom: none; }
-        }
-
+      /* АДАПТИВНОСТЬ */
         @media (max-width: 768px) {
             .schedule-title { font-size: 30px; }
             
             .swipe-hint { display: block; }
-            .doc-frame { height: 650px; }
+
+            /* === ИСПРАВЛЕНИЕ МАСШТАБА И ЗАВИСАНИЯ ТУТ === */
+            .doc-frame { 
+                min-width: 600px; /* Было 800. Теперь масштаб отдалится, всё станет мельче и удобнее */
+                height: 450px; /* Уменьшили высоту! Теперь окно не съедает весь экран, и сайт листается без лагов */
+            }
             
             .doc-gold-wrapper { padding: 0; border: none; box-shadow: none; margin-bottom: 40px;}
-            .doc-inner-border { border: none; border-top: 2px solid var(--gold, #C5A059); border-bottom: 2px solid var(--gold, #C5A059); border-radius: 0; }
+            
+            .doc-inner-border { 
+                border: none; 
+                border-top: 2px solid var(--gold, #C5A059); 
+                border-bottom: 2px solid var(--gold, #C5A059); 
+                border-radius: 0; 
+                /* Принудительно включаем плавный скролл для Apple и Android */
+                -webkit-overflow-scrolling: touch;
+                overflow-x: auto;
+            }
             
             .doc-inner-border::after {
                 content: '';
