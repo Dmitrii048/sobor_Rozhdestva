@@ -6,30 +6,62 @@
     <title>Контакты | Христорождественский собор г. Липецка</title>
     
     <!-- SEO Мета-теги -->
-    <meta name="description" content="Контактная информация Христорождественского кафедрального собора г. Липецка: адрес, телефон, электронная почта, схема проезда и актуальные реквизиты для пожертвований. Мы всегда рады видеть вас в нашем православном храме!">
-    <meta name="keywords" content="Христорождественский собор Липецк контакты, кафедральный собор Липецк телефон, адрес собора, реквизиты для пожертвований, православный храм Липецк, Липецкая епархия, Русская Православная Церковь">
+    <meta name="description" content="Контактная информация Христорождественского кафедрального собора г. Липецка: адрес, телефон, электронная почта, схема проезда и актуальные реквизиты для пожертвований. Храм открыт ежедневно с 7:00 до 20:00.">
+    <meta name="keywords" content="Христорождественский собор Липецк контакты, кафедральный собор Липецк телефон, адрес собора, реквизиты для пожертвований, православный храм Липецк, Липецкая епархия">
     
-    <!-- Подключаем основной стиль (на уровень выше) -->
+    <!-- Подключаем основной стиль -->
     <link rel="stylesheet" href="../style.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
+        /* ГЛОБАЛЬНЫЙ ПРЕДОХРАНИТЕЛЬ */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         /* --- СТИЛИ СТРАНИЦЫ КОНТАКТОВ --- */
         
         .contacts-intro {
             text-align: center;
             max-width: 850px;
-            margin: 40px auto 60px;
+            margin: 40px auto 50px;
         }
 
-        .contacts-intro-text {
+        .chapter-title {
             font-family: 'PT Serif', serif;
-            font-size: 18px;
-            color: #444;
-            line-height: 1.7;
-            margin-top: 20px;
+            font-size: 42px;
+            color: #C5A059;
+            margin: 0 0 25px 0;
+            font-weight: 700;
+        }
+
+        /* КРАСИВАЯ ПЛАШКА ВРЕМЕНИ РАБОТЫ */
+        .open-hours-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #fdfbf7;
+            border: 1px solid #C5A059;
+            padding: 14px 35px;
+            border-radius: 40px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 17px;
+            color: #2c241b;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.15);
+            transition: transform 0.3s ease;
+        }
+        .open-hours-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.25);
+        }
+        .open-hours-badge i {
+            color: #C5A059;
+            font-size: 22px;
+            margin-right: 12px;
         }
 
         /* Сетка: Слева текст, Справа карта */
@@ -275,6 +307,8 @@
             .requisites-section { padding: 30px 20px; }
             .tax-warning-box { flex-direction: column; align-items: center; text-align: center; }
             .tax-warning-icon { margin-right: 0; margin-bottom: 15px; }
+            .chapter-title { font-size: 32px; }
+            .open-hours-badge { font-size: 15px; padding: 12px 25px; }
         }
     </style>
 </head>
@@ -288,7 +322,7 @@
 <header class="main-header">
     <div class="logo-expansive-container">
         <div class="logo-flex-row">
-            <!-- Путь к логотипу (уровень вверх) -->
+            <!-- Путь к логотипу -->
             <a href="../index.html" class="logo-visual">
                 <img src="../sobor-sketch.jpg" alt="Христорождественский кафедральный собор" class="logo-sketch-large">
             </a>
@@ -297,6 +331,10 @@
                 <h2 class="title-secondary">кафедральный собор</h2>
                 <h3 class="title-sub">г. Липецка</h3>
                 <div class="art-divider"></div>
+                <!-- Блок принадлежности как на странице расписания -->
+                <div class="church-meta">
+                    <p>Московский Патриархат <br> <span>Липецкая митрополия</span></p>
+                </div>
             </div>
         </div>
     </div>
@@ -305,7 +343,7 @@
         <i class="fas fa-bars"></i> Меню
     </button>
     
-    <!-- НАВИГАЦИЯ -->
+    <!-- СИНХРОНИЗИРОВАННАЯ НАВИГАЦИЯ -->
     <nav class="main-nav" id="main-nav">
         <ul>
             <li><a href="../index.html">Главная</a></li>
@@ -319,15 +357,15 @@
                     <li><a href="../school/">Воскресная школа</a></li>
                 </ul>
             </li>
-            <li><a href="../schedule.html">Расписание богослужений</a></li>
+            <li><a href="../schedule/">Расписание богослужений</a></li>
             <li class="has-dropdown">
                 <a href="#">Служение</a>
                 <ul class="dropdown-menu">
-                    <li><a href="../social.html">Социальное служение</a></li>
-                    <li><a href="../missionary.html">Служение в других храмах</a></li>
+                    <li><a href="../social/">Социальное служение</a></li>
+                    <li><a href="../missionary/">Служение в других храмах</a></li>
                 </ul>
             </li>
-            <li><a href="../publications.html">Публикации</a></li>
+            <li><a href="../publications/">Публикации</a></li>
             <li><a href="./" class="active">Контакты</a></li>
             <li><a href="#" class="btn-note">Подать записку</a></li>
         </ul>
@@ -338,9 +376,10 @@
     
     <div class="contacts-intro">
         <h1 class="chapter-title">Контактная информация</h1>
-        <p class="contacts-intro-text">
-            Мы всегда рады приветствовать вас в Доме Божием — кафедральном соборе Рождества Христова города Липецка! Наш храм открыт ежедневно для соборной молитвы, участия в спасительных Таинствах Церкви и духовной поддержки. На этой странице вы найдете подробную контактную информацию: точный адрес, телефон церковной лавки, схему проезда, а также официальные реквизиты для тех, кто желает внести свою посильную лепту в благоукрашение и развитие прихода.
-        </p>
+        <!-- Красивая плашка вместо длинного текста -->
+        <div class="open-hours-badge">
+            <i class="far fa-clock"></i> Храм открыт ежедневно с 7:00 до 20:00
+        </div>
     </div>
 
     <div class="contacts-grid">
@@ -380,7 +419,7 @@
                 </div>
             </div>
 
-            <!-- Обновленные красивые кнопки соцсетей -->
+            <!-- Красивые кнопки соцсетей -->
             <div class="social-buttons-container">
                 <a href="https://vk.com/sobor48" target="_blank" class="social-btn vk">
                     <i class="fab fa-vk"></i> ВКонтакте
@@ -394,9 +433,8 @@
             </div>
         </div>
 
-        <!-- Правая колонка: Центрированная Карта -->
+        <!-- Правая колонка: Карта -->
         <div class="map-wrapper">
-            <!-- Карта теперь ищет конкретный адрес и центрирует собор -->
             <iframe 
                 src="https://yandex.ru/map-widget/v1/?mode=search&text=Христорождественский+собор,+Липецк,+Соборная+площадь,+4&z=17" 
                 allowfullscreen="true">
@@ -404,7 +442,7 @@
         </div>
     </div>
 
-    <!-- Обновленный блок реквизитов -->
+    <!-- Блок реквизитов -->
     <section class="requisites-section">
         <h3 style="text-align: center; font-family: 'PT Serif'; font-size: 28px; margin-top: 0; margin-bottom: 20px;">Реквизиты для пожертвований</h3>
         
@@ -463,7 +501,7 @@
             <h5>Навигация</h5>
             <a href="../index.html">Главная</a>
             <a href="../about/">О соборе</a>
-            <a href="../schedule.html">Расписание</a>
+            <a href="../schedule/">Расписание</a>
             <a href="./">Контакты</a>
         </div>
         <div class="footer-block">
@@ -475,7 +513,7 @@
             <h5>Мы в соцсетях</h5>
             <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a>
             <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
-            <a href="https://max.ru/join/refQw8YZh7RC1z9hr72iKjy8rI9Kjvi7250J9GkV35Y" target="_blank">
+            <a href="https://max.ru/join/refQw8YZh7RC1z9hr72iKjy8rI9Kjvi7250J9GkV35Y" target="_blank" style="margin-top: 5px; display:inline-block;">
                 <i class="fas fa-users"></i> MAX
             </a>
         </div>
