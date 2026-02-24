@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Христорождественский кафедральный собор г. Липецка | Главный православный храм и церковь
+title: Христорождественский кафедральный собор г. Липецка | Главный православный храм
 ---
 
 <!-- SEO META TAGS -->
@@ -28,9 +28,11 @@ title: Христорождественский кафедральный соб�
 </script>
 
 <style>
-    /* ГЕРОЙ-БЛОК */
+    /* =========================================
+       1. ГЕРОЙ-БЛОК
+       ========================================= */
     .home-hero {
-        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('{{ site.baseurl }}/images/history-bg.jpg');
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('{{ site.baseurl }}/images/architecture-bg.jpg');
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
@@ -54,9 +56,11 @@ title: Христорождественский кафедральный соб�
         animation: fadeIn 1.5s ease-out;
     }
 
-    /* БЛОК СТАТУСА */
+    /* =========================================
+       2. БЛОК СТАТУСА (ВСТУПЛЕНИЕ)
+       ========================================= */
     .status-section {
-        padding: 80px 20px 50px;
+        padding: 60px 20px 40px; /* Уменьшил отступы */
         background: #fff;
         text-align: center;
     }
@@ -75,41 +79,72 @@ title: Христорождественский кафедральный соб�
         color: #444; text-align: justify;
     }
 
-    /* БОГОСЛУЖЕНИЯ И КАЛЕНДАРЬ */
+    /* =========================================
+       3. БОГОСЛУЖЕНИЯ И КАЛЕНДАРЬ (ОБНОВЛЕНО)
+       ========================================= */
     .worship-calendar-section {
-        padding: 0 20px 80px;
+        padding: 0 20px 60px;
         background: #fff;
     }
     .wc-grid {
         display: grid;
-        grid-template-columns: 1.6fr 1fr;
+        grid-template-columns: 1fr 1fr; /* Делаем колонки равными для баланса */
         gap: 40px;
-        max-width: 1200px;
+        max-width: 1100px; /* Чуть уже контейнер для компактности */
         margin: 0 auto;
+        align-items: start; /* Выравнивание по верху */
     }
     
+    /* НОВЫЙ ДИЗАЙН БАННЕРА РАСПИСАНИЯ (БЕЗ ФОТО) */
     .worship-banner {
-        /* ФОТО СЛУЖБЫ */
-        background-image: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%), url('{{ site.baseurl }}/images/liturgy-service.jpg');
-        background-size: cover;
-        background-position: center;
+        /* Благородный темный градиент (подрясник/монашеский стиль) */
+        background: linear-gradient(145deg, #362f29 0%, #231f1b 100%);
+        border: 1px solid #C5A059; /* Тонкая золотая рамка */
         border-radius: 4px;
-        padding: 60px 50px;
+        padding: 50px 40px;
         color: #fff;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        min-height: 400px;
+        align-items: center; /* Центрируем текст */
+        text-align: center;  /* Центрируем текст */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        position: relative;
+        overflow: hidden;
     }
+    
+    /* Декоративный водяной знак (Крест) на фоне через CSS */
+    .worship-banner::before {
+        content: '\f641'; /* Код иконки креста FontAwesome */
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        font-size: 150px;
+        color: #C5A059;
+        opacity: 0.07; /* Еле заметный */
+        transform: rotate(15deg);
+        pointer-events: none;
+    }
+
     .worship-title {
-        font-family: 'PT Serif', serif; font-size: 2.5rem; color: #C5A059;
-        margin-bottom: 20px; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        font-family: 'PT Serif', serif; 
+        font-size: 2.2rem; 
+        color: #C5A059; /* Золотой заголовок */
+        margin-bottom: 20px; 
+        line-height: 1.2;
+        position: relative; 
+        z-index: 2;
     }
     .worship-text {
-        font-family: 'PT Serif', serif; font-size: 1.2rem; line-height: 1.6;
-        margin-bottom: 40px; color: #fff; max-width: 90%; text-shadow: 0 1px 5px rgba(0,0,0,0.8);
+        font-family: 'PT Serif', serif; 
+        font-size: 1.15rem; 
+        line-height: 1.7;
+        margin-bottom: 35px; 
+        color: #e0d8cc; /* Светло-бежевый текст */
+        position: relative; 
+        z-index: 2;
     }
 
     /* КАЛЕНДАРЬ */
@@ -127,16 +162,17 @@ title: Христорождественский кафедральный соб�
         font-family: 'PT Serif', serif; font-size: 1.6rem; color: #2C2C2C;
         margin-bottom: 15px; border-bottom: 1px solid #EAE3D5; padding-bottom: 15px;
     }
+    
     .pravoslavie-calendar-widget {
         font-family: 'PT Serif', serif !important;
-        font-size: 16px !important;
+        font-size: 15px !important;
         color: #444 !important;
         line-height: 1.5;
     }
     .pravoslavie-calendar-widget a { color: #C5A059 !important; text-decoration: none !important; font-weight: 700; border-bottom: 1px solid transparent; }
     .pravoslavie-calendar-widget a:hover { border-color: #C5A059; }
     .pravoslavie-calendar-center img { 
-        max-width: 140px; 
+        max-width: 120px; /* Чуть меньше икона */
         height: auto; 
         border-radius: 4px; 
         margin: 15px auto; 
@@ -144,21 +180,23 @@ title: Христорождественский кафедральный соб�
     }
     .pravoslavie-calendar-center b { display: block; margin-top: 10px; color: #2C2C2C; }
 
-    /* ЖИЗНЬ ПРИХОДА (НОВОСТИ) */
+    /* =========================================
+       4. ЖИЗНЬ ПРИХОДА (НОВОСТИ)
+       ========================================= */
     .news-section {
-        padding: 80px 20px;
+        padding: 60px 20px;
         background: #fdfbf7;
         border-top: 1px solid #EAE3D5;
         border-bottom: 1px solid #EAE3D5;
     }
-    .section-head-center { text-align: center; margin-bottom: 50px; }
+    .section-head-center { text-align: center; margin-bottom: 40px; }
     
     .grid-3 {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
         max-width: 1200px;
-        margin: 0 auto 50px;
+        margin: 0 auto 40px;
     }
     
     .card-item {
@@ -168,43 +206,47 @@ title: Христорождественский кафедральный соб�
     .card-item:hover {
         box-shadow: 0 15px 30px rgba(197, 160, 89, 0.15); transform: translateY(-5px); border-color: #C5A059;
     }
-    .card-thumb { height: 220px; position: relative; overflow: hidden; display: block; }
+    .card-thumb { height: 200px; position: relative; overflow: hidden; display: block; }
     .card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
     .card-item:hover .card-thumb img { transform: scale(1.05); }
     
-    .card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-    .card-meta { font-size: 0.8rem; color: #C5A059; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; font-family: 'Open Sans', sans-serif;}
-    .card-title { font-family: 'PT Serif', serif; font-size: 1.25rem; margin: 0 0 15px; line-height: 1.3; color: #2C2C2C; }
-    .card-excerpt { font-size: 0.95rem; color: #555; line-height: 1.6; flex-grow: 1; margin-bottom: 20px; }
+    .card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+    .card-meta { font-size: 0.75rem; color: #C5A059; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; font-family: 'Open Sans', sans-serif;}
+    .card-title { font-family: 'PT Serif', serif; font-size: 1.2rem; margin: 0 0 10px; line-height: 1.3; color: #2C2C2C; }
+    .card-excerpt { font-size: 0.9rem; color: #555; line-height: 1.6; flex-grow: 1; margin-bottom: 15px; }
 
-    /* БЛОКИ-ЗИГЗАГИ */
-    .features-wrapper { padding: 80px 20px; background: #fff; }
-    .feature-row { display: flex; align-items: center; max-width: 1100px; margin: 0 auto 100px; gap: 60px; }
+    /* =========================================
+       5. БЛОКИ-ЗИГЗАГИ
+       ========================================= */
+    .features-wrapper { padding: 60px 20px; background: #fff; }
+    .feature-row { display: flex; align-items: center; max-width: 1100px; margin: 0 auto 80px; gap: 60px; }
     .feature-row:last-child { margin-bottom: 0; }
     .feature-row:nth-child(even) { flex-direction: row-reverse; }
     
     .feature-img { flex: 1; position: relative; text-align: center; }
     .feature-img img { 
         width: 100%; 
-        max-width: 500px; 
-        max-height: 350px; 
+        max-width: 450px; /* Ограничил еще сильнее */
+        max-height: 300px; 
         object-fit: cover;
         height: auto; 
         border-radius: 4px; 
-        box-shadow: 0 20px 50px rgba(0,0,0,0.15); 
+        box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
     }
     
     .feature-text { flex: 1; }
-    .feature-title { font-family: 'PT Serif', serif; font-size: 2.2rem; color: #2C2C2C; margin-bottom: 20px; line-height: 1.2; }
-    .feature-desc { font-family: 'PT Serif', serif; font-size: 1.15rem; line-height: 1.8; color: #555; margin-bottom: 30px; text-align: justify; }
+    .feature-title { font-family: 'PT Serif', serif; font-size: 2rem; color: #2C2C2C; margin-bottom: 15px; line-height: 1.2; }
+    .feature-desc { font-family: 'PT Serif', serif; font-size: 1.1rem; line-height: 1.7; color: #555; margin-bottom: 25px; text-align: justify; }
 
-    /* ВИДЕО */
-    .video-section { padding: 80px 20px; background: #fff; }
+    /* =========================================
+       6. ВИДЕО (СЛОВО ПАСТЫРЯ)
+       ========================================= */
+    .video-section { padding: 60px 20px; background: #fff; }
     .video-card { background: transparent; border: none; box-shadow: none; }
     .video-card:hover { transform: translateY(-5px); box-shadow: none; }
     
     .video-thumb-wrap {
-        height: 200px;
+        height: 180px; /* Компактнее */
         border-radius: 6px;
         overflow: hidden;
         position: relative;
@@ -215,42 +257,42 @@ title: Христорождественский кафедральный соб�
 
     .play-btn-overlay {
         position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-        width: 60px; height: 60px; background: rgba(197, 160, 89, 0.9); border-radius: 50%;
+        width: 50px; height: 50px; background: rgba(197, 160, 89, 0.9); border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
-        color: #fff; font-size: 20px; box-shadow: 0 0 0 5px rgba(255,255,255,0.2); transition: 0.3s;
+        color: #fff; font-size: 18px; box-shadow: 0 0 0 4px rgba(255,255,255,0.2); transition: 0.3s;
     }
-    .video-card:hover .play-btn-overlay { transform: translate(-50%, -50%) scale(1.1); background: #C5A059; box-shadow: 0 0 0 8px rgba(197, 160, 89, 0.4); }
-    .play-btn-overlay i { margin-left: 3px; }
+    .video-card:hover .play-btn-overlay { transform: translate(-50%, -50%) scale(1.1); background: #C5A059; box-shadow: 0 0 0 6px rgba(197, 160, 89, 0.4); }
+    .play-btn-overlay i { margin-left: 2px; }
 
-    .video-info { padding: 20px 5px 0; text-align: center; }
-    .video-title { font-family: 'PT Serif', serif; font-size: 1.15rem; line-height: 1.4; color: #2C2C2C; margin: 0; font-weight: 700; }
-    .video-date-small { display: block; font-size: 12px; color: #999; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+    .video-info { padding: 15px 5px 0; text-align: center; }
+    .video-title { font-family: 'PT Serif', serif; font-size: 1.1rem; line-height: 1.4; color: #2C2C2C; margin: 0; font-weight: 700; }
+    .video-date-small { display: block; font-size: 11px; color: #999; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
 
     /* SEO BLOCK */
     .seo-text-block {
         background-color: #f8f6f2;
-        padding: 60px 20px;
+        padding: 50px 20px;
         border-top: 1px solid #EAE3D5;
         font-family: 'PT Serif', serif;
         color: #666;
-        font-size: 1rem;
-        line-height: 1.8;
+        font-size: 0.95rem;
+        line-height: 1.7;
         text-align: justify;
     }
     .seo-container { max-width: 1000px; margin: 0 auto; columns: 2; column-gap: 50px; }
-    .seo-text-block h2 { font-size: 1.5rem; color: #C5A059; margin-bottom: 20px; column-span: all; text-align: center; }
+    .seo-text-block h2 { font-size: 1.4rem; color: #C5A059; margin-bottom: 20px; column-span: all; text-align: center; }
     
     /* КНОПКИ */
     .btn-gold-solid {
-        display: inline-block; padding: 16px 40px; background: #C5A059; color: #fff;
+        display: inline-block; padding: 14px 35px; background: #C5A059; color: #fff;
         text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; font-size: 13px;
         border-radius: 4px; transition: 0.3s; text-decoration: none; font-family: 'Open Sans', sans-serif;
     }
     .btn-gold-solid:hover { background: #b08d4a; box-shadow: 0 5px 20px rgba(197, 160, 89, 0.4); }
     
     .btn-gold-outline {
-        display: inline-block; padding: 14px 35px; border: 2px solid #C5A059; color: #C5A059;
-        text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; font-size: 13px;
+        display: inline-block; padding: 12px 30px; border: 2px solid #C5A059; color: #C5A059;
+        text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; font-size: 12px;
         border-radius: 4px; transition: 0.3s; text-decoration: none; font-family: 'Open Sans', sans-serif;
     }
     .btn-gold-outline:hover { background: #C5A059; color: #fff; box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3); }
@@ -260,9 +302,12 @@ title: Христорождественский кафедральный соб�
         .hero-title-large { font-size: 2.5rem; padding: 0 15px; }
         .home-hero { height: 60vh; min-height: 350px; }
         
-        .wc-grid, .grid-3 { grid-template-columns: 1fr; gap: 40px; }
-        .worship-banner { padding: 40px 20px; min-height: auto; align-items: center; text-align: center; }
+        .wc-grid { grid-template-columns: 1fr; gap: 30px; }
+        
+        .worship-banner { padding: 40px 20px; }
         .worship-title { font-size: 2rem; }
+        
+        .grid-3 { grid-template-columns: 1fr; gap: 35px; }
         
         .feature-row, .feature-row:nth-child(even) { flex-direction: column; gap: 30px; }
         .feature-img img { max-width: 100%; max-height: 250px; }
@@ -271,9 +316,11 @@ title: Христорождественский кафедральный соб�
         
         .card-thumb { height: 180px; }
         .card-body { padding: 20px; }
+        
         .calendar-sidebar { padding: 20px 15px; }
         .pravoslavie-calendar-widget { font-size: 14px !important; }
         .pravoslavie-calendar-center img { max-width: 80px; margin: 10px auto; }
+        
         .seo-container { columns: 1; }
         
         .btn-gold-solid, .btn-gold-outline { display: block; text-align: center; width: 100%; box-sizing: border-box;}
@@ -301,7 +348,7 @@ title: Христорождественский кафедральный соб�
 <!-- БОГОСЛУЖЕНИЯ + КАЛЕНДАРЬ -->
 <section class="worship-calendar-section">
     <div class="wc-grid">
-        <!-- Левая часть: Расписание (с фото службы) -->
+        <!-- Левая часть: Баннер-открытка (БЕЗ ФОТО) -->
         <div class="worship-banner">
             <h2 class="worship-title">Соборная молитва</h2>
             <p class="worship-text">
@@ -398,6 +445,7 @@ title: Христорождественский кафедральный соб�
     <!-- 3. ВОСКРЕСНАЯ ШКОЛА -->
     <div class="feature-row">
         <div class="feature-img">
+            <!-- Здесь используем фото школы -->
             <img src="{{ site.baseurl }}/images/school-life.jpg" alt="Воскресная школа Ковчег, дети в храме" onerror="this.src='{{ site.baseurl }}/images/arch-1.jpg'"> 
         </div>
         <div class="feature-text">
@@ -411,7 +459,7 @@ title: Христорождественский кафедральный соб�
 
 </section>
 
-<!-- СЛОВО ПАСТЫРЯ (ВИДЕО С ОБЛОЖКАМИ) -->
+<!-- СЛОВО ПАСТЫРЯ (ВИДЕО) -->
 <section class="video-section">
     <div class="section-head-center">
         <h2 class="status-title">Слово пастыря</h2>
@@ -439,7 +487,7 @@ title: Христорождественский кафедральный соб�
     </div>
 </section>
 
-<!-- SEO TEXT BLOCK (ДЛЯ ПОИСКОВИКОВ) -->
+<!-- SEO TEXT BLOCK -->
 <section class="seo-text-block">
     <div class="seo-container">
         <h2>О Духовном Центре Липецка</h2>
