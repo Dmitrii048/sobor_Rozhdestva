@@ -1,137 +1,30 @@
 ---
 layout: default
-title: Все новости собора | Христорождественский собор
+title: Все новости | Христорождественский собор
 ---
 
 <style>
-    /* Шапка архива */
-    .archive-header {
-        background-color: #fcfbf9;
-        padding: 60px 20px;
-        text-align: center;
-        border-bottom: 1px solid #EAE3D5;
-        margin-bottom: 60px;
-    }
-    .archive-title {
-        font-family: 'PT Serif', serif;
-        font-size: 2.5rem;
-        color: #2C2C2C;
-        margin: 0 0 10px 0;
-    }
-    .archive-subtitle {
-        color: #777;
-        font-family: 'PT Serif', serif;
-        font-style: italic;
-        font-size: 1.1rem;
-        margin: 0;
-    }
-
-    /* Сетка новостей */
-    .news-archive-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 40px;
-        max-width: 1200px;
-        margin: 0 auto 80px;
-        padding: 0 20px;
-    }
-
-    /* Карточка новости */
-    .news-card {
-        background: #fff;
-        border: 1px solid #EAE3D5;
-        border-radius: 4px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-    }
-    .news-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(197, 160, 89, 0.12);
-        border-color: #C5A059;
-    }
-
-    /* Изображение */
-    .news-card-img-wrap {
-        height: 230px;
-        overflow: hidden;
-        display: block;
-    }
-    .news-card-img-wrap img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.6s ease;
-    }
-    .news-card:hover .news-card-img-wrap img {
-        transform: scale(1.05);
-    }
-
-    /* Текстовая часть карточки */
-    .news-card-body {
-        padding: 25px;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-    }
-    .news-card-date {
-        color: #C5A059;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 0.85rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 12px;
-        display: block;
-    }
-    .news-card-title {
-        font-family: 'PT Serif', serif;
-        font-size: 1.3rem;
-        line-height: 1.35;
-        color: #2C2C2C;
-        margin: 0 0 15px 0;
-    }
-    .news-card-title a {
-        color: inherit;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-    .news-card-title a:hover {
-        color: #C5A059;
-    }
-    .news-card-excerpt {
-        font-size: 0.95rem;
-        color: #555;
-        line-height: 1.6;
-        margin-bottom: 25px;
-        flex-grow: 1;
-    }
-    .news-card-btn {
-        font-family: 'Open Sans', sans-serif;
-        color: #C5A059;
-        font-weight: 700;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        text-decoration: none;
-        align-self: flex-start;
-        border-bottom: 1px solid transparent;
-        transition: 0.3s;
-    }
-    .news-card-btn:hover {
-        border-bottom-color: #C5A059;
-    }
+    .archive-header { background-color: #fcfbf9; padding: 60px 20px 40px; text-align: center; border-bottom: 1px solid #EAE3D5; margin-bottom: 50px; }
+    .archive-title { font-family: 'PT Serif', serif; font-size: 2.5rem; color: #2C2C2C; margin: 0 0 10px 0; }
+    .news-archive-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto 60px; padding: 0 20px; }
+    .news-card { background: #fff; border: 1px solid #EAE3D5; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s ease; }
+    .news-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15); border-color: #C5A059; }
+    .news-card-img-wrap { height: 200px; overflow: hidden; display: block; }
+    .news-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .news-card:hover .news-card-img-wrap img { transform: scale(1.05); }
+    .news-card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+    .news-card-date { color: #C5A059; font-family: 'Open Sans', sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; }
+    .news-card-title { font-family: 'PT Serif', serif; font-size: 1.3rem; line-height: 1.35; color: #2C2C2C; margin: 0 0 15px 0; }
+    .news-card-excerpt { font-size: 0.95rem; color: #555; line-height: 1.6; margin-bottom: 25px; flex-grow: 1; }
+    .btn-back { display: inline-block; padding: 12px 30px; border: 1px solid #ccc; color: #666; text-transform: uppercase; letter-spacing: 1px; font-size: 12px; border-radius: 4px; text-decoration: none; transition: 0.3s; margin-bottom: 60px; font-weight: 600;}
+    .btn-back:hover { border-color: #C5A059; color: #C5A059; }
 </style>
 
-<!-- ЗАГОЛОВОК АРХИВА -->
 <div class="archive-header">
     <h1 class="archive-title">Летопись событий</h1>
-    <p class="archive-subtitle">Жизнь Христорождественского кафедрального собора</p>
+    <p style="color: #777; font-family: 'PT Serif', serif; font-style: italic;">Жизнь Христорождественского кафедрального собора</p>
 </div>
 
-<!-- СЕТКА НОВОСТЕЙ -->
 <div class="news-archive-grid">
     {% assign main_news = site.posts | where: "category", "news" %}
     {% for post in main_news %}
@@ -142,13 +35,15 @@ title: Все новости собора | Христорождественск
         <div class="news-card-body">
             <span class="news-card-date">{{ post.date | date: "%d.%m.%Y" }}</span>
             <h3 class="news-card-title">
-                <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+                <a href="{{ site.baseurl }}{{ post.url }}" style="color: inherit; text-decoration: none;">{{ post.title }}</a>
             </h3>
-            <div class="news-card-excerpt">
-                {{ post.excerpt | strip_html | truncatewords: 22 }}
-            </div>
-            <a href="{{ site.baseurl }}{{ post.url }}" class="news-card-btn">Читать далее →</a>
+            <div class="news-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</div>
+            <a href="{{ site.baseurl }}{{ post.url }}" style="color: #C5A059; font-weight: 700; text-decoration: none; font-size: 12px; font-family: 'Open Sans', sans-serif;">ЧИТАТЬ ДАЛЕЕ →</a>
         </div>
     </article>
     {% endfor %}
+</div>
+
+<div style="text-align: center;">
+    <a href="{{ site.baseurl }}/" class="btn-back">← Вернуться на главную</a>
 </div>
