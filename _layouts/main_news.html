@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<style>
+    .news-hero {
+        background-color: #fdfbf7;
+        padding: 60px 0;
+        text-align: center;
+        border-bottom: 1px solid #EAE3D5;
+        margin-bottom: 50px;
+    }
+    .article-container { max-width: 800px; margin: 0 auto; padding: 0 20px 60px; }
+    .news-date-badge {
+        color: #C5A059; font-family: 'Open Sans', sans-serif; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 2px; font-size: 14px; display: block; margin-bottom: 15px;
+    }
+    .main-article-img { width: 100%; border-radius: 4px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .article-content { font-family: 'PT Serif', serif; font-size: 1.15rem; line-height: 1.8; color: #333; text-align: justify; }
+    .article-content p { margin-bottom: 20px; }
+    .btn-back-link { display: inline-block; margin-top: 40px; color: #888; text-decoration: none; border-bottom: 1px dashed #ccc; transition: 0.3s; }
+    .btn-back-link:hover { color: #C5A059; border-color: #C5A059; }
+</style>
+
+<div class="news-hero">
+    <div class="container">
+        <span class="news-date-badge">{{ page.date | date: "%d.%m.%Y" }}</span>
+        <h1 class="chapter-title" style="margin-bottom: 0;">{{ page.title }}</h1>
+    </div>
+</div>
+
+<article class="article-container">
+    {% if page.image %}
+    <img src="{{ site.baseurl }}/{{ page.image }}" alt="{{ page.title }}" class="main-article-img">
+    {% endif %}
+
+    <div class="article-content">
+        {{ content }}
+    </div>
+
+    <div style="text-align: center;">
+        <a href="{{ site.baseurl }}/news/" class="btn-back-link">← Вернуться ко всем новостям</a>
+    </div>
+</article>
