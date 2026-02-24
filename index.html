@@ -69,7 +69,7 @@ title: Главная | Христорождественский собор
     }
 
     /* =========================================
-       3. БОГОСЛУЖЕНИЯ И КАЛЕНДАРЬ (ДВЕ КОЛОНКИ ВЫСОКО)
+       3. БОГОСЛУЖЕНИЯ И КАЛЕНДАРЬ
        ========================================= */
     .worship-calendar-section {
         padding: 0 20px 80px;
@@ -77,13 +77,12 @@ title: Главная | Христорождественский собор
     }
     .wc-grid {
         display: grid;
-        grid-template-columns: 1.5fr 1fr; /* Левая часть чуть шире */
+        grid-template-columns: 1.5fr 1fr;
         gap: 40px;
         max-width: 1200px;
         margin: 0 auto;
     }
     
-    /* Баннер расписания (слева) */
     .worship-banner {
         background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url('{{ site.baseurl }}/images/fresco-old.jpg');
         background-size: cover;
@@ -97,22 +96,9 @@ title: Главная | Христорождественский собор
         align-items: flex-start;
         box-shadow: 0 15px 40px rgba(0,0,0,0.15);
     }
-    .worship-title {
-        font-family: 'PT Serif', serif;
-        font-size: 2.5rem;
-        color: #C5A059;
-        margin-bottom: 20px;
-        line-height: 1.2;
-    }
-    .worship-text {
-        font-family: 'PT Serif', serif;
-        font-size: 1.15rem;
-        line-height: 1.7;
-        margin-bottom: 40px;
-        color: #fdfbf7;
-    }
+    .worship-title { font-family: 'PT Serif', serif; font-size: 2.5rem; color: #C5A059; margin-bottom: 20px; line-height: 1.2; }
+    .worship-text { font-family: 'PT Serif', serif; font-size: 1.15rem; line-height: 1.7; margin-bottom: 40px; color: #fdfbf7; }
 
-    /* Календарь (справа) - расширенная версия */
     .calendar-sidebar {
         background: #fdfbf7;
         border: 1px solid #EAE3D5;
@@ -122,20 +108,8 @@ title: Главная | Христорождественский собор
         box-shadow: 0 5px 20px rgba(0,0,0,0.03);
         text-align: center;
     }
-    .calendar-title {
-        font-family: 'PT Serif', serif;
-        font-size: 1.6rem;
-        color: #2C2C2C;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #EAE3D5;
-        padding-bottom: 15px;
-    }
-    .pravoslavie-calendar-widget {
-        font-family: 'PT Serif', serif !important;
-        font-size: 15px !important;
-        color: #444 !important;
-        line-height: 1.6;
-    }
+    .calendar-title { font-family: 'PT Serif', serif; font-size: 1.6rem; color: #2C2C2C; margin-bottom: 20px; border-bottom: 1px solid #EAE3D5; padding-bottom: 15px; }
+    .pravoslavie-calendar-widget { font-family: 'PT Serif', serif !important; font-size: 15px !important; color: #444 !important; line-height: 1.6; }
     .pravoslavie-calendar-widget a { color: #C5A059 !important; text-decoration: none !important; font-weight: 700; transition: 0.3s; }
     .pravoslavie-calendar-widget a:hover { color: #8c713b !important; text-decoration: underline !important; }
     .pravoslavie-calendar-center img { max-width: 120px; height: auto; border-radius: 4px; margin: 15px auto; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
@@ -143,14 +117,14 @@ title: Главная | Христорождественский собор
     .pravoslavie-calendar-center i { color: #8c2b2b; font-style: italic; display: block; margin: 5px 0; }
 
     /* =========================================
-       4. УНИВЕРСАЛЬНАЯ СЕТКА (НОВОСТИ И ВИДЕО - ПО 3 ШТ)
+       4. УНИВЕРСАЛЬНАЯ СЕТКА (НОВОСТИ И ВИДЕО)
        ========================================= */
     .content-section { padding: 80px 20px; background: #fff; }
     .content-section.alt-bg { background: #fdfbf7; border-top: 1px solid #EAE3D5; border-bottom: 1px solid #EAE3D5; }
     
     .grid-3 {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Ровно 3 колонки на ПК */
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 30px;
         max-width: 1200px;
         margin: 50px auto;
@@ -162,12 +136,14 @@ title: Главная | Христорождественский собор
     .card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
     .card-item:hover .card-thumb img { transform: scale(1.05); }
     
+    /* Кнопка Play поверх картинки видео */
     .video-play-icon {
         position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-        width: 60px; height: 60px; background: rgba(197, 160, 89, 0.9); border-radius: 50%;
+        width: 60px; height: 60px; background: rgba(197, 160, 89, 0.85); border-radius: 50%;
         display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
-    .card-item:hover .video-play-icon { background: #fff; color: #C5A059; }
+    .card-item:hover .video-play-icon { background: #fff; color: #C5A059; transform: translate(-50%, -50%) scale(1.1); }
 
     .card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
     .card-meta { font-size: 0.8rem; color: #C5A059; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; font-family: 'Open Sans', sans-serif;}
@@ -175,7 +151,7 @@ title: Главная | Христорождественский собор
     .card-excerpt { font-size: 0.95rem; color: #555; line-height: 1.6; flex-grow: 1; margin-bottom: 20px; }
 
     /* =========================================
-       5. БЛОКИ-ЗИГЗАГИ (ИСТОРИЯ, СВЯТЫНИ, ШКОЛА)
+       5. БЛОКИ-ЗИГЗАГИ
        ========================================= */
     .features-wrapper { padding: 80px 20px; background: #fff; }
     .feature-row { display: flex; align-items: center; max-width: 1100px; margin: 0 auto 80px; gap: 60px; }
@@ -214,7 +190,6 @@ title: Главная | Христорождественский собор
         .home-hero { height: 60vh; min-height: 350px; }
         .status-title { font-size: 2rem; }
         
-        /* Сворачиваем колонки расписания и календаря */
         .wc-grid { grid-template-columns: 1fr; gap: 40px; }
         .worship-banner { padding: 40px 20px; align-items: center; text-align: center; }
         .worship-title { font-size: 2rem; }
@@ -246,11 +221,9 @@ title: Главная | Христорождественский собор
     </div>
 </section>
 
-<!-- РАСПИСАНИЕ И КАЛЕНДАРЬ (СДВОЕННЫЙ БЛОК) -->
+<!-- РАСПИСАНИЕ И КАЛЕНДАРЬ -->
 <section class="worship-calendar-section">
     <div class="wc-grid">
-        
-        <!-- Левая часть: Расписание -->
         <div class="worship-banner">
             <h2 class="worship-title">Ежедневная соборная молитва</h2>
             <p class="worship-text">
@@ -259,11 +232,9 @@ title: Главная | Христорождественский собор
             <a href="{{ site.baseurl }}/schedule/" class="btn-gold-solid">Подробное расписание</a>
         </div>
 
-        <!-- Правая часть: Календарь -->
         <div class="calendar-sidebar">
             <h3 class="calendar-title">Сегодня в Церкви</h3>
             <div class="pravoslavie-calendar-widget">
-                <!-- Расширенный скрипт календаря -->
                 <script src="https://script.pravoslavie.ru/calendar.php?advanced=1&dayicon=1&bold=1&tipikon=1&para=1&icon=1&target=1&name=1"></script>
                 <div class="pravoslavie-calendar-center">
                     <script>print_holiday();</script>
@@ -271,27 +242,22 @@ title: Главная | Христорождественский собор
                     <script>print_week()</script>
                     <script>print_post()</script><br>
                     <i><script>print_trapeza();</script></i><br>
-                    
                     <script>print_icon()</script>
-                    
                     <b>Святые дня: </b><br>
                     <script>print_saints()</script><br>
-                    
                     <b>Евангельские Чтения: </b><br>
                     <script>print_chten()</script>
                 </div>
             </div>
         </div>
-
     </div>
 </section>
 
-<!-- ЖИЗНЬ ПРИХОДА (РОВНО 3 НОВОСТИ) -->
+<!-- ЖИЗНЬ ПРИХОДА (НОВОСТИ) -->
 <section class="content-section alt-bg">
     <h2 class="status-title" style="text-align: center; margin-bottom: 10px; font-size: 2.5rem;">Жизнь прихода</h2>
     <p style="text-align: center; color: #777; font-family: 'PT Serif', serif; font-style: italic;">Последние события Христорождественского собора</p>
 
-    <!-- Вывод ровно 3 новостей -->
     <div class="grid-3">
         {% assign main_news = site.posts | where: "category", "news" %}
         {% for post in main_news limit:3 %}
@@ -357,25 +323,26 @@ title: Главная | Христорождественский собор
         <div class="feature-text">
             <h2 class="feature-title">Воскресная школа «Ковчег»</h2>
             <p class="feature-desc">
-                Важная часть приходской жизни — духовное образование и воспитание детей. В нашей школе опытные педагоги преподают Закон Божий, храмоведение, церковное и хоровое пение. Ученики не только изучают православную веру, но и участвуют в паломнических поездках и театральных постановках.
+                Важная часть приходской жизни — духовное образование и воспитание детей. В нашей школе опытные педагоги преподают Закон Божий, храмоведение, церковное и хоровое пение. <strong>Следите за нашей регулярной летописью:</strong> мы постоянно публикуем новости о паломничествах, праздничных постановках и творческих успехах наших воспитанников.
             </p>
-            <a href="{{ site.baseurl }}/school/" class="btn-gold-outline">Жизнь школы</a>
+            <a href="{{ site.baseurl }}/school/" class="btn-gold-outline">Новости и жизнь школы</a>
         </div>
     </div>
 
 </section>
 
-<!-- СЛОВО ПАСТЫРЯ (РОВНО 3 ВИДЕО) -->
+<!-- СЛОВО ПАСТЫРЯ (ВИДЕО) -->
 <section class="content-section alt-bg">
     <h2 class="status-title" style="text-align: center; margin-bottom: 10px; font-size: 2.5rem;">Слово пастыря</h2>
     <p style="text-align: center; color: #777; font-family: 'PT Serif', serif; font-style: italic;">Проповеди и беседы священнослужителей собора</p>
 
-    <!-- Вывод ровно 3 видео -->
     <div class="grid-3">
         {% assign video_posts = site.posts | where: "category", "video" %}
         {% for video in video_posts limit:3 %}
         <article class="card-item">
-            <a href="{{ site.baseurl }}{{ video.url }}" class="card-thumb" style="background-color: #2c241b;">
+            <!-- ЗДЕСЬ ТЕПЕРЬ ЕСТЬ КАРТИНКА И КНОПКА PLAY ПОВЕРХ НЕЕ -->
+            <a href="{{ site.baseurl }}{{ video.url }}" class="card-thumb">
+                <img src="{{ site.baseurl }}/{{ video.image | default: 'images/video-placeholder.jpg' }}" alt="{{ video.title }}">
                 <div class="video-play-icon"><i class="fas fa-play"></i></div>
             </a>
             <div class="card-body">
