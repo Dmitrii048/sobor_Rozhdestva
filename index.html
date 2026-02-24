@@ -1,127 +1,293 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Христорождественский Кафедральный собор г. Липецка</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Шрифты -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- Иконки для карточек -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
+---
+layout: default
+title: Главная
+---
 
-<header class="main-header">
-    <div class="logo-expansive-container">
-        <div class="logo-flex-row">
-            <!-- Рисунок собора -->
-            <div class="logo-visual">
-                <img src="sobor-sketch.jpg" alt="Христорождественский собор" class="logo-sketch-large">
-            </div>
+<style>
+    /* ГЕРОЙ-БЛОК */
+    .home-hero {
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('{{ site.baseurl }}/images/architecture-bg.jpg');
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 80vh;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+    }
+    .hero-content-inner {
+        animation: fadeIn 1.5s ease-out;
+    }
+    .hero-title-large {
+        font-family: 'PT Serif', serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        line-height: 1.2;
+        text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+    .hero-location {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #EAE3D5;
+    }
 
-            <!-- Текстовый блок логотипа (Ваши настройки) -->
-            <div class="logo-brand-area">
-                <h1 class="title-main">Христорождественский</h1>
-                <h2 class="title-secondary">кафедральный собор</h2>
-                <h3 class="title-sub">г. Липецка</h3>
-                
-                <!-- Та самая художественная линия с золотой точкой -->
-                <div class="art-divider">
-                    <svg viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 10 L150 10 C170 10 180 0 200 10 C220 20 230 10 250 10 L400 10" stroke="#EAE3D5" fill="transparent" />
-                        <circle cx="200" cy="10" r="3" fill="#C5A059" />
-                    </svg>
+    /* ПРИВЕТСТВИЕ */
+    .welcome-section {
+        max-width: 900px;
+        margin: 80px auto;
+        text-align: center;
+        padding: 0 20px;
+    }
+    .welcome-icon {
+        color: #C5A059;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+    .welcome-text {
+        font-family: 'PT Serif', serif;
+        font-size: 1.25rem;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 30px;
+    }
+    
+    /* СЕТКА НАВИГАЦИИ */
+    .sections-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto 80px;
+        padding: 0 20px;
+    }
+    .section-card {
+        background: #fdfbf7;
+        padding: 40px 30px;
+        text-align: center;
+        border: 1px solid #EAE3D5;
+        border-top: 3px solid #C5A059;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .section-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+    }
+    .section-card i {
+        font-size: 2rem;
+        color: #C5A059;
+        margin-bottom: 20px;
+    }
+    .section-card h3 {
+        font-family: 'PT Serif', serif;
+        font-size: 1.4rem;
+        color: #2C2C2C;
+        margin-bottom: 15px;
+    }
+    .section-card p {
+        font-size: 0.95rem;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    .card-link {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #C5A059;
+        text-decoration: none;
+        letter-spacing: 1px;
+    }
+
+    /* УНИВЕРСАЛЬНЫЕ СТИЛИ ДЛЯ БЛОКОВ НОВОСТЕЙ И ВИДЕО */
+    .content-section {
+        padding: 80px 20px;
+        background: #fff;
+    }
+    .content-section.alt-bg {
+        background: #fdfbf7;
+        border-top: 1px solid #EAE3D5;
+        border-bottom: 1px solid #EAE3D5;
+    }
+    .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 50px auto;
+    }
+    
+    /* Карточки */
+    .card-item {
+        background: #fff;
+        border: 1px solid #EAE3D5;
+        border-radius: 4px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: 0.3s;
+    }
+    .card-item:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.08); transform: translateY(-3px); }
+    .card-thumb {
+        height: 220px;
+        position: relative;
+        overflow: hidden;
+        display: block;
+    }
+    .card-thumb img {
+        width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;
+    }
+    .card-item:hover .card-thumb img { transform: scale(1.05); }
+    
+    /* Специфика для видео */
+    .video-play-icon {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px; height: 60px;
+        background: rgba(197, 160, 89, 0.9);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: #fff; font-size: 1.5rem;
+        transition: 0.3s;
+    }
+    .card-item:hover .video-play-icon { background: #fff; color: #C5A059; }
+
+    .card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+    .card-meta { font-size: 0.8rem; color: #C5A059; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; }
+    .card-title { font-family: 'PT Serif', serif; font-size: 1.3rem; margin: 0 0 15px; line-height: 1.3; color: #2C2C2C; }
+    .card-excerpt { font-size: 0.95rem; color: #555; line-height: 1.6; flex-grow: 1; margin-bottom: 20px; }
+    
+    /* ЗОЛОТЫЕ КНОПКИ */
+    .btn-gold-outline {
+        display: inline-block;
+        padding: 14px 35px;
+        border: 2px solid #C5A059;
+        color: #C5A059;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 600;
+        font-size: 13px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .btn-gold-outline:hover {
+        background: #C5A059;
+        color: #fff;
+        box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+    }
+</style>
+
+<section class="home-hero">
+    <div class="hero-content-inner">
+        <h1 class="hero-title-large">Христорождественский<br>кафедральный собор</h1>
+        <div class="hero-location"><i class="fas fa-map-marker-alt" style="color:#C5A059; margin-right: 8px;"></i> г. Липецк, Соборная площадь, 4</div>
+    </div>
+</section>
+
+<section class="welcome-section">
+    <div class="welcome-icon"><i class="fas fa-church"></i></div>
+    <h2 class="chapter-title" style="text-align: center;">Свет Христов просвещает всех</h2>
+    <p class="welcome-text">
+        Христорождественский собор — это не просто архитектурная жемчужина и градостроительная доминанта Липецка. Это живое, бьющееся духовное сердце региона. Под этими величественными сводами соединяются эпохи, а земное встречается с Небесным. Мы рады приветствовать вас в главном храме Липецкой земли.
+    </p>
+    <div class="emotional-quote">
+        «Где двое или трое собраны во имя Мое, там Я посреди них» (Мф. 18:20)
+    </div>
+</section>
+
+<section class="sections-grid">
+    <div class="section-card">
+        <i class="fas fa-landmark"></i>
+        <h3>Летопись собора</h3>
+        <p>Узнайте богатую историю храма: от основания в 1791 году и чудес XIX века до возрождения в наши дни.</p>
+        <a href="{{ site.baseurl }}/about/" class="card-link">Читать историю →</a>
+    </div>
+    <div class="section-card">
+        <i class="fas fa-pray"></i>
+        <h3>Святыни</h3>
+        <p>Чудотворная икона «Страстная», мощи угодников Божиих, редкие иконы и старинные фрески.</p>
+        <a href="{{ site.baseurl }}/shrines/" class="card-link">К святыням →</a>
+    </div>
+    <div class="section-card">
+        <i class="fas fa-clock"></i>
+        <h3>Богослужения</h3>
+        <p>Актуальное расписание Божественной Литургии, Всенощного бдения и Таинства Исповеди.</p>
+        <a href="{{ site.baseurl }}/schedule/" class="card-link">Смотреть расписание →</a>
+    </div>
+    <div class="section-card">
+        <i class="fas fa-dove"></i>
+        <h3>Воскресная школа</h3>
+        <p>Духовное воспитание детей в школе «Ковчег», творческие занятия, паломничества и праздники.</p>
+        <a href="{{ site.baseurl }}/school/" class="card-link">Узнать больше →</a>
+    </div>
+</section>
+
+<!-- ЖИЗНЬ ПРИХОДА (НОВОСТИ) -->
+<section class="content-section alt-bg">
+    <h2 class="chapter-title" style="text-align: center; margin-bottom: 10px;">Жизнь прихода</h2>
+    <p style="text-align: center; color: #777; font-family: 'PT Serif', serif; font-style: italic;">Последние события Христорождественского собора</p>
+
+    <div class="grid-3">
+        {% assign main_news = site.posts | where: "category", "news" %}
+        {% for post in main_news limit:3 %}
+        <article class="card-item">
+            <a href="{{ site.baseurl }}{{ post.url }}" class="card-thumb">
+                <img src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}">
+            </a>
+            <div class="card-body">
+                <span class="card-meta">{{ post.date | date: "%d.%m.%Y" }}</span>
+                <h3 class="card-title">
+                    <a href="{{ site.baseurl }}{{ post.url }}" style="text-decoration: none; color: inherit;">{{ post.title }}</a>
+                </h3>
+                <div class="card-excerpt">
+                    {{ post.excerpt | strip_html | truncatewords: 20 }}
                 </div>
-                
-                <p class="church-meta">
-                    Московский Патриархат <br>
-                    <span>Липецкая митрополия</span>
-                </p>
+                <a href="{{ site.baseurl }}{{ post.url }}" class="card-link">Читать далее →</a>
             </div>
-        </div>
+        </article>
+        {% endfor %}
     </div>
 
-    <!-- Единое меню (со всеми пунктами) -->
-    <nav class="main-nav">
-        <ul>
-            <li><a href="index.html">Главная</a></li>
-            
-            <li class="has-dropdown">
-                <a href="#">О соборе</a>
-                <ul class="dropdown-menu">
-                    <li><a href="about/">Летопись храма</a></li>
-                    <li><a href="shrines/">Святыни и молитвословия</a></li>
-                    <li><a href="archpastor/">Архипастырь</a></li>
-                    <li><a href="clergy/">Духовенство</a></li>
-                    <li><a href="school/">Воскресная школа</a></li>
-                    <li><a href="pilgrimage/">Паломнические поездки</a></li>
-                    <li><a href="choir/">Архиерейский хор</a></li>
-                </ul>
-            </li>
-
-            <li><a href="schedule/">Расписание</a></li>
-
-            <li class="has-dropdown">
-                <a href="#">Служение</a>
-                <ul class="dropdown-menu">
-                    <li><a href="social/">Социальное служение</a></li>
-                    <li><a href="missionary/">Служение в других храмах</a></li>
-                </ul>
-            </li>
-
-            <li><a href="publications/">Публикации</a></li>
-            <li><a href="contacts/">Контакты</a></li>
-            
-            <li><a href="#" class="btn-note">Подать записку</a></li>
-        </ul>
-    </nav>
-</header>
-
-<main class="container">
-    <!-- Приветственный блок -->
-    <section class="welcome-section">
-        <h2 style="font-family: 'PT Serif', serif; font-size: 2.5rem; margin-bottom: 25px; font-weight: 400;">Добро пожаловать</h2>
-        <p class="welcome-text">
-            Христорождественский собор — это не только памятник архитектуры классицизма, 
-            но и живое сердце духовной жизни Липецкого края. Здесь на протяжении столетий 
-            возносится молитва о граде нашем и его жителях.
-        </p>
-    </section>
-
-    <!-- Сетка карточек (Жизнь прихода) -->
-    <section class="info-grid">
-        
-        <div class="info-card">
-            <i class="fas fa-graduation-cap"></i>
-            <h3>Воскресная школа</h3>
-            <p>Духовное воспитание детей в школе «Светоч», творческие кружки и праздники для всей семьи.</p>
-            <a href="school.html" class="card-link">СТРАНИЦА ШКОЛЫ →</a>
-        </div>
-
-        <div class="info-card">
-            <i class="fas fa-clock"></i>
-            <h3>Богослужения</h3>
-            <p>Ознакомьтесь с актуальным графиком утренних и вечерних служб в нашем соборе на текущую неделю.</p>
-            <a href="schedule.html" class="card-link">ГРАФИК СЛУЖБ →</a>
-        </div>
-
-        <div class="info-card">
-            <i class="fas fa-heart"></i>
-            <h3>Наше служение</h3>
-            <p>Миссионерская деятельность, социальная помощь нуждающимся и окормление больниц.</p>
-            <a href="social.html" class="card-link">УЗНАТЬ БОЛЬШЕ →</a>
-        </div>
-
-    </section>
-</main>
-
-<footer style="margin-top: 60px; padding: 50px 0; border-top: 1px solid var(--border); text-align: center; color: #999; font-size: 13px; background: #fafafa;">
-    <div class="container">
-        <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
-        <p style="margin-top: 10px;">Липецкая и Задонская епархия</p>
+    <div style="text-align: center;">
+        <a href="{{ site.baseurl }}/news/" class="btn-gold-outline">Все новости собора</a>
     </div>
-</footer>
+</section>
 
-</body>
-</html>
+<!-- СЛОВО ПАСТЫРЯ (ВИДЕО) -->
+<section class="content-section">
+    <h2 class="chapter-title" style="text-align: center; margin-bottom: 10px;">Слово пастыря</h2>
+    <p style="text-align: center; color: #777; font-family: 'PT Serif', serif; font-style: italic;">Проповеди и беседы священнослужителей собора</p>
+
+    <div class="grid-3">
+        {% assign video_posts = site.posts | where: "category", "video" %}
+        {% for video in video_posts limit:3 %}
+        <article class="card-item">
+            <a href="{{ site.baseurl }}{{ video.url }}" class="card-thumb">
+                <!-- Заглушка, если нет превью -->
+                <img src="{{ site.baseurl }}/{{ video.image | default: 'images/video-placeholder.jpg' }}" alt="{{ video.title }}">
+                <div class="video-play-icon"><i class="fas fa-play"></i></div>
+            </a>
+            <div class="card-body">
+                <span class="card-meta">{{ video.date | date: "%d.%m.%Y" }}</span>
+                <h3 class="card-title">
+                    <a href="{{ site.baseurl }}{{ video.url }}" style="text-decoration: none; color: inherit;">{{ video.title }}</a>
+                </h3>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+
+    <div style="text-align: center;">
+        <a href="{{ site.baseurl }}/videos/" class="btn-gold-outline">Смотреть все видео</a>
+    </div>
+</section>
