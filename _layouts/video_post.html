@@ -1,0 +1,47 @@
+---
+layout: default
+---
+<style>
+    .video-hero {
+        background-color: #2a2a2a; /* Темный фон для кинотеатрального эффекта */
+        padding: 60px 0;
+        margin-bottom: 50px;
+        border-bottom: 3px solid #C5A059;
+    }
+    .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        height: 0;
+        max-width: 1000px;
+        margin: 0 auto;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+    .video-wrapper iframe {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+    }
+    .video-info-container { max-width: 800px; margin: 0 auto; padding: 0 20px 60px; text-align: center;}
+    .video-title { font-family: 'PT Serif', serif; font-size: 2rem; color: #2C2C2C; margin-bottom: 20px; }
+    .video-date { color: #C5A059; font-weight: bold; font-family: 'Open Sans', sans-serif; margin-bottom: 30px; display: block; text-transform: uppercase; }
+</style>
+
+<div class="video-hero">
+    <div class="container">
+        <div class="video-wrapper">
+            <!-- Вставляем плеер Rutube. ID берется из markdown файла -->
+            <iframe src="https://rutube.ru/play/embed/{{ page.rutube_id }}/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        </div>
+    </div>
+</div>
+
+<div class="video-info-container">
+    <span class="video-date">{{ page.date | date: "%d.%m.%Y" }}</span>
+    <h1 class="video-title">{{ page.title }}</h1>
+    
+    <div style="font-family: 'PT Serif', serif; font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
+        {{ content }}
+    </div>
+
+    <div style="margin-top: 50px;">
+        <a href="{{ site.baseurl }}/videos/" style="color: #888; text-decoration: none; border-bottom: 1px dashed #ccc; transition: 0.3s;">← Ко всем видеозаписях</a>
+    </div>
+</div>
