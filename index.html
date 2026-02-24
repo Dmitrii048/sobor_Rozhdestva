@@ -8,13 +8,13 @@ title: Главная | Христорождественский собор
        1. ГЕРОЙ-БЛОК
        ========================================= */
     .home-hero {
-        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('{{ site.baseurl }}/images/architecture-bg.jpg');
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('{{ site.baseurl }}/images/architecture-bg.jpg');
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 75vh;
-        min-height: 450px;
+        height: 80vh;
+        min-height: 500px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -27,45 +27,31 @@ title: Главная | Христорождественский собор
         font-weight: 700;
         margin: 0;
         line-height: 1.1;
-        text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        text-shadow: 0 4px 20px rgba(0,0,0,0.6);
         animation: fadeIn 1.5s ease-out;
     }
 
     /* =========================================
-       2. БЛОК СТАТУСА СОБОРА
+       2. БЛОК СТАТУСА (ВСТУПЛЕНИЕ)
        ========================================= */
     .status-section {
-        padding: 80px 20px 40px;
+        padding: 80px 20px 50px;
         background: #fff;
         text-align: center;
     }
-    .status-container {
-        max-width: 900px;
-        margin: 0 auto;
-    }
+    .status-container { max-width: 900px; margin: 0 auto; }
     .status-subtitle {
         font-family: 'Open Sans', sans-serif;
-        font-size: 13px;
-        color: #C5A059;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-bottom: 15px;
-        display: block;
-        font-weight: 700;
+        font-size: 13px; color: #C5A059; text-transform: uppercase;
+        letter-spacing: 3px; margin-bottom: 15px; display: block; font-weight: 700;
     }
     .status-title {
-        font-family: 'PT Serif', serif;
-        font-size: 2.8rem;
-        color: #2C2C2C;
-        margin-bottom: 25px;
-        line-height: 1.2;
+        font-family: 'PT Serif', serif; font-size: 2.8rem; color: #2C2C2C;
+        margin-bottom: 25px; line-height: 1.2;
     }
     .status-text {
-        font-family: 'PT Serif', serif;
-        font-size: 1.2rem;
-        line-height: 1.8;
-        color: #555;
-        text-align: justify;
+        font-family: 'PT Serif', serif; font-size: 1.25rem; line-height: 1.8;
+        color: #444; text-align: justify;
     }
 
     /* =========================================
@@ -77,14 +63,16 @@ title: Главная | Христорождественский собор
     }
     .wc-grid {
         display: grid;
-        grid-template-columns: 1.5fr 1fr;
+        grid-template-columns: 1.6fr 1fr; /* Левая часть широкая под красивое фото */
         gap: 40px;
         max-width: 1200px;
         margin: 0 auto;
     }
     
+    /* БАННЕР РАСПИСАНИЯ (С фото службы) */
     .worship-banner {
-        background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url('{{ site.baseurl }}/images/fresco-old.jpg');
+        /* ВСТАВЛЯЕМ ФОТО СЛУЖБЫ ТУТ */
+        background-image: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%), url('{{ site.baseurl }}/images/liturgy-service.jpg');
         background-size: cover;
         background-position: center;
         border-radius: 4px;
@@ -94,11 +82,19 @@ title: Главная | Христорождественский собор
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        min-height: 400px;
     }
-    .worship-title { font-family: 'PT Serif', serif; font-size: 2.5rem; color: #C5A059; margin-bottom: 20px; line-height: 1.2; }
-    .worship-text { font-family: 'PT Serif', serif; font-size: 1.15rem; line-height: 1.7; margin-bottom: 40px; color: #fdfbf7; }
+    .worship-title {
+        font-family: 'PT Serif', serif; font-size: 2.5rem; color: #C5A059;
+        margin-bottom: 20px; line-height: 1.2; text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+    .worship-text {
+        font-family: 'PT Serif', serif; font-size: 1.2rem; line-height: 1.6;
+        margin-bottom: 40px; color: #fff; max-width: 90%; text-shadow: 0 1px 5px rgba(0,0,0,0.8);
+    }
 
+    /* КАЛЕНДАРЬ */
     .calendar-sidebar {
         background: #fdfbf7;
         border: 1px solid #EAE3D5;
@@ -107,65 +103,126 @@ title: Главная | Христорождественский собор
         border-radius: 4px;
         box-shadow: 0 5px 20px rgba(0,0,0,0.03);
         text-align: center;
+        height: fit-content;
     }
-    .calendar-title { font-family: 'PT Serif', serif; font-size: 1.6rem; color: #2C2C2C; margin-bottom: 20px; border-bottom: 1px solid #EAE3D5; padding-bottom: 15px; }
+    .calendar-title {
+        font-family: 'PT Serif', serif; font-size: 1.6rem; color: #2C2C2C;
+        margin-bottom: 20px; border-bottom: 1px solid #EAE3D5; padding-bottom: 15px;
+    }
     .pravoslavie-calendar-widget { font-family: 'PT Serif', serif !important; font-size: 15px !important; color: #444 !important; line-height: 1.6; }
-    .pravoslavie-calendar-widget a { color: #C5A059 !important; text-decoration: none !important; font-weight: 700; transition: 0.3s; }
-    .pravoslavie-calendar-widget a:hover { color: #8c713b !important; text-decoration: underline !important; }
-    .pravoslavie-calendar-center img { max-width: 120px; height: auto; border-radius: 4px; margin: 15px auto; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-    .pravoslavie-calendar-center b { display: inline-block; margin-top: 10px; font-size: 16px; color: #2C2C2C; }
-    .pravoslavie-calendar-center i { color: #8c2b2b; font-style: italic; display: block; margin: 5px 0; }
+    .pravoslavie-calendar-widget a { color: #C5A059 !important; text-decoration: none !important; font-weight: 700; }
+    .pravoslavie-calendar-center img { max-width: 140px; height: auto; border-radius: 4px; margin: 15px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
     /* =========================================
-       4. УНИВЕРСАЛЬНАЯ СЕТКА (НОВОСТИ И ВИДЕО)
+       4. ЖИЗНЬ ПРИХОДА (НОВОСТИ - 3 ШТ)
        ========================================= */
-    .content-section { padding: 80px 20px; background: #fff; }
-    .content-section.alt-bg { background: #fdfbf7; border-top: 1px solid #EAE3D5; border-bottom: 1px solid #EAE3D5; }
+    .news-section {
+        padding: 80px 20px;
+        background: #fdfbf7;
+        border-top: 1px solid #EAE3D5;
+        border-bottom: 1px solid #EAE3D5;
+    }
+    .section-head-center { text-align: center; margin-bottom: 50px; }
     
+    /* СЕТКА НА 3 КОЛОНКИ */
     .grid-3 {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(3, 1fr); /* Ровно 3 колонки */
         gap: 30px;
         max-width: 1200px;
-        margin: 50px auto;
+        margin: 0 auto 50px;
     }
     
-    .card-item { background: #fff; border: 1px solid #EAE3D5; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s; }
-    .card-item:hover { box-shadow: 0 10px 25px rgba(197, 160, 89, 0.15); transform: translateY(-3px); border-color: #C5A059;}
-    .card-thumb { height: 220px; position: relative; overflow: hidden; display: block; background-color: #2c241b; }
+    .card-item {
+        background: #fff; border: 1px solid #EAE3D5; border-radius: 4px; overflow: hidden;
+        display: flex; flex-direction: column; transition: 0.3s;
+    }
+    .card-item:hover {
+        box-shadow: 0 15px 30px rgba(197, 160, 89, 0.15); transform: translateY(-5px); border-color: #C5A059;
+    }
+    .card-thumb { height: 220px; position: relative; overflow: hidden; display: block; }
     .card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
     .card-item:hover .card-thumb img { transform: scale(1.05); }
     
-    /* Кнопка Play поверх картинки видео */
-    .video-play-icon {
-        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-        width: 60px; height: 60px; background: rgba(197, 160, 89, 0.85); border-radius: 50%;
-        display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; transition: 0.3s;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
-    .card-item:hover .video-play-icon { background: #fff; color: #C5A059; transform: translate(-50%, -50%) scale(1.1); }
-
     .card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
     .card-meta { font-size: 0.8rem; color: #C5A059; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; font-family: 'Open Sans', sans-serif;}
-    .card-title { font-family: 'PT Serif', serif; font-size: 1.3rem; margin: 0 0 15px; line-height: 1.3; color: #2C2C2C; }
+    .card-title { font-family: 'PT Serif', serif; font-size: 1.25rem; margin: 0 0 15px; line-height: 1.3; color: #2C2C2C; }
     .card-excerpt { font-size: 0.95rem; color: #555; line-height: 1.6; flex-grow: 1; margin-bottom: 20px; }
 
     /* =========================================
        5. БЛОКИ-ЗИГЗАГИ
        ========================================= */
     .features-wrapper { padding: 80px 20px; background: #fff; }
-    .feature-row { display: flex; align-items: center; max-width: 1100px; margin: 0 auto 80px; gap: 60px; }
+    .feature-row { display: flex; align-items: center; max-width: 1100px; margin: 0 auto 100px; gap: 60px; }
     .feature-row:last-child { margin-bottom: 0; }
     .feature-row:nth-child(even) { flex-direction: row-reverse; }
     
     .feature-img { flex: 1; position: relative; }
-    .feature-img img { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); border: 1px solid #EAE3D5; }
-    .feature-img::before { content: ''; position: absolute; top: -15px; left: -15px; right: 15px; bottom: 15px; border: 2px solid #C5A059; z-index: -1; border-radius: 4px; opacity: 0.3; }
-    .feature-row:nth-child(even) .feature-img::before { left: 15px; right: -15px; }
-
+    .feature-img img { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+    
     .feature-text { flex: 1; }
     .feature-title { font-family: 'PT Serif', serif; font-size: 2.2rem; color: #2C2C2C; margin-bottom: 20px; line-height: 1.2; }
-    .feature-desc { font-family: 'PT Serif', serif; font-size: 1.1rem; line-height: 1.8; color: #555; margin-bottom: 30px; text-align: justify; }
+    .feature-desc { font-family: 'PT Serif', serif; font-size: 1.15rem; line-height: 1.8; color: #555; margin-bottom: 30px; text-align: justify; }
+
+    /* =========================================
+       6. ВИДЕО (СЛОВО ПАСТЫРЯ) - СТИЛЬ "ПАУЗА"
+       ========================================= */
+    .video-section { padding: 80px 20px; background: #fff; }
+    
+    /* Компактная карточка для видео */
+    .video-card {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+    .video-card:hover { transform: translateY(-5px); box-shadow: none; }
+    
+    .video-thumb-wrap {
+        height: 200px; /* Чуть меньше, чем новости */
+        border-radius: 6px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .video-thumb-wrap img {
+        width: 100%; height: 100%; object-fit: cover; transition: 0.5s;
+        filter: brightness(0.85); /* Чуть затемняем, чтобы кнопка горела */
+    }
+    .video-card:hover .video-thumb-wrap img { transform: scale(1.05); filter: brightness(1); }
+
+    /* КНОПКА PLAY (ЗОЛОТАЯ) */
+    .play-btn-overlay {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px; height: 60px;
+        background: rgba(197, 160, 89, 0.9); /* Золото */
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: #fff;
+        font-size: 20px;
+        box-shadow: 0 0 0 5px rgba(255,255,255,0.2); /* Аура вокруг кнопки */
+        transition: 0.3s;
+    }
+    .video-card:hover .play-btn-overlay {
+        transform: translate(-50%, -50%) scale(1.1);
+        background: #C5A059;
+        box-shadow: 0 0 0 8px rgba(197, 160, 89, 0.4);
+    }
+    .play-btn-overlay i { margin-left: 3px; } /* Визуальная центровка треугольника */
+
+    .video-info { padding: 20px 5px 0; text-align: center; }
+    .video-title {
+        font-family: 'PT Serif', serif;
+        font-size: 1.15rem;
+        line-height: 1.4;
+        color: #2C2C2C;
+        margin: 0;
+        font-weight: 700;
+    }
+    .video-date-small {
+        display: block; font-size: 12px; color: #999; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;
+    }
 
     /* КНОПКИ */
     .btn-gold-solid {
@@ -188,14 +245,14 @@ title: Главная | Христорождественский собор
     @media (max-width: 900px) {
         .hero-title-large { font-size: 2.5rem; padding: 0 15px; }
         .home-hero { height: 60vh; min-height: 350px; }
-        .status-title { font-size: 2rem; }
         
         .wc-grid { grid-template-columns: 1fr; gap: 40px; }
-        .worship-banner { padding: 40px 20px; align-items: center; text-align: center; }
+        .worship-banner { padding: 40px 20px; min-height: auto; align-items: center; text-align: center; }
         .worship-title { font-size: 2rem; }
         
+        .grid-3 { grid-template-columns: 1fr; gap: 40px; } /* Новости в 1 колонку на телефоне */
+        
         .feature-row, .feature-row:nth-child(even) { flex-direction: column; gap: 30px; }
-        .feature-img::before { display: none; }
         .feature-title { font-size: 1.8rem; text-align: center; }
         .feature-desc { text-align: left; }
         
@@ -210,28 +267,30 @@ title: Главная | Христорождественский собор
     </div>
 </section>
 
-<!-- БЛОК ВЫСОКОГО СТАТУСА ХРАМА -->
+<!-- ВСТУПЛЕНИЕ -->
 <section class="status-section">
     <div class="status-container">
         <span class="status-subtitle">Духовное сердце региона</span>
         <h2 class="status-title">Главный храм Липецкой митрополии</h2>
         <p class="status-text">
-            Кафедральный собор Рождества Христова — это не просто выдающийся памятник архитектуры. Это кафедра Архипастыря, средоточие духовной и богослужебной жизни всего Липецкого края. Под этими величественными сводами соединяются эпохи: здесь молились наши предки, здесь совершались чудеса исцелений, и здесь сегодня возносится бескровная Жертва о мире всего мира и спасении каждого приходящего.
+            Кафедральный собор Рождества Христова — это кафедра Архипастыря, средоточие духовной и богослужебной жизни всего Липецкого края. Под этими величественными сводами соединяются эпохи: здесь молились наши предки, здесь совершались чудеса исцелений, и здесь сегодня возносится бескровная Жертва о мире всего мира и спасении каждого приходящего.
         </p>
     </div>
 </section>
 
-<!-- РАСПИСАНИЕ И КАЛЕНДАРЬ -->
+<!-- БОГОСЛУЖЕНИЯ + КАЛЕНДАРЬ -->
 <section class="worship-calendar-section">
     <div class="wc-grid">
+        <!-- Левая часть: Расписание (с фото службы) -->
         <div class="worship-banner">
-            <h2 class="worship-title">Ежедневная соборная молитва</h2>
+            <h2 class="worship-title">Соборная молитва</h2>
             <p class="worship-text">
-                Двери Христорождественского собора открыты ежедневно с 7:00 утра до 20:00 вечера. Мы приглашаем вас разделить радость молитвы и приступить к Таинствам Церкви. Богослужения в главном храме митрополии совершаются с особым благолепием.
+                Мы приглашаем вас разделить радость молитвы и приступить к Таинствам Церкви. Божественная Литургия совершается в соборе с особым архиерейским благолепием.
             </p>
-            <a href="{{ site.baseurl }}/schedule/" class="btn-gold-solid">Подробное расписание</a>
+            <a href="{{ site.baseurl }}/schedule/" class="btn-gold-solid">Расписание богослужений</a>
         </div>
 
+        <!-- Правая часть: Календарь -->
         <div class="calendar-sidebar">
             <h3 class="calendar-title">Сегодня в Церкви</h3>
             <div class="pravoslavie-calendar-widget">
@@ -253,11 +312,14 @@ title: Главная | Христорождественский собор
     </div>
 </section>
 
-<!-- ЖИЗНЬ ПРИХОДА (НОВОСТИ) -->
-<section class="content-section alt-bg">
-    <h2 class="status-title" style="text-align: center; margin-bottom: 10px; font-size: 2.5rem;">Жизнь прихода</h2>
-    <p style="text-align: center; color: #777; font-family: 'PT Serif', serif; font-style: italic;">Последние события Христорождественского собора</p>
+<!-- ЖИЗНЬ ПРИХОДА (3 НОВОСТИ) -->
+<section class="news-section">
+    <div class="section-head-center">
+        <h2 class="status-title">Жизнь прихода</h2>
+        <p style="color:#777; font-family:'PT Serif',serif; font-style:italic;">События и новости Христорождественского собора</p>
+    </div>
 
+    <!-- Сетка ровно на 3 новости -->
     <div class="grid-3">
         {% assign main_news = site.posts | where: "category", "news" %}
         {% for post in main_news limit:3 %}
@@ -271,7 +333,7 @@ title: Главная | Христорождественский собор
                     <a href="{{ site.baseurl }}{{ post.url }}" style="text-decoration: none; color: inherit;">{{ post.title }}</a>
                 </h3>
                 <div class="card-excerpt">
-                    {{ post.excerpt | strip_html | truncatewords: 20 }}
+                    {{ post.excerpt | strip_html | truncatewords: 15 }}
                 </div>
                 <a href="{{ site.baseurl }}{{ post.url }}" style="color: #C5A059; font-family: 'Open Sans'; font-size: 12px; font-weight: 700; text-decoration: none; text-transform:uppercase;">Читать далее →</a>
             </div>
@@ -284,7 +346,7 @@ title: Главная | Христорождественский собор
     </div>
 </section>
 
-<!-- БЛОКИ ИСТОРИИ И СВЯТЫНЬ (ЗИГЗАГ) -->
+<!-- БЛОКИ ИСТОРИИ, СВЯТЫНЬ, ШКОЛЫ -->
 <section class="features-wrapper">
     
     <!-- 1. ИСТОРИЯ -->
@@ -295,7 +357,7 @@ title: Главная | Христорождественский собор
         <div class="feature-text">
             <h2 class="feature-title">Летопись собора</h2>
             <p class="feature-desc">
-                Познакомьтесь с богатой и величественной историей главного храма Липецка. От закладки первого камня по указу императрицы Екатерины II в 1791 году до трагических лет разрушения, использования здания в качестве музея и радостного, всенародного возрождения в наши дни.
+                Познакомьтесь с богатой и величественной историей главного храма Липецка. От закладки первого камня по указу императрицы Екатерины II в 1791 году до трагических лет разрушения и радостного возрождения в наши дни.
             </p>
             <a href="{{ site.baseurl }}/about/" class="btn-gold-outline">Полная история храма</a>
         </div>
@@ -309,21 +371,22 @@ title: Главная | Христорождественский собор
         <div class="feature-text">
             <h2 class="feature-title">Чудотворные Святыни</h2>
             <p class="feature-desc">
-                Под сводами собора бережно хранятся великие духовные сокровища. Приглашаем вас поклониться чудотворному образу Божией Матери «Страстная Липецкая», спасшему город от смертоносной эпидемии холеры в 1831 году. Здесь же пребывает ковчег с мощами 81 угодника Божия.
+                Под сводами собора бережно хранятся великие духовные сокровища. Приглашаем вас поклониться чудотворному образу Божией Матери «Страстная Липецкая» и ковчегу с мощами 81 угодника Божия.
             </p>
             <a href="{{ site.baseurl }}/shrines/" class="btn-gold-outline">Поклониться святыням</a>
         </div>
     </div>
 
-    <!-- 3. ВОСКРЕСНАЯ ШКОЛА -->
+    <!-- 3. ВОСКРЕСНАЯ ШКОЛА (Новое фото и текст) -->
     <div class="feature-row">
         <div class="feature-img">
-            <img src="{{ site.baseurl }}/images/arch-1.jpg" alt="Воскресная школа">
+            <!-- ВАЖНО: Залейте фото school-life.jpg в папку images -->
+            <img src="{{ site.baseurl }}/images/school-life.jpg" alt="Воскресная школа" onerror="this.src='{{ site.baseurl }}/images/arch-1.jpg'"> 
         </div>
         <div class="feature-text">
             <h2 class="feature-title">Воскресная школа «Ковчег»</h2>
             <p class="feature-desc">
-                Важная часть приходской жизни — духовное образование и воспитание детей. В нашей школе опытные педагоги преподают Закон Божий, храмоведение, церковное и хоровое пение. <strong>Следите за нашей регулярной летописью:</strong> мы постоянно публикуем новости о паломничествах, праздничных постановках и творческих успехах наших воспитанников.
+                В нашей школе опытные педагоги преподают детям Закон Божий, церковное пение и творчество. Жизнь «Ковчега» наполнена событиями: паломничества, праздничные концерты и благотворительные ярмарки. <strong>Читайте новости и смотрите фотоотчеты</strong> о жизни нашей школы в специальном разделе.
             </p>
             <a href="{{ site.baseurl }}/school/" class="btn-gold-outline">Новости и жизнь школы</a>
         </div>
@@ -331,27 +394,30 @@ title: Главная | Христорождественский собор
 
 </section>
 
-<!-- СЛОВО ПАСТЫРЯ (ВИДЕО) -->
-<section class="content-section alt-bg">
-    <h2 class="status-title" style="text-align: center; margin-bottom: 10px; font-size: 2.5rem;">Слово пастыря</h2>
-    <p style="text-align: center; color: #777; font-family: 'PT Serif', serif; font-style: italic;">Проповеди и беседы священнослужителей собора</p>
+<!-- СЛОВО ПАСТЫРЯ (ВИДЕО С ОБЛОЖКАМИ) -->
+<section class="video-section">
+    <div class="section-head-center">
+        <h2 class="status-title">Слово пастыря</h2>
+        <p style="color:#777; font-family:'PT Serif',serif; font-style:italic;">Проповеди и беседы</p>
+    </div>
 
     <div class="grid-3">
         {% assign video_posts = site.posts | where: "category", "video" %}
         {% for video in video_posts limit:3 %}
-        <article class="card-item">
-            <!-- ЗДЕСЬ ТЕПЕРЬ ЕСТЬ КАРТИНКА И КНОПКА PLAY ПОВЕРХ НЕЕ -->
-            <a href="{{ site.baseurl }}{{ video.url }}" class="card-thumb">
-                <img src="{{ site.baseurl }}/{{ video.image | default: 'images/video-placeholder.jpg' }}" alt="{{ video.title }}">
-                <div class="video-play-icon"><i class="fas fa-play"></i></div>
-            </a>
-            <div class="card-body">
-                <span class="card-meta">{{ video.date | date: "%d.%m.%Y" }}</span>
-                <h3 class="card-title">
-                    <a href="{{ site.baseurl }}{{ video.url }}" style="text-decoration: none; color: inherit;">{{ video.title }}</a>
-                </h3>
+        <a href="{{ site.baseurl }}{{ video.url }}" class="card-item video-card" style="text-decoration: none;">
+            <div class="video-thumb-wrap">
+                <!-- Картинка-обложка -->
+                <img src="{{ site.baseurl }}/{{ video.image }}" alt="{{ video.title }}">
+                <!-- Кнопка Play по центру -->
+                <div class="play-btn-overlay">
+                    <i class="fas fa-play"></i>
+                </div>
             </div>
-        </article>
+            <div class="video-info">
+                <span class="video-date-small">{{ video.date | date: "%d.%m.%Y" }}</span>
+                <h3 class="video-title">{{ video.title }}</h3>
+            </div>
+        </a>
         {% endfor %}
     </div>
 
