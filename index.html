@@ -4,48 +4,43 @@ title: Главная | Христорождественский собор
 ---
 
 <style>
-    /* ГЕРОЙ-БЛОК */
+    /* =========================================
+       1. ГЕРОЙ-БЛОК
+       ========================================= */
     .home-hero {
         background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('{{ site.baseurl }}/images/architecture-bg.jpg');
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 85vh;
-        min-height: 500px;
+        height: 75vh;
+        min-height: 450px;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
         color: #fff;
     }
-    .hero-content-inner {
-        animation: fadeIn 1.5s ease-out;
-    }
     .hero-title-large {
         font-family: 'PT Serif', serif;
-        font-size: 3.5rem;
+        font-size: 4rem;
         font-weight: 700;
-        margin-bottom: 20px;
-        line-height: 1.2;
+        margin: 0;
+        line-height: 1.1;
         text-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    }
-    .hero-location {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 1.1rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #EAE3D5;
+        animation: fadeIn 1.5s ease-out;
     }
 
-    /* БЛОК СТАТУСА СОБОРА (НОВЫЙ ВЕЛИЧЕСТВЕННЫЙ ФОРМАТ) */
+    /* =========================================
+       2. БЛОК СТАТУСА СОБОРА
+       ========================================= */
     .status-section {
-        padding: 100px 20px 0; /* Убрал отступ снизу, чтобы плавно перетекло в параллакс */
+        padding: 80px 20px 40px;
         background: #fff;
         text-align: center;
     }
     .status-container {
-        max-width: 1000px;
+        max-width: 900px;
         margin: 0 auto;
     }
     .status-subtitle {
@@ -62,145 +57,108 @@ title: Главная | Христорождественский собор
         font-family: 'PT Serif', serif;
         font-size: 2.8rem;
         color: #2C2C2C;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
         line-height: 1.2;
     }
     .status-text {
         font-family: 'PT Serif', serif;
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         line-height: 1.8;
-        color: #444;
-        margin-bottom: 50px;
+        color: #555;
         text-align: justify;
     }
 
-    /* МОНУМЕНТАЛЬНЫЙ БЛОК БОГОСЛУЖЕНИЙ (ПАРАЛЛАКС) */
-    .liturgy-parallax {
-        background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.6)), url('{{ site.baseurl }}/images/fresco-old.jpg');
-        background-attachment: fixed;
-        background-position: center;
+    /* =========================================
+       3. БОГОСЛУЖЕНИЯ И КАЛЕНДАРЬ (ДВЕ КОЛОНКИ ВЫСОКО)
+       ========================================= */
+    .worship-calendar-section {
+        padding: 0 20px 80px;
+        background: #fff;
+    }
+    .wc-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr; /* Левая часть чуть шире */
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    /* Баннер расписания (слева) */
+    .worship-banner {
+        background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)), url('{{ site.baseurl }}/images/fresco-old.jpg');
         background-size: cover;
-        padding: 120px 20px;
-        text-align: center;
+        background-position: center;
+        border-radius: 4px;
+        padding: 60px 50px;
         color: #fff;
-        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
     }
-    .liturgy-title {
+    .worship-title {
         font-family: 'PT Serif', serif;
-        font-size: 3rem;
+        font-size: 2.5rem;
         color: #C5A059;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
+        line-height: 1.2;
     }
-    .liturgy-text {
+    .worship-text {
         font-family: 'PT Serif', serif;
-        font-size: 1.2rem;
-        line-height: 1.8;
-        max-width: 800px;
-        margin: 0 auto 40px;
+        font-size: 1.15rem;
+        line-height: 1.7;
+        margin-bottom: 40px;
         color: #fdfbf7;
     }
-    .btn-gold-solid {
-        display: inline-block;
-        padding: 16px 40px;
-        background: #C5A059;
-        color: #fff;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        font-weight: 600;
-        font-size: 14px;
-        border-radius: 4px;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        font-family: 'Open Sans', sans-serif;
-    }
-    .btn-gold-solid:hover {
-        background: #b08d4a;
-        box-shadow: 0 5px 20px rgba(197, 160, 89, 0.4);
-    }
 
-    /* БЛОКИ ИСТОРИИ И СВЯТЫНЬ (ЗИГЗАГ) */
-    .features-wrapper {
-        padding: 100px 20px;
+    /* Календарь (справа) - расширенная версия */
+    .calendar-sidebar {
         background: #fdfbf7;
+        border: 1px solid #EAE3D5;
+        border-top: 3px solid #C5A059;
+        padding: 30px 25px;
+        border-radius: 4px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+        text-align: center;
     }
-    .feature-row {
-        display: flex;
-        align-items: center;
-        max-width: 1100px;
-        margin: 0 auto 80px;
-        gap: 60px;
-    }
-    .feature-row:last-child { margin-bottom: 0; }
-    .feature-row:nth-child(even) { flex-direction: row-reverse; }
-    
-    .feature-img { flex: 1; position: relative; }
-    .feature-img img { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); border: 1px solid #EAE3D5; }
-    .feature-img::before {
-        content: ''; position: absolute; top: -15px; left: -15px; right: 15px; bottom: 15px;
-        border: 2px solid #C5A059; z-index: -1; border-radius: 4px; opacity: 0.3;
-    }
-    .feature-row:nth-child(even) .feature-img::before { left: 15px; right: -15px; }
-
-    .feature-text { flex: 1; }
-    .feature-title { font-family: 'PT Serif', serif; font-size: 2.2rem; color: #2C2C2C; margin-bottom: 20px; line-height: 1.2; }
-    .feature-desc { font-family: 'PT Serif', serif; font-size: 1.1rem; line-height: 1.8; color: #555; margin-bottom: 30px; text-align: justify; }
-    
-    .btn-gold-outline {
-        display: inline-block; padding: 14px 35px; border: 2px solid #C5A059; color: #C5A059;
-        text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; font-size: 13px;
-        border-radius: 4px; transition: all 0.3s ease; text-decoration: none; font-family: 'Open Sans', sans-serif;
-    }
-    .btn-gold-outline:hover { background: #C5A059; color: #fff; box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3); }
-
-    /* БЛОК КАЛЕНДАРЯ */
-    .calendar-section {
-        padding: 100px 20px;
-        background: #fff;
-        border-top: 1px solid #EAE3D5;
+    .calendar-title {
+        font-family: 'PT Serif', serif;
+        font-size: 1.6rem;
+        color: #2C2C2C;
+        margin-bottom: 20px;
         border-bottom: 1px solid #EAE3D5;
+        padding-bottom: 15px;
     }
-    .calendar-row {
-        display: flex;
-        align-items: center;
-        max-width: 1100px;
-        margin: 0 auto;
-        gap: 60px;
-    }
-    .calendar-widget-box {
-        flex: 1;
-        background: #fdfbf7;
-        border: 2px solid #C5A059;
-        padding: 30px;
-        border-radius: 4px;
-        box-shadow: 0 15px 40px rgba(197, 160, 89, 0.15);
-        position: relative;
-    }
-    /* Переопределение стилей виджета Pravoslavie.ru для благородного вида */
-    .calendar-widget-box, .calendar-widget-box table, .calendar-widget-box td, .calendar-widget-box div {
+    .pravoslavie-calendar-widget {
         font-family: 'PT Serif', serif !important;
-        font-size: 16px !important;
+        font-size: 15px !important;
         color: #444 !important;
         line-height: 1.6;
     }
-    .calendar-widget-box a {
-        color: #C5A059 !important;
-        text-decoration: none !important;
-        font-weight: 700;
-        transition: 0.3s;
-    }
-    .calendar-widget-box a:hover {
-        color: #8c713b !important;
-        text-decoration: underline !important;
-    }
+    .pravoslavie-calendar-widget a { color: #C5A059 !important; text-decoration: none !important; font-weight: 700; transition: 0.3s; }
+    .pravoslavie-calendar-widget a:hover { color: #8c713b !important; text-decoration: underline !important; }
+    .pravoslavie-calendar-center img { max-width: 120px; height: auto; border-radius: 4px; margin: 15px auto; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .pravoslavie-calendar-center b { display: inline-block; margin-top: 10px; font-size: 16px; color: #2C2C2C; }
+    .pravoslavie-calendar-center i { color: #8c2b2b; font-style: italic; display: block; margin: 5px 0; }
 
-    /* УНИВЕРСАЛЬНЫЕ СТИЛИ ДЛЯ БЛОКОВ НОВОСТЕЙ И ВИДЕО */
+    /* =========================================
+       4. УНИВЕРСАЛЬНАЯ СЕТКА (НОВОСТИ И ВИДЕО - ПО 3 ШТ)
+       ========================================= */
     .content-section { padding: 80px 20px; background: #fff; }
     .content-section.alt-bg { background: #fdfbf7; border-top: 1px solid #EAE3D5; border-bottom: 1px solid #EAE3D5; }
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 50px auto; }
+    
+    .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Ровно 3 колонки на ПК */
+        gap: 30px;
+        max-width: 1200px;
+        margin: 50px auto;
+    }
     
     .card-item { background: #fff; border: 1px solid #EAE3D5; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s; }
-    .card-item:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.08); transform: translateY(-3px); border-color: #C5A059;}
-    .card-thumb { height: 220px; position: relative; overflow: hidden; display: block; }
+    .card-item:hover { box-shadow: 0 10px 25px rgba(197, 160, 89, 0.15); transform: translateY(-3px); border-color: #C5A059;}
+    .card-thumb { height: 220px; position: relative; overflow: hidden; display: block; background-color: #2c241b; }
     .card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
     .card-item:hover .card-thumb img { transform: scale(1.05); }
     
@@ -212,17 +170,61 @@ title: Главная | Христорождественский собор
     .card-item:hover .video-play-icon { background: #fff; color: #C5A059; }
 
     .card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-    .card-meta { font-size: 0.8rem; color: #C5A059; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; }
+    .card-meta { font-size: 0.8rem; color: #C5A059; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; font-family: 'Open Sans', sans-serif;}
     .card-title { font-family: 'PT Serif', serif; font-size: 1.3rem; margin: 0 0 15px; line-height: 1.3; color: #2C2C2C; }
     .card-excerpt { font-size: 0.95rem; color: #555; line-height: 1.6; flex-grow: 1; margin-bottom: 20px; }
 
-    /* Адаптив */
+    /* =========================================
+       5. БЛОКИ-ЗИГЗАГИ (ИСТОРИЯ, СВЯТЫНИ, ШКОЛА)
+       ========================================= */
+    .features-wrapper { padding: 80px 20px; background: #fff; }
+    .feature-row { display: flex; align-items: center; max-width: 1100px; margin: 0 auto 80px; gap: 60px; }
+    .feature-row:last-child { margin-bottom: 0; }
+    .feature-row:nth-child(even) { flex-direction: row-reverse; }
+    
+    .feature-img { flex: 1; position: relative; }
+    .feature-img img { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); border: 1px solid #EAE3D5; }
+    .feature-img::before { content: ''; position: absolute; top: -15px; left: -15px; right: 15px; bottom: 15px; border: 2px solid #C5A059; z-index: -1; border-radius: 4px; opacity: 0.3; }
+    .feature-row:nth-child(even) .feature-img::before { left: 15px; right: -15px; }
+
+    .feature-text { flex: 1; }
+    .feature-title { font-family: 'PT Serif', serif; font-size: 2.2rem; color: #2C2C2C; margin-bottom: 20px; line-height: 1.2; }
+    .feature-desc { font-family: 'PT Serif', serif; font-size: 1.1rem; line-height: 1.8; color: #555; margin-bottom: 30px; text-align: justify; }
+
+    /* КНОПКИ */
+    .btn-gold-solid {
+        display: inline-block; padding: 16px 40px; background: #C5A059; color: #fff;
+        text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; font-size: 13px;
+        border-radius: 4px; transition: 0.3s; text-decoration: none; font-family: 'Open Sans', sans-serif;
+    }
+    .btn-gold-solid:hover { background: #b08d4a; box-shadow: 0 5px 20px rgba(197, 160, 89, 0.4); }
+    
+    .btn-gold-outline {
+        display: inline-block; padding: 14px 35px; border: 2px solid #C5A059; color: #C5A059;
+        text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; font-size: 13px;
+        border-radius: 4px; transition: 0.3s; text-decoration: none; font-family: 'Open Sans', sans-serif;
+    }
+    .btn-gold-outline:hover { background: #C5A059; color: #fff; box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3); }
+
+    /* =========================================
+       6. МОБИЛЬНАЯ АДАПТАЦИЯ
+       ========================================= */
     @media (max-width: 900px) {
-        .feature-row, .feature-row:nth-child(even), .calendar-row { flex-direction: column; gap: 40px; }
+        .hero-title-large { font-size: 2.5rem; padding: 0 15px; }
+        .home-hero { height: 60vh; min-height: 350px; }
+        .status-title { font-size: 2rem; }
+        
+        /* Сворачиваем колонки расписания и календаря */
+        .wc-grid { grid-template-columns: 1fr; gap: 40px; }
+        .worship-banner { padding: 40px 20px; align-items: center; text-align: center; }
+        .worship-title { font-size: 2rem; }
+        
+        .feature-row, .feature-row:nth-child(even) { flex-direction: column; gap: 30px; }
         .feature-img::before { display: none; }
-        .feature-title, .status-title, .liturgy-title { font-size: 2rem; text-align: center; }
-        .btn-gold-outline, .btn-gold-solid { display: block; text-align: center; }
-        .calendar-widget-box { width: 100%; padding: 20px; box-sizing: border-box; }
+        .feature-title { font-size: 1.8rem; text-align: center; }
+        .feature-desc { text-align: left; }
+        
+        .btn-gold-solid, .btn-gold-outline { display: block; text-align: center; }
     }
 </style>
 
@@ -230,9 +232,6 @@ title: Главная | Христорождественский собор
 <section class="home-hero">
     <div class="hero-content-inner">
         <h1 class="hero-title-large">Христорождественский<br>кафедральный собор</h1>
-        <div class="hero-location">
-            <span style="color:#C5A059; margin-right: 8px;">❖</span> г. Липецк, Соборная площадь, 4 <span style="color:#C5A059; margin-left: 8px;">❖</span>
-        </div>
     </div>
 </section>
 
@@ -242,23 +241,84 @@ title: Главная | Христорождественский собор
         <span class="status-subtitle">Духовное сердце региона</span>
         <h2 class="status-title">Главный храм Липецкой митрополии</h2>
         <p class="status-text">
-            Кафедральный собор Рождества Христова — это не просто выдающийся памятник архитектуры. Это кафедра Архипастыря, средоточие духовной и богослужебной жизни всего Липецкого края. Под этими величественными сводами соединяются эпохи: здесь молились наши предки, здесь совершались чудеса исцелений, и здесь сегодня, каждый день, возносится бескровная Жертва о мире всего мира и спасении каждого приходящего.
+            Кафедральный собор Рождества Христова — это не просто выдающийся памятник архитектуры. Это кафедра Архипастыря, средоточие духовной и богослужебной жизни всего Липецкого края. Под этими величественными сводами соединяются эпохи: здесь молились наши предки, здесь совершались чудеса исцелений, и здесь сегодня возносится бескровная Жертва о мире всего мира и спасении каждого приходящего.
         </p>
     </div>
 </section>
 
-<!-- МОНУМЕНТАЛЬНЫЙ БЛОК БОГОСЛУЖЕНИЙ -->
-<section class="liturgy-parallax">
-    <div class="container">
-        <h2 class="liturgy-title">Ежедневная соборная молитва</h2>
-        <p class="liturgy-text">
-            Двери Христорождественского собора открыты ежедневно с 7:00 утра до 20:00 вечера. Мы приглашаем вас разделить радость соборной молитвы, приступить к Таинствам Исповеди и Святого Причащения. Богослужения в главном храме митрополии совершаются с особым благолепием и величием.
-        </p>
-        <a href="{{ site.baseurl }}/schedule/" class="btn-gold-solid">Смотреть подробное расписание</a>
+<!-- РАСПИСАНИЕ И КАЛЕНДАРЬ (СДВОЕННЫЙ БЛОК) -->
+<section class="worship-calendar-section">
+    <div class="wc-grid">
+        
+        <!-- Левая часть: Расписание -->
+        <div class="worship-banner">
+            <h2 class="worship-title">Ежедневная соборная молитва</h2>
+            <p class="worship-text">
+                Двери Христорождественского собора открыты ежедневно с 7:00 утра до 20:00 вечера. Мы приглашаем вас разделить радость молитвы и приступить к Таинствам Церкви. Богослужения в главном храме митрополии совершаются с особым благолепием.
+            </p>
+            <a href="{{ site.baseurl }}/schedule/" class="btn-gold-solid">Подробное расписание</a>
+        </div>
+
+        <!-- Правая часть: Календарь -->
+        <div class="calendar-sidebar">
+            <h3 class="calendar-title">Сегодня в Церкви</h3>
+            <div class="pravoslavie-calendar-widget">
+                <!-- Расширенный скрипт календаря -->
+                <script src="https://script.pravoslavie.ru/calendar.php?advanced=1&dayicon=1&bold=1&tipikon=1&para=1&icon=1&target=1&name=1"></script>
+                <div class="pravoslavie-calendar-center">
+                    <script>print_holiday();</script>
+                    <b><script>print_day()</script></b><br>
+                    <script>print_week()</script>
+                    <script>print_post()</script><br>
+                    <i><script>print_trapeza();</script></i><br>
+                    
+                    <script>print_icon()</script>
+                    
+                    <b>Святые дня: </b><br>
+                    <script>print_saints()</script><br>
+                    
+                    <b>Евангельские Чтения: </b><br>
+                    <script>print_chten()</script>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
-<!-- ПОЛНОЦЕННЫЕ БЛОКИ ИСТОРИИ И СВЯТЫНЬ (ЗИГЗАГ) -->
+<!-- ЖИЗНЬ ПРИХОДА (РОВНО 3 НОВОСТИ) -->
+<section class="content-section alt-bg">
+    <h2 class="status-title" style="text-align: center; margin-bottom: 10px; font-size: 2.5rem;">Жизнь прихода</h2>
+    <p style="text-align: center; color: #777; font-family: 'PT Serif', serif; font-style: italic;">Последние события Христорождественского собора</p>
+
+    <!-- Вывод ровно 3 новостей -->
+    <div class="grid-3">
+        {% assign main_news = site.posts | where: "category", "news" %}
+        {% for post in main_news limit:3 %}
+        <article class="card-item">
+            <a href="{{ site.baseurl }}{{ post.url }}" class="card-thumb">
+                <img src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}">
+            </a>
+            <div class="card-body">
+                <span class="card-meta">{{ post.date | date: "%d.%m.%Y" }}</span>
+                <h3 class="card-title">
+                    <a href="{{ site.baseurl }}{{ post.url }}" style="text-decoration: none; color: inherit;">{{ post.title }}</a>
+                </h3>
+                <div class="card-excerpt">
+                    {{ post.excerpt | strip_html | truncatewords: 20 }}
+                </div>
+                <a href="{{ site.baseurl }}{{ post.url }}" style="color: #C5A059; font-family: 'Open Sans'; font-size: 12px; font-weight: 700; text-decoration: none; text-transform:uppercase;">Читать далее →</a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+
+    <div style="text-align: center;">
+        <a href="{{ site.baseurl }}/news/" class="btn-gold-outline">Летопись всех событий</a>
+    </div>
+</section>
+
+<!-- БЛОКИ ИСТОРИИ И СВЯТЫНЬ (ЗИГЗАГ) -->
 <section class="features-wrapper">
     
     <!-- 1. ИСТОРИЯ -->
@@ -271,7 +331,7 @@ title: Главная | Христорождественский собор
             <p class="feature-desc">
                 Познакомьтесь с богатой и величественной историей главного храма Липецка. От закладки первого камня по указу императрицы Екатерины II в 1791 году до трагических лет разрушения, использования здания в качестве музея и радостного, всенародного возрождения в наши дни.
             </p>
-            <a href="{{ site.baseurl }}/history/" class="btn-gold-outline">Полная история храма</a>
+            <a href="{{ site.baseurl }}/about/" class="btn-gold-outline">Полная история храма</a>
         </div>
     </div>
 
@@ -292,7 +352,7 @@ title: Главная | Христорождественский собор
     <!-- 3. ВОСКРЕСНАЯ ШКОЛА -->
     <div class="feature-row">
         <div class="feature-img">
-            <img src="{{ site.baseurl }}/images/history-bg.jpg" alt="Воскресная школа">
+            <img src="{{ site.baseurl }}/images/arch-1.jpg" alt="Воскресная школа">
         </div>
         <div class="feature-text">
             <h2 class="feature-title">Воскресная школа «Ковчег»</h2>
@@ -305,58 +365,12 @@ title: Главная | Христорождественский собор
 
 </section>
 
-<!-- КАЛЕНДАРЬ -->
-<section class="calendar-section">
-    <div class="calendar-row">
-        <div class="feature-text">
-            <h2 class="feature-title">Православный календарь</h2>
-            <p class="feature-desc">
-                Каждый день Православной Церкви освящен памятью святых угодников, празднованием чудотворных икон или чтением Священного Писания. Следите за церковным годом, узнавайте о постах и ежедневных молитвословиях, чтобы ваша духовная жизнь всегда была созвучна биению сердца Матери Церкви.
-            </p>
-        </div>
-        <div class="calendar-widget-box">
-            <!-- Скрипт календаря с сайта Pravoslavie.ru -->
-            <script language="JavaScript" type="text/javascript" src="https://script.pravoslavie.ru/calendar.php?advanced=1&dayicon=1&bold=1&tipikon=1&para=1&icon=1&target=1&name=1"></script>
-        </div>
-    </div>
-</section>
-
-<!-- ЖИЗНЬ ПРИХОДА (НОВОСТИ) -->
+<!-- СЛОВО ПАСТЫРЯ (РОВНО 3 ВИДЕО) -->
 <section class="content-section alt-bg">
-    <h2 class="status-title" style="text-align: center; margin-bottom: 10px; font-size: 2.5rem;">Жизнь прихода</h2>
-    <p style="text-align: center; color: #777; font-family: 'PT Serif', serif; font-style: italic;">Последние события Христорождественского собора</p>
-
-    <div class="grid-3">
-        {% assign main_news = site.posts | where: "category", "news" %}
-        {% for post in main_news limit:3 %}
-        <article class="card-item">
-            <a href="{{ site.baseurl }}{{ post.url }}" class="card-thumb">
-                <img src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}">
-            </a>
-            <div class="card-body">
-                <span class="card-meta">{{ post.date | date: "%d.%m.%Y" }}</span>
-                <h3 class="card-title">
-                    <a href="{{ site.baseurl }}{{ post.url }}" style="text-decoration: none; color: inherit;">{{ post.title }}</a>
-                </h3>
-                <div class="card-excerpt">
-                    {{ post.excerpt | strip_html | truncatewords: 20 }}
-                </div>
-                <a href="{{ site.baseurl }}{{ post.url }}" class="btn-gold-outline" style="border:none; padding: 0; background: transparent; text-transform:uppercase;">Читать далее →</a>
-            </div>
-        </article>
-        {% endfor %}
-    </div>
-
-    <div style="text-align: center;">
-        <a href="{{ site.baseurl }}/news/" class="btn-gold-outline">Летопись всех событий</a>
-    </div>
-</section>
-
-<!-- СЛОВО ПАСТЫРЯ (ВИДЕО) -->
-<section class="content-section">
     <h2 class="status-title" style="text-align: center; margin-bottom: 10px; font-size: 2.5rem;">Слово пастыря</h2>
     <p style="text-align: center; color: #777; font-family: 'PT Serif', serif; font-style: italic;">Проповеди и беседы священнослужителей собора</p>
 
+    <!-- Вывод ровно 3 видео -->
     <div class="grid-3">
         {% assign video_posts = site.posts | where: "category", "video" %}
         {% for video in video_posts limit:3 %}
