@@ -1,14 +1,63 @@
 ---
 layout: default
-title: Главная | Христорождественский собор
+title: Христорождественский кафедральный собор г. Липецка | Главный православный храм и церковь
 ---
+
+<!-- 
+    SEO ОПТИМИЗАЦИЯ:
+    Описание страницы насыщено ключевыми словами для поиска: Липецк, храм, церковь, собор, расписание, богослужения.
+-->
+<meta name="description" content="Официальный сайт Христорождественского кафедрального собора — главного православного храма города Липецка на Соборной площади. Ежедневные богослужения, Литургия, Исповедь и Причастие. Расписание служб, чтимые святыни (Страстная икона, мощи), Воскресная школа. Духовный центр Липецкой митрополии.">
+<meta name="keywords" content="Христорождественский собор Липецк, храм Липецк, церковь Липецк, православный храм, расписание богослужений собор, службы в соборе, исповедь Липецк, причастие время, поставить свечку, заказать молебен, венчание в соборе, крещение Липецк, архиерейская служба, владыка Арсений, Соборная площадь 4, святыни Липецка, икона Страстная, мощи святых, воскресная школа для детей, православие, Липецкая епархия, митрополия, сайт храма">
+
+<!-- РАЗМЕТКА SCHEMA.ORG ДЛЯ ПОИСКОВИКОВ (ЯНДЕКС/GOOGLE) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "OrthodoxChurch",
+  "name": "Христорождественский кафедральный собор",
+  "image": "{{ site.baseurl }}/images/architecture-bg.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Соборная площадь, 4",
+    "addressLocality": "Липецк",
+    "addressRegion": "Липецкая область",
+    "postalCode": "398000",
+    "addressCountry": "RU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 52.608826,
+    "longitude": 39.599229
+  },
+  "url": "https://dmitrii048.github.io/sobor_Rozhdestva/",
+  "telephone": "+74742270478",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "07:00",
+      "closes": "20:00"
+    }
+  ],
+  "description": "Главный православный храм Липецкой митрополии. Ежедневные богослужения, святыни, воскресная школа."
+}
+</script>
 
 <style>
     /* =========================================
-       1. ГЕРОЙ-БЛОК
+       1. ГЕРОЙ-БЛОК (ФОТО + ЗАТЕМНЕНИЕ)
        ========================================= */
     .home-hero {
-        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('{{ site.baseurl }}/images/architecture-bg.jpg');
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('{{ site.baseurl }}/images/history-bg.jpg');
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
@@ -20,6 +69,7 @@ title: Главная | Христорождественский собор
         justify-content: center;
         text-align: center;
         color: #fff;
+        margin-top: 0;
     }
     .hero-title-large {
         font-family: 'PT Serif', serif;
@@ -63,15 +113,14 @@ title: Главная | Христорождественский собор
     }
     .wc-grid {
         display: grid;
-        grid-template-columns: 1.6fr 1fr; /* Левая часть широкая под красивое фото */
+        grid-template-columns: 1.6fr 1fr;
         gap: 40px;
         max-width: 1200px;
         margin: 0 auto;
     }
     
-    /* БАННЕР РАСПИСАНИЯ (С фото службы) */
     .worship-banner {
-        /* ВСТАВЛЯЕМ ФОТО СЛУЖБЫ ТУТ */
+        /* ФОТО СЛУЖБЫ */
         background-image: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%), url('{{ site.baseurl }}/images/liturgy-service.jpg');
         background-size: cover;
         background-position: center;
@@ -107,14 +156,29 @@ title: Главная | Христорождественский собор
     }
     .calendar-title {
         font-family: 'PT Serif', serif; font-size: 1.6rem; color: #2C2C2C;
-        margin-bottom: 20px; border-bottom: 1px solid #EAE3D5; padding-bottom: 15px;
+        margin-bottom: 15px; border-bottom: 1px solid #EAE3D5; padding-bottom: 15px;
     }
-    .pravoslavie-calendar-widget { font-family: 'PT Serif', serif !important; font-size: 15px !important; color: #444 !important; line-height: 1.6; }
-    .pravoslavie-calendar-widget a { color: #C5A059 !important; text-decoration: none !important; font-weight: 700; }
-    .pravoslavie-calendar-center img { max-width: 140px; height: auto; border-radius: 4px; margin: 15px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    
+    /* ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ КАЛЕНДАРЯ */
+    .pravoslavie-calendar-widget {
+        font-family: 'PT Serif', serif !important;
+        font-size: 16px !important;
+        color: #444 !important;
+        line-height: 1.5;
+    }
+    .pravoslavie-calendar-widget a { color: #C5A059 !important; text-decoration: none !important; font-weight: 700; border-bottom: 1px solid transparent; }
+    .pravoslavie-calendar-widget a:hover { border-color: #C5A059; }
+    .pravoslavie-calendar-center img { 
+        max-width: 140px; 
+        height: auto; 
+        border-radius: 4px; 
+        margin: 15px auto; 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    }
+    .pravoslavie-calendar-center b { display: block; margin-top: 10px; color: #2C2C2C; }
 
     /* =========================================
-       4. ЖИЗНЬ ПРИХОДА (НОВОСТИ - 3 ШТ)
+       4. ЖИЗНЬ ПРИХОДА (НОВОСТИ)
        ========================================= */
     .news-section {
         padding: 80px 20px;
@@ -124,10 +188,9 @@ title: Главная | Христорождественский собор
     }
     .section-head-center { text-align: center; margin-bottom: 50px; }
     
-    /* СЕТКА НА 3 КОЛОНКИ */
     .grid-3 {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* Ровно 3 колонки */
+        grid-template-columns: repeat(3, 1fr);
         gap: 30px;
         max-width: 1200px;
         margin: 0 auto 50px;
@@ -157,73 +220,65 @@ title: Главная | Христорождественский собор
     .feature-row:last-child { margin-bottom: 0; }
     .feature-row:nth-child(even) { flex-direction: row-reverse; }
     
-    .feature-img { flex: 1; position: relative; }
-    .feature-img img { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+    .feature-img { flex: 1; position: relative; text-align: center; }
+    .feature-img img { 
+        width: 100%; 
+        max-width: 500px; 
+        max-height: 350px; 
+        object-fit: cover;
+        height: auto; 
+        border-radius: 4px; 
+        box-shadow: 0 20px 50px rgba(0,0,0,0.15); 
+    }
     
     .feature-text { flex: 1; }
     .feature-title { font-family: 'PT Serif', serif; font-size: 2.2rem; color: #2C2C2C; margin-bottom: 20px; line-height: 1.2; }
     .feature-desc { font-family: 'PT Serif', serif; font-size: 1.15rem; line-height: 1.8; color: #555; margin-bottom: 30px; text-align: justify; }
 
     /* =========================================
-       6. ВИДЕО (СЛОВО ПАСТЫРЯ) - СТИЛЬ "ПАУЗА"
+       6. ВИДЕО (СЛОВО ПАСТЫРЯ)
        ========================================= */
     .video-section { padding: 80px 20px; background: #fff; }
-    
-    /* Компактная карточка для видео */
-    .video-card {
-        background: transparent;
-        border: none;
-        box-shadow: none;
-    }
+    .video-card { background: transparent; border: none; box-shadow: none; }
     .video-card:hover { transform: translateY(-5px); box-shadow: none; }
     
     .video-thumb-wrap {
-        height: 200px; /* Чуть меньше, чем новости */
+        height: 200px;
         border-radius: 6px;
         overflow: hidden;
         position: relative;
         box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
-    .video-thumb-wrap img {
-        width: 100%; height: 100%; object-fit: cover; transition: 0.5s;
-        filter: brightness(0.85); /* Чуть затемняем, чтобы кнопка горела */
-    }
+    .video-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; filter: brightness(0.9); }
     .video-card:hover .video-thumb-wrap img { transform: scale(1.05); filter: brightness(1); }
 
-    /* КНОПКА PLAY (ЗОЛОТАЯ) */
     .play-btn-overlay {
-        position: absolute;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        width: 60px; height: 60px;
-        background: rgba(197, 160, 89, 0.9); /* Золото */
-        border-radius: 50%;
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 60px; height: 60px; background: rgba(197, 160, 89, 0.9); border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
-        color: #fff;
-        font-size: 20px;
-        box-shadow: 0 0 0 5px rgba(255,255,255,0.2); /* Аура вокруг кнопки */
-        transition: 0.3s;
+        color: #fff; font-size: 20px; box-shadow: 0 0 0 5px rgba(255,255,255,0.2); transition: 0.3s;
     }
-    .video-card:hover .play-btn-overlay {
-        transform: translate(-50%, -50%) scale(1.1);
-        background: #C5A059;
-        box-shadow: 0 0 0 8px rgba(197, 160, 89, 0.4);
-    }
-    .play-btn-overlay i { margin-left: 3px; } /* Визуальная центровка треугольника */
+    .video-card:hover .play-btn-overlay { transform: translate(-50%, -50%) scale(1.1); background: #C5A059; box-shadow: 0 0 0 8px rgba(197, 160, 89, 0.4); }
+    .play-btn-overlay i { margin-left: 3px; }
 
     .video-info { padding: 20px 5px 0; text-align: center; }
-    .video-title {
-        font-family: 'PT Serif', serif;
-        font-size: 1.15rem;
-        line-height: 1.4;
-        color: #2C2C2C;
-        margin: 0;
-        font-weight: 700;
-    }
-    .video-date-small {
-        display: block; font-size: 12px; color: #999; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;
-    }
+    .video-title { font-family: 'PT Serif', serif; font-size: 1.15rem; line-height: 1.4; color: #2C2C2C; margin: 0; font-weight: 700; }
+    .video-date-small { display: block; font-size: 12px; color: #999; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
 
+    /* SEO BLOCK - ТЕКСТ ДЛЯ ПОИСКОВИКОВ */
+    .seo-text-block {
+        background-color: #f8f6f2;
+        padding: 60px 20px;
+        border-top: 1px solid #EAE3D5;
+        font-family: 'PT Serif', serif;
+        color: #666;
+        font-size: 1rem;
+        line-height: 1.8;
+        text-align: justify;
+    }
+    .seo-container { max-width: 1000px; margin: 0 auto; columns: 2; column-gap: 50px; }
+    .seo-text-block h2 { font-size: 1.5rem; color: #C5A059; margin-bottom: 20px; column-span: all; text-align: center; }
+    
     /* КНОПКИ */
     .btn-gold-solid {
         display: inline-block; padding: 16px 40px; background: #C5A059; color: #fff;
@@ -240,25 +295,119 @@ title: Главная | Христорождественский собор
     .btn-gold-outline:hover { background: #C5A059; color: #fff; box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3); }
 
     /* =========================================
-       6. МОБИЛЬНАЯ АДАПТАЦИЯ
+       7. МОБИЛЬНАЯ АДАПТАЦИЯ (ИСПРАВЛЕНИЯ)
        ========================================= */
     @media (max-width: 900px) {
+        
+        /* 1. ШАПКА И МЕНЮ */
+        .main-header {
+            position: sticky; top: 0; padding: 10px 15px;
+            display: flex; justify-content: space-between; align-items: center;
+            height: 60px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo-visual, .logo-brand-area .title-secondary, .logo-brand-area .title-sub, .logo-brand-area .art-divider, .logo-brand-area .church-meta { display: none; }
+        .logo-expansive-container { width: auto; padding: 0; margin: 0; }
+        .logo-flex-row { flex-direction: row; align-items: center; text-align: left; }
+        .title-main { font-size: 1.1rem; margin: 0; color: #2C2C2C; line-height: 1.1; font-weight: 700; }
+        .title-main::after { content: " собор"; }
+        .mobile-menu-toggle {
+            display: flex; align-items: center; justify-content: center;
+            background: #C5A059; color: #fff; border: none; border-radius: 4px;
+            padding: 8px 15px; font-size: 13px; font-weight: 700; cursor: pointer; height: 36px;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .main-nav {
+            position: absolute; top: 60px; left: 0; width: 100%; background: #fff;
+            flex-direction: column; border-top: 1px solid #EAE3D5; display: none;
+            max-height: 85vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .main-nav.open { display: block; }
+        .main-nav ul { padding: 0; margin: 0; list-style: none; }
+        .main-nav li { border-bottom: 1px solid #f0f0f0; display: block; width: 100%; }
+        .main-nav > ul > li > a { padding: 15px 20px; display: block; font-size: 16px; font-weight: 700; color: #2C2C2C; text-transform: uppercase; }
+        
+        /* Исправление выпадающего списка на мобильном */
+        .main-nav .dropdown-menu {
+            position: static; visibility: visible; opacity: 1; transform: none; box-shadow: none; border: none;
+            background-color: #fcfbf9; width: 100%; padding: 0; display: block;
+        }
+        .main-nav .dropdown-menu li { border-bottom: 1px solid #EAE3D5; }
+        .main-nav .dropdown-menu a { padding: 12px 20px 12px 40px; font-size: 15px; color: #555; font-weight: 400; text-transform: none; }
+        .btn-note { background: #C5A059; color: #fff !important; text-align: center; margin: 20px; width: auto; border-radius: 4px; }
+
+        /* Остальные блоки */
         .hero-title-large { font-size: 2.5rem; padding: 0 15px; }
         .home-hero { height: 60vh; min-height: 350px; }
         
-        .wc-grid { grid-template-columns: 1fr; gap: 40px; }
+        .wc-grid, .grid-3 { grid-template-columns: 1fr; gap: 40px; }
         .worship-banner { padding: 40px 20px; min-height: auto; align-items: center; text-align: center; }
         .worship-title { font-size: 2rem; }
         
-        .grid-3 { grid-template-columns: 1fr; gap: 40px; } /* Новости в 1 колонку на телефоне */
-        
         .feature-row, .feature-row:nth-child(even) { flex-direction: column; gap: 30px; }
+        .feature-img img { max-width: 100%; max-height: 250px; }
         .feature-title { font-size: 1.8rem; text-align: center; }
         .feature-desc { text-align: left; }
         
-        .btn-gold-solid, .btn-gold-outline { display: block; text-align: center; }
+        .card-thumb { height: 180px; }
+        .card-body { padding: 20px; }
+        .calendar-sidebar { padding: 20px 15px; }
+        .pravoslavie-calendar-widget { font-size: 14px !important; }
+        .pravoslavie-calendar-center img { max-width: 80px; margin: 10px auto; }
+        .seo-container { columns: 1; }
+        
+        .btn-gold-solid, .btn-gold-outline { display: block; text-align: center; width: 100%; box-sizing: border-box;}
     }
 </style>
+
+<header class="main-header">
+    <div class="logo-expansive-container">
+        <div class="logo-flex-row">
+            <a href="{{ site.baseurl }}/" class="logo-visual">
+                <img src="{{ site.baseurl }}/sobor-sketch.jpg" alt="Собор Рождества Христова" class="logo-sketch-large">
+            </a>
+            <div class="logo-brand-area">
+                <h1 class="title-main">Христорождественский</h1>
+                <h2 class="title-secondary">кафедральный собор</h2>
+                <h3 class="title-sub">г. Липецка</h3>
+                <div class="art-divider"></div>
+                <div class="church-meta">
+                    <p>Московский Патриархат <br> <span>Липецкая митрополия</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button id="menu-toggle" class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i> Меню
+    </button>
+    
+    <nav class="main-nav" id="main-nav">
+        <ul>
+            <li><a href="{{ site.baseurl }}/" class="active">Главная</a></li>
+            <li class="has-dropdown">
+                <a href="#">О соборе</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ site.baseurl }}/about/">Летопись храма</a></li>
+                    <li><a href="{{ site.baseurl }}/shrines/">Святыни и молитвословия</a></li>
+                    <li><a href="{{ site.baseurl }}/archpastor/">Архипастырь</a></li>
+                    <li><a href="{{ site.baseurl }}/clergy/">Духовенство</a></li>
+                    <li><a href="{{ site.baseurl }}/school/">Воскресная школа</a></li>
+                </ul>
+            </li>
+            <li><a href="{{ site.baseurl }}/schedule/">Расписание</a></li>
+            <li class="has-dropdown">
+                <a href="#">Служение</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ site.baseurl }}/social/">Социальное служение</a></li>
+                    <li><a href="{{ site.baseurl }}/missionary/">Служение в других храмах</a></li>
+                </ul>
+            </li>
+            <li><a href="{{ site.baseurl }}/publications/">Публикации</a></li>
+            <li><a href="{{ site.baseurl }}/contacts/">Контакты</a></li>
+            <li><a href="#" class="btn-note">Подать записку</a></li>
+        </ul>
+    </nav>
+</header>
 
 <!-- ГЕРОЙ-БЛОК -->
 <section class="home-hero">
@@ -273,7 +422,7 @@ title: Главная | Христорождественский собор
         <span class="status-subtitle">Духовное сердце региона</span>
         <h2 class="status-title">Главный храм Липецкой митрополии</h2>
         <p class="status-text">
-            Кафедральный собор Рождества Христова — это кафедра Архипастыря, средоточие духовной и богослужебной жизни всего Липецкого края. Под этими величественными сводами соединяются эпохи: здесь молились наши предки, здесь совершались чудеса исцелений, и здесь сегодня возносится бескровная Жертва о мире всего мира и спасении каждого приходящего.
+            Кафедральный собор Рождества Христова — это кафедра Архипастыря, средоточие духовной и богослужебной жизни всего Липецкого края. Под этими величественными сводами соединяются эпохи: здесь молились наши предки, здесь совершались чудеса исцелений, и здесь сегодня возносится бескровная Жертва о мире всего мира и спасении каждого приходящего. Это главный православный храм города, двери которого открыты для каждого человека, ищущего Бога.
         </p>
     </div>
 </section>
@@ -285,7 +434,7 @@ title: Главная | Христорождественский собор
         <div class="worship-banner">
             <h2 class="worship-title">Соборная молитва</h2>
             <p class="worship-text">
-                Мы приглашаем вас разделить радость молитвы и приступить к Таинствам Церкви. Божественная Литургия совершается в соборе с особым архиерейским благолепием.
+                Мы приглашаем вас разделить радость молитвы и приступить к Таинствам Церкви. Ежедневно в соборе совершаются уставные богослужения: утреня, вечерня и Божественная Литургия. Исповедь принимается священниками перед началом Литургии и во время Всенощного бдения. 
             </p>
             <a href="{{ site.baseurl }}/schedule/" class="btn-gold-solid">Расписание богослужений</a>
         </div>
@@ -300,7 +449,6 @@ title: Главная | Христорождественский собор
                     <b><script>print_day()</script></b><br>
                     <script>print_week()</script>
                     <script>print_post()</script><br>
-                    <i><script>print_trapeza();</script></i><br>
                     <script>print_icon()</script>
                     <b>Святые дня: </b><br>
                     <script>print_saints()</script><br>
@@ -319,7 +467,6 @@ title: Главная | Христорождественский собор
         <p style="color:#777; font-family:'PT Serif',serif; font-style:italic;">События и новости Христорождественского собора</p>
     </div>
 
-    <!-- Сетка ровно на 3 новости -->
     <div class="grid-3">
         {% assign main_news = site.posts | where: "category", "news" %}
         {% for post in main_news limit:3 %}
@@ -352,36 +499,35 @@ title: Главная | Христорождественский собор
     <!-- 1. ИСТОРИЯ -->
     <div class="feature-row">
         <div class="feature-img">
-            <img src="{{ site.baseurl }}/images/history.jpg" alt="Летопись собора">
+            <img src="{{ site.baseurl }}/images/history.jpg" alt="Летопись собора, история православного храма Липецк">
         </div>
         <div class="feature-text">
             <h2 class="feature-title">Летопись собора</h2>
             <p class="feature-desc">
-                Познакомьтесь с богатой и величественной историей главного храма Липецка. От закладки первого камня по указу императрицы Екатерины II в 1791 году до трагических лет разрушения и радостного возрождения в наши дни.
+                Познакомьтесь с богатой и величественной историей главного храма Липецка. От закладки первого камня по указу императрицы Екатерины II в 1791 году до трагических лет разрушения и радостного возрождения в наши дни. История Христорождественского собора — это зеркало истории Русской Православной Церкви на Липецкой земле.
             </p>
-            <a href="{{ site.baseurl }}/about/" class="btn-gold-outline">Полная история храма</a>
+            <a href="{{ site.baseurl }}/about/" class="btn-gold-outline">Краткая летопись</a>
         </div>
     </div>
 
     <!-- 2. СВЯТЫНИ (Реверс) -->
     <div class="feature-row">
         <div class="feature-img">
-            <img src="{{ site.baseurl }}/images/icon-strastnaya.jpg" alt="Святыни собора">
+            <img src="{{ site.baseurl }}/images/icon-strastnaya.jpg" alt="Святыни собора, Икона Страстная Липецкая">
         </div>
         <div class="feature-text">
             <h2 class="feature-title">Чудотворные Святыни</h2>
             <p class="feature-desc">
-                Под сводами собора бережно хранятся великие духовные сокровища. Приглашаем вас поклониться чудотворному образу Божией Матери «Страстная Липецкая» и ковчегу с мощами 81 угодника Божия.
+                Под сводами собора бережно хранятся великие духовные сокровища. Приглашаем вас поклониться чудотворному образу Божией Матери «Страстная Липецкая» и ковчегу с мощами 81 угодника Божия. Эти святыни веками источают благодатную помощь всем, кто с верою притекает к ним в своих молитвах.
             </p>
             <a href="{{ site.baseurl }}/shrines/" class="btn-gold-outline">Поклониться святыням</a>
         </div>
     </div>
 
-    <!-- 3. ВОСКРЕСНАЯ ШКОЛА (Новое фото и текст) -->
+    <!-- 3. ВОСКРЕСНАЯ ШКОЛА -->
     <div class="feature-row">
         <div class="feature-img">
-            <!-- ВАЖНО: Залейте фото school-life.jpg в папку images -->
-            <img src="{{ site.baseurl }}/images/school-life.jpg" alt="Воскресная школа" onerror="this.src='{{ site.baseurl }}/images/arch-1.jpg'"> 
+            <img src="{{ site.baseurl }}/images/school-life.jpg" alt="Воскресная школа Ковчег, дети в храме" onerror="this.src='{{ site.baseurl }}/images/arch-1.jpg'"> 
         </div>
         <div class="feature-text">
             <h2 class="feature-title">Воскресная школа «Ковчег»</h2>
@@ -398,7 +544,7 @@ title: Главная | Христорождественский собор
 <section class="video-section">
     <div class="section-head-center">
         <h2 class="status-title">Слово пастыря</h2>
-        <p style="color:#777; font-family:'PT Serif',serif; font-style:italic;">Проповеди и беседы</p>
+        <p style="color:#777; font-family:'PT Serif',serif; font-style:italic;">Проповеди, беседы и наставления священнослужителей</p>
     </div>
 
     <div class="grid-3">
@@ -406,12 +552,8 @@ title: Главная | Христорождественский собор
         {% for video in video_posts limit:3 %}
         <a href="{{ site.baseurl }}{{ video.url }}" class="card-item video-card" style="text-decoration: none;">
             <div class="video-thumb-wrap">
-                <!-- Картинка-обложка -->
                 <img src="{{ site.baseurl }}/{{ video.image }}" alt="{{ video.title }}">
-                <!-- Кнопка Play по центру -->
-                <div class="play-btn-overlay">
-                    <i class="fas fa-play"></i>
-                </div>
+                <div class="play-btn-overlay"><i class="fas fa-play"></i></div>
             </div>
             <div class="video-info">
                 <span class="video-date-small">{{ video.date | date: "%d.%m.%Y" }}</span>
@@ -425,3 +567,66 @@ title: Главная | Христорождественский собор
         <a href="{{ site.baseurl }}/videos/" class="btn-gold-outline">Смотреть все видео</a>
     </div>
 </section>
+
+<!-- SEO TEXT BLOCK (ДЛЯ ПОИСКОВИКОВ) -->
+<section class="seo-text-block">
+    <div class="seo-container">
+        <h2>О Духовном Центре Липецка</h2>
+        <p>
+            Христорождественский кафедральный собор — это сердце православной жизни города Липецка. Расположенный на исторической Соборной площади, храм является величественным памятником архитектуры и местом непрестанной молитвы. Ежедневно здесь совершаются уставные богослужения, Литургия, вечерня и утреня. Верующие могут подать записки о здравии и упокоении, заказать молебен или панихиду, а также приступить к Таинствам Исповеди и Святого Причащения.
+        </p>
+        <p>
+            В нашем соборе совершаются Таинства Крещения и Венчания. Для желающих принять Святое Крещение проводятся огласительные беседы. Особое внимание уделяется духовному просвещению: работает воскресная школа «Ковчег» для детей и взрослых, проводятся встречи с духовенством. В храме находятся чтимые святыни Липецкой земли: чудотворная икона Божией Матери «Страстная Липецкая», спасавшая город от эпидемий, и ковчег с частицами мощей святых угодников Божиих.
+        </p>
+        <p>
+            Мы ждем вас в стенах главного храма Липецкой митрополии. Двери церкви открыты для каждого человека, ищущего утешения, духовной поддержки и встречи с Богом. Приходите помолиться, поставить свечку, пообщаться со священником и обрести душевный мир под сводами дома Божия.
+        </p>
+    </div>
+</section>
+
+<!-- ФУТЕР -->
+<footer class="site-footer-light">
+    <div class="container footer-content">
+        <div class="footer-block">
+            <h5>Навигация</h5>
+            <a href="{{ site.baseurl }}/">Главная</a>
+            <a href="{{ site.baseurl }}/about/">О соборе</a>
+            <a href="{{ site.baseurl }}/schedule/">Расписание</a>
+            <a href="{{ site.baseurl }}/shrines/">Святыни</a>
+        </div>
+        <div class="footer-block">
+            <h5>Контакты</h5>
+            <p>г. Липецк, Соборная пл., 4</p>
+            <p>+7 (4742) 27-04-78</p>
+        </div>
+        <div class="footer-block">
+            <h5>Мы в соцсетях</h5>
+            <a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a>
+            <a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            <a href="https://max.ru/join/refQw8YZh7RC1z9hr72iKjy8rI9Kjvi7250J9GkV35Y" target="_blank"><i class="fas fa-users"></i> MAX</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p>
+    </div>
+</footer>
+
+<script>
+    // Скрипт мобильного меню
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+
+    if(menuToggle && mainNav){
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+            const icon = menuToggle.querySelector('i');
+            if (mainNav.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+</script>
