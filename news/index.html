@@ -1,47 +1,154 @@
 ---
 layout: default
+title: Все новости собора | Христорождественский собор
 ---
+
 <style>
-    .video-hero {
-        background-color: #2a2a2a; /* Темный фон для кинотеатрального эффекта */
-        padding: 60px 0;
-        margin-bottom: 50px;
-        border-bottom: 3px solid #C5A059;
+    /* Шапка архива */
+    .archive-header {
+        background-color: #fcfbf9;
+        padding: 60px 20px;
+        text-align: center;
+        border-bottom: 1px solid #EAE3D5;
+        margin-bottom: 60px;
     }
-    .video-wrapper {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 */
-        height: 0;
-        max-width: 1000px;
-        margin: 0 auto;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    .archive-title {
+        font-family: 'PT Serif', serif;
+        font-size: 2.5rem;
+        color: #2C2C2C;
+        margin: 0 0 10px 0;
     }
-    .video-wrapper iframe {
-        position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+    .archive-subtitle {
+        color: #777;
+        font-family: 'PT Serif', serif;
+        font-style: italic;
+        font-size: 1.1rem;
+        margin: 0;
     }
-    .video-info-container { max-width: 800px; margin: 0 auto; padding: 0 20px 60px; text-align: center;}
-    .video-title { font-family: 'PT Serif', serif; font-size: 2rem; color: #2C2C2C; margin-bottom: 20px; }
-    .video-date { color: #C5A059; font-weight: bold; font-family: 'Open Sans', sans-serif; margin-bottom: 30px; display: block; text-transform: uppercase; }
+
+    /* Сетка новостей */
+    .news-archive-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto 80px;
+        padding: 0 20px;
+    }
+
+    /* Карточка новости */
+    .news-card {
+        background: #fff;
+        border: 1px solid #EAE3D5;
+        border-radius: 4px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    }
+    .news-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(197, 160, 89, 0.12);
+        border-color: #C5A059;
+    }
+
+    /* Изображение */
+    .news-card-img-wrap {
+        height: 230px;
+        overflow: hidden;
+        display: block;
+    }
+    .news-card-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+    .news-card:hover .news-card-img-wrap img {
+        transform: scale(1.05);
+    }
+
+    /* Текстовая часть карточки */
+    .news-card-body {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .news-card-date {
+        color: #C5A059;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+        display: block;
+    }
+    .news-card-title {
+        font-family: 'PT Serif', serif;
+        font-size: 1.3rem;
+        line-height: 1.35;
+        color: #2C2C2C;
+        margin: 0 0 15px 0;
+    }
+    .news-card-title a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .news-card-title a:hover {
+        color: #C5A059;
+    }
+    .news-card-excerpt {
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 25px;
+        flex-grow: 1;
+    }
+    .news-card-btn {
+        font-family: 'Open Sans', sans-serif;
+        color: #C5A059;
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        align-self: flex-start;
+        border-bottom: 1px solid transparent;
+        transition: 0.3s;
+    }
+    .news-card-btn:hover {
+        border-bottom-color: #C5A059;
+    }
 </style>
 
-<div class="video-hero">
-    <div class="container">
-        <div class="video-wrapper">
-            <!-- Вставляем плеер Rutube. ID берется из markdown файла -->
-            <iframe src="https://rutube.ru/play/embed/{{ page.rutube_id }}/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-        </div>
-    </div>
+<!-- ЗАГОЛОВОК АРХИВА -->
+<div class="archive-header">
+    <h1 class="archive-title">Летопись событий</h1>
+    <p class="archive-subtitle">Жизнь Христорождественского кафедрального собора</p>
 </div>
 
-<div class="video-info-container">
-    <span class="video-date">{{ page.date | date: "%d.%m.%Y" }}</span>
-    <h1 class="video-title">{{ page.title }}</h1>
-    
-    <div style="font-family: 'PT Serif', serif; font-size: 1.1rem; color: #555; line-height: 1.6; text-align: justify;">
-        {{ content }}
-    </div>
-
-    <div style="margin-top: 50px;">
-        <a href="{{ site.baseurl }}/videos/" style="color: #888; text-decoration: none; border-bottom: 1px dashed #ccc; transition: 0.3s;">← Ко всем видеозаписях</a>
-    </div>
+<!-- СЕТКА НОВОСТЕЙ -->
+<div class="news-archive-grid">
+    {% assign main_news = site.posts | where: "category", "news" %}
+    {% for post in main_news %}
+    <article class="news-card">
+        <a href="{{ site.baseurl }}{{ post.url }}" class="news-card-img-wrap">
+            <img src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}">
+        </a>
+        <div class="news-card-body">
+            <span class="news-card-date">{{ post.date | date: "%d.%m.%Y" }}</span>
+            <h3 class="news-card-title">
+                <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+            </h3>
+            <div class="news-card-excerpt">
+                {{ post.excerpt | strip_html | truncatewords: 22 }}
+            </div>
+            <a href="{{ site.baseurl }}{{ post.url }}" class="news-card-btn">Читать далее →</a>
+        </div>
+    </article>
+    {% endfor %}
 </div>
