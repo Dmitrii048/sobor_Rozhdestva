@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Высокопреосвященнейший Арсений, Митрополит Липецкий и Задонский. Биография, служение, награды главы Липецкой митрополии.">
-    <title>Архипастырь | Христорождественский собор</title>
+    <meta name="description" content="Духовенство Христорождественского кафедрального собора города Липецка. Биографии священнослужителей, клир, настоятель протоиерей Василий Бильчук.">
+    <title>Духовенство | Христорождественский собор</title>
     
     <link rel="stylesheet" href="../style.css">
     
@@ -12,179 +12,160 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- СТИЛИ ДЛЯ КИНЕТИЧЕСКОЙ ТИПОГРАФИКИ (ИСПРАВЛЕННЫЕ) --- */
+        /* --- СТИЛИ СПЕЦИАЛЬНО ДЛЯ ДУХОВЕНСТВА --- */
         
-        .kinetic-header { 
-            position: relative; 
-            overflow: hidden; 
-            margin-bottom: 20px;
-        }
+        .gsap-reveal { visibility: hidden; opacity: 0; will-change: transform, opacity; }
 
-        .kinetic-title {
+        .clergy-intro {
+            text-align: center;
+            max-width: 800px;
+            /* Уменьшили отступы, чтобы контент был выше */
+            margin: 30px auto 40px; 
             font-family: 'PT Serif', serif;
-            font-size: 38px; /* Чуть уменьшил для лучшей посадки */
-            line-height: 1.25;
-            color: #2C2C2C;
-            margin: 0;
-            font-weight: 700;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
         }
 
-        /* Обертка для слова: запрещает разрыв БУКВ внутри слова */
-        .word-wrapper {
-            display: inline-block;
-            white-space: nowrap; 
-            margin-right: 0.25em; /* Пробел между словами */
-            vertical-align: top; /* Чтобы слова стояли ровно */
-        }
-
-        /* Сами буквы */
-        .char { 
-            display: inline-block; 
-            opacity: 0; 
-            transform-origin: bottom center;
-            will-change: transform, opacity;
-        }
-
-        /* --- ОБНОВЛЕННЫЙ СТИЛЬ ГЕРОЯ --- */
-        .arch-hero-section {
+        /* --- СЕКЦИЯ НАСТОЯТЕЛЯ (КОМПАКТНЕЕ) --- */
+        .rector-section {
             background-color: #fff;
-            padding: 60px 0;
-            border-bottom: 1px solid #EAE3D5;
+            border: 1px solid #EAE3D5;
+            box-shadow: 0 20px 50px rgba(197, 160, 89, 0.15); 
+            /* Уменьшили внутренние отступы */
+            padding: 30px 40px; 
+            margin-bottom: 60px;
+            display: grid;
+            grid-template-columns: 320px 1fr; /* Чуть уже колонка для фото */
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        .arch-hero-grid {
-            display: grid;
-            grid-template-columns: 380px 1fr; 
-            gap: 50px;
-            align-items: start;
+        .rector-section::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, #fff, #C5A059, #fff);
         }
 
-        .arch-portrait-wrapper {
+        .clergy-photo-wrapper {
             position: relative;
-            padding: 15px;
+            padding: 10px;
             background: #fff;
-            box-shadow: 0 20px 40px rgba(197, 160, 89, 0.15);
             border: 1px solid #EAE3D5;
+            transition: border-color 0.5s ease;
         }
-        .arch-portrait-wrapper::before {
-            content: ''; position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px;
-            border: 1px solid #C5A059; pointer-events: none; opacity: 0.6;
+        .clergy-photo-wrapper::after {
+            content: ''; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 1px solid #C5A059; pointer-events: none; opacity: 0.7;
         }
-        .arch-photo { width: 100%; height: auto; display: block; }
 
-        .arch-info .rank {
+        .clergy-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            filter: sepia(10%); 
+            transition: filter 0.5s ease;
+        }
+        .rector-section:hover .clergy-photo,
+        .clergy-card:hover .clergy-photo { filter: sepia(0%); }
+
+        .clergy-info h2 {
+            font-family: 'PT Serif', serif;
+            color: #2C2C2C;
+            font-size: 30px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .rank-label {
+            display: inline-block;
             font-family: 'Open Sans', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #C5A059;
-            font-size: 12px;
+            letter-spacing: 2px;
+            font-size: 11px;
             font-weight: 700;
-            margin-bottom: 15px;
-            display: block;
-        }
-        
-        .arch-secular-name {
-            font-family: 'PT Serif', serif;
-            font-style: italic;
-            color: #777;
-            font-size: 18px;
-            margin-bottom: 30px;
-            position: relative;
-            padding-left: 20px;
-        }
-        .arch-secular-name::before {
-            content: '—'; position: absolute; left: 0; color: #C5A059;
-        }
-
-        .arch-intro-text {
-            font-size: 18px;
-            line-height: 1.7;
-            color: #333;
-            font-family: 'PT Serif', serif;
-            text-align: justify;
-        }
-
-        /* --- НОВАЯ КОМПАКТНАЯ БИОГРАФИЯ (GRID) --- */
-        .bio-section { padding: 60px 0; background: #fdfbf7; }
-        
-        .bio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .bio-card {
-            background: #fff;
-            padding: 30px;
-            border: 1px solid #EAE3D5;
-            border-left: 4px solid #C5A059; /* Золотая черта слева */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            transition: transform 0.3s ease;
-        }
-        .bio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(197, 160, 89, 0.1);
-        }
-
-        .bio-year {
-            font-family: 'PT Serif', serif;
-            font-size: 24px;
             color: #C5A059;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 10px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #C5A059;
+            padding-bottom: 4px;
         }
-        .bio-text {
+
+        .clergy-details {
             font-size: 15px;
-            line-height: 1.6;
             color: #444;
-            margin: 0;
+            line-height: 1.6;
+            margin-top: 15px;
+        }
+        .clergy-details strong { color: #8B7D6B; font-weight: 600; }
+
+        /* --- СЕТКА КЛИРИКОВ --- */
+        .clergy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
         }
 
-        /* --- НАГРАДЫ --- */
-        .awards-section { padding: 60px 0; background: #fff; }
-        .awards-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; 
+        .clergy-card {
+            background: #fff;
+            padding: 25px;
+            border: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease-out;
         }
-        .awards-box {
-            background: #fff; padding: 40px; 
-            border: 1px solid #EAE3D5;
+        .clergy-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: #e0d0b0;
+        }
+        
+        .clergy-card .clergy-photo-wrapper { margin-bottom: 20px; border-color: transparent; }
+        .clergy-card:hover .clergy-photo-wrapper { border-color: #EAE3D5; }
+
+        .clergy-card h3 {
+            font-family: 'PT Serif', serif;
+            font-size: 20px;
+            color: #2C2C2C;
+            margin: 5px 0 10px;
+        }
+
+        /* Заголовки групп */
+        .group-title-wrapper {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .group-title {
+            font-family: 'PT Serif', serif;
+            font-size: 32px;
+            color: #2C2C2C;
+            background: #fff;
+            padding: 0 20px;
+            display: inline-block;
             position: relative;
         }
-        .awards-box::before, .awards-box::after {
-            content: ''; position: absolute; width: 20px; height: 20px;
-            border: 2px solid #C5A059; transition: 0.3s;
-        }
-        .awards-box::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
-        .awards-box::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
-        
-        .awards-box:hover::before, .awards-box:hover::after { width: 100%; height: 100%; }
-
-        .awards-box h3 {
-            font-family: 'PT Serif', serif; margin-top: 0; margin-bottom: 25px; font-size: 24px; text-align: center;
-        }
-        .awards-list li {
-            position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 16px; line-height: 1.5; color: #555;
-        }
-        .awards-list li::before {
-            content: '•'; color: #C5A059; position: absolute; left: 5px; font-size: 20px; line-height: 18px;
+        .group-title-wrapper::before {
+            content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 1px;
+            background: #EAE3D5; z-index: -1;
         }
 
-        /* --- АДАПТИВ --- */
+        /* --- МОБИЛЬНАЯ АДАПТАЦИЯ --- */
         @media screen and (max-width: 900px) {
-            .arch-hero-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
-            .arch-portrait-wrapper { max-width: 300px; margin: 0 auto; }
-            .kinetic-title { font-size: 28px; }
-            .arch-intro-text { text-align: left; }
-            .bio-grid { grid-template-columns: 1fr; }
-            .awards-grid { grid-template-columns: 1fr; }
+            .rector-section {
+                grid-template-columns: 1fr;
+                padding: 25px 20px;
+                text-align: center;
+                gap: 20px;
+            }
+            .clergy-photo-wrapper { max-width: 260px; margin: 0 auto; }
+            .clergy-info h2 { font-size: 24px; }
+            .group-title { font-size: 26px; }
+            .clergy-grid { gap: 30px; }
+            .clergy-card:hover { transform: none; }
         }
-        
-        /* Вспомогательный класс для анимации появления снизу */
-        .gsap-up { opacity: 0; transform: translateY(30px); }
     </style>
 </head>
 <body>
@@ -207,6 +188,7 @@
             </div>
         </div>
     </div>
+    
     <button id="menu-toggle" class="mobile-menu-toggle"><i class="fas fa-bars"></i> Меню</button>
     
     <nav class="main-nav" id="main-nav">
@@ -216,8 +198,8 @@
                 <ul class="dropdown-menu">
                     <li><a href="../about/">Летопись храма</a></li>
                     <li><a href="../shrines/">Святыни и молитвословия</a></li>
-                    <li><a href="index.html" class="active">Архипастырь</a></li>
-                    <li><a href="../clergy/">Духовенство</a></li>
+                    <li><a href="../archpastor/">Архипастырь</a></li>
+                    <li><a href="./" class="active">Духовенство</a></li>
                     <li><a href="../school/">Воскресная школа</a></li>
                 </ul>
             </li>
@@ -235,115 +217,119 @@
     </nav>
 </header>
 
-<main>
-    <!-- ГЕРОЙ-СЕКЦИЯ -->
-    <section class="arch-hero-section">
-        <div class="container">
-            <div class="arch-hero-grid">
-                <!-- ФОТО -->
-                <div class="arch-portrait-wrapper gsap-up">
-                    <img src="../images/archierey.jpg" alt="Митрополит Арсений" class="arch-photo">
-                </div>
-                
-                <!-- ТЕКСТ С КИНЕТИЧЕСКОЙ ТИПОГРАФИКОЙ -->
-                <div class="arch-info">
-                    <span class="rank gsap-up">Глава Липецкой митрополии</span>
-                    
-                    <div class="kinetic-header">
-                        <!-- Текст для анимации -->
-                        <h1 class="kinetic-title" id="arch-title">Высокопреосвященнейший Арсений, Митрополит Липецкий и Задонский</h1>
-                    </div>
-                    
-                    <div class="arch-secular-name gsap-up">в миру Епифанов Юрий Александрович</div>
-                    
-                    <div class="arch-intro-text gsap-up">
-                        <p>
-                            Решением Священного Синода от 9 июля 2019 года (журнал № 72) назначен Преосвященным Липецким и Задонским, главой Липецкой митрополии. 
-                            Является постоянным членом Высшего Церковного Совета Русской Православной Церкви.
-                        </p>
-                        <p>
-                            Владыка многие годы трудился как первый викарий Святейшего Патриарха в Первопрестольном граде Москве, 
-                            положив немало трудов на ниве возрождения церковной жизни и благоукрашения святынь.
-                        </p>
-                    </div>
+<main class="container">
+    
+    <div class="clergy-intro gsap-reveal" id="intro-block">
+        <h1 class="chapter-title">Духовенство собора</h1>
+        <p>
+            Клир Христорождественского кафедрального собора ежедневно совершает Богослужения, 
+            несет слово Божие пастве и заботится о благолепии главного храма Липецкой митрополии.
+        </p>
+    </div>
 
-                    <div class="gsap-up" style="margin-top: 25px; font-size: 15px; color: #555; line-height: 1.6; border-top: 1px solid #eee; padding-top: 15px;">
-                        <strong>Образование:</strong> Московская духовная семинария (1979), Московская духовная академия (1983).
-                    </div>
-                </div>
+    <!-- НАСТОЯТЕЛЬ -->
+    <section class="rector-section gsap-reveal" id="rector-block">
+        <div class="clergy-photo-wrapper">
+            <img src="../images/bilchuk.jpg" alt="Протоиерей Василий Бильчук" class="clergy-photo">
+        </div>
+        <div class="clergy-info">
+            <span class="rank-label">Настоятель собора</span>
+            <h2>Протоиерей Василий Бильчук</h2>
+            <div class="clergy-details">
+                <p>Несет послушание настоятеля, с любовью и мудростью управляя жизнью прихода. Под его руководством собор был возрожден из руин и обрел свое нынешнее благолепие.</p>
+                <br>
+                <p><strong>Дата рождения:</strong> 1957 г.</p>
+                <p><strong>Духовное образование:</strong> Одесская духовная семинария, Московская духовная академия.</p>
+                <p><strong>Хиротония:</strong> 1983 г.</p>
+                <p><strong>Награды:</strong> Митра, право служения с отверстыми Царскими вратами до «Отче наш».</p>
             </div>
         </div>
     </section>
 
-    <!-- БИОГРАФИЯ (КОМПАКТНАЯ СЕТКА) -->
-    <section class="bio-section">
-        <div class="container">
-            <h2 class="chapter-title gsap-up">Основные вехи жизни</h2>
-            
-            <div class="bio-grid">
-                <div class="bio-card bio-card-anim">
-                    <span class="bio-year">1955</span>
-                    <p class="bio-text">Родился 3 марта в поселке Востряково Домодедовского района Московской области.</p>
-                </div>
-                <div class="bio-card bio-card-anim">
-                    <span class="bio-year">1976 — 1983</span>
-                    <p class="bio-text">Обучение в Московских духовных школах (Семинария и Академия). Становление на путь служения Церкви.</p>
-                </div>
-                <div class="bio-card bio-card-anim">
-                    <span class="bio-year">1983 — 1989</span>
-                    <p class="bio-text">Личный секретарь митрополита Ленинградского Алексия (будущего Патриарха Алексия II).</p>
-                </div>
-                <div class="bio-card bio-card-anim">
-                    <span class="bio-year">1984 — 1986</span>
-                    <p class="bio-text">Хиротония во диакона (1984) и во иерея (1986). Служение в Свято-Троицком соборе Александро-Невской лавры.</p>
-                </div>
-                <div class="bio-card bio-card-anim">
-                    <span class="bio-year">1989</span>
-                    <p class="bio-text">Постриг в монашество и хиротония во епископа Ладожского.</p>
-                </div>
-                <div class="bio-card bio-card-anim">
-                    <span class="bio-year">1990 — 2019</span>
-                    <p class="bio-text">Епископ (позже Архиепископ, Митрополит) Истринский, первый викарий Патриарха по г. Москве.</p>
-                </div>
-                <div class="bio-card bio-card-anim">
-                    <span class="bio-year">2014</span>
-                    <p class="bio-text">Возведен в сан Митрополита Святейшим Патриархом Кириллом.</p>
-                </div>
-                <div class="bio-card bio-card-anim">
-                    <span class="bio-year">2019 — н.в.</span>
-                    <p class="bio-text">Глава Липецкой митрополии. Епископ Липецкий и Задонский.</p>
-                </div>
+    <!-- СВЯЩЕННИКИ -->
+    <div class="group-title-wrapper gsap-reveal">
+        <h3 class="group-title">Священники</h3>
+    </div>
+    
+    <div class="clergy-grid priests-grid">
+        <div class="clergy-card gsap-reveal priest-card">
+            <div class="clergy-photo-wrapper"><img src="../images/maksimchuk.jpg" alt="Владимир Максимчук" class="clergy-photo"></div>
+            <div class="clergy-info"><span class="rank-label">Протоиерей</span><h3>Владимир Максимчук</h3>
+                <div class="clergy-details"><p><strong>Дата рождения:</strong> 1978 г.</p><p><strong>Образование:</strong> СПбДА.</p><p><strong>Хиротония:</strong> 2002 г.</p></div>
             </div>
         </div>
-    </section>
 
-    <!-- НАГРАДЫ -->
-    <section class="awards-section">
-        <div class="container">
-            <h2 class="chapter-title gsap-up">Награды и признание</h2>
-            <div class="awards-grid">
-                <div class="awards-box awards-anim">
-                    <h3>Церковные награды</h3>
-                    <ul class="awards-list">
-                        <li>Орден прп. Серафима Саровского II ст.</li>
-                        <li>Орден св. блгв. кн. Даниила Московского II и III ст.</li>
-                        <li>Орден св. равноап. кн. Владимира III ст.</li>
-                        <li>Медаль прп. Сергия Радонежского II ст.</li>
-                        <li>Награды Поместных Православных Церквей</li>
-                    </ul>
-                </div>
-                
-                <div class="awards-box awards-anim">
-                    <h3>Государственные награды</h3>
-                    <ul class="awards-list">
-                        <li>Орден Дружбы</li>
-                        <li>Медаль «За заслуги перед Отечеством» II степени</li>
-                        <li>Медаль «В память 850-летия Москвы»</li>
-                    </ul>
-                </div>
+        <div class="clergy-card gsap-reveal priest-card">
+            <div class="clergy-photo-wrapper"><img src="../images/nosach.jpg" alt="Алексий Носач" class="clergy-photo"></div>
+            <div class="clergy-info"><span class="rank-label">Протоиерей</span><h3>Алексий Носач</h3>
+                <div class="clergy-details"><p><strong>Дата рождения:</strong> 1975 г.</p><p><strong>Образование:</strong> МДА.</p><p><strong>Хиротония:</strong> 1999 г.</p></div>
             </div>
         </div>
-    </section>
+
+        <div class="clergy-card gsap-reveal priest-card">
+            <div class="clergy-photo-wrapper"><img src="../images/grishanov.jpg" alt="Сергий Гришанов" class="clergy-photo"></div>
+            <div class="clergy-info"><span class="rank-label">Иерей</span><h3>Сергий Гришанов</h3>
+                <div class="clergy-details"><p><strong>Дата рождения:</strong> 1977 г.</p><p><strong>Образование:</strong> МДА.</p><p><strong>Хиротония:</strong> 2008 г.</p></div>
+            </div>
+        </div>
+
+        <div class="clergy-card gsap-reveal priest-card">
+            <div class="clergy-photo-wrapper"><img src="../images/arkhypkin.jpg" alt="Виктор Архипкин" class="clergy-photo"></div>
+            <div class="clergy-info"><span class="rank-label">Иерей</span><h3>Виктор Архипкин</h3>
+                <div class="clergy-details"><p><strong>Дата рождения:</strong> 1984 г.</p><p><strong>Образование:</strong> ПСТГУ.</p><p><strong>Хиротония:</strong> 2008 г.</p></div>
+            </div>
+        </div>
+
+        <div class="clergy-card gsap-reveal priest-card">
+            <div class="clergy-photo-wrapper"><img src="../images/aleshin.jpg" alt="Александр Алешин" class="clergy-photo"></div>
+            <div class="clergy-info"><span class="rank-label">Иерей</span><h3>Александр Алешин</h3>
+                <div class="clergy-details"><p><strong>Дата рождения:</strong> 1985 г.</p><p><strong>Образование:</strong> ВПДС.</p><p><strong>Хиротония:</strong> 2017 г.</p></div>
+            </div>
+        </div>
+        
+        <div class="clergy-card gsap-reveal priest-card">
+            <div class="clergy-photo-wrapper"><img src="../images/likhosherst.jpg" alt="Александр Лихошерст" class="clergy-photo"></div>
+            <div class="clergy-info"><span class="rank-label">Иерей</span><h3>Александр Лихошерст</h3>
+                <div class="clergy-details"><p><strong>Дата рождения:</strong> 1992 г.</p><p><strong>Образование:</strong> ВДС.</p><p><strong>Хиротония:</strong> 2018 г.</p></div>
+            </div>
+        </div>
+        
+        <div class="clergy-card gsap-reveal priest-card">
+            <div class="clergy-photo-wrapper"><img src="../images/pigelev_p.jpg" alt="Павел Пигелев" class="clergy-photo"></div>
+            <div class="clergy-info"><span class="rank-label">Иерей</span><h3>Павел Пигелев</h3>
+                <div class="clergy-details"><p><strong>Дата рождения:</strong> 1994 г.</p><p><strong>Образование:</strong> СПбДА.</p><p><strong>Хиротония:</strong> 2020 г.</p></div>
+            </div>
+        </div>
+        
+        <div class="clergy-card gsap-reveal priest-card">
+            <div class="clergy-photo-wrapper"><img src="../images/maltsev.jpg" alt="Олег Мальцев" class="clergy-photo"></div>
+            <div class="clergy-info"><span class="rank-label">Иерей</span><h3>Олег Мальцев</h3>
+                <div class="clergy-details"><p><strong>Дата рождения:</strong> 1978 г.</p><p><strong>Образование:</strong> Перервинская ДС.</p><p><strong>Хиротония:</strong> 2025 г.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ДИАКОНЫ -->
+    <div class="group-title-wrapper gsap-reveal">
+        <h3 class="group-title">Диаконы</h3>
+    </div>
+
+    <div class="clergy-grid deacons-grid">
+        <div class="clergy-card gsap-reveal deacon-card">
+            <div class="clergy-photo-wrapper"><img src="../images/kantaryuk.jpg" alt="Андрей Кантарюк" class="clergy-photo"></div>
+            <div class="clergy-info"><span class="rank-label">Диакон</span><h3>Андрей Кантарюк</h3>
+                <div class="clergy-details"><p><strong>Дата рождения:</strong> 1995 г.</p><p><strong>Образование:</strong> Одесская ДС.</p><p><strong>Хиротония:</strong> 2017 г.</p></div>
+            </div>
+        </div>
+
+        <div class="clergy-card gsap-reveal deacon-card">
+            <div class="clergy-photo-wrapper"><img src="../images/pigelev_d.jpg" alt="Диомид Пигелев" class="clergy-photo"></div>
+            <div class="clergy-info"><span class="rank-label">Диакон</span><h3>Диомид Пигелев</h3>
+                <div class="clergy-details"><p><strong>Дата рождения:</strong> 2000 г.</p><p><strong>Образование:</strong> СПбДА.</p><p><strong>Хиротония:</strong> 2023 г.</p></div>
+            </div>
+        </div>
+    </div>
+
 </main>
 
 <footer class="site-footer-light">
@@ -351,8 +337,8 @@
         <div class="footer-block">
             <h5>Навигация</h5>
             <a href="../index.html">Главная</a>
-            <a href="../about/index.html">Летопись</a>
-            <a href="index.html">Архипастырь</a>
+            <a href="../about/">Летопись</a>
+            <a href="../archpastor/">Архипастырь</a>
             <a href="../schedule.html">Расписание</a>
         </div>
         <div class="footer-block"><h5>Контакты</h5><p>г. Липецк, Соборная пл., 4</p><p>+7 (4742) 27-04-78</p></div>
@@ -361,124 +347,77 @@
     <div class="footer-bottom"><p>© 2026 Кафедральный собор Рождества Христова г. Липецка</p></div>
 </footer>
 
-<!-- Подключение GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded", (event) => {
-    gsap.registerPlugin(ScrollTrigger);
+    document.addEventListener("DOMContentLoaded", (event) => {
+        gsap.registerPlugin(ScrollTrigger);
 
-    // 1. УМНАЯ ФУНКЦИЯ ТИПОГРАФИКИ (Исправленная)
-    function animateTitle() {
-        const title = document.getElementById('arch-title');
-        if (!title) return;
+        function runClergyAnimations() {
+            // Вступление
+            gsap.fromTo("#intro-block", { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.2, ease: "power2.out" });
 
-        // Чистим текст
-        const text = title.textContent.trim();
-        title.textContent = ''; 
-        
-        // 1. Разбиваем на СЛОВА
-        const words = text.split(" ");
-        let allChars = [];
+            // НАСТОЯТЕЛЬ (ИСПРАВЛЕНО: toggleActions без реверса)
+            gsap.fromTo("#rector-block",
+                { y: 50, scale: 0.95, autoAlpha: 0 },
+                { 
+                    y: 0, scale: 1, autoAlpha: 1, duration: 1.4, ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: "#rector-block",
+                        start: "top 85%",
+                        // ВАЖНО: "play none none none" означает: проиграть 1 раз и остаться так навсегда.
+                        // Картинка больше не исчезнет при скролле вверх.
+                        toggleActions: "play none none none" 
+                    }
+                }
+            );
 
-        words.forEach(wordText => {
-            // Создаем обертку для слова (чтобы оно не разрывалось)
-            const wordSpan = document.createElement("span");
-            wordSpan.classList.add("word-wrapper");
-
-            // 2. Внутри слова разбиваем на буквы
-            const chars = wordText.split("").map(char => {
-                const span = document.createElement("span");
-                span.textContent = char;
-                span.classList.add("char");
-                wordSpan.appendChild(span);
-                return span;
+            // Заголовки
+            gsap.utils.toArray(".group-title-wrapper").forEach(title => {
+                gsap.fromTo(title,
+                    { y: 20, autoAlpha: 0 },
+                    { y: 0, autoAlpha: 1, duration: 1, scrollTrigger: { trigger: title, start: "top 90%", toggleActions: "play none none none" }}
+                );
             });
 
-            allChars = allChars.concat(chars);
-            title.appendChild(wordSpan);
-        });
+            // Священники
+            gsap.fromTo(".priest-card", 
+                { y: 60, autoAlpha: 0 },
+                { y: 0, autoAlpha: 1, duration: 0.8, stagger: 0.15, ease: "power2.out",
+                  scrollTrigger: { trigger: ".priests-grid", start: "top 85%", toggleActions: "play none none none" }
+                }
+            );
 
-        // 3. Анимация появления букв
-        gsap.to(allChars, {
-            opacity: 1,
-            y: 0,
-            duration: 1.2,
-            stagger: 0.02,
-            ease: "power3.out", 
-            delay: 0.5 
-        });
+            // Диаконы
+            gsap.fromTo(".deacon-card", 
+                { y: 60, autoAlpha: 0 },
+                { y: 0, autoAlpha: 1, duration: 0.8, stagger: 0.15, ease: "power2.out",
+                  scrollTrigger: { trigger: ".deacons-grid", start: "top 90%", toggleActions: "play none none none" }
+                }
+            );
+        }
 
-        // Начальное состояние
-        gsap.from(allChars, {
-            y: 30, 
-            opacity: 0,
-            duration: 0
-        });
-    }
-
-    // 2. ФУНКЦИЯ ДЛЯ КАРТОЧЕК
-    function animateBio() {
-        // Простые элементы (Фото, инфо)
-        gsap.utils.toArray(".gsap-up").forEach(el => {
-            gsap.to(el, {
-                opacity: 1, y: 0, duration: 1, ease: "power2.out", delay: 0.2
+        const preloader = document.getElementById('page-preloader');
+        if (preloader) {
+            window.addEventListener('load', () => {
+                preloader.classList.add('done');
+                setTimeout(runClergyAnimations, 300);
             });
-        });
+        } else {
+            runClergyAnimations();
+        }
 
-        // Сетка биографии
-        gsap.from(".bio-card-anim", {
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.1, 
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: ".bio-grid",
-                start: "top 85%"
-            }
-        });
-
-        // Награды
-        gsap.from(".awards-anim", {
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2,
-            scrollTrigger: {
-                trigger: ".awards-grid",
-                start: "top 85%"
-            }
-        });
-    }
-
-    // ЛОГИКА ЗАПУСКА
-    const preloader = document.getElementById('page-preloader');
-    if (preloader) {
-        window.addEventListener('load', () => {
-            preloader.classList.add('done');
-            setTimeout(() => {
-                animateTitle();
-                animateBio();
-            }, 300);
-        });
-    } else {
-        animateTitle();
-        animateBio();
-    }
-
-    // Мобильное меню
-    const menuToggle = document.getElementById('menu-toggle');
-    const mainNav = document.getElementById('main-nav');
-    if(menuToggle && mainNav){
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('open');
-            const icon = menuToggle.querySelector('i');
-            if (icon) { icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times'); }
-        });
-    }
-});
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        if(menuToggle && mainNav){
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('open');
+                const icon = menuToggle.querySelector('i');
+                if (icon) { icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times'); }
+            });
+        }
+    });
 </script>
 
 </body>
