@@ -12,32 +12,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- ВАЖНО: СКРЫВАЕМ ЭЛЕМЕНТЫ ДО ЗАГРУЗКИ (Лечим глюк) --- */
-        .gsap-hidden-init { visibility: hidden; opacity: 0; }
+        /* --- ВАЖНО: СКРЫВАЕМ ЭЛЕМЕНТЫ CSS-ОМ (Лечим мигание) --- */
+        /* Эти элементы будут невидимы сразу при загрузке страницы */
+        #arch-title, .gsap-hidden-init { visibility: hidden; opacity: 0; }
 
         /* --- ТИПОГРАФИКА --- */
         .kinetic-header { position: relative; overflow: hidden; margin-bottom: 15px; }
         .kinetic-title {
             font-family: 'PT Serif', serif;
-            font-size: 28px; /* Сделали компактнее (было 34) */
+            font-size: 28px;
             line-height: 1.3;
             color: #2C2C2C;
             margin: 0;
             font-weight: 700;
         }
+        
+        /* Обертка слова - держит буквы вместе */
         .word-wrapper { display: inline-block; white-space: nowrap; margin-right: 0.25em; vertical-align: top; }
+        
+        /* Буквы для анимации */
         .char { display: inline-block; transform-origin: bottom center; will-change: transform, opacity; }
 
         /* --- ГЕРОЙ-СЕКЦИЯ (Компактная) --- */
         .arch-hero-section { 
             background-color: #fff; 
-            padding: 40px 0; /* Уменьшили отступ сверху/снизу */
+            padding: 40px 0; 
             border-bottom: 1px solid #EAE3D5; 
         }
         .arch-hero-grid { 
             display: grid; 
-            grid-template-columns: 320px 1fr; /* Колонка фото чуть уже */
-            gap: 40px; /* Меньше дырка между фото и текстом */
+            grid-template-columns: 320px 1fr; 
+            gap: 40px; 
             align-items: start; 
         }
         
@@ -62,7 +67,7 @@
             font-size: 16px; margin-bottom: 20px; 
         }
         .arch-intro-text { 
-            font-size: 16px; /* Чуть аккуратнее шрифт */
+            font-size: 16px; 
             line-height: 1.6; color: #333; 
             font-family: 'PT Serif', serif; text-align: justify; 
         }
@@ -178,16 +183,20 @@
     <section class="arch-hero-section">
         <div class="container">
             <div class="arch-hero-grid">
-                <!-- ДОБАВИЛ КЛАСС gsap-hidden-init, чтобы скрыть до старта -->
+                <!-- ФОТО ВЛАДЫКИ -->
                 <div class="arch-portrait-wrapper gsap-hidden-init" id="hero-photo">
                     <img src="../images/archierey.jpg" alt="Митрополит Арсений" class="arch-photo">
                 </div>
                 
+                <!-- ТЕКСТОВАЯ ЧАСТЬ -->
                 <div class="arch-info">
                     <span class="rank gsap-hidden-init" id="hero-rank">Глава Липецкой митрополии</span>
-                    <div class="kinetic-header gsap-hidden-init" id="hero-title-wrap">
+                    
+                    <!-- ID arch-title скрыт в CSS visibility:hidden -->
+                    <div class="kinetic-header">
                         <h1 class="kinetic-title" id="arch-title">Высокопреосвященнейший Арсений, Митрополит Липецкий и Задонский</h1>
                     </div>
+                    
                     <div class="arch-secular-name gsap-hidden-init" id="hero-secular">в миру Епифанов Юрий Александрович</div>
                     
                     <div class="arch-intro-text gsap-hidden-init" id="hero-text">
@@ -208,7 +217,7 @@
         </div>
     </section>
 
-    <!-- БИОГРАФИЯ (Masonry - Плотная сетка) -->
+    <!-- БИОГРАФИЯ (Masonry) -->
     <section class="bio-section">
         <div class="container">
             <h2 class="chapter-title gsap-hidden-init" id="bio-title">Биография</h2>
@@ -334,13 +343,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // 1. УМНАЯ ФУНКЦИЯ ТИПОГРАФИКИ
     function animateTitle() {
         const title = document.getElementById('arch-title');
-        const titleWrap = document.getElementById('hero-title-wrap');
         
         if (!title) return;
         
-        // Сначала делаем контейнер видимым для JS, чтобы GSAP мог работать
-        gsap.set(titleWrap, { autoAlpha: 1 });
-
         const text = title.textContent.trim();
         title.textContent = ''; 
         
@@ -361,34 +366,59 @@ document.addEventListener("DOMContentLoaded", (event) => {
             title.appendChild(wordSpan);
         });
 
-        // Анимация букв
-        gsap.to(allChars, { opacity: 1, y: 0, duration: 1.2, stagger: 0.02, ease: "power3.out", delay: 0.2 });
-        gsap.from(allChars, { y: 30, opacity: 0, duration: 0 });
+        // ВАЖНО: Делаем заголовок видимым (visibility: visible) перед стартом анимации,
+        // но буквы внутри (opacity: 0) будут анимироваться GSAP
+        title.style.visibility = 'visible';
+        title.style.opacity = '1';
+
+        // Анимация букв (Более плавная волна)
+        gsap.to(allChars, { 
+            opacity: 1, 
+            y: 0, 
+            duration: 1.4, 
+            stagger: 0.03, // Чуть больше задержка для плавности
+            ease: "power3.out", 
+            delay: 0.1 
+        });
+        
+        // Начальное состояние букв
+        gsap.from(allChars, { y: 20, opacity: 0, duration: 0 });
     }
 
     // 2. АНИМАЦИЯ ВСЕГО ОСТАЛЬНОГО
     function animatePage() {
         // Показываем героя
         const heroElements = ["#hero-photo", "#hero-rank", "#hero-secular", "#hero-text"];
+        
+        // Делаем их видимыми для JS
+        heroElements.forEach(sel => {
+            const el = document.querySelector(sel);
+            if(el) el.style.visibility = 'visible';
+        });
+
         gsap.to(heroElements, {
-            autoAlpha: 1, // GSAP сам меняет visibility на visible и opacity на 1
+            autoAlpha: 1, 
             y: 0,
             duration: 1,
-            stagger: 0.1,
+            stagger: 0.15,
             ease: "power2.out"
         });
-        gsap.from(heroElements, { y: 20, autoAlpha: 0, duration: 0 }); // Начальное состояние
+        gsap.from(heroElements, { y: 20, autoAlpha: 0, duration: 0 }); // Старт снизу
 
         // Заголовки разделов
         gsap.utils.toArray([".chapter-title"]).forEach(el => {
+            el.style.visibility = 'visible'; // Снимаем скрытие
             gsap.fromTo(el, 
                 { autoAlpha: 0, y: 30 }, 
                 { autoAlpha: 1, y: 0, duration: 1, scrollTrigger: { trigger: el, start: "top 85%" }}
             );
         });
         
-        // Биография
-        gsap.fromTo(".bio-card-anim", 
+        // Биография (сначала делаем видимыми для GSAP)
+        const bioCards = document.querySelectorAll(".bio-card-anim");
+        bioCards.forEach(el => el.style.visibility = 'visible');
+
+        gsap.fromTo(bioCards, 
             { y: 50, autoAlpha: 0 },
             { y: 0, autoAlpha: 1, duration: 0.8, stagger: 0.1, ease: "power2.out",
               scrollTrigger: { trigger: ".bio-masonry", start: "top 85%" }
@@ -396,7 +426,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
         );
         
         // Награды
-        gsap.fromTo(".awards-anim", 
+        const awardBoxes = document.querySelectorAll(".awards-anim");
+        awardBoxes.forEach(el => el.style.visibility = 'visible');
+
+        gsap.fromTo(awardBoxes, 
             { y: 50, autoAlpha: 0 },
             { y: 0, autoAlpha: 1, duration: 1, stagger: 0.2,
               scrollTrigger: { trigger: ".awards-grid", start: "top 85%" }
@@ -408,7 +441,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     if (preloader) {
         window.addEventListener('load', () => { 
             preloader.classList.add('done'); 
-            // Запуск анимаций
+            // Запуск анимаций СРАЗУ после исчезновения прелоадера
             setTimeout(() => { 
                 animateTitle(); 
                 animatePage(); 
