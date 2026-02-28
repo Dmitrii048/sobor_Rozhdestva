@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Высокопреосвященнейший Арсений, Митрополит Липецкий и Задонский. Биография, служение, награды.">
     <title>Архипастырь | Христорождественский собор</title>
     
     <link rel="stylesheet" href="../style.css">
@@ -11,12 +12,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- СТИЛИ ДЛЯ КИНЕТИЧЕСКОЙ ТИПОГРАФИКИ --- */
+        /* --- ТИПОГРАФИКА --- */
         .kinetic-header { position: relative; overflow: hidden; margin-bottom: 20px; }
         .kinetic-title {
             font-family: 'PT Serif', serif;
-            font-size: 38px;
-            line-height: 1.25;
+            font-size: 34px; /* Оптимальный размер */
+            line-height: 1.3;
             color: #2C2C2C;
             margin: 0;
             font-weight: 700;
@@ -24,44 +25,82 @@
         .word-wrapper { display: inline-block; white-space: nowrap; margin-right: 0.25em; vertical-align: top; }
         .char { display: inline-block; opacity: 0; transform-origin: bottom center; will-change: transform, opacity; }
 
-        /* --- СТИЛЬ ГЕРОЯ --- */
+        /* --- ГЕРОЙ-СЕКЦИЯ --- */
         .arch-hero-section { background-color: #fff; padding: 60px 0; border-bottom: 1px solid #EAE3D5; }
-        .arch-hero-grid { display: grid; grid-template-columns: 380px 1fr; gap: 50px; align-items: start; }
-        .arch-portrait-wrapper { position: relative; padding: 15px; background: #fff; box-shadow: 0 20px 40px rgba(197, 160, 89, 0.15); border: 1px solid #EAE3D5; }
-        .arch-portrait-wrapper::before { content: ''; position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px; border: 1px solid #C5A059; pointer-events: none; opacity: 0.6; }
+        .arch-hero-grid { display: grid; grid-template-columns: 350px 1fr; gap: 50px; align-items: start; }
+        
+        .arch-portrait-wrapper { 
+            position: relative; padding: 10px; background: #fff; 
+            box-shadow: 0 20px 40px rgba(197, 160, 89, 0.15); 
+            border: 1px solid #EAE3D5; 
+        }
+        .arch-portrait-wrapper::before { 
+            content: ''; position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px; 
+            border: 1px solid #C5A059; pointer-events: none; opacity: 0.6; 
+        }
         .arch-photo { width: 100%; height: auto; display: block; }
         
-        .arch-info .rank { font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 3px; color: #C5A059; font-size: 12px; font-weight: 700; margin-bottom: 15px; display: block; }
-        .arch-secular-name { font-family: 'PT Serif', serif; font-style: italic; color: #777; font-size: 18px; margin-bottom: 30px; position: relative; padding-left: 20px; }
-        .arch-secular-name::before { content: '—'; position: absolute; left: 0; color: #C5A059; }
-        .arch-intro-text { font-size: 18px; line-height: 1.7; color: #333; font-family: 'PT Serif', serif; text-align: justify; }
+        .arch-info .rank { font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; color: #C5A059; font-size: 11px; font-weight: 700; margin-bottom: 10px; display: block; }
+        .arch-secular-name { font-family: 'PT Serif', serif; font-style: italic; color: #777; font-size: 16px; margin-bottom: 25px; }
+        .arch-intro-text { font-size: 17px; line-height: 1.6; color: #333; font-family: 'PT Serif', serif; text-align: justify; }
 
-        /* --- БИОГРАФИЯ (GRID) --- */
+        /* --- БИОГРАФИЯ (MASONRY LAYOUT - КИРПИЧНАЯ КЛАДКА) --- */
+        /* Это убирает пустое место! */
         .bio-section { padding: 60px 0; background: #fdfbf7; }
-        .bio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 30px; margin-top: 40px; }
-        .bio-card { background: #fff; padding: 30px; border: 1px solid #EAE3D5; border-left: 4px solid #C5A059; box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: transform 0.3s ease; }
-        .bio-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(197, 160, 89, 0.1); }
-        .bio-year { font-family: 'PT Serif', serif; font-size: 20px; color: #C5A059; font-weight: 700; display: block; margin-bottom: 10px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
-        .bio-text { font-size: 16px; line-height: 1.6; color: #444; margin: 0; }
+        
+        .bio-masonry {
+            column-count: 2; /* Две колонки как в газете */
+            column-gap: 30px;
+            margin-top: 30px;
+        }
+
+        .bio-card {
+            background: #fff;
+            padding: 25px;
+            border: 1px solid #EAE3D5;
+            border-left: 3px solid #C5A059;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.02);
+            margin-bottom: 30px; /* Отступ снизу */
+            break-inside: avoid; /* Запрещает разрывать карточку между колонками */
+            transition: transform 0.3s ease;
+        }
+        .bio-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(197, 160, 89, 0.1); }
+
+        .bio-date {
+            font-family: 'PT Serif', serif;
+            font-size: 18px;
+            color: #C5A059;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+        .bio-text { font-size: 15px; line-height: 1.6; color: #444; margin: 0; text-align: justify; }
+        
+        /* Списки внутри карточек (для святых) */
+        .saints-list { margin: 10px 0 0 0; padding-left: 20px; font-size: 14px; color: #555; }
+        .saints-list li { margin-bottom: 5px; list-style-type: disc; }
 
         /* --- НАГРАДЫ --- */
         .awards-section { padding: 60px 0; background: #fff; }
         .awards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .awards-box { background: #fff; padding: 40px; border: 1px solid #EAE3D5; position: relative; }
-        .awards-box::before, .awards-box::after { content: ''; position: absolute; width: 20px; height: 20px; border: 2px solid #C5A059; transition: 0.3s; }
+        .awards-box { background: #fff; padding: 30px; border: 1px solid #EAE3D5; position: relative; }
+        .awards-box::before, .awards-box::after { content: ''; position: absolute; width: 15px; height: 15px; border: 2px solid #C5A059; transition: 0.3s; }
         .awards-box::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
         .awards-box::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
         .awards-box:hover::before, .awards-box:hover::after { width: 100%; height: 100%; }
-        .awards-box h3 { font-family: 'PT Serif', serif; margin-top: 0; margin-bottom: 25px; font-size: 24px; text-align: center; }
-        .awards-list li { position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 16px; line-height: 1.5; color: #555; }
-        .awards-list li::before { content: '•'; color: #C5A059; position: absolute; left: 5px; font-size: 20px; line-height: 18px; }
+        .awards-box h3 { font-family: 'PT Serif', serif; margin-top: 0; margin-bottom: 20px; font-size: 22px; text-align: center; }
+        .awards-list { padding-left: 0; }
+        .awards-list li { position: relative; padding-left: 20px; margin-bottom: 10px; font-size: 15px; line-height: 1.4; color: #555; list-style: none; }
+        .awards-list li::before { content: '•'; color: #C5A059; position: absolute; left: 0; font-size: 18px; line-height: 14px; }
 
         @media screen and (max-width: 900px) {
             .arch-hero-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
-            .arch-portrait-wrapper { max-width: 300px; margin: 0 auto; }
-            .kinetic-title { font-size: 28px; }
+            .arch-portrait-wrapper { max-width: 280px; margin: 0 auto; }
+            .kinetic-title { font-size: 26px; }
             .arch-intro-text { text-align: left; }
-            .bio-grid { grid-template-columns: 1fr; }
+            .bio-masonry { column-count: 1; } /* На телефоне одна колонка */
             .awards-grid { grid-template-columns: 1fr; }
         }
         .gsap-up { opacity: 0; transform: translateY(30px); }
@@ -88,7 +127,6 @@
         </div>
     </div>
     <button id="menu-toggle" class="mobile-menu-toggle"><i class="fas fa-bars"></i> Меню</button>
-    
     <nav class="main-nav" id="main-nav">
         <ul>
             <li><a href="../index.html">Главная</a></li>
@@ -116,6 +154,7 @@
 </header>
 
 <main>
+    <!-- ГЕРОЙ-СЕКЦИЯ -->
     <section class="arch-hero-section">
         <div class="container">
             <div class="arch-hero-grid">
@@ -132,94 +171,114 @@
                     
                     <div class="arch-intro-text gsap-up">
                         <p>
-                            Назначен Преосвященным Липецким и Задонским, главой Липецкой митрополии решением Священного Синода от 9 июля 2019 года (журнал № 72). 
-                            Является постоянным членом Высшего Церковного Совета Русской Православной Церкви.
+                            Решением Священного Синода от 9 июля 2019 года (журнал № 72) назначен Преосвященным Липецким и Задонским, главой Липецкой митрополии. 
                         </p>
                         <p>
-                            На протяжении многих лет Владыка с кротостью и усердием нес ответственное послушание первого викария Святейшего Патриарха в Первопрестольном граде, 
-                            положив немало трудов на ниве возрождения церковной жизни и благоукрашения московских святынь.
+                            Ранее, на протяжении многих лет, Владыка нес ответственное послушание первого викария Святейшего Патриарха в Москве, восстанавливая поруганные святыни и укрепляя духовную жизнь столицы.
                         </p>
-                    </div>
-
-                    <div class="gsap-up" style="margin-top: 25px; font-size: 15px; color: #555; line-height: 1.6; border-top: 1px solid #eee; padding-top: 15px;">
-                        <strong>Образование:</strong><br>
-                        1979 г. — Московская духовная семинария.<br>
-                        1983 г. — Московская духовная академия.
+                        <div style="margin-top: 15px; font-size: 14px; color: #666; border-left: 2px solid #C5A059; padding-left: 10px;">
+                            <strong>Образование:</strong><br>
+                            1979 г. — Московская духовная семинария.<br>
+                            1983 г. — Московская духовная академия.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ПОЛНАЯ БИОГРАФИЯ (Весь текст восстановлен) -->
+    <!-- БИОГРАФИЯ (Masonry - Плотная сетка) -->
     <section class="bio-section">
         <div class="container">
             <h2 class="chapter-title gsap-up">Биография</h2>
             
-            <div class="bio-grid">
+            <div class="bio-masonry">
+                <!-- Карточка 1: Рождение -->
                 <div class="bio-card bio-card-anim">
-                    <span class="bio-year">3 марта 1955 года</span>
+                    <span class="bio-date">3 марта 1955 года</span>
                     <p class="bio-text">Родился в поселке Востряково Домодедовского района Московской области.</p>
                 </div>
 
+                <!-- Карточка 2: Учеба -->
                 <div class="bio-card bio-card-anim">
-                    <span class="bio-year">1976 — 1983 гг.</span>
-                    <p class="bio-text">Учеба в Московской духовной семинарии (окончил в 1979) и Московской духовной академии (окончил в 1983).</p>
+                    <span class="bio-date">1976 — 1983 гг.</span>
+                    <p class="bio-text">В 1976-1979 гг. учился в Московской духовной семинарии, затем – в Московской духовной академии, которую окончил в 1983 г.</p>
                 </div>
 
+                <!-- Карточка 3: Начало служения -->
                 <div class="bio-card bio-card-anim">
-                    <span class="bio-year">1983 — 1989 гг.</span>
-                    <p class="bio-text">Нес послушание референта и личного секретаря митрополита Ленинградского Алексия (впоследствии Патриарха Московского и всея Руси).</p>
+                    <span class="bio-date">1983 — 1989 гг.</span>
+                    <p class="bio-text">Являлся референтом и личным секретарем митрополита Ленинградского Алексия, впоследствии Патриарха Московского и всея Руси.</p>
                 </div>
 
+                <!-- Карточка 4: Хиротонии -->
                 <div class="bio-card bio-card-anim">
-                    <span class="bio-year">1984 — 1986 гг.</span>
-                    <p class="bio-text">28 августа 1984 г. рукоположен во диакона. <br>28 августа 1986 г. – во иерея. <br>С 1988 г. служил в Свято-Троицком соборе Александро-Невской лавры.</p>
+                    <span class="bio-date">1984 — 1989 гг.</span>
+                    <p class="bio-text">
+                        28 августа 1984 г. рукоположен во диакона, 28 августа 1986 г. – во иерея.<br>
+                        С 1988 года служил в Свято-Троицком соборе Александро-Невской лавры.<br>
+                        30 сентября 1989 года пострижен в монашество.
+                    </p>
                 </div>
 
+                <!-- Карточка 5: Епископское служение -->
                 <div class="bio-card bio-card-anim">
-                    <span class="bio-year">1989 год</span>
-                    <p class="bio-text">30 сентября — пострижен в монашество.<br>5 октября — хиротонисан во епископа Ладожского.</p>
+                    <span class="bio-date">1989 — 1997 гг.</span>
+                    <p class="bio-text">
+                        5 октября 1989 г. хиротонисан во епископа Ладожского.<br>
+                        20 июля 1990 г. назначен епископом Истринским, викарием Московской епархии.<br>
+                        25 февраля 1997 г. возведен в сан архиепископа.
+                    </p>
                 </div>
 
+                <!-- Карточка 6: Комиссии по мощам (Длинная) -->
                 <div class="bio-card bio-card-anim">
-                    <span class="bio-year">20 июля 1990 года</span>
-                    <p class="bio-text">Назначен епископом Истринским, викарием Московской епархии.</p>
+                    <span class="bio-date">Труды по обретению мощей</span>
+                    <p class="bio-text">Участвовал в работе комиссий по освидетельствованию возвращаемых Церкви и вновь обретаемых святых мощей:</p>
+                    <ul class="saints-list">
+                        <li>св. блгв. кн. Александра Невского (1988 г.)</li>
+                        <li>преподобных Зосимы, Савватия и Германа Соловецких (1990 г.)</li>
+                        <li>прп. Серафима Саровского (1991 г.)</li>
+                        <li>свт. Иоасафа Белгородского (1991 г.)</li>
+                        <li>свт. Тихона, Патриарха Московского и всея России (1991 г.)</li>
+                        <li>блж. Матроны Никоновой (1998 г.)</li>
+                    </ul>
                 </div>
 
+                <!-- Карточка 7: Научная деятельность -->
                 <div class="bio-card bio-card-anim">
-                    <span class="bio-year">1988 — 1998 гг.</span>
-                    <p class="bio-text">Участвовал в работе комиссий по освидетельствованию святых мощей (св. Александра Невского, прп. Серафима Саровского, блж. Матроны Московской и др.).</p>
+                    <span class="bio-date">Научная деятельность</span>
+                    <p class="bio-text">
+                        В 1994-1997 гг. — председатель Научно-редакционного совета по изданию «Истории Русской Церкви» митрополита Макария (Булгакова).<br><br>
+                        С 1998 года возглавляет Научно-редакционный совет по изданию «Православной энциклопедии».
+                    </p>
                 </div>
 
+                <!-- Карточка 8: Служение в Москве -->
                 <div class="bio-card bio-card-anim">
-                    <span class="bio-year">1997 год</span>
-                    <p class="bio-text">25 февраля возведен в сан архиепископа.</p>
+                    <span class="bio-date">2009 — 2011 гг.</span>
+                    <p class="bio-text">
+                        1 апреля 2009 г. назначен первым викарием Патриарха Московского и всея Руси по г. Москве.<br>
+                        В декабре 2010 г. поручено окормление храмов Центрального и Южного округов г. Москвы.<br>
+                        31 декабря 2011 г. назначен управляющим Центральным и Южным викариатствами.
+                    </p>
                 </div>
 
+                <!-- Карточка 9: Митрополит -->
                 <div class="bio-card bio-card-anim">
-                    <span class="bio-year">Научная деятельность</span>
-                    <p class="bio-text">С 1998 г. возглавляет Научно-редакционный совет по изданию «Православной энциклопедии».</p>
+                    <span class="bio-date">2014 — 2015 гг.</span>
+                    <p class="bio-text">
+                        1 февраля 2014 г. за Божественной Литургией в Храме Христа Спасителя возведен в сан митрополита.<br>
+                        24 декабря 2015 г. включен в состав Высшего Церковного Совета РПЦ.
+                    </p>
                 </div>
 
+                <!-- Карточка 10: Липецкая кафедра -->
                 <div class="bio-card bio-card-anim">
-                    <span class="bio-year">1 апреля 2009 года</span>
-                    <p class="bio-text">Назначен первым викарием Патриарха Московского и всея Руси по г. Москве.</p>
-                </div>
-
-                <div class="bio-card bio-card-anim">
-                    <span class="bio-year">1 февраля 2014 года</span>
-                    <p class="bio-text">За Литургией в Храме Христа Спасителя Святейшим Патриархом Кириллом возведен в сан митрополита.</p>
-                </div>
-
-                <div class="bio-card bio-card-anim">
-                    <span class="bio-year">24 декабря 2015 года</span>
-                    <p class="bio-text">Включен в состав Высшего Церковного Совета Русской Православной Церкви.</p>
-                </div>
-
-                <div class="bio-card bio-card-anim">
-                    <span class="bio-year">9 июля 2019 года</span>
-                    <p class="bio-text">Назначен Преосвященным Липецким и Задонским, главой Липецкой митрополии.</p>
+                    <span class="bio-date">с 2019 года</span>
+                    <p class="bio-text">
+                        Решением Священного Синода от 9 июля 2019 г. (журнал № 72) назначен Преосвященным Липецким и Задонским, главой Липецкой митрополии.
+                    </p>
                 </div>
             </div>
         </div>
@@ -232,10 +291,10 @@
                 <div class="awards-box awards-anim">
                     <h3>Церковные награды</h3>
                     <ul class="awards-list">
-                        <li>Орден прп. Серафима Саровского II ст. (2015)</li>
-                        <li>Орден св. блгв. кн. Даниила Московского II ст.</li>
-                        <li>Орден св. блгв. кн. Даниила Московского III ст. (2019)</li>
+                        <li>2015 г. — орден прп. Серафима Саровского II ст.</li>
+                        <li>2019 г. — орден св. блгв. кн. Даниила Московского III ст.</li>
                         <li>Орден св. равноап. кн. Владимира III ст.</li>
+                        <li>Орден св. блгв. кн. Даниила Московского II ст.</li>
                         <li>Медаль прп. Сергия Радонежского II ст.</li>
                         <li>Ордена и медали Поместных Православных Церквей</li>
                     </ul>
@@ -256,13 +315,7 @@
 
 <footer class="site-footer-light">
     <div class="container footer-content">
-        <div class="footer-block">
-            <h5>Навигация</h5>
-            <a href="../index.html">Главная</a>
-            <a href="../about/index.html">Летопись</a>
-            <a href="index.html">Архипастырь</a>
-            <a href="../schedule.html">Расписание</a>
-        </div>
+        <div class="footer-block"><h5>Навигация</h5><a href="../index.html">Главная</a><a href="../about/">Летопись</a><a href="index.html">Архипастырь</a><a href="../schedule.html">Расписание</a></div>
         <div class="footer-block"><h5>Контакты</h5><p>г. Липецк, Соборная пл., 4</p><p>+7 (4742) 27-04-78</p></div>
         <div class="footer-block"><h5>Мы в соцсетях</h5><a href="https://vk.com/sobor48" target="_blank"><i class="fab fa-vk"></i> ВКонтакте</a><a href="https://t.me/Lsobor" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a></div>
     </div>
@@ -276,11 +329,13 @@
 document.addEventListener("DOMContentLoaded", (event) => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // 1. УМНАЯ ФУНКЦИЯ ТИПОГРАФИКИ (Не ломает слова)
     function animateTitle() {
         const title = document.getElementById('arch-title');
         if (!title) return;
         const text = title.textContent.trim();
         title.textContent = ''; 
+        
         const words = text.split(" ");
         let allChars = [];
 
@@ -302,14 +357,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
         gsap.from(allChars, { y: 30, opacity: 0, duration: 0 });
     }
 
+    // 2. АНИМАЦИЯ БИОГРАФИИ
     function animateBio() {
         gsap.utils.toArray(".gsap-up").forEach(el => {
             gsap.to(el, { opacity: 1, y: 0, duration: 1, ease: "power2.out", delay: 0.2 });
         });
+        
+        // Появление карточек биографии
         gsap.from(".bio-card-anim", {
             y: 50, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out",
-            scrollTrigger: { trigger: ".bio-grid", start: "top 85%" }
+            scrollTrigger: { trigger: ".bio-masonry", start: "top 85%" }
         });
+        
+        // Появление наград
         gsap.from(".awards-anim", {
             y: 50, opacity: 0, duration: 1, stagger: 0.2,
             scrollTrigger: { trigger: ".awards-grid", start: "top 85%" }
@@ -318,23 +378,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     const preloader = document.getElementById('page-preloader');
     if (preloader) {
-        window.addEventListener('load', () => {
-            preloader.classList.add('done');
-            setTimeout(() => { animateTitle(); animateBio(); }, 300);
-        });
-    } else {
-        animateTitle();
-        animateBio();
-    }
+        window.addEventListener('load', () => { preloader.classList.add('done'); setTimeout(() => { animateTitle(); animateBio(); }, 300); });
+    } else { animateTitle(); animateBio(); }
 
     const menuToggle = document.getElementById('menu-toggle');
     const mainNav = document.getElementById('main-nav');
     if(menuToggle && mainNav){
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('open');
-            const icon = menuToggle.querySelector('i');
-            if (icon) { icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times'); }
-        });
+        menuToggle.addEventListener('click', () => { mainNav.classList.toggle('open'); const icon = menuToggle.querySelector('i'); if (icon) { icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times'); }});
     }
 });
 </script>
