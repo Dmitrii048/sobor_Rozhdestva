@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Высокопреосвященнейший Арсений, Митрополит Липецкий и Задонский. Биография, служение, награды главы Липецкой митрополии.">
     <title>Архипастырь | Христорождественский собор</title>
     
     <link rel="stylesheet" href="../style.css">
@@ -11,32 +12,57 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- СТИЛИ ДЛЯ КИНЕТИЧЕСКОЙ ТИПОГРАФИКИ --- */
-        /* Скрываем буквы до запуска JS, чтобы не мигали */
-        .char { opacity: 0; display: inline-block; }
+        /* --- СТИЛИ ДЛЯ КИНЕТИЧЕСКОЙ ТИПОГРАФИКИ (ИСПРАВЛЕННЫЕ) --- */
         
-        /* Обертка заголовка для чистоты */
-        .kinetic-header { position: relative; overflow: hidden; }
+        .kinetic-header { 
+            position: relative; 
+            overflow: hidden; 
+            margin-bottom: 20px;
+        }
+
+        .kinetic-title {
+            font-family: 'PT Serif', serif;
+            font-size: 38px; /* Чуть уменьшил для лучшей посадки */
+            line-height: 1.25;
+            color: #2C2C2C;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        /* Обертка для слова: запрещает разрыв БУКВ внутри слова */
+        .word-wrapper {
+            display: inline-block;
+            white-space: nowrap; 
+            margin-right: 0.25em; /* Пробел между словами */
+            vertical-align: top; /* Чтобы слова стояли ровно */
+        }
+
+        /* Сами буквы */
+        .char { 
+            display: inline-block; 
+            opacity: 0; 
+            transform-origin: bottom center;
+            will-change: transform, opacity;
+        }
 
         /* --- ОБНОВЛЕННЫЙ СТИЛЬ ГЕРОЯ --- */
         .arch-hero-section {
             background-color: #fff;
-            padding: 80px 0;
+            padding: 60px 0;
             border-bottom: 1px solid #EAE3D5;
         }
         
         .arch-hero-grid {
             display: grid;
-            grid-template-columns: 400px 1fr; 
-            gap: 60px;
-            align-items: center;
+            grid-template-columns: 380px 1fr; 
+            gap: 50px;
+            align-items: start;
         }
 
         .arch-portrait-wrapper {
             position: relative;
             padding: 15px;
             background: #fff;
-            /* Тень как на странице духовенства */
             box-shadow: 0 20px 40px rgba(197, 160, 89, 0.15);
             border: 1px solid #EAE3D5;
         }
@@ -55,14 +81,6 @@
             font-weight: 700;
             margin-bottom: 15px;
             display: block;
-        }
-        
-        .kinetic-title {
-            font-family: 'PT Serif', serif;
-            font-size: 42px;
-            line-height: 1.15;
-            color: #2C2C2C;
-            margin: 0 0 15px 0;
         }
         
         .arch-secular-name {
@@ -91,7 +109,6 @@
         
         .bio-grid {
             display: grid;
-            /* АВТОМАТИЧЕСКАЯ сетка: карточки сами заполняют место */
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
             margin-top: 40px;
@@ -137,7 +154,6 @@
             border: 1px solid #EAE3D5;
             position: relative;
         }
-        /* Декоративные уголки */
         .awards-box::before, .awards-box::after {
             content: ''; position: absolute; width: 20px; height: 20px;
             border: 2px solid #C5A059; transition: 0.3s;
@@ -161,9 +177,9 @@
         @media screen and (max-width: 900px) {
             .arch-hero-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
             .arch-portrait-wrapper { max-width: 300px; margin: 0 auto; }
-            .kinetic-title { font-size: 32px; }
+            .kinetic-title { font-size: 28px; }
             .arch-intro-text { text-align: left; }
-            .bio-grid { grid-template-columns: 1fr; } /* Одна колонка на телефоне */
+            .bio-grid { grid-template-columns: 1fr; }
             .awards-grid { grid-template-columns: 1fr; }
         }
         
@@ -233,8 +249,8 @@
                 <div class="arch-info">
                     <span class="rank gsap-up">Глава Липецкой митрополии</span>
                     
-                    <!-- ID нужен для JS скрипта -->
                     <div class="kinetic-header">
+                        <!-- Текст для анимации -->
                         <h1 class="kinetic-title" id="arch-title">Высокопреосвященнейший Арсений, Митрополит Липецкий и Задонский</h1>
                     </div>
                     
@@ -242,12 +258,12 @@
                     
                     <div class="arch-intro-text gsap-up">
                         <p>
-                            Назначен Преосвященным Липецким и Задонским, главой Липецкой митрополии решением Священного Синода от 9 июля 2019 года. 
+                            Решением Священного Синода от 9 июля 2019 года (журнал № 72) назначен Преосвященным Липецким и Задонским, главой Липецкой митрополии. 
                             Является постоянным членом Высшего Церковного Совета Русской Православной Церкви.
                         </p>
                         <p>
-                            Владыка многие годы трудился как первый викарий Святейшего Патриарха в Москве, 
-                            восстанавливая поруганные святыни и укрепляя духовную жизнь столицы.
+                            Владыка многие годы трудился как первый викарий Святейшего Патриарха в Первопрестольном граде Москве, 
+                            положив немало трудов на ниве возрождения церковной жизни и благоукрашения святынь.
                         </p>
                     </div>
 
@@ -265,42 +281,34 @@
             <h2 class="chapter-title gsap-up">Основные вехи жизни</h2>
             
             <div class="bio-grid">
-                <!-- 1 -->
                 <div class="bio-card bio-card-anim">
                     <span class="bio-year">1955</span>
                     <p class="bio-text">Родился 3 марта в поселке Востряково Домодедовского района Московской области.</p>
                 </div>
-                <!-- 2 -->
                 <div class="bio-card bio-card-anim">
                     <span class="bio-year">1976 — 1983</span>
                     <p class="bio-text">Обучение в Московских духовных школах (Семинария и Академия). Становление на путь служения Церкви.</p>
                 </div>
-                <!-- 3 -->
                 <div class="bio-card bio-card-anim">
                     <span class="bio-year">1983 — 1989</span>
                     <p class="bio-text">Личный секретарь митрополита Ленинградского Алексия (будущего Патриарха Алексия II).</p>
                 </div>
-                <!-- 4 -->
                 <div class="bio-card bio-card-anim">
                     <span class="bio-year">1984 — 1986</span>
                     <p class="bio-text">Хиротония во диакона (1984) и во иерея (1986). Служение в Свято-Троицком соборе Александро-Невской лавры.</p>
                 </div>
-                <!-- 5 -->
                 <div class="bio-card bio-card-anim">
                     <span class="bio-year">1989</span>
                     <p class="bio-text">Постриг в монашество и хиротония во епископа Ладожского.</p>
                 </div>
-                <!-- 6 -->
                 <div class="bio-card bio-card-anim">
                     <span class="bio-year">1990 — 2019</span>
                     <p class="bio-text">Епископ (позже Архиепископ, Митрополит) Истринский, первый викарий Патриарха по г. Москве.</p>
                 </div>
-                <!-- 7 -->
                 <div class="bio-card bio-card-anim">
                     <span class="bio-year">2014</span>
                     <p class="bio-text">Возведен в сан Митрополита Святейшим Патриархом Кириллом.</p>
                 </div>
-                <!-- 8 -->
                 <div class="bio-card bio-card-anim">
                     <span class="bio-year">2019 — н.в.</span>
                     <p class="bio-text">Глава Липецкой митрополии. Епископ Липецкий и Задонский.</p>
@@ -361,45 +369,56 @@
 document.addEventListener("DOMContentLoaded", (event) => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // 1. ФУНКЦИЯ КИНЕТИЧЕСКОЙ ТИПОГРАФИКИ (Разбиение текста)
+    // 1. УМНАЯ ФУНКЦИЯ ТИПОГРАФИКИ (Исправленная)
     function animateTitle() {
         const title = document.getElementById('arch-title');
         if (!title) return;
 
-        // Разбиваем текст на буквы, сохраняя пробелы
-        const text = title.textContent;
-        title.textContent = ''; // Очищаем
+        // Чистим текст
+        const text = title.textContent.trim();
+        title.textContent = ''; 
         
-        // Массив для хранения букв
-        const chars = text.split("").map(char => {
-            const span = document.createElement("span");
-            span.textContent = char;
-            span.classList.add("char");
-            // Если пробел, сохраняем его ширину
-            if (char === " ") span.style.width = "0.3em"; 
-            title.appendChild(span);
-            return span;
+        // 1. Разбиваем на СЛОВА
+        const words = text.split(" ");
+        let allChars = [];
+
+        words.forEach(wordText => {
+            // Создаем обертку для слова (чтобы оно не разрывалось)
+            const wordSpan = document.createElement("span");
+            wordSpan.classList.add("word-wrapper");
+
+            // 2. Внутри слова разбиваем на буквы
+            const chars = wordText.split("").map(char => {
+                const span = document.createElement("span");
+                span.textContent = char;
+                span.classList.add("char");
+                wordSpan.appendChild(span);
+                return span;
+            });
+
+            allChars = allChars.concat(chars);
+            title.appendChild(wordSpan);
         });
 
-        // Анимация GSAP для букв (БЛАГОРОДНАЯ, БЕЗ ОТСКОКА)
-        gsap.to(chars, {
+        // 3. Анимация появления букв
+        gsap.to(allChars, {
             opacity: 1,
-            y: 0, // Возвращаем на место
+            y: 0,
             duration: 1.2,
-            stagger: 0.02, // Очень быстрая волна
-            ease: "power3.out", // Плавное замедление в конце
-            delay: 0.5 // Ждем чуть-чуть после загрузки
+            stagger: 0.02,
+            ease: "power3.out", 
+            delay: 0.5 
         });
 
-        // Изначальное состояние задаем через CSS (.char), но GSAP from() надежнее
-        gsap.from(chars, {
-            y: 40, // Выплывают снизу
+        // Начальное состояние
+        gsap.from(allChars, {
+            y: 30, 
             opacity: 0,
             duration: 0
         });
     }
 
-    // 2. ФУНКЦИЯ ДЛЯ КАРТОЧЕК БИОГРАФИИ
+    // 2. ФУНКЦИЯ ДЛЯ КАРТОЧЕК
     function animateBio() {
         // Простые элементы (Фото, инфо)
         gsap.utils.toArray(".gsap-up").forEach(el => {
@@ -408,12 +427,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
             });
         });
 
-        // Сетка биографии (Compact Grid) - Каскадное появление
+        // Сетка биографии
         gsap.from(".bio-card-anim", {
             y: 50,
             opacity: 0,
             duration: 0.8,
-            stagger: 0.1, // Карточки появляются одна за другой
+            stagger: 0.1, 
             ease: "power2.out",
             scrollTrigger: {
                 trigger: ".bio-grid",
@@ -421,7 +440,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         });
 
-        // Награды (выезжают с боков)
+        // Награды
         gsap.from(".awards-anim", {
             y: 50,
             opacity: 0,
