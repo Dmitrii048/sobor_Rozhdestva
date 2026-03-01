@@ -460,8 +460,17 @@ title: Христорождественский кафедральный соб�
             {% for video in video_posts limit:3 %}
             <a href="{{ site.baseurl }}{{ video.url }}" class="card-item video-card gsap-fade-up" style="text-decoration: none;">
                 <div class="video-thumb-wrap">
-                    <!-- Заглушка убрана. Фильтр удаляет двойные слеши -->
-                    <img src="{{ site.baseurl }}/{{ video.image | remove_first: '/' }}" alt="{{ video.title }}">
+                    
+                    <!-- УМНЫЙ ВЫВОД КАРТИНКИ -->
+                    {% if video.image and video.image != "" %}
+                        <!-- Проверяем, вставил ли ты ссылку из интернета или локальную -->
+                        {% if video.image contains "http" %}
+                            <img src="{{ video.image }}" alt="{{ video.title }}">
+                        {% else %}
+                            <img src="{{ site.baseurl }}/{{ video.image | remove_first: '/' }}" alt="{{ video.title }}">
+                        {% endif %}
+                    {% endif %}
+                    
                     <div class="play-btn-overlay"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="video-info">
