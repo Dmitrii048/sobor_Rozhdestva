@@ -256,29 +256,51 @@ title: Христорождественский кафедральный соб�
         </div>
     </section>
 
+ <!-- ЖИЗНЬ ПРИХОДА -->
     <section class="news-section">
         <div class="section-head-center gsap-fade-up">
             <h2 class="status-title" style="margin-bottom: 10px;">Жизнь прихода</h2>
             <p style="color:#777; font-family:'PT Serif',serif; font-style:italic;">События и новости Христорождественского собора</p>
         </div>
+
         <div class="grid-3">
             {% assign main_news = site.posts | where: "category", "news" %}
             {% for post in main_news limit:3 %}
             <article class="card-item gsap-fade-up">
                 <a href="{{ site.baseurl }}{{ post.url }}" class="card-thumb">
-                    <!-- УМНАЯ ПОДГРУЗКА: Убираем первый слэш, если он есть, чтобы путь не бился -->
-                    <img src="{{ site.baseurl }}/{{ post.image | remove_first: '/' }}" alt="{{ post.title }}">
+                    
+                    <!-- УМНАЯ ПОДГРУЗКА КАРТИНОК -->
+                    {% if post.image and post.image != "" %}
+                        {% if post.image contains "http" %}
+                            <!-- Если вставлена полная ссылка -->
+                            <img src="{{ post.image }}" alt="{{ post.title }}" onerror="this.src='{{ site.baseurl }}/images/history-bg.jpg'">
+                        {% else %}
+                            <!-- Если локальный файл в папке images -->
+                            <img src="{{ site.baseurl }}/{{ post.image | remove_first: '/' }}" alt="{{ post.title }}" onerror="this.src='{{ site.baseurl }}/images/history-bg.jpg'">
+                        {% endif %}
+                    {% else %}
+                        <!-- Если картинки нет в файле новости - ставим заглушку -->
+                        <img src="{{ site.baseurl }}/images/history-bg.jpg" alt="{{ post.title }}">
+                    {% endif %}
+                    
                 </a>
                 <div class="card-body">
                     <span class="card-meta">{{ post.date | date: "%d.%m.%Y" }}</span>
-                    <h3 class="card-title"><a href="{{ site.baseurl }}{{ post.url }}" style="text-decoration: none; color: inherit;">{{ post.title }}</a></h3>
-                    <div class="card-excerpt">{{ post.excerpt | strip_html | truncatewords: 15 }}</div>
+                    <h3 class="card-title">
+                        <a href="{{ site.baseurl }}{{ post.url }}" style="text-decoration: none; color: inherit;">{{ post.title }}</a>
+                    </h3>
+                    <div class="card-excerpt">
+                        {{ post.excerpt | strip_html | truncatewords: 15 }}
+                    </div>
                     <a href="{{ site.baseurl }}{{ post.url }}" style="color: #C5A059; font-family: 'Open Sans'; font-size: 12px; font-weight: 700; text-decoration: none; text-transform:uppercase;">Читать далее →</a>
                 </div>
             </article>
             {% endfor %}
         </div>
-        <div style="text-align: center;" class="gsap-fade-up"><a href="{{ site.baseurl }}/news/" class="btn-gold-outline">Летопись всех событий</a></div>
+
+        <div style="text-align: center;" class="gsap-fade-up">
+            <a href="{{ site.baseurl }}/news/" class="btn-gold-outline">Летопись всех событий</a>
+        </div>
     </section>
 
     <section class="features-wrapper">
