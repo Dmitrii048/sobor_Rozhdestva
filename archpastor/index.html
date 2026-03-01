@@ -13,7 +13,6 @@
     
     <style>
         /* --- 1. БЛОКИРОВКА МИГАНИЯ (FOUC) --- */
-        /* Скрываем всё, что будет анимироваться, на уровне CSS */
         .kinetic-title, 
         .arch-portrait-wrapper, 
         .rank, 
@@ -21,6 +20,7 @@
         .arch-intro-text,
         .chapter-title,
         .bio-card,
+        .special-work-card,
         .awards-box { 
             opacity: 0; 
             visibility: hidden; 
@@ -32,7 +32,7 @@
         
         .kinetic-title {
             font-family: 'PT Serif', serif;
-            font-size: 32px; /* Компактный и величественный размер */
+            font-size: 32px;
             line-height: 1.2;
             color: #2C2C2C;
             margin: 0;
@@ -40,7 +40,6 @@
             display: block;
         }
 
-        /* Обертка слова — не дает буквам рассыпаться при переносе строки */
         .word-wrapper {
             display: inline-block;
             white-space: nowrap;
@@ -48,14 +47,13 @@
             margin-right: 0.25em;
         }
 
-        /* Каждая буква */
         .char {
             display: inline-block;
             opacity: 0;
-            transform: translateY(30px); /* Начальная позиция снизу */
+            transform: translateY(30px); 
         }
 
-        /* --- 3. ГЕРОЙ-СЕКЦИЯ (ОПТИМИЗАЦИЯ МЕСТА) --- */
+        /* --- 3. ГЕРОЙ-СЕКЦИЯ --- */
         .arch-hero-section { 
             background-color: #fff; 
             padding: 40px 0; 
@@ -116,7 +114,7 @@
             text-align: justify; 
         }
 
-        /* --- 4. БИОГРАФИЯ (MASONRY - КИРПИЧНАЯ КЛАДКА) --- */
+        /* --- 4. БИОГРАФИЯ (MASONRY) --- */
         .bio-section { padding: 60px 0; background: #fdfbf7; }
         
         .bio-masonry {
@@ -149,10 +147,54 @@
         }
         .bio-text { font-size: 15px; line-height: 1.6; color: #444; margin: 0; text-align: justify; }
         
-        .saints-list { margin: 15px 0 0 0; padding-left: 20px; font-size: 14px; color: #555; }
-        .saints-list li { margin-bottom: 6px; list-style-type: disc; }
+        /* --- 5. ВЫДЕЛЕННЫЙ БЛОК: ТРУДЫ ПО МОЩАМ --- */
+        .special-work-card {
+            background: #fff;
+            padding: 40px 50px;
+            margin-top: 20px;
+            border: 1px solid #EAE3D5;
+            border-top: 4px solid #C5A059;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .special-work-title {
+            font-family: 'PT Serif', serif;
+            font-size: 24px;
+            color: #2C2C2C;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .special-work-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 25px;
+        }
+        .special-saints-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Две колонки для списка святых */
+            gap: 15px 40px;
+            padding-left: 0;
+            margin: 0;
+        }
+        .special-saints-list li {
+            position: relative;
+            padding-left: 25px;
+            font-size: 15px;
+            color: #555;
+            list-style: none;
+            line-height: 1.5;
+        }
+        .special-saints-list li::before {
+            content: '❖'; /* Красивый маркер списка */
+            color: #C5A059;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 14px;
+        }
 
-        /* --- 5. НАГРАДЫ --- */
+        /* --- 6. НАГРАДЫ --- */
         .awards-section { padding: 60px 0; background: #fff; }
         .awards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .awards-box { background: #fff; padding: 40px; border: 1px solid #EAE3D5; position: relative; }
@@ -171,13 +213,14 @@
             .kinetic-title { font-size: 28px; }
             .arch-intro-text { text-align: left; }
             .bio-masonry { column-count: 1; }
+            .special-saints-list { grid-template-columns: 1fr; } /* На телефоне одна колонка */
+            .special-work-card { padding: 30px 20px; }
             .awards-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<!-- Прелоадер -->
 <div id="page-preloader" class="preloader">
     <div class="loader-circle"></div>
     <div class="loader-text">Загрузка...</div>
@@ -228,17 +271,14 @@
     <section class="arch-hero-section">
         <div class="container">
             <div class="arch-hero-grid">
-                <!-- Фото Владыки -->
                 <div class="arch-portrait-wrapper" id="hero-photo">
                     <img src="../images/archierey.jpg" alt="Митрополит Арсений" class="arch-photo">
                 </div>
                 
-                <!-- Информация -->
                 <div class="arch-info">
                     <span class="rank" id="hero-rank">Глава Липецкой митрополии</span>
                     
                     <div class="kinetic-header">
-                        <!-- Текст будет разбит скриптом -->
                         <h1 class="kinetic-title" id="arch-title">Высокопреосвященнейший Арсений, Митрополит Липецкий и Задонский</h1>
                     </div>
                     
@@ -262,7 +302,7 @@
         </div>
     </section>
 
-    <!-- БИОГРАФИЯ (ПОЛНЫЙ ТЕКСТ) -->
+    <!-- БИОГРАФИЯ И ОТДЕЛЬНЫЕ ФАКТЫ -->
     <section class="bio-section">
         <div class="container">
             <h2 class="chapter-title" id="bio-title">Биография</h2>
@@ -299,18 +339,6 @@
                     </p>
                 </div>
                 <div class="bio-card">
-                    <span class="bio-date">Труды по обретению святых мощей</span>
-                    <p class="bio-text">Участвовал в работе комиссий по освидетельствованию возвращаемых Церкви и вновь обретаемых святых мощей:</p>
-                    <ul class="saints-list">
-                        <li>св. блгв. кн. Александра Невского (1988 г.)</li>
-                        <li>преподобных Зосимы, Савватия и Германа Соловецких (1990 г.)</li>
-                        <li>прп. Серафима Саровского (1991 г.)</li>
-                        <li>свт. Иоасафа Белгородского (1991 г.)</li>
-                        <li>свт. Тихона, Патриарха Московского и всея России (1991 г.)</li>
-                        <li>блж. Матроны Никоновой (1998 г.)</li>
-                    </ul>
-                </div>
-                <div class="bio-card">
                     <span class="bio-date">Научно-издательская деятельность</span>
                     <p class="bio-text">
                         В 1994-1997 гг. являлся председателем Научно-редакционного совета по изданию «Истории Русской Церкви» митрополита Макария (Булгакова).<br><br>
@@ -338,6 +366,23 @@
                     </p>
                 </div>
             </div>
+
+            <!-- ВЫДЕЛЕННЫЙ БЛОК: ТРУДЫ ПО МОЩАМ -->
+            <div class="special-work-card">
+                <h3 class="special-work-title">Труды по обретению святых мощей</h3>
+                <p class="special-work-text">
+                    Участвовал в работе комиссий по освидетельствованию возвращаемых Церкви и вновь обретаемых святых мощей:
+                </p>
+                <ul class="special-saints-list">
+                    <li>св. блгв. кн. Александра Невского (1988 г.)</li>
+                    <li>преподобных Зосимы, Савватия и Германа Соловецких (1990 г.)</li>
+                    <li>прп. Серафима Саровского (1991 г.)</li>
+                    <li>свт. Иоасафа Белгородского (1991 г.)</li>
+                    <li>свт. Тихона, Патриарха Московского и всея России (1991 г.)</li>
+                    <li>блж. Матроны Никоновой (1998 г.)</li>
+                </ul>
+            </div>
+            
         </div>
     </section>
 
@@ -387,7 +432,6 @@
 document.addEventListener("DOMContentLoaded", (event) => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // --- 1. КИНЕТИЧЕСКАЯ ТИПОГРАФИКА (ЗАГОЛОВОК) ---
     function animateTitle() {
         const title = document.getElementById('arch-title');
         if (!title) return;
@@ -396,7 +440,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         title.textContent = ''; 
         
         const words = text.split(" ");
-        let allChars = [];
+        let allChars =[];
 
         words.forEach(wordText => {
             const wordSpan = document.createElement("span");
@@ -412,11 +456,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
             title.appendChild(wordSpan);
         });
 
-        // Снимаем блокировку видимости самого заголовка
+        // Открываем видимость родителя (теперь он не черный квадрат, а прозрачные буквы)
         title.style.visibility = 'visible';
         title.style.opacity = '1';
 
-        // Анимация букв (Мягкое восхождение)
+        // Анимация букв
         gsap.to(allChars, { 
             opacity: 1, 
             y: 0, 
@@ -427,23 +471,22 @@ document.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 
-    // --- 2. ПЛАВНОЕ ПРОЯВЛЕНИЕ ОСТАЛЬНОГО ТЕКСТА ---
     function animatePageContent() {
         const timeline = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-        // Фото проявляется плавно
+        // Фото
         timeline.to("#hero-photo", { autoAlpha: 1, duration: 1.5 }, 0.2);
 
-        // Ранг (Глава Липецкой митрополии)
+        // Ранг
         timeline.to("#hero-rank", { autoAlpha: 1, y: 0, duration: 1 }, "-=1.2");
 
         // Мирское имя
         timeline.to("#hero-secular", { autoAlpha: 1, y: 0, duration: 1 }, "-=1");
 
-        // Вводный текст (самый плавный)
+        // Вводный текст
         timeline.to("#hero-text", { autoAlpha: 1, y: 0, duration: 1.5 }, "-=0.8");
 
-        // Заголовки разделов при скролле
+        // Заголовки разделов
         gsap.utils.toArray([".chapter-title"]).forEach(el => {
             gsap.to(el, {
                 autoAlpha: 1, y: 0, duration: 1.2,
@@ -451,20 +494,25 @@ document.addEventListener("DOMContentLoaded", (event) => {
             });
         });
 
-        // Карточки биографии (Каскад)
+        // Карточки биографии
         gsap.to(".bio-card", {
             autoAlpha: 1, y: 0, duration: 1, stagger: 0.1,
             scrollTrigger: { trigger: ".bio-masonry", start: "top 85%" }
         });
 
-        // Блоки наград
+        // Блок с мощами (Новый выделенный блок)
+        gsap.to(".special-work-card", {
+            autoAlpha: 1, y: 0, duration: 1.2,
+            scrollTrigger: { trigger: ".special-work-card", start: "top 85%" }
+        });
+
+        // Награды
         gsap.to(".awards-box", {
             autoAlpha: 1, y: 0, duration: 1.2, stagger: 0.2,
             scrollTrigger: { trigger: ".awards-grid", start: "top 85%" }
         });
     }
 
-    // --- ЛОГИКА ЗАПУСКА ПОСЛЕ ПРЕЛОАДЕРА ---
     const preloader = document.getElementById('page-preloader');
     if (preloader) {
         window.addEventListener('load', () => { 
@@ -479,7 +527,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         animatePageContent(); 
     }
 
-    // Мобильное меню
     const menuToggle = document.getElementById('menu-toggle');
     const mainNav = document.getElementById('main-nav');
     if(menuToggle && mainNav){
