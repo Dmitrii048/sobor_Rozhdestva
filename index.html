@@ -268,21 +268,8 @@ title: Христорождественский кафедральный соб�
             {% for post in main_news limit:3 %}
             <article class="card-item gsap-fade-up">
                 <a href="{{ site.baseurl }}{{ post.url }}" class="card-thumb">
-                    
-                    <!-- УМНАЯ ПОДГРУЗКА КАРТИНОК -->
-                    {% if post.image and post.image != "" %}
-                        {% if post.image contains "http" %}
-                            <!-- Если вставлена полная ссылка -->
-                            <img src="{{ post.image }}" alt="{{ post.title }}" onerror="this.src='{{ site.baseurl }}/images/history-bg.jpg'">
-                        {% else %}
-                            <!-- Если локальный файл в папке images -->
-                            <img src="{{ site.baseurl }}/{{ post.image | remove_first: '/' }}" alt="{{ post.title }}" onerror="this.src='{{ site.baseurl }}/images/history-bg.jpg'">
-                        {% endif %}
-                    {% else %}
-                        <!-- Если картинки нет в файле новости - ставим заглушку -->
-                        <img src="{{ site.baseurl }}/images/history-bg.jpg" alt="{{ post.title }}">
-                    {% endif %}
-                    
+                    <!-- ПРЯМОЙ ВЫВОД: Просто берем то, что написано в image -->
+                    <img src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}">
                 </a>
                 <div class="card-body">
                     <span class="card-meta">{{ post.date | date: "%d.%m.%Y" }}</span>
@@ -302,7 +289,7 @@ title: Христорождественский кафедральный соб�
             <a href="{{ site.baseurl }}/news/" class="btn-gold-outline">Летопись всех событий</a>
         </div>
     </section>
-
+    
     <section class="features-wrapper">
         <div class="feature-row">
             <div class="feature-img-wrapper gsap-reveal-img"><img src="{{ site.baseurl }}/images/history-new.jpg" alt="Летопись собора, история православного храма Липецк"></div>
