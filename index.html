@@ -43,7 +43,7 @@ title: Христорождественский кафедральный соб�
     .gsap-reveal-img { visibility: hidden; will-change: clip-path, transform; }
     .gsap-fade-up, .js-hero-title { visibility: hidden; opacity: 0; }
     
-    /* ЗОЛОТЫЕ КНОПКИ (Восстановлены) */
+    /* ЗОЛОТЫЕ КНОПКИ */
     .btn-gold-solid {
         display: inline-block; padding: 14px 35px; background: #C5A059; color: #fff !important;
         text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; font-size: 13px;
@@ -93,36 +93,50 @@ title: Христорождественский кафедральный соб�
     .status-text { font-family: 'PT Serif', serif; font-size: 1.25rem; line-height: 1.7; color: #444; text-align: center; }
 
     /* =========================================
-       3. БОГОСЛУЖЕНИЯ (СВЕТЛЫЙ, БЛАГОРОДНЫЙ ДИЗАЙН)
+       3. БОГОСЛУЖЕНИЯ (С "Ѿ" И ТЕМНЫМ ФОНОМ)
        ========================================= */
     .worship-calendar-section { padding: 0 20px 60px; background: #fff; }
     .wc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1100px; margin: 0 auto; align-items: stretch; }
     
     .worship-banner {
-        /* Благородный пергаментный цвет вместо черного */
-        background: linear-gradient(135deg, #FDFBF7 0%, #F5F0E6 100%); 
-        border: 1px solid #EAE3D5; 
+        background: #2b2522; /* Благородный темный фон */
+        border: 1px solid #C5A059; 
         padding: 50px 40px; 
-        color: #2C2C2C; /* Темный текст для читаемости */
+        color: #fff; 
         display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-        box-shadow: 0 20px 50px rgba(197, 160, 89, 0.1); 
+        box-shadow: 0 20px 50px rgba(0,0,0,0.15); 
         position: relative; overflow: hidden; height: 100%; box-sizing: border-box;
     }
+    
     .worship-banner::before {
-        content: '\047E'; font-family: 'Times New Roman', serif; font-weight: 400; position: absolute;
-        top: -30px; right: -30px; font-size: 250px; 
-        color: #C5A059; opacity: 0.1; /* Нежный золотой крест на фоне */
-        transform: rotate(15deg); pointer-events: none;
+        content: 'Ѿ'; /* Церковнославянская монограмма */
+        font-family: 'Times New Roman', serif; 
+        font-weight: 400; 
+        position: absolute;
+        top: -30px; 
+        right: -10px; 
+        font-size: 280px; 
+        color: #C5A059; 
+        opacity: 0.08; 
+        pointer-events: none;
     }
+
     .worship-title { font-family: 'PT Serif', serif; font-size: 2.2rem; color: #C5A059; margin-bottom: 20px; line-height: 1.2; position: relative; z-index: 2; }
-    .worship-text { font-family: 'PT Serif', serif; font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px; color: #444; position: relative; z-index: 2; }
+    .worship-text { font-family: 'PT Serif', serif; font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px; color: #e6e0d6; position: relative; z-index: 2; }
 
     .calendar-sidebar {
-        background: #fff; border: 1px solid #EAE3D5; padding: 30px 25px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.03); text-align: center; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;
+        background: #fdfbf7; border: 1px solid #EAE3D5; padding: 30px 25px;
+        box-shadow: 0 10px 30px rgba(197, 160, 89, 0.05); text-align: center; height: 100%; box-sizing: border-box; 
+        display: flex; flex-direction: column; justify-content: center;
+        max-width: 100%; /* Фикс для телефона */
+        overflow-x: hidden;
     }
     .calendar-title { font-family: 'PT Serif', serif; font-size: 1.6rem; color: #2C2C2C; margin-bottom: 15px; border-bottom: 1px solid #EAE3D5; padding-bottom: 15px; }
-    .pravoslavie-calendar-widget { font-family: 'PT Serif', serif !important; font-size: 15px !important; color: #444 !important; line-height: 1.6; }
+    
+    .pravoslavie-calendar-widget { 
+        font-family: 'PT Serif', serif !important; font-size: 15px !important; color: #444 !important; line-height: 1.6;
+        max-width: 100%; overflow-x: auto; /* Защита от растягивания на мобильном */
+    }
     .pravoslavie-calendar-widget a { color: #C5A059 !important; text-decoration: none !important; font-weight: 700; border-bottom: 1px solid transparent; }
     .pravoslavie-calendar-center img { max-width: 120px; height: auto; border-radius: 4px; margin: 15px auto; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
@@ -161,15 +175,14 @@ title: Христорождественский кафедральный соб�
         overflow: hidden; 
         border-radius: 4px;
         box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-        /* МАГИЯ: Заставляем все фото быть одинакового размера 4:3 */
         aspect-ratio: 4 / 3; 
         width: 100%;
         max-width: 500px;
     }
     .feature-img-wrapper img { 
         width: 100%; 
-        height: 100%; /* Заполняет всю рамку */
-        object-fit: cover; /* Обрезает излишки, не сплющивая */
+        height: 100%; 
+        object-fit: cover; 
         display: block; 
     }
     
@@ -178,7 +191,7 @@ title: Христорождественский кафедральный соб�
     .feature-desc { font-family: 'PT Serif', serif; font-size: 1.1rem; line-height: 1.7; color: #555; margin-bottom: 25px; text-align: justify; }
 
     /* =========================================
-       6. ВИДЕО (ЧЕТКИЕ ПЛЕЕРЫ ДАЖЕ БЕЗ ФОТО)
+       6. ВИДЕО (ЧЕТКИЕ ПЛЕЕРЫ)
        ========================================= */
     .video-section { padding: 60px 20px; background: #fdfbf7; border-top: 1px solid #EAE3D5; }
     .video-card { border: none; box-shadow: none; background: transparent; }
@@ -189,14 +202,13 @@ title: Христорождественский кафедральный соб�
         border-radius: 6px;
         overflow: hidden;
         position: relative;
-        /* Благородный темный градиент - выглядит как плеер, даже если нет картинки */
         background: linear-gradient(135deg, #2b2522 0%, #1a1614 100%);
         box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
     .video-thumb-wrap img { 
         width: 100%; height: 100%; object-fit: cover; 
         transition: 1.2s ease; 
-        opacity: 0.6; /* Затемняем саму картинку для стиля */
+        opacity: 0.6; /* Затемняем картинку для видимости кнопки */
     }
     .video-card:hover .video-thumb-wrap img { transform: scale(1.05); opacity: 0.8; }
 
@@ -211,52 +223,58 @@ title: Христорождественский кафедральный соб�
     .video-card:hover .play-btn-overlay { transform: translate(-50%, -50%) scale(1.1); background: #b08d4a; box-shadow: 0 0 0 10px rgba(197, 160, 89, 0.2); }
 
     /* =========================================
-       7. МОНУМЕНТАЛЬНАЯ НАВИГАЦИЯ (ФИНАЛ)
+       7. МОНУМЕНТАЛЬНАЯ НАВИГАЦИЯ (БЕЗ ФОТОГРАФИЙ, СТРОГИЙ СТИЛЬ)
        ========================================= */
     .monumental-section {
         padding: 80px 20px;
         background: #fff;
     }
+    .compass-title {
+        font-family: 'PT Serif', serif; font-size: 2.4rem; color: #2C2C2C;
+        margin-bottom: 15px; line-height: 1.2; text-align: center;
+    }
+    .compass-desc {
+        font-family: 'PT Serif', serif; font-size: 1.15rem; color: #555;
+        max-width: 800px; margin: 0 auto 50px; text-align: center; line-height: 1.6;
+    }
     .monumental-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
-        max-width: 1200px;
+        max-width: 1000px;
         margin: 0 auto;
     }
     .m-card {
         position: relative;
-        height: 200px;
+        padding: 40px 20px;
         border-radius: 4px;
-        overflow: hidden;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         text-decoration: none;
-        background-color: #2b2522;
+        background: linear-gradient(135deg, #2b2522 0%, #1a1614 100%);
+        border: 1px solid #3a322d;
+        transition: all 0.4s ease;
     }
-    .m-card::before {
-        content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        background-position: center; background-size: cover; background-repeat: no-repeat;
-        opacity: 0.4; transition: transform 0.8s ease, opacity 0.5s ease;
-        will-change: transform;
+    .m-card i {
+        font-size: 36px;
+        color: #C5A059;
+        margin-bottom: 15px;
+        transition: transform 0.4s ease;
     }
-    .m-card:hover::before { transform: scale(1.05); opacity: 0.2; }
-    
-    /* Задаем фоны для каждой карточки через CSS-переменные или напрямую */
-    .bg-treby::before { background-image: url('{{ site.baseurl }}/images/icon-strastnaya.jpg'); }
-    .bg-clergy::before { background-image: url('{{ site.baseurl }}/images/archierey.jpg'); }
-    .bg-social::before { background-image: url('{{ site.baseurl }}/images/school-life.jpg'); }
-    .bg-contacts::before { background-image: url('{{ site.baseurl }}/images/history-bg.jpg'); }
-
     .m-card-title {
-        position: relative; z-index: 2;
-        font-family: 'PT Serif', serif; font-size: 24px; color: #fff;
+        font-family: 'PT Serif', serif; font-size: 20px; color: #fff;
         text-transform: uppercase; letter-spacing: 2px; text-align: center;
-        border: 2px solid rgba(197, 160, 89, 0.5); padding: 15px 30px;
-        transition: all 0.3s;
+        transition: color 0.3s;
     }
-    .m-card:hover .m-card-title { border-color: #C5A059; color: #C5A059; background: rgba(255,255,255,0.05); }
+    .m-card:hover {
+        border-color: #C5A059;
+        box-shadow: 0 15px 30px rgba(197, 160, 89, 0.15);
+        transform: translateY(-5px);
+    }
+    .m-card:hover i { transform: scale(1.1); }
+    .m-card:hover .m-card-title { color: #C5A059; }
 
     /* МОБИЛЬНАЯ АДАПТАЦИЯ */
     @media (max-width: 900px) {
@@ -269,8 +287,7 @@ title: Христорождественский кафедральный соб�
         .feature-img-wrapper { max-width: 100%; }
         .feature-title { font-size: 1.8rem; text-align: center; }
         .feature-desc { text-align: left; }
-        .monumental-grid { grid-template-columns: 1fr; } /* На телефоне в один столбец */
-        .m-card { height: 150px; }
+        .monumental-grid { grid-template-columns: 1fr; } 
     }
 </style>
 
@@ -298,7 +315,7 @@ title: Христорождественский кафедральный соб�
 <!-- БОГОСЛУЖЕНИЯ + КАЛЕНДАРЬ -->
 <section class="worship-calendar-section">
     <div class="wc-grid">
-        <!-- Левая часть: Баннер (СВЕТЛЫЙ) -->
+        <!-- Левая часть: Баннер -->
         <div class="worship-banner gsap-fade-up">
             <h2 class="worship-title">Соборная молитва</h2>
             <p class="worship-text">
@@ -340,7 +357,7 @@ title: Христорождественский кафедральный соб�
         {% for post in main_news limit:3 %}
         <article class="card-item gsap-fade-up">
             <a href="{{ site.baseurl }}{{ post.url }}" class="card-thumb">
-                <img src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}" onerror="this.src='{{ site.baseurl }}/images/history-bg.jpg'">
+                <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}" onerror="this.src='{{ site.baseurl }}/images/history-bg.jpg'">
             </a>
             <div class="card-body">
                 <span class="card-meta">{{ post.date | date: "%d.%m.%Y" }}</span>
@@ -357,15 +374,14 @@ title: Христорождественский кафедральный соб�
     </div>
 
     <div style="text-align: center;" class="gsap-fade-up">
-        <!-- Золотая кнопка возвращена -->
         <a href="{{ site.baseurl }}/news/" class="btn-gold-outline">Летопись всех событий</a>
     </div>
 </section>
 
-<!-- БЛОКИ ИСТОРИИ, СВЯТЫНЬ (ИДЕАЛЬНЫЕ ПРОПОРЦИИ) -->
+<!-- БЛОКИ ИСТОРИИ, СВЯТЫНЬ -->
 <section class="features-wrapper">
     
-    <!-- 1. ИСТОРИЯ -->
+    <!-- 1. ИСТОРИЯ (Текст и фото обновлены) -->
     <div class="feature-row">
         <div class="feature-img-wrapper gsap-reveal-img">
             <img src="{{ site.baseurl }}/images/history.jpg" alt="Летопись собора, история православного храма Липецк">
@@ -379,7 +395,7 @@ title: Христорождественский кафедральный соб�
         </div>
     </div>
 
-    <!-- 2. СВЯТЫНИ (Реверс) -->
+    <!-- 2. СВЯТЫНИ -->
     <div class="feature-row">
         <div class="feature-img-wrapper gsap-reveal-img">
             <img src="{{ site.baseurl }}/images/icon-strastnaya.jpg" alt="Святыни собора, Икона Страстная Липецкая">
@@ -409,7 +425,7 @@ title: Христорождественский кафедральный соб�
 
 </section>
 
-<!-- СЛОВО ПАСТЫРЯ (ЧЕТКИЕ ПЛЕЕРЫ) -->
+<!-- СЛОВО ПАСТЫРЯ (ИСПРАВЛЕНЫ ПУТИ К КАРТИНКАМ) -->
 <section class="video-section">
     <div class="section-head-center gsap-fade-up">
         <h2 class="status-title" style="margin-bottom: 10px;">Слово пастыря</h2>
@@ -421,8 +437,8 @@ title: Христорождественский кафедральный соб�
         {% for video in video_posts limit:3 %}
         <a href="{{ site.baseurl }}{{ video.url }}" class="card-item video-card gsap-fade-up" style="text-decoration: none;">
             <div class="video-thumb-wrap">
-                <!-- Скрываем сломанную картинку, остается красивый темный градиент -->
-                <img src="{{ site.baseurl }}/{{ video.image }}" alt="{{ video.title }}" onerror="this.style.display='none'">
+                <!-- Обертка видео стала темной, если картинки нет, будет просто черный плеер -->
+                <img src="{{ site.baseurl }}{{ video.image }}" alt="{{ video.title }}" onerror="this.style.display='none'">
                 <div class="play-btn-overlay"><i class="fas fa-play"></i></div>
             </div>
             <div class="video-info">
@@ -438,25 +454,34 @@ title: Христорождественский кафедральный соб�
     </div>
 </section>
 
-<!-- МОНУМЕНТАЛЬНАЯ НАВИГАЦИЯ (ФИНАЛ) -->
+<!-- МОНУМЕНТАЛЬНАЯ НАВИГАЦИЯ (БЕЗ ФОТО, СТРОГО И БЛАГОРОДНО) -->
 <section class="monumental-section gsap-fade-up">
-    <div class="monumental-grid">
-        <a href="{{ site.baseurl }}/treby/" class="m-card bg-treby">
-            <span class="m-card-title">Подать записку</span>
-        </a>
-        <a href="{{ site.baseurl }}/clergy/" class="m-card bg-clergy">
-            <span class="m-card-title">Духовенство</span>
-        </a>
-        <a href="{{ site.baseurl }}/social/" class="m-card bg-social">
-            <span class="m-card-title">Социальное служение</span>
-        </a>
-        <a href="{{ site.baseurl }}/contacts/" class="m-card bg-contacts">
-            <span class="m-card-title">Контакты и адрес</span>
-        </a>
+    <div class="container">
+        <h2 class="compass-title">Храм открыт для каждого</h2>
+        <p class="compass-desc">При Христорождественском кафедральном соборе ведется активная работа духовенства, организовано широкое социальное служение, а также осуществляется духовное окормление верующих на других приходах митрополии.</p>
+        
+        <div class="monumental-grid">
+            <a href="{{ site.baseurl }}/treby/" class="m-card">
+                <i class="fas fa-scroll"></i>
+                <span class="m-card-title">Подать записку</span>
+            </a>
+            <a href="{{ site.baseurl }}/clergy/" class="m-card">
+                <i class="fas fa-users"></i>
+                <span class="m-card-title">Духовенство</span>
+            </a>
+            <a href="{{ site.baseurl }}/social/" class="m-card">
+                <i class="fas fa-hands-helping"></i>
+                <span class="m-card-title">Социальное служение</span>
+            </a>
+            <a href="{{ site.baseurl }}/contacts/" class="m-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <span class="m-card-title">Контакты и адрес</span>
+            </a>
+        </div>
     </div>
 </section>
 
-<!-- БОГАТЫЙ ФУТЕР (ПОДВАЛ) -->
+<!-- ЕДИНЫЙ, БОГАТЫЙ ФУТЕР (ПОДВАЛ) С АВТОРСКИМИ ПРАВАМИ -->
 <footer class="site-footer-light" style="background: #FDFBF7; border-top: 3px solid #C5A059; padding: 60px 20px 20px; color: #444;">
     <div class="container">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; text-align: left;">
@@ -471,28 +496,32 @@ title: Христорождественский кафедральный соб�
             <div>
                 <h5 style="font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; color: #999; margin-bottom: 20px;">Навигация</h5>
                 <ul style="list-style: none; padding: 0; font-size: 15px; line-height: 2;">
+                    <li><a href="{{ site.baseurl }}/" style="text-decoration: none; color: inherit;">Главная</a></li>
                     <li><a href="{{ site.baseurl }}/about/" style="text-decoration: none; color: inherit;">Летопись собора</a></li>
                     <li><a href="{{ site.baseurl }}/schedule/" style="text-decoration: none; color: inherit;">Расписание богослужений</a></li>
+                    <li><a href="{{ site.baseurl }}/school/" style="text-decoration: none; color: inherit;">Воскресная школа</a></li>
                     <li><a href="{{ site.baseurl }}/treby/" style="text-decoration: none; color: inherit;">Подать записки онлайн</a></li>
                 </ul>
             </div>
 
-            <!-- Контакты -->
+            <!-- Контакты и соцсети в благородных цветах -->
             <div>
                 <h5 style="font-family: 'Open Sans', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; color: #999; margin-bottom: 20px;">Контакты</h5>
                 <ul style="list-style: none; padding: 0; font-size: 15px; line-height: 2;">
                     <li><i class="fas fa-map-marker-alt" style="color: #C5A059; width: 20px;"></i> г. Липецк, Соборная пл., 4</li>
                     <li><i class="fas fa-phone" style="color: #C5A059; width: 20px;"></i> <a href="tel:+74742272293" style="text-decoration: none; color: inherit;">+7 (4742) 27-22-93</a></li>
-                    <li>
-                        <a href="https://vk.com/sobor48" target="_blank" style="margin-right: 15px; color: #4a76a8; font-size: 20px;"><i class="fab fa-vk"></i></a>
-                        <a href="https://t.me/Lsobor" target="_blank" style="color: #0088cc; font-size: 20px;"><i class="fab fa-telegram-plane"></i></a>
+                    <li style="margin-top: 10px;">
+                        <a href="https://vk.com/sobor48" target="_blank" style="margin-right: 15px; color: #8c7b68; font-size: 24px; transition: color 0.3s;" onmouseover="this.style.color='#C5A059'" onmouseout="this.style.color='#8c7b68'"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/Lsobor" target="_blank" style="color: #8c7b68; font-size: 24px; transition: color 0.3s;" onmouseover="this.style.color='#C5A059'" onmouseout="this.style.color='#8c7b68'"><i class="fab fa-telegram-plane"></i></a>
                     </li>
                 </ul>
             </div>
         </div>
         
+        <!-- Линия и авторские права -->
         <div style="border-top: 1px solid #EAE3D5; padding-top: 20px; text-align: center; font-size: 13px; color: #888;">
-            <p>© 2026 Кафедральный собор Рождества Христова г. Липецка. Все права защищены.</p>
+            <p style="margin-bottom: 5px;">© 2026 Кафедральный собор Рождества Христова г. Липецка. Все права защищены.</p>
+            <p style="font-size: 11px; color: #aaa; margin: 0;">Использовано фото: <a href="https://commons.wikimedia.org/wiki/File:Sobor_Lipetsk.jpg" target="_blank" style="color: #999; text-decoration: underline;">Svitenko Kate</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" style="color: #999; text-decoration: underline;">CC BY-SA 4.0</a>, via Wikimedia Commons</p>
         </div>
     </div>
 </footer>
@@ -506,7 +535,7 @@ title: Христорождественский кафедральный соб�
 document.addEventListener("DOMContentLoaded", (event) => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // 1. ПЛАВНЫЙ СКРОЛЛ (Lenis)
+    // ПЛАВНЫЙ СКРОЛЛ (Lenis)
     const lenis = new Lenis({
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -546,7 +575,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             tl.fromTo(img.querySelector('img'), { scale: 1.1 }, { scale: 1, duration: 1.5, ease: "power2.out" }, "<");
         });
 
-        // АНИМАЦИЯ ВСЕГО ОСТАЛЬНОГО
+        // АНИМАЦИЯ ВСЕГО ОСТАЛЬНОГО (ВСПЛЫТИЕ)
         gsap.utils.toArray(".gsap-fade-up").forEach(el => {
             gsap.set(el, { visibility: "visible" });
             gsap.fromTo(el, 
