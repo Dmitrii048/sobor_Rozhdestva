@@ -40,7 +40,7 @@ title: Христорождественский кафедральный соб�
 
     <style>
         /* =========================================
-           ГЛОБАЛЬНЫЙ ФИКС ДЛЯ МОБИЛЬНЫХ (Защита от сжатия и растягивания)
+           ГЛОБАЛЬНЫЙ ФИКС ДЛЯ МОБИЛЬНЫХ
            ========================================= */
         html, body { overflow-x: hidden; width: 100%; margin: 0; padding: 0; }
 
@@ -205,22 +205,42 @@ title: Христорождественский кафедральный соб�
         .video-card:hover .play-btn-overlay { transform: translate(-50%, -50%) scale(1.1); background: #b08d4a; box-shadow: 0 0 0 10px rgba(197, 160, 89, 0.2); }
 
         /* =========================================
-           7. МОНУМЕНТАЛЬНАЯ НАВИГАЦИЯ
+           7. КОФЕЙНАЯ МОНУМЕНТАЛЬНАЯ НАВИГАЦИЯ С БУКВАМИ
            ========================================= */
         .monumental-section { padding: 80px 20px; background: #fff; }
         .compass-title { font-family: 'PT Serif', serif; font-size: 2.4rem; color: #2C2C2C; margin-bottom: 15px; line-height: 1.2; text-align: center; }
         .compass-desc { font-family: 'PT Serif', serif; font-size: 1.15rem; color: #555; max-width: 800px; margin: 0 auto 50px; text-align: center; line-height: 1.6; }
         
         .monumental-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
+        
         .m-card {
             position: relative; padding: 40px 20px; border-radius: 4px; display: flex; flex-direction: column;
             align-items: center; justify-content: center; text-decoration: none;
-            background: linear-gradient(135deg, #2b2522 0%, #1a1614 100%);
-            border: 1px solid #3a322d; transition: all 0.4s ease; height: 140px; 
+            background: linear-gradient(135deg, #3E2F26 0%, #2A1F18 100%);
+            border: 1px solid #5A4A3E; transition: all 0.4s ease; height: 160px; 
+            overflow: hidden;
         }
-        .m-card-title { font-family: 'PT Serif', serif; font-size: 20px; color: #fff; text-transform: uppercase; letter-spacing: 3px; text-align: center; transition: color 0.3s; }
-        .m-card:hover { border-color: #C5A059; box-shadow: 0 15px 30px rgba(197, 160, 89, 0.15); transform: translateY(-5px); }
+        
+        /* Славянские буквы на фоне */
+        .m-card::before {
+            font-family: 'Times New Roman', serif; position: absolute;
+            font-size: 200px; color: #C5A059; opacity: 0.05; 
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            pointer-events: none; transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .m-card.bg-treby::before { content: 'Ѫ'; } 
+        .m-card.bg-clergy::before { content: 'Ѱ'; } 
+        .m-card.bg-social::before { content: 'Ѡ'; } 
+        .m-card.bg-contacts::before { content: 'Ѵ'; } 
+
+        .m-card-title { 
+            font-family: 'PT Serif', serif; font-size: 20px; color: #fff; text-transform: uppercase; 
+            letter-spacing: 3px; text-align: center; transition: color 0.3s; position: relative; z-index: 2;
+        }
+        
+        .m-card:hover { border-color: #C5A059; box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2); transform: translateY(-5px); }
         .m-card:hover .m-card-title { color: #C5A059; }
+        .m-card:hover::before { opacity: 0.1; transform: translate(-50%, -50%) scale(1.1); }
 
         /* =========================================
            АДАПТИВ (ПЛАНШЕТЫ И ТЕЛЕФОНЫ)
@@ -247,7 +267,7 @@ title: Христорождественский кафедральный соб�
         <div class="loader-text">Загрузка...</div>
     </div>
 
-    <!-- ШАПКА САЙТА (Встроена напрямую, чтобы не зависеть от default.html) -->
+    <!-- ШАПКА САЙТА -->
     <header class="main-header">
         <div class="logo-expansive-container">
             <div class="logo-flex-row">
@@ -322,7 +342,6 @@ title: Христорождественский кафедральный соб�
     <!-- БОГОСЛУЖЕНИЯ + КАЛЕНДАРЬ -->
     <section class="worship-calendar-section">
         <div class="wc-grid">
-            <!-- Левая часть: Баннер -->
             <div class="worship-banner gsap-fade-up">
                 <h2 class="worship-title">Соборная молитва</h2>
                 <p class="worship-text">
@@ -331,7 +350,6 @@ title: Христорождественский кафедральный соб�
                 <a href="{{ site.baseurl }}/schedule/" class="btn-gold-solid">Расписание богослужений</a>
             </div>
 
-            <!-- Правая часть: Календарь -->
             <div class="calendar-sidebar gsap-fade-up">
                 <h3 class="calendar-title">Православный календарь</h3>
                 <div class="pravoslavie-calendar-widget">
@@ -364,8 +382,8 @@ title: Христорождественский кафедральный соб�
             {% for post in main_news limit:3 %}
             <article class="card-item gsap-fade-up">
                 <a href="{{ site.baseurl }}{{ post.url }}" class="card-thumb">
-                    <!-- Заглушка убрана. Выводится чистая картинка поста -->
-                    <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}">
+                    <!-- Заглушка убрана. Фильтр удаляет двойные слеши, если они есть -->
+                    <img src="{{ site.baseurl }}/{{ post.image | remove_first: '/' }}" alt="{{ post.title }}">
                 </a>
                 <div class="card-body">
                     <span class="card-meta">{{ post.date | date: "%d.%m.%Y" }}</span>
@@ -389,10 +407,8 @@ title: Христорождественский кафедральный соб�
     <!-- БЛОКИ ИСТОРИИ, СВЯТЫНЬ -->
     <section class="features-wrapper">
         
-        <!-- 1. ИСТОРИЯ (НОВОЕ ФОТО) -->
         <div class="feature-row">
             <div class="feature-img-wrapper gsap-reveal-img">
-                <!-- Важно: загрузи файл history-new.jpg в папку images -->
                 <img src="{{ site.baseurl }}/images/history-new.jpg" alt="Летопись собора, история православного храма Липецк">
             </div>
             <div class="feature-text gsap-fade-up">
@@ -404,7 +420,6 @@ title: Христорождественский кафедральный соб�
             </div>
         </div>
 
-        <!-- 2. СВЯТЫНИ -->
         <div class="feature-row">
             <div class="feature-img-wrapper gsap-reveal-img">
                 <img src="{{ site.baseurl }}/images/icon-strastnaya.jpg" alt="Святыни собора, Икона Страстная Липецкая">
@@ -418,7 +433,6 @@ title: Христорождественский кафедральный соб�
             </div>
         </div>
 
-        <!-- 3. ВОСКРЕСНАЯ ШКОЛА -->
         <div class="feature-row">
             <div class="feature-img-wrapper gsap-reveal-img">
                 <img src="{{ site.baseurl }}/images/school-life.jpg" alt="Воскресная школа Ковчег"> 
@@ -446,8 +460,8 @@ title: Христорождественский кафедральный соб�
             {% for video in video_posts limit:3 %}
             <a href="{{ site.baseurl }}{{ video.url }}" class="card-item video-card gsap-fade-up" style="text-decoration: none;">
                 <div class="video-thumb-wrap">
-                    <!-- Чистая картинка поста для видео -->
-                    <img src="{{ site.baseurl }}{{ video.image }}" alt="{{ video.title }}">
+                    <!-- Заглушка убрана. Фильтр удаляет двойные слеши -->
+                    <img src="{{ site.baseurl }}/{{ video.image | remove_first: '/' }}" alt="{{ video.title }}">
                     <div class="play-btn-overlay"><i class="fas fa-play"></i></div>
                 </div>
                 <div class="video-info">
@@ -463,23 +477,23 @@ title: Христорождественский кафедральный соб�
         </div>
     </section>
 
-    <!-- МОНУМЕНТАЛЬНАЯ НАВИГАЦИЯ -->
+    <!-- МОНУМЕНТАЛЬНАЯ НАВИГАЦИЯ (С КОФЕЙНЫМ ФОНОМ И БУКВАМИ) -->
     <section class="monumental-section gsap-fade-up">
         <div class="container">
             <h2 class="compass-title">Храм открыт для каждого</h2>
             <p class="compass-desc">При Христорождественском кафедральном соборе ведется активная работа духовенства, организовано широкое социальное служение, а также осуществляется духовное окормление верующих на других приходах митрополии.</p>
             
             <div class="monumental-grid">
-                <a href="{{ site.baseurl }}/treby/" class="m-card">
+                <a href="{{ site.baseurl }}/treby/" class="m-card bg-treby">
                     <span class="m-card-title">Подать записку</span>
                 </a>
-                <a href="{{ site.baseurl }}/clergy/" class="m-card">
+                <a href="{{ site.baseurl }}/clergy/" class="m-card bg-clergy">
                     <span class="m-card-title">Духовенство</span>
                 </a>
-                <a href="{{ site.baseurl }}/social/" class="m-card">
+                <a href="{{ site.baseurl }}/social/" class="m-card bg-social">
                     <span class="m-card-title">Социальное служение</span>
                 </a>
-                <a href="{{ site.baseurl }}/contacts/" class="m-card">
+                <a href="{{ site.baseurl }}/contacts/" class="m-card bg-contacts">
                     <span class="m-card-title">Контакты и адрес</span>
                 </a>
             </div>
@@ -491,13 +505,11 @@ title: Христорождественский кафедральный соб�
         <div class="container">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; text-align: left;">
                 
-                <!-- Лого и миссия -->
                 <div style="max-width: 300px;">
                     <h4 style="font-family: 'PT Serif', serif; color: #C5A059; font-size: 20px; margin-bottom: 15px;">Христорождественский собор</h4>
                     <p style="font-size: 14px; line-height: 1.6;">Главный православный храм Липецкой митрополии. Место духовного просвещения, молитвы и милосердия.</p>
                 </div>
                 
-                <!-- Навигация -->
                 <div>
                     <h5 style="text-transform: uppercase; letter-spacing: 2px; font-size: 12px; color: #999; margin-bottom: 20px; font-weight: 700;">Навигация</h5>
                     <ul style="list-style: none; padding: 0; font-size: 14px; line-height: 2;">
@@ -509,7 +521,6 @@ title: Христорождественский кафедральный соб�
                     </ul>
                 </div>
 
-                <!-- Контакты и соцсети -->
                 <div>
                     <h5 style="text-transform: uppercase; letter-spacing: 2px; font-size: 12px; color: #999; margin-bottom: 20px; font-weight: 700;">Контакты</h5>
                     <ul style="list-style: none; padding: 0; font-size: 14px; line-height: 2;">
@@ -524,13 +535,13 @@ title: Христорождественский кафедральный соб�
                 </div>
             </div>
             
-            <!-- Авторские права с правильным атрибутированием Википедии -->
+            <!-- ПРАВИЛЬНЫЕ ССЫЛКИ НА ВИКИПЕДИЮ И АВТОРОВ (Юридическая чистота) -->
             <div style="border-top: 1px solid #EAE3D5; padding-top: 25px; text-align: center; color: #888;">
                 <p style="margin: 0 0 10px 0; font-size: 13px;">© 2026 Кафедральный собор Рождества Христова г. Липецка. Все права защищены.</p>
                 <div style="font-size: 11px; color: #aaa; line-height: 1.6; max-width: 800px; margin: 0 auto;">
-                    В оформлении сайта использованы фотоматериалы:<br>
-                    <a href="https://commons.wikimedia.org/wiki/File:Sobor_Lipetsk.jpg" target="_blank" style="color: #999; text-decoration: underline;">Sobor Lipetsk.jpg</a> (Svitenko Kate), <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" style="color: #999; text-decoration: underline;">CC BY-SA 4.0</a>, via Wikimedia Commons.<br>
-                    <a href="https://commons.wikimedia.org/wiki/File:%D0%A1%D0%BE%D0%B1%D0%BE%D1%80_%D0%A0%D0%BE%D0%B6%D0%B4%D0%B5%D1%81%D1%82%D0%B2%D0%B0_%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%BE%D0%B2%D0%B0_(%D1%84%D0%BE%D1%82%D0%BE_1).jpg" target="_blank" style="color: #999; text-decoration: underline;">Собор Рождества Христова (фото 1)</a>, Svitenko Kate, <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" style="color: #999; text-decoration: underline;">CC BY-SA 4.0</a>, via Wikimedia Commons.
+                    В оформлении сайта использованы фотоматериалы по лицензии CC BY-SA 4.0:<br>
+                    1. <a href="https://commons.wikimedia.org/wiki/File:%D0%A1%D0%BE%D0%B1%D0%BE%D1%80_%D0%A0%D0%BE%D0%B6%D0%B4%D0%B5%D1%81%D1%82%D0%B2%D0%B0_%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%BE%D0%B2%D0%B0_(%D1%84%D0%BE%D1%82%D0%BE_1).jpg" target="_blank" style="color: #999; text-decoration: underline;">«Собор Рождества Христова»</a> — автор Svitenko Kate, via Wikimedia Commons.<br>
+                    2. <a href="https://commons.wikimedia.org/wiki/File:%D0%9B%D0%B8%D0%BF%D0%B5%D1%86%D0%BA_%D0%A1%D0%BE%D0%B1%D0%BE%D1%80%D0%BD%D0%B0%D1%8F_4(2).jpg" target="_blank" style="color: #999; text-decoration: underline;">«Липецк Соборная 4(2)»</a> — автор Andre Percon, via Wikimedia Commons.
                 </div>
             </div>
         </div>
@@ -545,7 +556,7 @@ title: Христорождественский кафедральный соб�
     document.addEventListener("DOMContentLoaded", (event) => {
         gsap.registerPlugin(ScrollTrigger);
 
-        // 1. ПЛАВНЫЙ СКРОЛЛ (Lenis)
+        // ПЛАВНЫЙ СКРОЛЛ (Lenis)
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -556,7 +567,6 @@ title: Христорождественский кафедральный соб�
         requestAnimationFrame(raf);
         
         function initMainAnimations() {
-            // АНИМАЦИЯ ГЕРОЯ
             const heroTl = gsap.timeline();
             gsap.set(".js-hero-title", { visibility: "visible" });
             
@@ -568,7 +578,6 @@ title: Христорождественский кафедральный соб�
                 scrollTrigger: { trigger: ".home-hero", start: "top top", end: "bottom top", scrub: true }
             });
 
-            // АНИМАЦИЯ КАРТИНОК (ШТОРКА)
             gsap.utils.toArray(".gsap-reveal-img").forEach(img => {
                 gsap.set(img, { visibility: "visible" });
                 let tl = gsap.timeline({ scrollTrigger: { trigger: img, start: "top 85%" } });
@@ -579,7 +588,6 @@ title: Христорождественский кафедральный соб�
                 tl.fromTo(img.querySelector('img'), { scale: 1.1 }, { scale: 1, duration: 1.5, ease: "power2.out" }, "<");
             });
 
-            // АНИМАЦИЯ ВСЕГО ОСТАЛЬНОГО (ВСПЛЫТИЕ)
             gsap.utils.toArray(".gsap-fade-up").forEach(el => {
                 gsap.set(el, { visibility: "visible" });
                 gsap.fromTo(el, 
@@ -589,7 +597,6 @@ title: Христорождественский кафедральный соб�
             });
         }
 
-        // Логика Мобильного меню
         const menuToggle = document.getElementById('menu-toggle');
         const mainNav = document.getElementById('main-nav');
         if(menuToggle && mainNav){
@@ -600,7 +607,6 @@ title: Христорождественский кафедральный соб�
             });
         }
 
-        // Прелоадер
         const preloader = document.getElementById('page-preloader');
         if (preloader) {
             window.addEventListener('load', () => { 
