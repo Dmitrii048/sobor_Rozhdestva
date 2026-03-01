@@ -29,196 +29,125 @@ title: Христорождественский кафедральный соб�
 
 <style>
     /* =========================================
-       1. ГЕРОЙ-БЛОК
+       ГЛОБАЛЬНЫЙ ФИКС ДЛЯ МОБИЛЬНЫХ (Убирает сжатие)
+       ========================================= */
+    html, body {
+        overflow-x: hidden; /* Жестко обрезаем все, что вылезает за экран */
+        width: 100%;
+    }
+
+    /* Настройки Lenis */
+    html.lenis { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+
+    /* =========================================
+       БАЗОВЫЕ НАСТРОЙКИ ДЛЯ АНИМАЦИЙ
+       ========================================= */
+    .gsap-reveal-img { visibility: hidden; will-change: clip-path, transform; }
+    .gsap-fade-up, .js-hero-title { visibility: hidden; opacity: 0; }
+    
+    @keyframes sheen {
+        0% { transform: translateX(-100%) skewX(-15deg); }
+        100% { transform: translateX(200%) skewX(-15deg); }
+    }
+    .btn-gold-solid, .btn-gold-outline { position: relative; overflow: hidden; }
+    .btn-gold-solid::after {
+        content: ''; position: absolute; top: 0; left: 0; width: 50%; height: 100%;
+        background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+        transform: translateX(-150%) skewX(-15deg); animation: sheen 4s infinite ease-in-out; pointer-events: none;
+    }
+
+    /* =========================================
+       1. ГЕРОЙ-БЛОК (PARALLAX + SCALE)
        ========================================= */
     .home-hero {
-        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('{{ site.baseurl }}/images/history-bg.jpg');
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 60vh;
-        min-height: 400px;
+        position: relative;
+        height: 75vh;
+        min-height: 450px;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
         color: #fff;
         margin-top: 0;
+        overflow: hidden;
     }
+    
+    .hero-bg-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; overflow: hidden; }
+    .hero-bg-image {
+        width: 100%; height: 120%;
+        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('{{ site.baseurl }}/images/history-bg.jpg');
+        background-position: center; background-repeat: no-repeat; background-size: cover;
+        position: absolute; top: 0; left: 0; will-change: transform;
+    }
+
+    .hero-content-inner { position: relative; z-index: 2; padding: 0 15px; }
     .hero-title-large {
         font-family: 'PT Serif', serif;
-        font-size: 4rem;
+        font-size: 4.5rem;
         font-weight: 700;
         margin: 0;
         line-height: 1.1;
-        text-shadow: 0 4px 20px rgba(0,0,0,0.6);
-        animation: fadeIn 1.5s ease-out;
+        text-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
     /* =========================================
-       2. БЛОК СТАТУСА
+       2. БЛОК СТАТУСА (Уменьшены отступы)
        ========================================= */
-    .status-section {
-        padding: 60px 20px 40px;
-        background: #fff;
-        text-align: center;
-    }
+    .status-section { padding: 60px 20px 40px; background: #fff; text-align: center; }
     .status-container { max-width: 900px; margin: 0 auto; }
     .status-subtitle {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 13px; color: #C5A059; text-transform: uppercase;
-        letter-spacing: 3px; margin-bottom: 15px; display: block; font-weight: 700;
+        font-family: 'Open Sans', sans-serif; font-size: 13px; color: #C5A059; text-transform: uppercase;
+        letter-spacing: 4px; margin-bottom: 20px; display: block; font-weight: 700;
     }
-    .status-title {
-        font-family: 'PT Serif', serif; font-size: 2.8rem; color: #2C2C2C;
-        margin-bottom: 25px; line-height: 1.2;
-    }
-    .status-text {
-        font-family: 'PT Serif', serif; font-size: 1.25rem; line-height: 1.8;
-        color: #444; text-align: justify;
-    }
+    .status-title { font-family: 'PT Serif', serif; font-size: 2.8rem; color: #2C2C2C; margin-bottom: 25px; line-height: 1.2; }
+    .status-text { font-family: 'PT Serif', serif; font-size: 1.25rem; line-height: 1.7; color: #444; text-align: center; }
 
     /* =========================================
-       3. БОГОСЛУЖЕНИЯ И КАЛЕНДАРЬ (ИДЕАЛЬНАЯ ПАРА)
+       3. БОГОСЛУЖЕНИЯ И КАЛЕНДАРЬ
        ========================================= */
-    .worship-calendar-section {
-        padding: 0 20px 60px;
-        background: #fff;
-    }
+    .worship-calendar-section { padding: 0 20px 60px; background: #fff; }
+    .wc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1100px; margin: 0 auto; align-items: stretch; }
     
-    .wc-grid {
-        display: grid;
-        /* Две равные колонки */
-        grid-template-columns: 1fr 1fr;
-        gap: 0; /* Убираем зазор, чтобы они выглядели как единое целое, или можно оставить gap: 30px */
-        gap: 30px; 
-        max-width: 11000px;
-        margin: 0 auto;
-        /* ВАЖНО: Растягиваем их по высоте */
-        align-items: stretch;
-    }
-    
-    /* ЛЕВЫЙ БЛОК: РАСПИСАНИЕ */
     .worship-banner {
-        /* Глубокий кофейный цвет, гармонирующий с золотом */
-        background: #2b2522; 
-        border: 2px solid #C5A059;
-        border-radius: 4px;
-        padding: 50px 40px;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        justify-content: center; /* Центрируем контент по вертикали */
-        align-items: center;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        position: relative;
-        overflow: hidden;
-        height: 100%; /* Занимает всю высоту ячейки */
-        box-sizing: border-box;
+        background: #2b2522; border: 1px solid #C5A059; padding: 50px 40px; color: #fff;
+        display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.15); position: relative; overflow: hidden; height: 100%; box-sizing: border-box;
     }
-    
-    /* Водяной знак: Православный Крест */
     .worship-banner::before {
-        content: '\047E'; /* Символ Православного креста */
-        font-family: 'Times New Roman', serif;
-        font-weight: 400;
-        position: absolute;
-        top: -30px;
-        right: -30px;
-        font-size: 200px;
-        color: #C5A059;
-        opacity: 0.08; /* Едва заметен */
-        transform: rotate(10deg);
-        pointer-events: none;
+        content: '\047E'; font-family: 'Times New Roman', serif; font-weight: 400; position: absolute;
+        top: -40px; right: -40px; font-size: 250px; color: #C5A059; opacity: 0.05; transform: rotate(15deg); pointer-events: none;
     }
+    .worship-title { font-family: 'PT Serif', serif; font-size: 2.2rem; color: #C5A059; margin-bottom: 20px; line-height: 1.2; position: relative; z-index: 2; }
+    .worship-text { font-family: 'PT Serif', serif; font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px; color: #e6e0d6; position: relative; z-index: 2; }
 
-    .worship-title {
-        font-family: 'PT Serif', serif; 
-        font-size: 2.2rem; 
-        color: #C5A059;
-        margin-bottom: 25px; 
-        line-height: 1.2;
-        position: relative; 
-        z-index: 2;
-    }
-    .worship-text {
-        font-family: 'PT Serif', serif; 
-        font-size: 1.1rem; 
-        line-height: 1.7;
-        margin-bottom: 40px; 
-        color: #e6e0d6;
-        position: relative; 
-        z-index: 2;
-    }
-
-    /* ПРАВЫЙ БЛОК: КАЛЕНДАРЬ */
     .calendar-sidebar {
-        background: #fdfbf7; /* Теплый фон */
-        border: 2px solid #C5A059; /* ТАКАЯ ЖЕ рамка, как слева */
-        padding: 30px 25px;
-        border-radius: 4px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        text-align: center;
-        height: 100%; /* Занимает всю высоту ячейки */
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        background: #fdfbf7; border: 1px solid #EAE3D5; padding: 30px 25px;
+        box-shadow: 0 10px 30px rgba(197, 160, 89, 0.05); text-align: center; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;
     }
-    .calendar-title {
-        font-family: 'PT Serif', serif; font-size: 1.6rem; color: #2C2C2C;
-        margin-bottom: 15px; border-bottom: 1px solid #EAE3D5; padding-bottom: 15px;
-    }
+    .calendar-title { font-family: 'PT Serif', serif; font-size: 1.6rem; color: #2C2C2C; margin-bottom: 15px; border-bottom: 1px solid #EAE3D5; padding-bottom: 15px; }
     
-    /* Настройки виджета */
-    .pravoslavie-calendar-widget {
-        font-family: 'PT Serif', serif !important;
-        font-size: 15px !important;
-        color: #444 !important;
-        line-height: 1.5;
-    }
+    .pravoslavie-calendar-widget { font-family: 'PT Serif', serif !important; font-size: 15px !important; color: #444 !important; line-height: 1.6; }
     .pravoslavie-calendar-widget a { color: #C5A059 !important; text-decoration: none !important; font-weight: 700; border-bottom: 1px solid transparent; }
-    .pravoslavie-calendar-widget a:hover { border-color: #C5A059; }
-    .pravoslavie-calendar-center img { 
-        max-width: 130px; 
-        height: auto; 
-        border-radius: 4px; 
-        margin: 15px auto; 
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-    }
-    .pravoslavie-calendar-center b { display: block; margin-top: 10px; color: #2C2C2C; }
+    .pravoslavie-calendar-center img { max-width: 120px; height: auto; border-radius: 4px; margin: 15px auto; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
     /* =========================================
        4. ЖИЗНЬ ПРИХОДА (НОВОСТИ)
        ========================================= */
-    .news-section {
-        padding: 60px 20px;
-        background: #fdfbf7;
-        border-top: 1px solid #EAE3D5;
-        border-bottom: 1px solid #EAE3D5;
-    }
+    .news-section { padding: 60px 20px; background: #fdfbf7; border-top: 1px solid #EAE3D5; border-bottom: 1px solid #EAE3D5; }
     .section-head-center { text-align: center; margin-bottom: 40px; }
-    
-    .grid-3 {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto 40px;
-    }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto 40px; }
     
     .card-item {
-        background: #fff; border: 1px solid #EAE3D5; border-radius: 4px; overflow: hidden;
-        display: flex; flex-direction: column; transition: 0.3s;
+        background: #fff; border: 1px solid #EAE3D5; overflow: hidden; border-radius: 4px;
+        display: flex; flex-direction: column; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
-    .card-item:hover {
-        box-shadow: 0 15px 30px rgba(197, 160, 89, 0.15); transform: translateY(-5px); border-color: #C5A059;
-    }
-    .card-thumb { height: 200px; position: relative; overflow: hidden; display: block; }
-    .card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-    .card-item:hover .card-thumb img { transform: scale(1.05); }
+    .card-item:hover { transform: translateY(-7px); box-shadow: 0 15px 30px rgba(197, 160, 89, 0.1); border-color: #C5A059; }
+    .card-thumb { height: 200px; position: relative; overflow: hidden; display: block; background: #eee;}
+    .card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+    .card-item:hover .card-thumb img { transform: scale(1.08); }
     
     .card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
     .card-meta { font-size: 0.75rem; color: #C5A059; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; font-family: 'Open Sans', sans-serif;}
@@ -233,121 +162,123 @@ title: Христорождественский кафедральный соб�
     .feature-row:last-child { margin-bottom: 0; }
     .feature-row:nth-child(even) { flex-direction: row-reverse; }
     
-    .feature-img { flex: 1; position: relative; text-align: center; }
-    .feature-img img { 
-        width: 100%; 
-        max-width: 450px; 
-        max-height: 300px; 
-        object-fit: cover;
-        height: auto; 
-        border-radius: 4px; 
-        box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
-    }
+    .feature-img-wrapper { flex: 1; position: relative; overflow: hidden; border-radius: 4px;}
+    .feature-img-wrapper img { width: 100%; max-width: 500px; height: auto; object-fit: cover; box-shadow: 0 15px 40px rgba(0,0,0,0.1); display: block; }
     
     .feature-text { flex: 1; }
     .feature-title { font-family: 'PT Serif', serif; font-size: 2rem; color: #2C2C2C; margin-bottom: 15px; line-height: 1.2; }
     .feature-desc { font-family: 'PT Serif', serif; font-size: 1.1rem; line-height: 1.7; color: #555; margin-bottom: 25px; text-align: justify; }
 
     /* =========================================
-       6. ВИДЕО (СЛОВО ПАСТЫРЯ)
+       6. ВИДЕО (ИСПРАВЛЕНО: ТЕМНЫЙ ФОН + СТОП-КАДРЫ)
        ========================================= */
-    .video-section { padding: 60px 20px; background: #fff; }
-    .video-card { background: transparent; border: none; box-shadow: none; }
-    .video-card:hover { transform: translateY(-5px); box-shadow: none; }
+    .video-section { padding: 60px 20px; background: #fdfbf7; border-top: 1px solid #EAE3D5; }
+    .video-card { border: none; box-shadow: none; background: transparent; }
+    .video-card:hover { transform: translateY(-5px); box-shadow: none; border: none;}
     
     .video-thumb-wrap {
-        height: 180px;
+        height: 200px;
         border-radius: 6px;
         overflow: hidden;
         position: relative;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        background-color: #2b2522; /* Темный фон на случай отсутствия картинки */
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
-    .video-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; filter: brightness(0.9); }
-    .video-card:hover .video-thumb-wrap img { transform: scale(1.05); filter: brightness(1); }
+    .video-thumb-wrap img { 
+        width: 100%; height: 100%; object-fit: cover; 
+        transition: 1.2s ease; 
+        opacity: 0.8; /* Затемняем картинку, чтобы кнопка Play была ярче */
+    }
+    .video-card:hover .video-thumb-wrap img { transform: scale(1.05); opacity: 1; }
 
     .play-btn-overlay {
         position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-        width: 50px; height: 50px; background: rgba(197, 160, 89, 0.9); border-radius: 50%;
+        width: 60px; height: 60px; background: rgba(197, 160, 89, 0.95); border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
-        color: #fff; font-size: 18px; box-shadow: 0 0 0 4px rgba(255,255,255,0.2); transition: 0.3s;
+        color: #fff; font-size: 22px; transition: 0.3s;
     }
-    .video-card:hover .play-btn-overlay { transform: translate(-50%, -50%) scale(1.1); background: #C5A059; box-shadow: 0 0 0 6px rgba(197, 160, 89, 0.4); }
-    .play-btn-overlay i { margin-left: 2px; }
+    .play-btn-overlay i { margin-left: 3px; }
+    .video-card:hover .play-btn-overlay { transform: translate(-50%, -50%) scale(1.1); background: #C5A059; box-shadow: 0 0 0 10px rgba(197, 160, 89, 0.2); }
 
-    .video-info { padding: 15px 5px 0; text-align: center; }
-    .video-title { font-family: 'PT Serif', serif; font-size: 1.1rem; line-height: 1.4; color: #2C2C2C; margin: 0; font-weight: 700; }
-    .video-date-small { display: block; font-size: 11px; color: #999; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
-
-    /* SEO BLOCK */
-    .seo-text-block {
-        background-color: #f8f6f2;
-        padding: 50px 20px;
-        border-top: 1px solid #EAE3D5;
+    /* =========================================
+       7. ФИНАЛЬНЫЙ БЛОК (НАВИГАТОР ВМЕСТО СКУЧНОГО ТЕКСТА)
+       ========================================= */
+    .compass-section {
+        padding: 60px 20px 80px;
+        background: #fff;
+        text-align: center;
+    }
+    .compass-title {
+        font-family: 'PT Serif', serif; font-size: 2.2rem; color: #2C2C2C;
+        margin-bottom: 40px; line-height: 1.2;
+    }
+    .compass-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .compass-item {
+        padding: 30px 15px;
+        background: #fdfbf7;
+        border: 1px solid #EAE3D5;
+        border-radius: 4px;
+        display: block;
+        text-decoration: none;
+        color: #2C2C2C;
+        transition: all 0.3s;
+    }
+    .compass-item:hover {
+        background: #fff;
+        border-color: #C5A059;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(197, 160, 89, 0.1);
+    }
+    .compass-item i {
+        font-size: 28px;
+        color: #C5A059;
+        margin-bottom: 15px;
+        display: block;
+    }
+    .compass-item span {
         font-family: 'PT Serif', serif;
-        color: #666;
-        font-size: 0.95rem;
-        line-height: 1.7;
-        text-align: justify;
+        font-size: 16px;
+        font-weight: 700;
+        display: block;
     }
-    .seo-container { max-width: 1000px; margin: 0 auto; columns: 2; column-gap: 50px; }
-    .seo-text-block h2 { font-size: 1.4rem; color: #C5A059; margin-bottom: 20px; column-span: all; text-align: center; }
-    
-    /* КНОПКИ */
-    .btn-gold-solid {
-        display: inline-block; padding: 14px 35px; background: #C5A059; color: #fff;
-        text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; font-size: 13px;
-        border-radius: 4px; transition: 0.3s; text-decoration: none; font-family: 'Open Sans', sans-serif;
-    }
-    .btn-gold-solid:hover { background: #b08d4a; box-shadow: 0 5px 20px rgba(197, 160, 89, 0.4); }
-    
-    .btn-gold-outline {
-        display: inline-block; padding: 12px 30px; border: 2px solid #C5A059; color: #C5A059;
-        text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; font-size: 12px;
-        border-radius: 4px; transition: 0.3s; text-decoration: none; font-family: 'Open Sans', sans-serif;
-    }
-    .btn-gold-outline:hover { background: #C5A059; color: #fff; box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3); }
 
     /* МОБИЛЬНАЯ АДАПТАЦИЯ */
     @media (max-width: 900px) {
-        .hero-title-large { font-size: 2.5rem; padding: 0 15px; }
-        .home-hero { height: 60vh; min-height: 350px; }
-        
+        .hero-title-large { font-size: 2.8rem; padding: 0 10px; }
+        .home-hero { height: 60vh; min-height: 400px; }
         .wc-grid { grid-template-columns: 1fr; gap: 30px; }
-        
-        /* Исправление для баннера на телефоне */
-        .worship-banner { padding: 40px 20px; height: auto; min-height: 300px; }
-        .worship-banner::before { font-size: 150px; top: -10px; right: -10px; }
-        .worship-title { font-size: 2rem; }
-        
-        .grid-3 { grid-template-columns: 1fr; gap: 35px; }
-        
+        .worship-banner { padding: 40px 20px; }
+        .grid-3 { grid-template-columns: 1fr; gap: 30px; }
         .feature-row, .feature-row:nth-child(even) { flex-direction: column; gap: 30px; }
-        .feature-img img { max-width: 100%; max-height: 250px; }
+        .feature-img-wrapper img { max-width: 100%; }
         .feature-title { font-size: 1.8rem; text-align: center; }
         .feature-desc { text-align: left; }
-        
-        .card-thumb { height: 180px; }
-        .card-body { padding: 20px; }
-        
-        .calendar-sidebar { padding: 20px 15px; height: auto; }
-        .pravoslavie-calendar-widget { font-size: 14px !important; }
-        .pravoslavie-calendar-center img { max-width: 80px; margin: 10px auto; }
-        
-        .seo-container { columns: 1; }
-        
-        .btn-gold-solid, .btn-gold-outline { display: block; text-align: center; width: 100%; box-sizing: border-box;}
+        /* Компас на мобильных в 2 колонки, затем в 1 */
+        .compass-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+        .compass-grid { grid-template-columns: 1fr; }
     }
 </style>
 
 <!-- ГЕРОЙ-БЛОК -->
 <section class="home-hero">
+  <div class="hero-bg-wrapper">
+      <div class="hero-bg-image js-parallax-bg"></div>
+  </div>
   <div class="hero-content-inner">
-        <h1 class="hero-title-large">Христорождественский<br>кафедральный собор</h1>    
+        <h1 class="hero-title-large js-hero-title">Христорождественский<br>кафедральный собор</h1>    
     </div>
 </section>
 
 <!-- ВСТУПЛЕНИЕ -->
-<section class="status-section">
+<section class="status-section gsap-fade-up">
     <div class="status-container">
         <span class="status-subtitle">Духовное сердце региона</span>
         <h2 class="status-title">Главный храм Липецкой митрополии</h2>
@@ -360,8 +291,8 @@ title: Христорождественский кафедральный соб�
 <!-- БОГОСЛУЖЕНИЯ + КАЛЕНДАРЬ -->
 <section class="worship-calendar-section">
     <div class="wc-grid">
-        <!-- Левая часть: Баннер (ТЕМНЫЙ ГРАДИЕНТ + ЗОЛОТАЯ РАМКА) -->
-        <div class="worship-banner">
+        <!-- Левая часть: Баннер -->
+        <div class="worship-banner gsap-fade-up">
             <h2 class="worship-title">Соборная молитва</h2>
             <p class="worship-text">
                 Мы приглашаем вас разделить радость молитвы и приступить к Таинствам Церкви. Ежедневно в соборе совершаются уставные богослужения: утреня, вечерня и Божественная Литургия. Исповедь принимается священниками перед началом Литургии и во время Всенощного бдения. 
@@ -370,7 +301,7 @@ title: Христорождественский кафедральный соб�
         </div>
 
         <!-- Правая часть: Календарь -->
-        <div class="calendar-sidebar">
+        <div class="calendar-sidebar gsap-fade-up">
             <h3 class="calendar-title">Православный календарь</h3>
             <div class="pravoslavie-calendar-widget">
                 <script src="https://script.pravoslavie.ru/calendar.php?advanced=1&dayicon=1&bold=1&tipikon=1&para=1&icon=1&target=1&name=1"></script>
@@ -392,17 +323,18 @@ title: Христорождественский кафедральный соб�
 
 <!-- ЖИЗНЬ ПРИХОДА (3 НОВОСТИ) -->
 <section class="news-section">
-    <div class="section-head-center">
-        <h2 class="status-title">Жизнь прихода</h2>
+    <div class="section-head-center gsap-fade-up">
+        <h2 class="status-title" style="margin-bottom: 10px;">Жизнь прихода</h2>
         <p style="color:#777; font-family:'PT Serif',serif; font-style:italic;">События и новости Христорождественского собора</p>
     </div>
 
     <div class="grid-3">
         {% assign main_news = site.posts | where: "category", "news" %}
         {% for post in main_news limit:3 %}
-        <article class="card-item">
+        <article class="card-item gsap-fade-up">
             <a href="{{ site.baseurl }}{{ post.url }}" class="card-thumb">
-                <img src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}">
+                <!-- Fallback image just in case -->
+                <img src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}" onerror="this.src='{{ site.baseurl }}/images/history-bg.jpg'">
             </a>
             <div class="card-body">
                 <span class="card-meta">{{ post.date | date: "%d.%m.%Y" }}</span>
@@ -418,23 +350,23 @@ title: Христорождественский кафедральный соб�
         {% endfor %}
     </div>
 
-    <div style="text-align: center;">
+    <div style="text-align: center;" class="gsap-fade-up">
         <a href="{{ site.baseurl }}/news/" class="btn-gold-outline">Летопись всех событий</a>
     </div>
 </section>
 
-<!-- БЛОКИ ИСТОРИИ, СВЯТЫНЬ, ШКОЛЫ -->
+<!-- БЛОКИ ИСТОРИИ, СВЯТЫНЬ (ZIGZAG с REVEAL эффектом) -->
 <section class="features-wrapper">
     
     <!-- 1. ИСТОРИЯ -->
     <div class="feature-row">
-        <div class="feature-img">
+        <div class="feature-img-wrapper gsap-reveal-img">
             <img src="{{ site.baseurl }}/images/history.jpg" alt="Летопись собора, история православного храма Липецк">
         </div>
-        <div class="feature-text">
+        <div class="feature-text gsap-fade-up">
             <h2 class="feature-title">Летопись собора</h2>
             <p class="feature-desc">
-                Познакомьтесь с богатой и величественной историей главного храма Липецка. От закладки первого камня по указу императрицы Екатерины II в 1791 году до трагических лет разрушения и радостного возрождения в наши дни. История Христорождественского собора — это зеркало истории Русской Православной Церкви на Липецкой земле.
+                Познакомьтесь с богатой и величественной историей главного храма Липецка. От закладки первого камня по указу императрицы Екатерины II в 1791 году до трагических лет разрушения и радостного возрождения в наши дни.
             </p>
             <a href="{{ site.baseurl }}/about/" class="btn-gold-outline">Краткая летопись</a>
         </div>
@@ -442,13 +374,13 @@ title: Христорождественский кафедральный соб�
 
     <!-- 2. СВЯТЫНИ (Реверс) -->
     <div class="feature-row">
-        <div class="feature-img">
+        <div class="feature-img-wrapper gsap-reveal-img">
             <img src="{{ site.baseurl }}/images/icon-strastnaya.jpg" alt="Святыни собора, Икона Страстная Липецкая">
         </div>
-        <div class="feature-text">
+        <div class="feature-text gsap-fade-up">
             <h2 class="feature-title">Чудотворные Святыни</h2>
             <p class="feature-desc">
-                Под сводами собора бережно хранятся великие духовные сокровища. Приглашаем вас поклониться чудотворному образу Божией Матери «Страстная Липецкая» и ковчегу с мощами 81 угодника Божия. Эти святыни веками источают благодатную помощь всем, кто с верою притекает к ним в своих молитвах.
+                Под сводами собора бережно хранятся великие духовные сокровища. Приглашаем вас поклониться чудотворному образу Божией Матери «Страстная Липецкая» и ковчегу с мощами 81 угодника Божия.
             </p>
             <a href="{{ site.baseurl }}/shrines/" class="btn-gold-outline">Поклониться святыням</a>
         </div>
@@ -456,14 +388,13 @@ title: Христорождественский кафедральный соб�
 
     <!-- 3. ВОСКРЕСНАЯ ШКОЛА -->
     <div class="feature-row">
-        <div class="feature-img">
-            <!-- Здесь используем фото школы -->
-            <img src="{{ site.baseurl }}/images/school-life.jpg" alt="Воскресная школа Ковчег, дети в храме" onerror="this.src='{{ site.baseurl }}/images/arch-1.jpg'"> 
+        <div class="feature-img-wrapper gsap-reveal-img">
+            <img src="{{ site.baseurl }}/images/school-life.jpg" alt="Воскресная школа Ковчег" onerror="this.src='{{ site.baseurl }}/images/arch-1.jpg'"> 
         </div>
-        <div class="feature-text">
+        <div class="feature-text gsap-fade-up">
             <h2 class="feature-title">Воскресная школа «Ковчег»</h2>
             <p class="feature-desc">
-                В нашей школе опытные педагоги преподают детям Закон Божий, церковное пение и творчество. Жизнь «Ковчега» наполнена событиями: паломничества, праздничные концерты и благотворительные ярмарки. <strong>Читайте новости и смотрите фотоотчеты</strong> о жизни нашей школы в специальном разделе.
+                В нашей школе опытные педагоги преподают детям Закон Божий, церковное пение и творчество. Жизнь «Ковчега» наполнена событиями: паломничества, праздничные концерты и благотворительные ярмарки.
             </p>
             <a href="{{ site.baseurl }}/school/" class="btn-gold-outline">Новости и жизнь школы</a>
         </div>
@@ -471,19 +402,20 @@ title: Христорождественский кафедральный соб�
 
 </section>
 
-<!-- СЛОВО ПАСТЫРЯ (ВИДЕО С ОБЛОЖКАМИ) -->
+<!-- СЛОВО ПАСТЫРЯ (ВИДЕО) -->
 <section class="video-section">
-    <div class="section-head-center">
-        <h2 class="status-title">Слово пастыря</h2>
+    <div class="section-head-center gsap-fade-up">
+        <h2 class="status-title" style="margin-bottom: 10px;">Слово пастыря</h2>
         <p style="color:#777; font-family:'PT Serif',serif; font-style:italic;">Проповеди, беседы и наставления священнослужителей</p>
     </div>
 
     <div class="grid-3">
         {% assign video_posts = site.posts | where: "category", "video" %}
         {% for video in video_posts limit:3 %}
-        <a href="{{ site.baseurl }}{{ video.url }}" class="card-item video-card" style="text-decoration: none;">
+        <a href="{{ site.baseurl }}{{ video.url }}" class="card-item video-card gsap-fade-up" style="text-decoration: none;">
             <div class="video-thumb-wrap">
-                <img src="{{ site.baseurl }}/{{ video.image }}" alt="{{ video.title }}">
+                <!-- Обертка видео стала темной, если картинки нет, будет просто черный плеер -->
+                <img src="{{ site.baseurl }}/{{ video.image }}" alt="{{ video.title }}" onerror="this.style.display='none'">
                 <div class="play-btn-overlay"><i class="fas fa-play"></i></div>
             </div>
             <div class="video-info">
@@ -494,22 +426,101 @@ title: Христорождественский кафедральный соб�
         {% endfor %}
     </div>
 
-    <div style="text-align: center;">
+    <div style="text-align: center; margin-top: 20px;" class="gsap-fade-up">
         <a href="{{ site.baseurl }}/videos/" class="btn-gold-outline">Смотреть все видео</a>
     </div>
 </section>
 
-<!-- SEO TEXT BLOCK -->
-<!-- ВСТУПЛЕНИЕ (SEO-оптимизированное) -->
-<section class="status-section">
-    <div class="status-container">
-        <span class="status-subtitle">Духовное сердце региона</span>
-        <h2 class="status-title">Главный храм Липецкой митрополии</h2>
-        <p class="status-text">
-            Кафедральный собор Рождества Христова в Липецке — это центр православной жизни и кафедра Архипастыря. 
-            Здесь ежедневно совершаются Божественные Литургии, Таинства Исповеди, Причащения, Крещения и Венчания. 
-            Расположенный на Соборной площади, храм открыт для всех: можно подать записку о здравии, заказать молебен, 
-            приложиться к святыням — иконе Божией Матери «Страстная Липецкая» и мощам святых угодников.
-        </p>
+<!-- НОВЫЙ ФИНАЛЬНЫЙ БЛОК (НАВИГАТОР ВМЕСТО ТЕКСТА) -->
+<section class="compass-section gsap-fade-up">
+    <div class="container">
+        <h2 class="compass-title">Храм открыт для каждого</h2>
+        <div class="compass-grid">
+            <a href="{{ site.baseurl }}/treby/" class="compass-item">
+                <i class="fas fa-pencil-alt"></i>
+                <span>Подать записку</span>
+            </a>
+            <a href="{{ site.baseurl }}/clergy/" class="compass-item">
+                <i class="fas fa-user-friends"></i>
+                <span>Духовенство</span>
+            </a>
+            <a href="{{ site.baseurl }}/contacts/" class="compass-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Как добраться</span>
+            </a>
+            <a href="{{ site.baseurl }}/social/" class="compass-item">
+                <i class="fas fa-hands-helping"></i>
+                <span>Социальное служение</span>
+            </a>
+        </div>
     </div>
 </section>
+
+<!-- БИБЛИОТЕКИ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", (event) => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1. ПЛАВНЫЙ СКРОЛЛ (Lenis)
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        smooth: true
+    });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    
+    function initMainAnimations() {
+        // АНИМАЦИЯ ГЕРОЯ
+        const heroTl = gsap.timeline();
+        gsap.set(".js-hero-title", { visibility: "visible" });
+        
+        heroTl.fromTo(".js-parallax-bg", 
+            { scale: 1.15 },
+            { scale: 1, duration: 2.5, ease: "power2.out" }
+        );
+        
+        heroTl.to(".js-hero-title", {
+            opacity: 1, y: 0, duration: 1.5, ease: "power3.out"
+        }, "-=2.0");
+
+        gsap.to(".js-hero-title", {
+            yPercent: 40, ease: "none",
+            scrollTrigger: { trigger: ".home-hero", start: "top top", end: "bottom top", scrub: true }
+        });
+
+        // АНИМАЦИЯ КАРТИНОК (ШТОРКА)
+        gsap.utils.toArray(".gsap-reveal-img").forEach(img => {
+            gsap.set(img, { visibility: "visible" });
+            let tl = gsap.timeline({ scrollTrigger: { trigger: img, start: "top 85%" } });
+            tl.fromTo(img, 
+                { autoAlpha: 0, clipPath: "inset(0% 0% 100% 0%)" }, 
+                { autoAlpha: 1, clipPath: "inset(0% 0% 0% 0%)", duration: 1.5, ease: "power4.out" }
+            );
+            tl.fromTo(img.querySelector('img'), { scale: 1.1 }, { scale: 1, duration: 1.5, ease: "power2.out" }, "<");
+        });
+
+        // АНИМАЦИЯ ВСЕГО ОСТАЛЬНОГО (ВСПЛЫТИЕ)
+        gsap.utils.toArray(".gsap-fade-up").forEach(el => {
+            gsap.set(el, { visibility: "visible" });
+            gsap.fromTo(el, 
+                { autoAlpha: 0, y: 40 },
+                { autoAlpha: 1, y: 0, duration: 1, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 85%" } }
+            );
+        });
+    }
+
+    const preloader = document.getElementById('page-preloader');
+    if (preloader) {
+        window.addEventListener('load', () => { 
+            preloader.classList.add('done'); 
+            setTimeout(initMainAnimations, 300); 
+        });
+    } else { initMainAnimations(); }
+});
+</script>
