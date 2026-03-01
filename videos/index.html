@@ -1,116 +1,226 @@
 ---
-layout: default
+layout: null
+title: Видеолетопись | Христорождественский собор
 ---
-<style>
-    /* Стиль шапки видео-поста */
-    .video-post-header {
-        background-color: #fdfbf7;
-        padding: 60px 0 40px;
-        text-align: center;
-        border-bottom: 1px solid #EAE3D5;
-        margin-bottom: 0;
-    }
-    .vp-date {
-        display: block;
-        color: #C5A059;
-        font-family: 'Open Sans', sans-serif;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-size: 14px;
-        margin-bottom: 15px;
-    }
-    .vp-title {
-        font-family: 'PT Serif', serif;
-        font-size: 2.5rem;
-        color: #2C2C2C;
-        margin: 0 auto;
-        line-height: 1.2;
-        max-width: 900px;
-    }
-
-    /* Секция плеера */
-    .video-player-section {
-        background-color: #fff;
-        padding: 60px 20px;
-    }
-    .video-wrapper-large {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 */
-        height: 0;
-        max-width: 1000px;
-        margin: 0 auto 50px;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-        border-radius: 8px;
-        overflow: hidden;
-    }
-    .video-wrapper-large iframe {
-        position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
-    }
-
-    /* Текст и кнопка */
-    .vp-content {
-        max-width: 800px;
-        margin: 0 auto;
-        font-family: 'PT Serif', serif;
-        font-size: 1.2rem;
-        line-height: 1.8;
-        color: #444;
-        text-align: justify;
-    }
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Видеолетопись | Христорождественский собор</title>
     
-    .btn-back-gold {
-        display: inline-block;
-        padding: 15px 40px;
-        background: transparent;
-        border: 2px solid #C5A059;
-        color: #C5A059;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        font-weight: 700;
-        font-size: 13px;
-        border-radius: 4px;
-        transition: 0.3s;
-        text-decoration: none;
-        font-family: 'Open Sans', sans-serif;
-        margin-top: 60px;
-    }
-    .btn-back-gold:hover {
-        background: #C5A059;
-        color: #fff;
-    }
+    <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    @media (max-width: 768px) {
-        .vp-title { font-size: 1.8rem; }
-    }
-</style>
+    <style>
+        /* Глобальные фиксы */
+        html, body { overflow-x: hidden; width: 100%; margin: 0; padding: 0; }
+        
+        /* Сетка видео */
+        .video-archive-section { padding: 60px 20px; background: #fff; min-height: 60vh; }
+        .page-title-center {
+            text-align: center; margin-bottom: 50px;
+            font-family: 'PT Serif', serif; font-size: 3rem; color: #2C2C2C;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-<!-- ШАПКА С ЗАГОЛОВКОМ НАВЕРХУ -->
-<div class="video-post-header">
-    <div class="container">
-        <span class="vp-date">{{ page.date | date: "%d.%m.%Y" }}</span>
-        <h1 class="vp-title">{{ page.title }}</h1>
-    </div>
+        /* Карточка видео */
+        .v-card {
+            display: flex; flex-direction: column; text-decoration: none;
+            background: #fff; border: 1px solid #EAE3D5; border-radius: 4px; overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .v-card:hover { transform: translateY(-7px); box-shadow: 0 15px 30px rgba(197, 160, 89, 0.15); border-color: #C5A059; }
+
+        .v-thumb {
+            height: 220px; position: relative; overflow: hidden;
+            /* Темный фон на случай отсутствия фото */
+            background: linear-gradient(135deg, #2b2522 0%, #1a1614 100%);
+        }
+        .v-thumb img {
+            width: 100%; height: 100%; object-fit: cover; 
+            transition: 1.2s ease; opacity: 0.8;
+        }
+        .v-card:hover .v-thumb img { transform: scale(1.05); opacity: 1; }
+
+        .v-play-btn {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 60px; height: 60px; background: #C5A059; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 22px; box-shadow: 0 0 0 5px rgba(197, 160, 89, 0.3); transition: 0.3s;
+        }
+        .v-card:hover .v-play-btn { background: #b08d4a; transform: translate(-50%, -50%) scale(1.1); }
+
+        .v-body { padding: 25px; }
+        .v-date { display: block; font-size: 12px; color: #C5A059; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .v-title { font-family: 'PT Serif', serif; font-size: 20px; color: #2C2C2C; line-height: 1.3; margin: 0; }
+
+        /* Анимации */
+        .gsap-fade-up { visibility: hidden; opacity: 0; }
+
+        @media (max-width: 768px) {
+            .video-grid { grid-template-columns: 1fr; }
+            .page-title-center { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="page-preloader" class="preloader">
+    <div class="loader-circle"></div>
+    <div class="loader-text">Загрузка...</div>
 </div>
 
-<!-- ПЛЕЕР И ОПИСАНИЕ -->
-<div class="video-player-section">
-    <div class="container">
-        
-        <!-- Сам плеер -->
-        <div class="video-wrapper-large">
-            <iframe src="https://rutube.ru/play/embed/{{ page.rutube_id }}/" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-        </div>
-
-        <!-- Текст -->
-        <div class="vp-content">
-            {{ content }}
-            
-            <div style="text-align: center;">
-                <a href="{{ site.baseurl }}/videos/" class="btn-back-gold">
-                    <i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Ко всем видеозаписям
-                </a>
+<!-- ШАПКА -->
+<header class="main-header">
+    <div class="logo-expansive-container">
+        <div class="logo-flex-row">
+            <a href="{{ site.baseurl }}/" class="logo-visual"><img src="{{ site.baseurl }}/sobor-sketch.jpg" alt="Собор" class="logo-sketch-large"></a>
+            <div class="logo-brand-area">
+                <h1 class="title-main">Христорождественский</h1>
+                <h2 class="title-secondary">кафедральный собор</h2>
+                <h3 class="title-sub">г. Липецка</h3>
+                <div class="church-meta"><p>Московский Патриархат <br> <span>Липецкая митрополия</span></p></div>
+                <div class="art-divider"></div>
             </div>
         </div>
     </div>
-</div>
+    <button id="menu-toggle" class="mobile-menu-toggle"><i class="fas fa-bars"></i> Меню</button>
+    <nav class="main-nav" id="main-nav">
+        <ul>
+            <li><a href="{{ site.baseurl }}/">Главная</a></li>
+            <li class="has-dropdown"><a href="#">О соборе</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ site.baseurl }}/about/">Летопись храма</a></li>
+                    <li><a href="{{ site.baseurl }}/shrines/">Святыни и молитвословия</a></li>
+                    <li><a href="{{ site.baseurl }}/archpastor/">Архипастырь</a></li>
+                    <li><a href="{{ site.baseurl }}/clergy/">Духовенство</a></li>
+                    <li><a href="{{ site.baseurl }}/school/">Воскресная школа</a></li>
+                </ul>
+            </li>
+            <li><a href="{{ site.baseurl }}/schedule/">Расписание богослужений</a></li>
+            <li class="has-dropdown"><a href="#">Служение</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ site.baseurl }}/social/">Социальное служение</a></li>
+                    <li><a href="{{ site.baseurl }}/missionary/">Служение в других храмах</a></li>
+                </ul>
+            </li>
+            <li><a href="{{ site.baseurl }}/publications/">Публикации</a></li>
+            <li><a href="{{ site.baseurl }}/contacts/">Контакты</a></li>
+            <li><a href="{{ site.baseurl }}/treby/" class="btn-note">Подать записку</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="video-archive-section">
+        <h1 class="page-title-center gsap-fade-up">Слово пастыря</h1>
+        
+        <div class="video-grid">
+            {% assign videos = site.posts | where: "category", "video" %}
+            {% for video in videos %}
+            <a href="{{ site.baseurl }}{{ video.url }}" class="v-card gsap-fade-up">
+                <div class="v-thumb">
+                    <!-- УМНАЯ ПОДГРУЗКА КАРТИНКИ:
+                         1. Убирает первый слэш, если он есть, чтобы путь стал правильным (images/...)
+                         2. Если картинки нет - сработает onerror и скроет img, оставив красивый фон
+                    -->
+                    {% if video.image %}
+                        <img src="{{ site.baseurl }}/{{ video.image | remove_first: '/' }}" alt="{{ video.title }}" onerror="this.style.display='none'">
+                    {% endif %}
+                    <div class="v-play-btn"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="v-body">
+                    <span class="v-date">{{ video.date | date: "%d.%m.%Y" }}</span>
+                    <h3 class="v-title">{{ video.title }}</h3>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+
+<!-- ФУТЕР -->
+<footer class="site-footer-light" style="background: #FDFBF7; border-top: 3px solid #C5A059; padding: 60px 20px 20px; color: #444;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; text-align: left;">
+            <div style="max-width: 300px;">
+                <h4 style="font-family: 'PT Serif', serif; color: #C5A059; font-size: 20px; margin-bottom: 15px;">Христорождественский собор</h4>
+                <p style="font-size: 14px; line-height: 1.6;">Главный православный храм Липецкой митрополии.</p>
+            </div>
+            <div>
+                <h5 style="text-transform: uppercase; letter-spacing: 2px; font-size: 12px; color: #999; margin-bottom: 20px; font-weight: 700;">Навигация</h5>
+                <ul style="list-style: none; padding: 0; font-size: 14px; line-height: 2;">
+                    <li><a href="{{ site.baseurl }}/" style="color: inherit;">Главная страница</a></li>
+                    <li><a href="{{ site.baseurl }}/schedule/" style="color: inherit;">Расписание богослужений</a></li>
+                    <li><a href="{{ site.baseurl }}/treby/" style="color: inherit;">Подать записки онлайн</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 style="text-transform: uppercase; letter-spacing: 2px; font-size: 12px; color: #999; margin-bottom: 20px; font-weight: 700;">Контакты</h5>
+                <ul style="list-style: none; padding: 0; font-size: 14px; line-height: 2;">
+                    <li><i class="fas fa-map-marker-alt" style="color: #C5A059;"></i> г. Липецк, Соборная пл., 4</li>
+                    <li><i class="fas fa-phone" style="color: #C5A059;"></i> <a href="tel:+74742272293" style="color: inherit;">+7 (4742) 27-22-93</a></li>
+                    <li style="margin-top: 15px;">
+                        <a href="https://vk.com/sobor48" target="_blank" style="margin-right: 15px; color: #8c7b68; font-size: 22px;"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/Lsobor" target="_blank" style="color: #8c7b68; font-size: 22px;"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="https://max.ru/join/refQw8YZh7RC1z9hr72iKjy8rI9Kjvi7250J9GkV35Y" target="_blank" style="margin-left: 15px; color: #8c7b68; font-weight: 700;">MAX</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div style="border-top: 1px solid #EAE3D5; padding-top: 25px; text-align: center; color: #888; font-size: 13px;">
+            <p>© 2026 Кафедральный собор Рождества Христова г. Липецка. Все права защищены.</p>
+            <p style="font-size: 11px; margin-top: 5px;">
+                В оформлении использованы фото: <a href="https://commons.wikimedia.org/wiki/File:Sobor_Lipetsk.jpg" target="_blank" style="text-decoration: underline; color: #999;">Svitenko Kate</a>, <a href="https://commons.wikimedia.org/wiki/File:%D0%9B%D0%B8%D0%BF%D0%B5%D1%86%D0%BA_%D0%A1%D0%BE%D0%B1%D0%BE%D1%80%D0%BD%D0%B0%D1%8F_4(2).jpg" target="_blank" style="text-decoration: underline; color: #999;">Andre Percon</a> (CC BY-SA 4.0).
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Маслянистый скролл
+        const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smooth: true });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        // Анимация появления
+        gsap.utils.toArray(".gsap-fade-up").forEach(el => {
+            gsap.to(el, {
+                autoAlpha: 1, y: 0, duration: 0.8, ease: "power2.out",
+                scrollTrigger: { trigger: el, start: "top 90%" }
+            });
+            gsap.from(el, { y: 30, autoAlpha: 0 });
+        });
+
+        // Меню
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        if(menuToggle && mainNav){
+            menuToggle.addEventListener('click', () => { mainNav.classList.toggle('open'); });
+        }
+
+        // Прелоадер
+        const preloader = document.getElementById('page-preloader');
+        if (preloader) {
+            window.addEventListener('load', () => { preloader.classList.add('done'); });
+        }
+    });
+</script>
+</body>
+</html>
